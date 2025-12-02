@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Day4</title>
+</head>
+<body>
+    <h3>1.Print numbers from 1 to 10 using a for loop.  </h3>
+
+<script>
+    for (let i = 1; i <= 10; i++) {
+        document.write(i + "<br>");
+    }
+</script>
+
+<h3>2.Print even numbers from 2 to 20 using a for loop. </h3>
+
+<script>
+    for (let i = 2; i <= 20; i += 2) {
+        document.write(i + "<br>");
+    }
+</script>
+
+<h3>3.Print numbers from 10 to 1 using a while loop.  </h3>
+
+
+<script>
+    let num = 10;
+
+    while (num >= 1) {
+        document.write(num + "<br>");
+        num--;
+    }
+</script>
+
+<h3>4.Print "Hello World!" 5 times using a do-while loop.</h3>
+
+<script>
+    let count = 1;
+
+    do {
+        document.write("Hello World!" + "<br>");
+        count++;
+    } while (count <= 5);
+</script>
+
+<h3>5.Iterate over an array and print each element using a for...of loop. </h3>
+<script>
+    let fruits = ["Apple", "Banana", "Orange", "Mango"];
+
+    for (let item of fruits) {
+        document.write(item + "<br>");
+    }
+</script>
+
+<h3>6.Iterate over an object and print its properties using a for...in loop.</h3>
+<script>
+    let person = {
+        name: "John",
+        age: 25,
+        city: "Chennai"
+    };
+
+    for (let key in person) {
+        document.write(key + ": " + person[key] + "<br>");
+    }
+</script>
+
+<h3>7.Sum numbers from 1 to 10 using a for loop. </h3>
+<script>
+    let sum = 0;
+
+    for (let i = 1; i <= 10; i++) {
+        sum += i;
+    }
+
+    document.write("Total Sum = " + sum);
+</script>
+
+<h3>8.Find the first number greater than 50 in an array using break.  </h3>
+<script>
+    let numbers = [10, 25, 40, 55, 60, 80];
+    let result = null;
+
+    for (let num of numbers) {
+        if (num > 50) {
+            result = num;
+            break; // stop the loop
+        }
+    }
+
+    document.write("First number greater than 50 is: " + result);
+</script>
+
+<h3>9.Skip printing numbers divisible by 3 using continue.  </h3>
+<script>
+    for (let i = 1; i <= 20; i++) {
+        if (i % 3 === 0) {
+            continue; // skip numbers divisible by 3
+        }
+        document.write(i + "<br>");
+    }
+</script>
+
+<h3>10.Create a multiplication table for 5 using a for loop. </h3>
+<script>
+    for (let i = 1; i <= 10; i++) {
+        document.write("5 x " + i + " = " + (5 * i) + "<br>");
+    }
+</script>
+
+<h3>11.Reverse a string using a loop.</h3>
+<script>
+    let text = "Hello";
+    let reversed = "";
+
+    for (let ch of text) {
+        reversed = ch + reversed; 
+    }
+
+    document.write("Original: " + text + "<br>");
+    document.write("Reversed: " + reversed);
+</script>
+
+<h3>12.Count the number of vowels in a string using a loop. </h3>
+<script>
+    let text1 = "javascript";
+    let count1 = 0;
+
+    for (let ch of text1) {
+        if (ch === "a" || ch === "e" || ch === "i" || ch === "o" || ch === "u") {
+            count1++;
+        }
+    }
+
+    document.write("String: " + text1 + "<br>");
+    document.write("Number of vowels: " + count1);
+</script>
+
+<h3>13.Find the largest number in an array using a loop</h3>
+<script>
+    let numbers1 = [10, 45, 22, 78, 5];
+    let largest = numbers[0]; // assume first element is largest
+
+    for (let i = 1; i < numbers1.length; i++) {
+        if (numbers1[i] > largest) {
+            largest = numbers1[i];
+        }
+    }
+
+    document.write("Array: " + numbers1 + "<br>");
+    document.write("Largest number: " + largest);
+</script>
+
+<h3>14.Print all odd numbers between 1–50 using a for loop</h3>
+<script>
+    for (let i = 1; i <= 50; i++) {
+        if (i % 2 !== 0) {
+            document.write(i + "<br>");
+        }
+    }
+</script>
+
+<h3>15.Calculate and print the sum of even numbers between 1–100 </h3>
+<script>
+    let sum1 = 0;
+
+    for (let i = 2; i <= 100; i += 2) { // only even numbers
+        sum1 += i;
+    }
+
+    document.write("Sum of even numbers from 1 to 100 is: " + sum1);
+</script>
+
+</body>
+</html>
