@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>1.Create an array of 5 student names.  </h3>
+    <script>
+    // Create an array of 5 student names
+    let students = ["Ravi", "Sita", "Arun", "Priya", "Kumar"];
+
+    // Display the array directly on the page
+    document.write(students);
+</script>
+
+<h3>2.Add a new student name to the array using push().  </h3>
+<script>
+    // Original array
+    let students1 = ["Ravi", "Sita", "Arun", "Priya", "Kumar"];
+
+    // Add a new student using push()
+    students1.push("Anitha");
+
+    // Display updated array
+    document.write(students1);
+</script>
+
+<h3>3.Remove the last student using pop(). </h3>
+<script>
+    // Original array
+    let students2 = ["Ravi", "Sita", "Arun", "Priya", "Kumar"];
+
+    // Remove the last student
+    students2.pop();
+
+    // Display updated array
+    document.write(students2);
+</script>
+
+<h3>4.Use map() to convert all names to uppercase.  </h3>
+<script>
+    // Original array
+    let students3 = ["Ravi", "Sita", "Arun", "Priya", "Kumar"];
+
+    // Convert all names to uppercase using map()
+    let upperNames = students3.map(function(name){
+        return name.toUpperCase();
+    });
+
+    // Display result
+    document.write(upperNames);
+</script>
+
+<h3>5.Use filter() to get students whose names start with "A".  </h3>
+<script>
+    // Original array
+    let students4 = ["Arun", "Ravi", "Anitha", "Priya", "Ajay", "Kumar"];
+
+    // Filter names starting with "A"
+    let aStudents = students4.filter(function(name){
+        return name.startsWith("A");
+    });
+
+    // Display result
+    document.write(aStudents);
+</script>
+
+<h3>6.Use forEach() to print each student name.  </h3>
+<script>
+    // Array of student names
+    let students5 = ["Ravi", "Sita", "Arun", "Priya", "Kumar"];
+
+    // Print each name using forEach()
+    students5.forEach(function(name){
+        document.write(name + "<br>");
+    });
+</script>
+
+<h3>7.Create an object for a book with properties (title, author, price).  </h3>
+<script>
+    // Create a book object
+    let book1 = {
+        title: "JavaScript Basics",
+        author: "John Smith",
+        price: 299
+    };
+
+    // Display the object properties
+    document.write("Title: " + book1.title + "<br>");
+    document.write("Author: " + book1.author + "<br>");
+    document.write("Price: " + book1.price);
+</script>
+
+<h3>8.Use Object.keys() to get all book properties.  </h3>
+<script>
+    // Book object
+    let book2= {
+        title: "JavaScript Basics",
+        author: "John Smith",
+        price: 299
+    };
+
+    // Get all property names
+    let keys = Object.keys(book2);
+
+    // Display the keys
+    document.write(keys);
+</script>
+
+<h3>9.Use Object.values() to get all book values.  </h3>
+<script>
+    // Book object
+    let book = {
+        title: "JavaScript Basics",
+        author: "John Smith",
+        price: 299
+    };
+
+    // Get all values of the book object
+    let values = Object.values(book);
+
+    // Display the values
+    document.write(values);
+</script>
+
+<h3>10.Add a new property genre to the book object. </h3>
+<script>
+    // Book object
+    let book3 = {
+        title: "JavaScript Basics",
+        author: "John Smith",
+        price: 299
+    };
+
+    // Add new property
+    book.genre = "Programming";
+
+    // Display updated object
+    document.write("Title: " + book3.title + "<br>");
+    document.write("Author: " + book3.author + "<br>");
+    document.write("Price: " + book3.price + "<br>");
+    document.write("Genre: " + book3.genre);
+</script>
+
+<h3>11.Use delete to remove price from the book.</h3>
+<script>
+    // Book object
+    let book4 = {
+        title: "JavaScript Basics",
+        author: "John Smith",
+        price: 299
+    };
+
+    // Delete price property
+    delete book4.price;
+
+    // Display updated object
+    document.write("Title: " + book4.title + "<br>");
+    document.write("Author: " + book4.author + "<br>");
+    document.write("Price: " + book4.price);  // This will show undefined
+</script>
+
+<h3>12.Merge a publisher object into the book object. </h3>
+<script>
+    // Book object
+    let book5 = {
+        title: "JavaScript Basics",
+        author: "John Smith",
+        price: 299
+    };
+
+    // Publisher object
+    let publisher = {
+        publisherName: "Tech Books Publishing",
+        year: 2024
+    };
+
+    // Merge publisher into book
+    Object.assign(book5, publisher);
+
+    // Display merged object
+    document.write("Title: " + book5.title + "<br>");
+    document.write("Author: " + book5.author + "<br>");
+    document.write("Price: " + book5.price + "<br>");
+    document.write("Publisher: " + book5.publisherName + "<br>");
+    document.write("Year: " + book5.year);
+</script>
+
+<h3>13.Convert the book object into an array of key-value pairs using  Object.entries().</h3>
+<script>
+    // Book object
+    let book6 = {
+        title: "JavaScript Basics",
+        author: "John Smith",
+        price: 299
+    };
+
+    // Convert to key-value pair array
+    let entries = Object.entries(book6);
+
+    // Display the result
+    document.write(entries);
+</script>
+
+<h3>14.Create an array of 10 numbers and print only the odd numbers using filter()</h3>
+<script>
+    // Array of 10 numbers
+    let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    // Filter odd numbers
+    let oddNumbers = numbers.filter(function(num){
+        return num % 2 !== 0;
+    });
+
+    // Display result
+    document.write(oddNumbers);
+</script>
+
+<h3>15.Sort an array of student scores in descending order using sort() </h3>
+<script>
+    // Array of student scores
+    let scores = [85, 92, 78, 90, 66, 88];
+
+    // Sort in descending order
+    scores.sort(function(a, b){
+        return b - a;
+    });
+
+    // Display sorted scores
+    document.write(scores);
+</script>
+
+
+
+</body>
+</html>
