@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>1.Create a function that prints "Hello, World!". </h3>
+    <script>
+    function printMessage() {
+        document.write("Hello, World!");
+    }
+
+    printMessage(); // function is called automatically
+</script>
+
+<h3>2.Write a function that takes a number and returns its cube. </h3>
+<script>
+function cube(num) {
+    document.write(num * num * num);
+}
+
+cube(3); // example → prints 27
+</script>
+
+<h3>3.Write a function to check if a number is even or odd. </h3>
+<script>
+function checkNumber(num) {
+    if (num % 2 === 0) {
+        document.write("Even");
+    } else {
+        document.write("Odd");
+    }
+}
+
+checkNumber(7);  // example → prints "Odd"
+</script>
+
+<h3>4.Write a function to find the factorial of a number.</h3>
+<script>
+function factorial(num) {
+    let result = 1;
+
+    for (let i = 1; i <= num; i++) {
+        result = result * i;
+    }
+
+    document.write(result);
+}
+factorial(5);
+</script>
+
+<h3>5.Create a function to return the sum of two numbers.</h3>
+<script>
+function add(a, b) {
+    document.write(a + b);
+}
+
+add(5, 3); // example → prints 8
+</script>
+
+<h3>6.Write a function that returns the largest of three numbers.  </h3>
+<script>
+function largest(a, b, c) {
+    if (a >= b && a >= c) {
+        document.write(a);
+    } else if (b >= a && b >= c) {
+        document.write(b);
+    } else {
+        document.write(c);
+    }
+}
+
+largest(10, 25, 15);  // example → prints 25
+</script>
+
+
+<h3>7.Write a function that checks if a string is a palindrome. </h3>
+<script>
+function isPalindrome(str) {
+    if (str === str.split("").reverse().join("")) {
+        document.write("Palindrome");
+    } else {
+        document.write("Not a palindrome");
+    }
+}
+
+isPalindrome("madam");
+</script>
+
+<h3>8.Create a function to convert Celsius to Fahrenheit. </h3>
+<script>
+function toFahrenheit(celsius) {
+    document.write((celsius * 9/5) + 32);
+}
+
+toFahrenheit(25);  // example → prints 77
+</script>
+
+<h3>9.Write a function to calculate the simple interest.  </h3>
+<script>
+function simpleInterest(p, r, t) {
+    document.write((p * r * t) / 100);
+}
+
+simpleInterest(1000, 5, 2);  // example → prints 100
+</script>
+
+<h3>10.Create a function that reverses an array.</h3>
+<script>
+function reverseArray(arr) {
+    let start = 0;
+    let end = arr.length - 1;
+
+    while (start < end) {
+        // swap
+        let temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+
+        start++;
+        end--;
+    }
+
+    document.write(arr);
+}
+
+reverseArray([1, 2, 3, 4, 5]); // prints 5,4,3,2,1
+</script>
+
+<h3>11.Write a function that counts the number of vowels in a string. </h3>
+<script>
+function countVowels(str) {
+    let count = 0;
+    str = str.toLowerCase();
+
+    for (let i = 0; i < str.length; i++) {
+        if ("aeiou".includes(str[i])) {
+            count++;
+        }
+    }
+
+    document.write(count);
+}
+
+countVowels("Hello World"); // prints 3
+</script>
+
+<h3>12.Write an arrow function that doubles each number in an array. </h3>
+<script>
+const numbers = [1, 2, 3, 4, 5];
+
+// Arrow function to double each number
+const doubled = numbers.map(num => num * 2);
+
+document.write(doubled); // prints 2,4,6,8,10
+</script>
+
+<h3>13.Create a function that takes a callback and calls it.</h3>
+<script>
+// Function that takes a callback
+function callCallback(callback) {
+    callback(); // call the callback function
+}
+
+// A sample callback function
+function sayHello() {
+    document.write("Hello from callback!");
+}
+
+// Call the function with the callback
+callCallback(sayHello);
+</script>
+
+<h3>14.Create a function to find the maximum of three numbers</h3>
+<script>
+function maxOfThree(a, b, c) {
+    let max = a;
+
+    if (b > max) {
+        max = b;
+    }
+    if (c > max) {
+        max = c;
+    }
+
+    document.write("Maximum number is: " + max);
+}
+
+maxOfThree(10, 25, 15);  // example → prints 25
+</script>
+
+<h3>16.Create a function to calculate the area of a circle</h3>
+<script>
+function areaOfCircle(radius) {
+    const area = 3.1416 * radius * radius; // π × r²
+    document.write("Area of the circle: " + area);
+}
+
+areaOfCircle(5); // example → prints 78.54
+</script>
+
+<h3>17.Write a function that capitalizes the first letter of each word in a sentence</h3>
+<script>
+function capitalizeWords(str) {
+    let result = "";
+    let words = str.split(" ");
+    
+    for (let word of words) {
+        result += word.charAt(0).toUpperCase() + word.slice(1) + " ";
+    }
+    
+    document.write(result.trim());
+}
+
+capitalizeWords("hello world from javascript");  
+// prints: Hello World From Javascript
+</script>
+
+<h3>18.Create a function that returns the reverse of a string</h3>
+<script>
+function reverseString(str) {
+    let reversed = str.split("").reverse().join("");
+    document.write(reversed);
+}
+
+reverseString("Hello World");  // prints: dlroW olleH
+</script>
+
+<h3>19.Create a function that counts vowels and consonants in a string</h3>
+<script>
+function countVowelsConsonants(str) {
+    let vowels = "aeiouAEIOU";
+    let vowelCount = 0;
+    let consonantCount = 0;
+
+    for (let i = 0; i < str.length; i++) {
+        let char = str[i].toLowerCase();
+        if (char >= 'a' && char <= 'z') {
+            if (vowels.includes(char)) {
+                vowelCount++;
+            } else {
+                consonantCount++;
+            }
+        }
+    }
+
+    document.write("Vowels: " + vowelCount + "<br>");
+    document.write("Consonants: " + consonantCount);
+}
+
+countVowelsConsonants("Hello World");  
+// prints: Vowels: 3, Consonants: 7
+</script>
+
+<h3>20.Write a function to check if a number is prime or not</h3>
+<script>
+function isPrime(num) {
+    if (num <= 1) {
+        document.write(num + " is not prime");
+        return;
+    }
+
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) {
+            document.write(num + " is not prime");
+            return;
+        }
+    }
+
+    document.write(num + " is prime");
+}
+
+isPrime(17);  // example → prints: 17 is prime
+</script>
+
+
+</body>
+</html>
