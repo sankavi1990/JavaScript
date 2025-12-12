@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    #box {
+      width: 200px;
+      height: 200px;
+      background: lightblue;
+      margin: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      border: 2px solid black;
+    }
+  </style>
+</head>
+<body>
+    <h3>1.Change the text of a button when clicked. </h3>
+
+    <button id="myBtn" onclick="changeText()">Click Me</button>
+
+<script>
+    function changeText() {
+        document.getElementById("myBtn").innerText = "Clicked!";
+    }
+</script>
+
+
+<h3>2.Show an alert when the mouse enters a specific area.</h3>
+<div id="area" 
+     style="width:200px; height:100px; background-color:lightgray; text-align:center; line-height:100px;">
+     Hover over me
+</div>
+
+<script>
+    let area = document.getElementById("area");
+    area.addEventListener("mouseenter", function() {
+        alert("Mouse entered the area!");
+    });
+</script>
+
+
+<h3>3.Detect when the user presses the "Enter" key.</h3>
+<input type="text" id="inputBox" placeholder="Type something and press Enter">
+
+<script>
+    let input = document.getElementById("inputBox");
+
+    input.addEventListener("keydown", function(event) {
+        if(event.key === "Enter") {
+            alert("Enter key pressed!");
+        }
+    });
+</script>
+
+
+<h3>4.Change the background color of a page when a button is clicked</h3>
+<button onclick="changeBg()">Change Background Color</button>
+
+<script>
+    function changeBg() {
+        document.body.style.backgroundColor = "lightgreen";
+    }
+</script>
+
+
+<h3>5.Toggle a password field between text and password.</h3>
+<input type="password" id="password" placeholder="Enter password">
+<button onclick="togglePassword()">Show/Hide</button>
+
+<script>
+    function togglePassword() {
+        let pass = document.getElementById("password");
+        if(pass.type === "password") {
+            pass.type = "text";
+        } else {
+            pass.type = "password";
+        }
+    }
+</script>
+
+
+<h3>6.Display the coordinates of the mouse pointer when moved.</h3>
+<h3>Move your mouse anywhere on the page</h3>
+<p>Mouse coordinates: <span id="coords">0, 0</span></p>
+
+<script>
+    document.addEventListener("mousemove", function(event) {
+        let x = event.clientX;
+        let y = event.clientY;
+        document.getElementById("coords").innerText = x + ", " + y;
+    });
+</script>
+
+
+<h3>7.Prevent the default behavior of a form submission. </h3>
+<form id="myForm">
+    <input type="text" placeholder="Enter something">
+    <button type="submit">Submit</button>
+</form>
+
+<p id="message"></p>
+
+<script>
+    let form = document.getElementById("myForm");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form from submitting
+        document.getElementById("message").innerText = "Form submission prevented!";
+    });
+</script>
+
+
+<h3>8.Count the number of times a button is clicked.</h3>
+<button onclick="countClicks()">Click Me</button>
+<p>Button clicked <span id="count">0</span> times</p>
+
+<script>
+    let clicks = 0;
+
+    function countClicks() {
+        clicks++;
+        document.getElementById("count").innerText = clicks;
+    }
+</script>
+
+
+<h3>9.Create a button that disappears when clicked.</h3>
+<button id="myBtn" onclick="hideButton()">Click to Disappear</button>
+
+<script>
+    function hideButton() {
+        document.getElementById("myBtn").style.display = "none";
+    }
+</script>
+
+<h3>10.Toggle an element's visibility when another element is clicked.</h3>
+<button onclick="toggleVisibility()">Show/Hide Text</button>
+<p id="text" style="display:block;">This text will be toggled.</p>
+
+<script>
+    function toggleVisibility() {
+        let el = document.getElementById("text");
+        if(el.style.display === "none") {
+            el.style.display = "block";
+        } else {
+            el.style.display = "none";
+        }
+    }
+</script>
+
+<h3>11.Play a sound when a button is clicked.</h3>
+<button onclick="playSound()">Play Sound</button>
+
+<audio id="sound" src="music.mp3.mp3"></audio>
+
+<script>
+    function playSound() {
+        document.getElementById("sound").play();
+    }
+</script>
+
+
+<h3>12.Display a loading animation when the page is loading.</h3>
+<div id="loader">Loading...</div>
+<div id="content" style="display:none;">
+    <h2>Page Content</h2>
+    <p>This is the main content.</p>
+</div>
+
+<script>
+    window.addEventListener("load", function() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("content").style.display = "block";
+    });
+</script>
+
+
+<h3>13.Change an image when a button is clicked.</h3>
+<h3>Click the button to change the image</h3>
+
+<img id="myImage" src="Toy.jpg" width="200" alt="Image 1">
+<br><br>
+
+<button onclick="changeImage()">Change Image</button>
+
+<script>
+    function changeImage() {
+        document.getElementById("myImage").src="Alphabet.jpg";
+    }
+</script>
+
+
+    <h3>14.Handle double-click on a button to change background color.</h3>
+    <button ondblclick="changeBackground()">Double-Click Me</button>
+
+<script>
+    function changeBackground() {
+        document.body.style.backgroundColor = "lightgreen";
+    }
+</script>
+
+
+<h3>15.Detect when the user presses the Enter key in an input field.</h3>
+    <input type="text" id="myInput" placeholder="Type something and press Enter">
+
+<p id="msg"></p>
+
+<script>
+    document.getElementById("myInput").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            document.getElementById("msg").innerText = "You pressed Enter!";
+        }
+    });
+</script>
+
+
+<h3>16.Display a message when the mouse enters and leaves a box.</h3>
+   <div id="box">Hover me</div>
+
+<script>
+  let box = document.getElementById("box");
+
+  box.addEventListener("mouseenter", function() {
+    box.textContent = "Mouse Entered!";
+  });
+
+  box.addEventListener("mouseleave", function() {
+    box.textContent = "Mouse Left!";
+  });
+</script>
+
+
+
+<h3>17.Create a keylogger that prints every key pressed on the keyboard.</h3>
+<h3>Press any key...</h3>
+
+<p id="output"></p>
+
+<script>
+    document.addEventListener("keydown", function(event) {
+        document.getElementById("output").innerText += event.key + " ";
+    });
+</script>
+
+<h3>18.Show an alert when the user right-clicks anywhere on the page.</h3>
+<script>
+    document.addEventListener("contextmenu", function() {
+        alert("Right click detected!");
+    });
+</script>
+
+
+<h3>19.Disable a form submission using event.preventDefault().</h3>
+<form id="myForm">
+    <input type="text" placeholder="Type something">
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+        event.preventDefault();  // stops the form from submitting
+        alert("Form submission prevented!");
+    });
+</script>
+
+
+<h3>20.Create a form that validates input only when a field loses focus (blur).</h3>
+<input type="text" id="name" placeholder="Enter your name">
+<p id="msg"></p>
+
+<script>
+    document.getElementById("name").addEventListener("blur", function() {
+        if (this.value === "") {
+            msg.innerText = "Name cannot be empty!";
+            msg.style.color = "red";
+        } else {
+            msg.innerText = "Looks good!";
+            msg.style.color = "green";
+        }
+    });
+</script>
+
+
+
+</body>
+</html>

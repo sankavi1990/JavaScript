@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+<body>
+    <h3>1.Change the background color of the page using a button click. </h3>
+     <button onclick="changeColor()">Change Background</button>
+
+    <script>
+        function changeColor() {
+            document.body.style.backgroundColor = "lightblue";
+        }
+    </script>
+
+
+
+    <h3>2.Change the text of a paragraph using a button.  </h3>
+    <p id="myPara">This is the original text.</p>
+
+    <button onclick="changeText()">Change Text</button>
+
+    <script>
+        function changeText() {
+            document.getElementById("myPara").innerText = "The text has been changed!";
+        }
+    </script>
+
+
+    <h3>3.Hide and show an element using a toggle button.</h3>
+         <p id="text">This is a paragraph to hide and show.</p>
+
+    <button onclick="toggleText()">Hide / Show</button>
+
+    <script>
+        function toggleText() {
+            let para = document.getElementById("text");
+
+            if (para.style.display === "none") {
+                para.style.display = "block";   // Show
+            } else {
+                para.style.display = "none";    // Hide
+            }
+        }
+    </script>
+
+
+        <h3>4.Create a new list item dynamically.  </h3>
+         <ul id="myList">
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ul>
+
+    <button onclick="addItem()">Add New Item</button>
+
+    <script>
+        function addItem() {
+            let newItem = document.createElement("li"); 
+            newItem.innerText = "New Item";             
+            document.getElementById("myList").appendChild(newItem); 
+        }
+    </script>
+
+
+    <h3>5.Remove a specific item from a list.</h3>
+     <ul id="myList">
+        <li id="item1">Item 1</li>
+        <li id="item2">Item 2</li>
+        <li id="item3">Item 3</li>
+    </ul>
+
+    <button onclick="removeItem()">Remove Item 2</button>
+
+    <script>
+        function removeItem() {
+            let item = document.getElementById("item2");
+            item.remove();  // Removes that specific item
+        }
+    </script>
+
+
+    <h3>6.Change the font size of a paragraph when a button is clicked.  </h3>
+     <p id="para">This is a sample paragraph.</p>
+
+    <button onclick="increaseSize()">Increase Font Size</button>
+
+    <script>
+        function increaseSize() {
+            document.getElementById("para").style.fontSize = "24px";
+        }
+    </script>
+
+
+        <h3>7.Change the text color of all paragraphs using querySelectorAll().</h3>
+         <p>This is paragraph 1.</p>
+    <p>This is paragraph 2.</p>
+    <p>This is paragraph 3.</p>
+
+    <button onclick="changeColor()">Change Text Color</button>
+
+    <script>
+        function changeColor() {
+            let paras = document.querySelectorAll("p");
+
+            paras.forEach(function(p) {
+                p.style.color = "blue";
+            });
+        }
+    </script>
+
+
+<h3>8.Add a border to an image when hovered.</h3>
+<img id="myImg" src="Toy.jpg" alt="Sample Image" width="200">
+
+    <script>
+        let img = document.getElementById("myImg");
+
+        img.addEventListener("mouseover", function () {
+            img.style.border = "3px solid red";
+        });
+
+        img.addEventListener("mouseout", function () {
+            img.style.border = "none";
+        });
+    </script>
+
+
+
+    <h3>9.Display an alert message when a button is clicked.  </h3>
+    <button onclick="showAlert()">Click Me</button>
+
+    <script>
+        function showAlert() {
+            alert("Hello! This is an alert message.");
+        }
+    </script>
+
+
+    <h3>10.Toggle between two different text contents.  </h3>
+     <p id="myText">Hello! This is Text One.</p>
+
+    <button onclick="toggleText()">Toggle Text</button>
+
+    <script>
+        function toggleText() {
+            let para = document.getElementById("myText");
+
+            if (para.innerText === "Hello! This is Text One.") {
+                para.innerText = "Welcome! This is Text Two.";
+            } else {
+                para.innerText = "Hello! This is Text One.";
+            }
+        }
+    </script>
+
+
+    <h3>11.Store and retrieve a username using LocalStorage.  </h3>
+     <input id="nameInput" placeholder="Enter name">
+
+    <button onclick="save()">Save</button>
+    <button onclick="get()">Get</button>
+
+    <p id="display"></p>
+
+    <script>
+        function save() {
+            localStorage.setItem("name", document.getElementById("nameInput").value);
+        }
+
+        function get() {
+            document.getElementById("display").innerText = localStorage.getItem("name");
+        }
+    </script>
+
+
+
+    <h3>12.Save and load dark/light mode settings using LocalStorage. </h3>
+    <button onclick="toggle()">Toggle Mode</button>
+
+<script>
+    // Load saved mode
+    if (localStorage.getItem("mode") === "dark") {
+        document.body.style.background = "black";
+        document.body.style.color = "white";
+    }
+
+    function toggle() {
+        if (document.body.style.background === "black") {
+            document.body.style.background = "white";
+            document.body.style.color = "black";
+            localStorage.setItem("mode", "light");
+        } else {
+            document.body.style.background = "black";
+            document.body.style.color = "white";
+            localStorage.setItem("mode", "dark");
+        }
+    }
+</script>
+
+
+
+ <h3>13.Implement a shopping cart that remembers selected items using  LocalStorage.</h3>
+ <h3>Products</h3>
+
+<button onclick="addToCart('Phone')">Add Phone</button>
+<button onclick="addToCart('Laptop')">Add Laptop</button>
+<button onclick="addToCart('Headphones')">Add Headphones</button>
+
+<h3>Your Cart:</h3>
+<p id="cartItems"></p>
+
+<script>
+    // Load saved cart on page load
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    showCart();
+
+    function addToCart(item) {
+        cart.push(item);                    // add item
+        localStorage.setItem("cart", JSON.stringify(cart));  // save
+        showCart();                         // update display
+    }
+
+    function showCart() {
+        document.getElementById("cartItems").innerText = cart.join(", ");
+    }
+</script>
+
+
+
+<h3>14.Store and retrieve session-based login status using SessionStorage.</h3>
+<input id="user" placeholder="Username">
+<button onclick="login()">Login</button>
+<p id="status"></p>
+
+<script>
+    // Show status on page load
+    if(sessionStorage.getItem("user")) {
+        document.getElementById("status").innerText = "Logged in as: " + sessionStorage.getItem("user");
+    }
+
+    function login() {
+        let u = document.getElementById("user").value;
+        sessionStorage.setItem("user", u);
+        document.getElementById("status").innerText = "Logged in as: " + u;
+    }
+</script>
+
+
+
+<h3>15.Save form input values temporarily in SessionStorage and restore on page reload. </h3>
+<input id="name" placeholder="Name">
+<input id="email" placeholder="Email">
+<button onclick="save()">Save</button>
+
+<script>
+    // Restore saved values on page load
+    if(sessionStorage.getItem("name")) {
+        document.getElementById("name").value = sessionStorage.getItem("name");
+    }
+    if(sessionStorage.getItem("email")) {
+        document.getElementById("email").value = sessionStorage.getItem("email");
+    }
+
+    function save() {
+        sessionStorage.setItem("name", document.getElementById("name").value);
+        sessionStorage.setItem("email", document.getElementById("email").value);
+        alert("Saved in session!");
+    }
+</script>
+
+<h3>16.Store last visited page in LocalStorage and display it on the next visit. </h3>
+<h2>Welcome to This Page</h2>
+<p id="lastVisit"></p>
+
+<script>
+    // Show last visited page
+    let lastPage = localStorage.getItem("lastPage");
+    if(lastPage) {
+        document.getElementById("lastVisit").innerText = "Last visited page: " + lastPage;
+    }
+
+    // Save current page as last visited
+    localStorage.setItem("lastPage", window.location.href);
+</script>
+
+
+
+<h3>17.Implement a simple click counter using LocalStorage. </h3>
+<h2>Click Counter</h2>
+<p>Clicks: <span id="count">0</span></p>
+<button onclick="increment()">Click Me</button>
+
+<script>
+    // Load saved count
+    let count = localStorage.getItem("clickCount") || 0;
+    document.getElementById("count").innerText = count;
+
+    function increment() {
+        count++;
+        localStorage.setItem("clickCount", count);
+        document.getElementById("count").innerText = count;
+    }
+</script>
+
+
+<h3>18.Save and retrieve a to-do list using LocalStorage with JSON. </h3>
+<h2>To-Do List</h2>
+<input id="task" placeholder="Enter task">
+<button onclick="addTask()">Add Task</button>
+
+<ul id="todoList"></ul>
+
+<script>
+    // Load saved tasks
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    displayTasks();
+
+    function addTask() {
+        let task = document.getElementById("task").value;
+        if(task) {
+            tasks.push(task);
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+            document.getElementById("task").value = "";
+            displayTasks();
+        }
+    }
+
+    function displayTasks() {
+        let list = document.getElementById("todoList");
+        list.innerHTML = "";
+        tasks.forEach((t, i) => {
+            let li = document.createElement("li");
+            li.innerText = t;
+            list.appendChild(li);
+        });
+    }
+</script>
+
+
+<h3>19.Convert a JavaScript object to a JSON string using JSON.stringify() and store it.</h3>
+<button onclick="saveObject()">Save Object</button>
+<button onclick="showObject()">Show Stored Object</button>
+
+<p id="output"></p>
+
+<script>
+    function saveObject() {
+        let person = {
+            name: "Alice",
+            age: 25,
+            city: "Coimbatore"
+        };
+
+        // Convert object to JSON string and store
+        localStorage.setItem("person", JSON.stringify(person));
+        alert("Object saved!");
+    }
+
+    function showObject() {
+        let stored = localStorage.getItem("person");
+        if(stored) {
+            // Parse JSON string back to object (optional)
+            let obj = JSON.parse(stored);
+            document.getElementById("output").innerText = 
+                `Name: ${obj.name}, Age: ${obj.age}, City: ${obj.city}`;
+        }
+    }
+</script>
+
+
+<h3>20.Convert a JSON string back to a JavaScript object using JSON.parse() and use it.</h3>
+<button onclick="saveObject()">Save Object</button>
+<button onclick="useObject()">Use Stored Object</button>
+
+<p id="output"></p>
+
+<script>
+    function saveObject() {
+        let person = { name: "Bob", age: 30, city: "Coimbatore" };
+        // Convert object to JSON string and store
+        localStorage.setItem("person", JSON.stringify(person));
+        alert("Object saved!");
+    }
+
+    function useObject() {
+        let stored = localStorage.getItem("person");
+        if(stored) {
+            // Convert JSON string back to object
+            let obj = JSON.parse(stored);
+            // Use object
+            document.getElementById("output").innerText = 
+                `Name: ${obj.name}, Age: ${obj.age}, City: ${obj.city}`;
+        }
+    }
+</script>
+ 
+    
+
+
+
+
+</body>
+</html>
