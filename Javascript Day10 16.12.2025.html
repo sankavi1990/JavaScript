@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Day10</title>
+</head>
+<body>
+
+    <h3>Task 1: Create an array of employees</h3>
+<div id="task1Result"></div>
+
+<script>
+    const employeeDataTask1 = [
+        { name: "Kiran", age: 25, position: "Developer" },
+        { name: "Lakshmi", age: 28, position: "Designer" },
+        { name: "Vijay", age: 32, position: "Manager" }
+    ];
+
+    let outputTask1 = "";
+
+    employeeDataTask1.forEach(emp => {
+        outputTask1 += `
+            Name: ${emp.name}<br>
+            Age: ${emp.age}<br>
+            Position: ${emp.position}<br><br>
+        `;
+    });
+
+    document.getElementById("task1Result").innerHTML = outputTask1;
+</script>
+
+<h3>Task 2: Fetch and display a list of products from an API</h3>
+<div id="task2Result"></div>
+
+<script>
+    const productApiUrlTask2 = "https://fakestoreapi.com/products";
+
+    fetch(productApiUrlTask2)
+        .then(response => response.json())
+        .then(products => {
+            let outputTask2 = "";
+
+            products.forEach(product => {
+                outputTask2 += `
+                    <strong>${product.title}</strong><br>
+                    Price: ₹${product.price}<br><br>
+                `;
+            });
+
+            document.getElementById("task2Result").innerHTML = outputTask2;
+        })
+        .catch(error => {
+            document.getElementById("task2Result").innerHTML = "Error fetching products";
+        });
+</script>
+
+
+<h3>Task 3: Sort an array of objects by age (Ascending)</h3>
+<div id="task3Result"></div>
+
+<script>
+    const peopleDataTask3 = [
+        { personName: "Anil", personAge: 35 },
+        { personName: "Sita", personAge: 22 },
+        { personName: "Ramesh", personAge: 28 }
+    ];
+
+    // Sort by age in ascending order
+    peopleDataTask3.sort((a, b) => a.personAge - b.personAge);
+
+    let outputTask3 = "";
+
+    peopleDataTask3.forEach(person => {
+        outputTask3 += `
+            Name: ${person.personName}<br>
+            Age: ${person.personAge}<br><br>
+        `;
+    });
+
+    document.getElementById("task3Result").innerHTML = outputTask3;
+</script>
+
+<h3>Task 4: Filter students with grade 'A'</h3>
+<div id="task4Result"></div>
+
+<script>
+    const studentDataTask4 = [
+        { studentName: "Priya", studentGrade: "A" },
+        { studentName: "Rahul", studentGrade: "B" },
+        { studentName: "Anu", studentGrade: "A" },
+        { studentName: "Kiran", studentGrade: "C" }
+    ];
+
+    const gradeAStudentsTask4 = studentDataTask4.filter(
+        student => student.studentGrade === "A"
+    );
+
+    let outputTask4 = "";
+
+    gradeAStudentsTask4.forEach(student => {
+        outputTask4 += `
+            Name: ${student.studentName}<br>
+            Grade: ${student.studentGrade}<br><br>
+        `;
+    });
+
+    document.getElementById("task4Result").innerHTML = outputTask4;
+</script>
+
+
+<h3>Task 5: Find a specific product by name</h3>
+<div id="task5Result"></div>
+
+<script>
+    const productListTask5 = [
+        { productName: "Laptop", productPrice: 55000 },
+        { productName: "Mobile", productPrice: 20000 },
+        { productName: "Headphones", productPrice: 3000 }
+    ];
+
+    const searchProductNameTask5 = "Mobile";
+
+    const foundProductTask5 = productListTask5.find(
+        item => item.productName === searchProductNameTask5
+    );
+
+    let outputTask5 = "";
+
+    if (foundProductTask5) {
+        outputTask5 = `
+            Product Name: ${foundProductTask5.productName}<br>
+            Price: ₹${foundProductTask5.productPrice}
+        `;
+    } else {
+        outputTask5 = "Product not found";
+    }
+
+    document.getElementById("task5Result").innerHTML = outputTask5;
+</script>
+
+
+<h3>Task 6: Convert an array of objects to an array of names</h3>
+<div id="task6Result"></div>
+
+<script>
+    const employeeInfoTask6 = [
+        { empName: "Arjun", empRole: "Developer" },
+        { empName: "Nisha", empRole: "Tester" },
+        { empName: "Sanjay", empRole: "Manager" }
+    ];
+
+    const nameListTask6 = employeeInfoTask6.map(emp => emp.empName);
+
+    let outputTask6 = "";
+
+    nameListTask6.forEach(name => {
+        outputTask6 += `${name}<br>`;
+    });
+
+    document.getElementById("task6Result").innerHTML = outputTask6;
+</script>
+
+
+<h3>Task 7: Modify an object inside an array</h3>
+<div id="task7Result"></div>
+
+<script>
+    const productDataTask7 = [
+        { productName: "Tablet", productPrice: 15000 },
+        { productName: "Laptop", productPrice: 60000 }
+    ];
+
+    // Update price of Laptop
+    productDataTask7.forEach(item => {
+        if (item.productName === "Laptop") {
+            item.productPrice = 55000;
+        }
+    });
+
+    let outputTask7 = "";
+
+    productDataTask7.forEach(item => {
+        outputTask7 += `
+            Product: ${item.productName}<br>
+            Price: ₹${item.productPrice}<br><br>
+        `;
+    });
+
+    document.getElementById("task7Result").innerHTML = outputTask7;
+</script>
+
+<h3>Task 8: Count objects with age above 25</h3>
+<div id="task8Result"></div>
+
+<script>
+    const peopleInfoTask8 = [
+        { personName: "Asha", personAge: 22 },
+        { personName: "Ravi", personAge: 30 },
+        { personName: "Neha", personAge: 27 },
+        { personName: "Kiran", personAge: 24 }
+    ];
+
+    const countTask8 = peopleInfoTask8.filter(
+        person => person.personAge > 25
+    ).length;
+
+    document.getElementById("task8Result").innerHTML =
+        "Number of people with age above 25: " + countTask8;
+</script>
+<h3>Task 9: Dynamic search for objects</h3>
+
+<input type="text" id="task9Input" placeholder="Enter name to search">
+<button onclick="searchPersonTask9()">Search</button>
+
+<div id="task9Result"></div>
+
+<script>
+    const personDataTask9 = [
+        { name: "Aravind", role: "Developer" },
+        { name: "Bhavya", role: "Designer" },
+        { name: "Charan", role: "Tester" }
+    ];
+
+    function searchPersonTask9() {
+        const searchValueTask9 = document
+            .getElementById("task9Input")
+            .value
+            .toLowerCase();
+
+        const foundPersonTask9 = personDataTask9.find(
+            person => person.name.toLowerCase() === searchValueTask9
+        );
+
+        let outputTask9 = "";
+
+        if (foundPersonTask9) {
+            outputTask9 = `
+                Name: ${foundPersonTask9.name}<br>
+                Role: ${foundPersonTask9.role}
+            `;
+        } else {
+            outputTask9 = "No matching person found";
+        }
+
+        document.getElementById("task9Result").innerHTML = outputTask9;
+    }
+</script>
+
+
+<h3>Task 10: Group objects based on role</h3>
+<div id="task10Result"></div>
+
+<script>
+    const employeeGroupDataTask10 = [
+        { empName: "Rohit", empRole: "Developer" },
+        { empName: "Sneha", empRole: "Tester" },
+        { empName: "Amit", empRole: "Developer" },
+        { empName: "Pooja", empRole: "Tester" }
+    ];
+
+    const groupedDataTask10 = {};
+
+    employeeGroupDataTask10.forEach(emp => {
+        if (!groupedDataTask10[emp.empRole]) {
+            groupedDataTask10[emp.empRole] = [];
+        }
+        groupedDataTask10[emp.empRole].push(emp.empName);
+    });
+
+    let outputTask10 = "";
+
+    for (let role in groupedDataTask10) {
+        outputTask10 += `<strong>${role}</strong><br>`;
+        groupedDataTask10[role].forEach(name => {
+            outputTask10 += `- ${name}<br>`;
+        });
+        outputTask10 += "<br>";
+    }
+
+    document.getElementById("task10Result").innerHTML = outputTask10;
+</script>
+
+
+<h3>Task 11: Remove a specific object by property</h3>
+<div id="task11Result"></div>
+
+<script>
+    const productDataTask11 = [
+        { productName: "Keyboard", price: 1200 },
+        { productName: "Mouse", price: 600 },
+        { productName: "Monitor", price: 8000 }
+    ];
+
+    const removeProductNameTask11 = "Mouse";
+
+    const updatedProductDataTask11 = productDataTask11.filter(
+        product => product.productName !== removeProductNameTask11
+    );
+
+    let outputTask11 = "";
+
+    updatedProductDataTask11.forEach(product => {
+        outputTask11 += `
+            Product: ${product.productName}<br>
+            Price: ₹${product.price}<br><br>
+        `;
+    });
+
+    document.getElementById("task11Result").innerHTML = outputTask11;
+</script>
+
+
+
+<h3>Task 12: Add new employee dynamically</h3>
+
+<input type="text" id="task12Name" placeholder="Enter name">
+<input type="text" id="task12Role" placeholder="Enter role">
+<button onclick="addEmployeeTask12()">Add Employee</button>
+
+<div id="task12Result"></div>
+
+<script>
+    const employeeArrayTask12 = [
+        { name: "Rahul", role: "Developer" },
+        { name: "Sneha", role: "Tester" }
+    ];
+
+    function displayEmployeesTask12() {
+        let outputTask12 = "";
+        employeeArrayTask12.forEach(emp => {
+            outputTask12 += `Name: ${emp.name}, Role: ${emp.role}<br>`;
+        });
+        document.getElementById("task12Result").innerHTML = outputTask12;
+    }
+
+    function addEmployeeTask12() {
+        const name = document.getElementById("task12Name").value;
+        const role = document.getElementById("task12Role").value;
+
+        if (name && role) {
+            employeeArrayTask12.push({ name: name, role: role });
+            displayEmployeesTask12();
+            document.getElementById("task12Name").value = "";
+            document.getElementById("task12Role").value = "";
+        } else {
+            alert("Please enter both name and role");
+        }
+    }
+
+    // Initial display
+    displayEmployeesTask12();
+</script>
+
+
+<h3>Task 13: Merge two arrays of objects</h3>
+<div id="task13Result"></div>
+
+<script>
+    const teamA_Task13 = [
+        { name: "Arjun", role: "Developer" },
+        { name: "Meena", role: "Tester" }
+    ];
+
+    const teamB_Task13 = [
+        { name: "Ravi", role: "Designer" },
+        { name: "Pooja", role: "Manager" }
+    ];
+
+    // Merge arrays
+    const mergedTeam_Task13 = teamA_Task13.concat(teamB_Task13);
+
+    let outputTask13 = "";
+    mergedTeam_Task13.forEach(member => {
+        outputTask13 += `Name: ${member.name}, Role: ${member.role}<br>`;
+    });
+
+    document.getElementById("task13Result").innerHTML = outputTask13;
+</script>
+
+
+<h3>Task 14: Clone an array of objects</h3>
+<div id="task14Result"></div>
+
+<script>
+    const originalEmployeesTask14 = [
+        { name: "Kiran", role: "Developer" },
+        { name: "Nisha", role: "Tester" }
+    ];
+
+    // Clone array without affecting original
+    const clonedEmployeesTask14 = originalEmployeesTask14.map(emp => ({ ...emp }));
+
+    // Modify cloned array
+    clonedEmployeesTask14[0].role = "Manager";
+
+    let outputTask14 = "<strong>Original Array:</strong><br>";
+    originalEmployeesTask14.forEach(emp => {
+        outputTask14 += `Name: ${emp.name}, Role: ${emp.role}<br>`;
+    });
+
+    outputTask14 += "<br><strong>Cloned & Modified Array:</strong><br>";
+    clonedEmployeesTask14.forEach(emp => {
+        outputTask14 += `Name: ${emp.name}, Role: ${emp.role}<br>`;
+    });
+
+    document.getElementById("task14Result").innerHTML = outputTask14;
+</script>
+
+
+<h3>Task 15: Calculate total stock in inventory</h3>
+<div id="task15Result"></div>
+
+<script>
+    const inventoryTask15 = [
+        { itemName: "Laptop", quantity: 10 },
+        { itemName: "Mouse", quantity: 25 },
+        { itemName: "Keyboard", quantity: 15 }
+    ];
+
+    function calculateTotalStockTask15(items) {
+        return items.reduce((total, item) => total + item.quantity, 0);
+    }
+
+    const totalStockTask15 = calculateTotalStockTask15(inventoryTask15);
+
+    document.getElementById("task15Result").innerHTML =
+        "Total stock in inventory: " + totalStockTask15;
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Day 11</title>
+    <!-- <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
+        h2 { color: #2a7ae2; margin-top: 30px; }
+        p { background: #f4f4f4; padding: 10px; border-radius: 5px; }
+    </style> -->
+</head>
+<body>
+    <h1>JavaScript 35 Tasks - Outputs</h1>
+
+    <!-- Task 1 -->
+    <h2>1. Add Two Numbers (10 + 20)</h2>
+    <p id="result1"></p>
+
+    <!-- Task 2 -->
+    <h2>2. Positive, Negative, or Zero (-5)</h2>
+    <p id="result2"></p>
+
+    <!-- Task 3 -->
+    <h2>3. Numbers 1 to 10</h2>
+    <p id="result3"></p>
+
+    <!-- Task 4 -->
+    <h2>4. Countdown 5 to 1</h2>
+    <p id="result4"></p>
+
+    <!-- Task 5 -->
+    <h2>5. Car Object</h2>
+    <p id="result5"></p>
+
+    <!-- Task 6 -->
+    <h2>6. Modify Fruits Array</h2>
+    <p id="result6"></p>
+
+    <!-- Task 7 -->
+    <h2>7. Check Prime Number (7)</h2>
+    <p id="result7"></p>
+
+    <!-- Task 8 -->
+    <h2>8. Factorial of 5</h2>
+    <p id="result8"></p>
+
+    <!-- Task 9 -->
+    <h2>9. Largest in Array [10,25,5,60,45]</h2>
+    <p id="result9"></p>
+
+    <!-- Task 10 -->
+    <h2>10. Nested Object</h2>
+    <p id="result10"></p>
+
+    <!-- Task 11 -->
+    <h2>11. Day of Week (3)</h2>
+    <p id="result11"></p>
+
+    <!-- Task 12 -->
+    <h2>12. Dice Roll (1-6)</h2>
+    <p id="result12"></p>
+
+    <!-- Task 13 -->
+    <h2>13. Reverse String "Hello"</h2>
+    <p id="result13"></p>
+
+    <!-- Task 14 -->
+    <h2>14. Increment & Decrement (5)</h2>
+    <p id="result14"></p>
+
+    <!-- Task 15 -->
+    <h2>15. Swap Numbers 10 & 20</h2>
+    <p id="result15"></p>
+
+    <!-- Task 16 -->
+    <h2>16. Largest of 10,25,15</h2>
+    <p id="result16"></p>
+
+    <!-- Task 17 -->
+    <h2>17. Calculator 10 + 5</h2>
+    <p id="result17"></p>
+
+    <!-- Task 18 -->
+    <h2>18. Even or Odd (7)</h2>
+    <p id="result18"></p>
+
+    <!-- Task 19 -->
+    <h2>19. Eligible to Vote (Age 20)</h2>
+    <p id="result19"></p>
+
+    <!-- Task 20 -->
+    <h2>20. == vs === (5 & "5")</h2>
+    <p id="result20"></p>
+
+    <!-- Task 21 -->
+    <h2>21. Divisible by 3 & 5 (15)</h2>
+    <p id="result21"></p>
+
+    <!-- Task 22 -->
+    <h2>22. Assignment Operators in Loop</h2>
+    <p id="result22"></p>
+
+    <!-- Task 23 -->
+    <h2>23. Square & Cube (3)</h2>
+    <p id="result23"></p>
+
+    <!-- Task 24 -->
+    <h2>24. Century Year (2000)</h2>
+    <p id="result24"></p>
+
+    <!-- Task 25 -->
+    <h2>25. Vowel or Consonant ("a")</h2>
+    <p id="result25"></p>
+
+    <!-- Task 26 -->
+    <h2>26. Multiple of 10 (50)</h2>
+    <p id="result26"></p>
+
+    <!-- Task 27 -->
+    <h2>27. Compare Two Numbers (10 & 20)</h2>
+    <p id="result27"></p>
+
+    <!-- Task 28 -->
+    <h2>28. Calculator Using Switch (10 * 5)</h2>
+    <p id="result28"></p>
+
+    <!-- Task 29 -->
+    <h2>29. Negative Check (-5)</h2>
+    <p id="result29"></p>
+
+    <!-- Task 30 -->
+    <h2>30. Categorize Age (25)</h2>
+    <p id="result30"></p>
+
+    <!-- Task 31 -->
+    <h2>31. Check Empty String ("")</h2>
+    <p id="result31"></p>
+
+    <!-- Task 32 -->
+    <h2>32. Days in Month "February"</h2>
+    <p id="result32"></p>
+
+    <!-- Task 33 -->
+    <h2>33. Valid Triangle (60,60,60)</h2>
+    <p id="result33"></p>
+
+    <!-- Task 34 -->
+    <h2>34. First 10 Multiples of 3</h2>
+    <p id="result34"></p>
+
+    <!-- Task 35 -->
+    <h2>35. Countdown Timer 10 to 1</h2>
+    <p id="result35"></p>
+
+    <script>
+        // Predefined inputs for all tasks
+        let a1=10,b1=20;
+        document.getElementById('result1').innerText = a1+b1;
+
+        let num2=-5;
+        document.getElementById('result2').innerText = num2>0?"Positive":num2<0?"Negative":"Zero";
+
+        let res3=""; for(let i=1;i<=10;i++){res3+=i+" ";} document.getElementById('result3').innerText=res3;
+
+        let res4="",i4=5; while(i4>=1){res4+=i4+" ";i4--;} document.getElementById('result4').innerText=res4;
+
+        let car={model:"Toyota Corolla", year:2020, color:"Red"};
+        document.getElementById('result5').innerText = `Model: ${car.model}, Year: ${car.year}, Color: ${car.color}`;
+
+        let fruits=["Apple","Banana","Mango"]; fruits.push("Orange"); fruits.pop();
+        document.getElementById('result6').innerText = fruits.join(", ");
+
+        let num7=7,isPrime=true; if(num7<=1){isPrime=false;} else{for(let i=2;i<=Math.sqrt(num7);i++){if(num7%i==0){isPrime=false;break;}}}
+        document.getElementById('result7').innerText = isPrime?"Prime":"Not Prime";
+
+        let num8=5,fact=1; for(let i=1;i<=num8;i++){fact*=i;} document.getElementById('result8').innerText=fact;
+
+        let arr9=[10,25,5,60,45]; document.getElementById('result9').innerText = Math.max(...arr9);
+
+        let obj10={person:{name:"Alice", address:{city:"NY"}}}; document.getElementById('result10').innerText = obj10.person.address.city;
+
+        let n11=3; let days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]; document.getElementById('result11').innerText = days[n11-1];
+
+        let dice=Math.floor(Math.random()*6)+1; document.getElementById('result12').innerText=dice;
+
+        let str13="Hello"; document.getElementById('result13').innerText = str13.split("").reverse().join("");
+
+        let x14=5;x14++;x14--; document.getElementById('result14').innerText=x14;
+
+        let a15=10,b15=20,temp=a15;a15=b15;b15=temp; document.getElementById('result15').innerText=`a=${a15}, b=${b15}`;
+
+        let t16=[10,25,15]; document.getElementById('result16').innerText = Math.max(...t16);
+
+        let c17=10,d17=5,op17="+"; let res17=0; if(op17=="+")res17=c17+d17; else if(op17=="-")res17=c17-d17; else if(op17=="*")res17=c17*d17; else if(op17=="/")res17=c17/d17; else if(op17=="%")res17=c17%d17; document.getElementById('result17').innerText=res17;
+
+        let n18=7; document.getElementById('result18').innerText = n18%2==0?"Even":"Odd";
+
+        let age19=20; document.getElementById('result19').innerText = age19>=18?"Eligible":"Not Eligible";
+
+        let p20=5,q20="5"; document.getElementById('result20').innerText = `5=="5"? ${p20==q20}, 5==="5"? ${p20===q20}`;
+
+        let n21=15; document.getElementById('result21').innerText = (n21%3==0 && n21%5==0)?"Yes":"No";
+
+        let x22=0,out22=""; for(let i=1;i<=5;i++){x22+=i; out22+=x22+" ";} document.getElementById('result22').innerText = out22;
+
+        let n23=3; document.getElementById('result23').innerText = `Square: ${n23**2}, Cube: ${n23**3}`;
+
+        let y24=2000; document.getElementById('result24').innerText = (y24%100==0 && y24%400==0)?"Century Year":"Not Century Year";
+
+        let ch25="a"; document.getElementById('result25').innerText = "aeiou".includes(ch25.toLowerCase())?"Vowel":"Consonant";
+
+        let n26=50; document.getElementById('result26').innerText = n26%10==0?"Yes":"No";
+
+        let n27a=10,n27b=20; document.getElementById('result27').innerText = Math.max(n27a,n27b);
+
+        let n28a=10,n28b=5,op28="*"; let r28; switch(op28){case "+":r28=n28a+n28b;break; case "-":r28=n28a-n28b;break; case "*":r28=n28a*n28b;break; case "/":r28=n28a/n28b;break;} document.getElementById('result28').innerText=r28;
+
+        let n29=-5; document.getElementById('result29').innerText = n29<0?"Negative":"Not Negative";
+
+        let age30=25,res30=""; if(age30<13) res30="Child"; else if(age30<=19) res30="Teen"; else if(age30<=59) res30="Adult"; else res30="Senior"; document.getElementById('result30').innerText=res30;
+
+        let str31=""; document.getElementById('result31').innerText = str31==""?"Empty":"Not Empty";
+
+        let m32="February",d32; switch(m32.toLowerCase()){case "january": case "march": case "may": case "july": case "august": case "october": case "december": d32=31; break; case "april": case "june": case "september": case "november": d32=30; break; case "february": d32=28; break; default: d32="Invalid month";} document.getElementById('result32').innerText = d32;
+
+        let a33=60,b33=60,c33=60; document.getElementById('result33').innerText = (a33+b33+c33==180)?"Valid Triangle":"Invalid Triangle";
+
+        let out34=""; for(let i=1;i<=10;i++){out34+=3*i+" ";} document.getElementById('result34').innerText = out34;
+
+        let out35="",i35=10; while(i35>=1){out35+=i35+" ";i35--;} document.getElementById('result35').innerText = out35;
+
+    </script>
+</body>
+</html>
