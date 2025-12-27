@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Day 2 Mini Projects</title>
+</head>
+<body>
+
+  <h2>Day 2 – JavaScript Mini Projects</h2>
+  <p>Open the browser console (F12) to see outputs for Project 1,2 and 4</p>
+
+
+  <hr>
+  <h3>Project 3:Discount Calculator</h3>
+
+<div class="container">
+  <h2>💸 Discount Calculator</h2>
+
+  <input type="number" id="price" placeholder="Original Price"><br><br>
+  <input type="number" id="discount" placeholder="Discount %"><br><br>
+
+  <button onclick="calculateDiscount()">Calculate Discount</button>
+
+  <div id="discountResult"></div>
+</div><hr>
+
+
+<h3>Project 5:Bill splitter</h3>
+
+<div class="container">
+  <h2>🍽️ Bill Splitter</h2>
+
+  <input type="number" id="billAmount" placeholder="Total Bill Amount"><br><br>
+  <input type="number" id="peopleCount" placeholder="Number of People"><br><br>
+  <input type="number" id="tipPercent" placeholder="Tip Percentage"><br><br>
+
+  <button onclick="splitBill()">Calculate</button>
+
+  <div id="billResult"></div>
+</div><hr>
+
+
+<h3>Project 6:BMI Calculator</h3>
+
+<div class="container">
+  <h2>⚖️ BMI Calculator</h2>
+
+  <input type="number" id="weight" placeholder="Weight in kg" step="0.1"><br><br>
+  <input type="number" id="height" placeholder="Height in meters" step="0.01"><br><br>
+
+  <button onclick="calculateBMI()">Calculate BMI</button>
+
+  <div id="bmiResult"></div>
+</div>
+
+
+
+
+  <script>
+    // -------------------------------
+    // Mini Project 1: Voting Eligibility System
+    // -------------------------------
+    let citizen = "India";
+    let age = 22;
+
+    if (age >= 18 && citizen === "India") {
+      console.log("Eligible to Vote");
+    } else {
+      console.log("Not Eligible to Vote");
+    }
+
+    // -------------------------------
+    // Mini Project 2: Temperature Converter
+    // -------------------------------
+    let celsius = 28;
+    let fahrenheit = (celsius * 9/5) + 32;
+
+    console.log("Temperature in Celsius:", celsius);
+    console.log("Temperature in Fahrenheit:", fahrenheit);
+  </script>
+
+
+<script>
+  function calculateDiscount() {
+    let price = Number(document.getElementById("price").value);
+    let discountPercent = Number(document.getElementById("discount").value);
+
+    let discountAmount = (price * discountPercent) / 100;
+    let finalPrice = price - discountAmount;
+
+    document.getElementById("discountResult").innerHTML = `
+      <hr>
+      <p><strong>Original Price:</strong> ₹${price}</p>
+      <p><strong>Discount:</strong> ${discountPercent}%</p>
+      <p><strong>You Save:</strong> ₹${discountAmount}</p>
+      <p><strong>Final Price:</strong> ₹${finalPrice}</p>
+    `;
+  }
+</script>
+
+
+<script>
+  // -------------------------------
+  // Mini Project 4: Age Verification System
+  // -------------------------------
+
+  // 1. Store user's age
+  let userAge = 17;
+
+  // 2 & 3. Check eligibility
+  if (userAge >= 18) {
+    console.log("Access Granted");
+  } else {
+    console.log("Access Denied");
+  }
+</script>
+
+<!-- Project 5 JS -->
+<script>
+  function splitBill() {
+    let bill = Number(document.getElementById("billAmount").value);
+    let people = Number(document.getElementById("peopleCount").value);
+    let tipPercent = Number(document.getElementById("tipPercent").value);
+
+    let tipAmount = (bill * tipPercent) / 100;
+    let totalBill = bill + tipAmount;
+    let perPerson = totalBill / people;
+
+    document.getElementById("billResult").innerHTML = `
+      <hr>
+      <p><strong>Tip Amount:</strong> ₹${tipAmount.toFixed(2)}</p>
+      <p><strong>Total Bill (with Tip):</strong> ₹${totalBill.toFixed(2)}</p>
+      <p><strong>Each Person Pays:</strong> ₹${perPerson.toFixed(2)}</p>
+    `;
+  }
+</script>
+
+<!-- Project 6 JS -->
+<script>
+  function calculateBMI() {
+    let weight = Number(document.getElementById("weight").value);
+    let height = Number(document.getElementById("height").value);
+
+    let bmi = weight / (height * height);
+    let category = "";
+
+    if (bmi < 18.5) {
+      category = "Underweight";
+    } else if (bmi < 25) {
+      category = "Normal";
+    } else if (bmi < 30) {
+      category = "Overweight";
+    } else {
+      category = "Obese";
+    }
+
+    document.getElementById("bmiResult").innerHTML = `
+      <hr>
+      <p><strong>BMI:</strong> ${bmi.toFixed(2)}</p>
+      <p><strong>Category:</strong> ${category}</p>
+    `;
+  }
+</script>
+
+
+
+
+
+
+</body>
+</html>

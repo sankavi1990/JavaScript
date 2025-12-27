@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JS Day1 Mini Project</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    padding: 20px;
+  }
+
+  .container {
+    background: #fff;
+    padding: 20px;
+    max-width: 500px;
+    margin: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+
+  .status {
+    font-weight: bold;
+  }
+</style>
+</head>
+
+<body>
+<h3>Project 1:Online Food Ordering System</h3>
+<div class="container">
+  <h2>🍔 Online Food Order</h2>
+
+  <div id="orderDetails"></div>
+
+  <input type="text" id="newItem" placeholder="Add food item">
+  <button onclick="addItem()">Add Item</button>
+
+  <br><br>
+
+  <button onclick="removeItem()">Remove Last Item</button>
+  <button onclick="deliverOrder()">Mark as Delivered</button>
+</div><hr>
+
+
+
+<h3>Project 2:Online Quiz System</h3>
+<div class="container">
+  <h2>📝 Online Quiz System</h2>
+
+  <div id="quizBox"></div>
+
+  <button onclick="submitAnswer()">Submit Answer</button>
+
+  <p id="result"></p>
+  <p id="score"></p>
+</div><hr>
+
+
+<h3>Project 3:E-Commerce Shopping cart</h3>
+
+<div class="container">
+  <h2>🛒 Shopping Cart</h2>
+
+  <button onclick="addToCart('Laptop', 50000)">Add Laptop</button>
+  <button onclick="addToCart('Mobile', 20000)">Add Mobile</button>
+  <button onclick="addToCart('Headphones', 2000)">Add Headphones</button>
+
+  <h3>Cart Items:</h3>
+  <ul id="cartItems"></ul>
+
+  <p><strong>Total:</strong> ₹<span id="totalPrice">0</span></p>
+</div><hr>
+
+<h3>Project 4:Online Food Order</h3>
+
+<div class="container">
+  <h2>🍽️ Online Food Order (Console Version)</h2>
+  <p>Open console to view order details</p>
+</div><hr>
+
+
+<h3>Project 5:Student Grade Calculator</h3>
+
+<div class="container">
+  <h2>🎓 Student Grade Calculator</h2>
+
+  <input type="text" id="studentName" placeholder="Student Name"><br><br>
+
+  <input type="number" id="m1" placeholder="Subject 1 Marks"><br><br>
+  <input type="number" id="m2" placeholder="Subject 2 Marks"><br><br>
+  <input type="number" id="m3" placeholder="Subject 3 Marks"><br><br>
+  <input type="number" id="m4" placeholder="Subject 4 Marks (optional)"><br><br>
+  <input type="number" id="m5" placeholder="Subject 5 Marks (optional)"><br><br>
+
+  <button onclick="calculateGrade()">Calculate Grade</button>
+
+  <div id="gradeResult"></div>
+</div><hr>
+<!-- 
+<h3>Project 6:Simple Interest Calculator</h3>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- Project 1 -->
+<script>
+  // 1. Store Order Details
+  let order = {
+    restaurantName: "Food Palace",
+    orderNumber: 101,
+    items: ["Burger", "Pizza"],
+    totalPrice: 450,
+    isDelivered: false
+  };
+
+  // 2. Display Order Summary
+  function displayOrder() {
+    document.getElementById("orderDetails").innerHTML = `
+      <p><strong>Restaurant:</strong> ${order.restaurantName}</p>
+      <p><strong>Order No:</strong> ${order.orderNumber}</p>
+      <p><strong>Items:</strong> ${order.items.join(", ")}</p>
+      <p><strong>Total Price:</strong> ₹${order.totalPrice}</p>
+      <p class="status"><strong>Delivered:</strong> ${order.isDelivered}</p>
+    `;
+  }
+
+  displayOrder();
+
+  // 4. Add Food Item
+  function addItem() {
+    let item = document.getElementById("newItem").value;
+    if (item !== "") {
+      order.items.push(item);
+      document.getElementById("newItem").value = "";
+      displayOrder();
+    }
+  }
+
+  // 4. Remove Food Item
+  function removeItem() {
+    order.items.pop();
+    displayOrder();
+  }
+
+  // 3. Update Order Status
+  function deliverOrder() {
+    order.isDelivered = true;
+    displayOrder();
+  }
+</script>
+
+<!-- Project 2 JS -->
+<script>
+  // 1. Store Quiz Details (Multiple Questions)
+  let quiz = [
+    {
+      question: "What does HTML stand for?",
+      options: ["Hyper Text Markup Language", "High Text Machine Language", "Hyper Tool Markup Language"],
+      correctAnswer: "Hyper Text Markup Language",
+      userAnswer: ""
+    },
+    {
+      question: "Which language is used for styling web pages?",
+      options: ["HTML", "CSS", "Java"],
+      correctAnswer: "CSS",
+      userAnswer: ""
+    }
+  ];
+
+  let currentQuestion = 0;
+  let totalScore = 0;
+
+  // Display Question
+  function showQuestion() {
+    let q = quiz[currentQuestion];
+
+    let optionsHTML = "";
+    q.options.forEach(option => {
+      optionsHTML += `
+        <label>
+          <input type="radio" name="answer" value="${option}">
+          ${option}
+        </label><br>
+      `;
+    });
+
+    document.getElementById("quizBox").innerHTML = `
+      <p><strong>Q${currentQuestion + 1}:</strong> ${q.question}</p>
+      ${optionsHTML}
+    `;
+  }
+
+  showQuestion();
+
+  // 2. Validate Answer
+  function submitAnswer() {
+    let selected = document.querySelector('input[name="answer"]:checked');
+
+    if (!selected) {
+      alert("Please select an answer");
+      return;
+    }
+
+    let userAnswer = selected.value;
+    quiz[currentQuestion].userAnswer = userAnswer;
+
+    let isCorrect = userAnswer === quiz[currentQuestion].correctAnswer;
+
+    if (isCorrect) {
+      totalScore++;
+    }
+
+    // 3. Display Quiz Result
+    document.getElementById("result").innerHTML = `
+      <strong>Your Answer:</strong> ${userAnswer} <br>
+      <strong>Correct:</strong> ${isCorrect}
+    `;
+
+    currentQuestion++;
+
+    // 4. Multiple Questions Handling
+    if (currentQuestion < quiz.length) {
+      setTimeout(() => {
+        document.getElementById("result").innerHTML = "";
+        showQuestion();
+      }, 1000);
+    } else {
+      document.getElementById("quizBox").innerHTML = "<h3>Quiz Completed 🎉</h3>";
+      document.getElementById("score").innerHTML =
+        `Final Score: ${totalScore} / ${quiz.length}`;
+    }
+  }
+</script>
+
+
+<!-- Project 3 -->
+ <script>
+  let cart = [];
+  let total = 0;
+
+  function addToCart(product, price) {
+    cart.push({ product, price });
+    total += price;
+    displayCart();
+  }
+
+  function removeFromCart(index) {
+    total -= cart[index].price;
+    cart.splice(index, 1);
+    displayCart();
+  }
+
+  function displayCart() {
+    let list = document.getElementById("cartItems");
+    list.innerHTML = "";
+
+    cart.forEach((item, index) => {
+      let li = document.createElement("li");
+      li.innerHTML = `${item.product} - ₹${item.price} 
+        <button onclick="removeFromCart(${index})">Remove</button>`;
+      list.appendChild(li);
+    });
+
+    document.getElementById("totalPrice").innerText = total;
+  }
+</script>
+
+
+
+
+
+<!-- Project 4 -->
+<script>
+  // 1. Store and Manage Order Details
+  let foodOrder = {
+    restaurantName: "Spicy Hub",
+    orderNumber: 202,
+    items: ["Dosa", "Idli"],
+    totalPrice: 120,
+    isDelivered: false
+  };
+
+  // 2. Display Order Summary (Console)
+  function displayOrderSummary() {
+    console.log("----- Order Summary -----");
+    console.log("Restaurant:", foodOrder.restaurantName);
+    console.log("Order Number:", foodOrder.orderNumber);
+    console.log("Items:", foodOrder.items);
+    console.log("Total Price: ₹", foodOrder.totalPrice);
+    console.log("Delivered:", foodOrder.isDelivered);
+    console.log("--------------------------");
+  }
+
+  displayOrderSummary();
+
+  // 4. Support Multiple Items
+  function addItem(item, price) {
+    foodOrder.items.push(item);
+    foodOrder.totalPrice += price;
+    console.log(item, "added to order");
+    displayOrderSummary();
+  }
+
+  function removeItem(price) {
+    foodOrder.items.pop();
+    foodOrder.totalPrice -= price;
+    console.log("Last item removed");
+    displayOrderSummary();
+  }
+
+  // 3. Update Order Status
+  function markAsDelivered() {
+    foodOrder.isDelivered = true;
+    console.log("Order Delivered ✅");
+    displayOrderSummary();
+  }
+
+  // Sample actions
+  addItem("Vada", 30);
+  removeItem(30);
+  markAsDelivered();
+</script>
+
+
+<!-- Project 5 JS -->
+<script>
+  function calculateGrade() {
+    let name = document.getElementById("studentName").value;
+
+    let marks = [
+      Number(document.getElementById("m1").value),
+      Number(document.getElementById("m2").value),
+      Number(document.getElementById("m3").value),
+      Number(document.getElementById("m4").value),
+      Number(document.getElementById("m5").value)
+    ].filter(mark => mark > 0); // remove empty inputs
+
+    let total = marks.reduce((sum, m) => sum + m, 0);
+    let average = total / marks.length;
+
+    let grade = "";
+    if (average >= 90) grade = "A";
+    else if (average >= 80) grade = "B";
+    else if (average >= 70) grade = "C";
+    else if (average >= 60) grade = "D";
+    else grade = "F";
+
+    document.getElementById("gradeResult").innerHTML = `
+      <hr>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Marks:</strong> ${marks.join(", ")}</p>
+      <p><strong>Total:</strong> ${total}</p>
+      <p><strong>Average:</strong> ${average.toFixed(2)}</p>
+      <p><strong>Grade:</strong> ${grade}</p>
+    `;
+  }
+</script>
+
+<!-- Project 6 JS -->
+ <script>
+  // Mini Project 6: Simple Interest Calculator
+
+  let principal = Number(prompt("Enter Principal Amount"));
+  let rate = Number(prompt("Enter Rate of Interest"));
+  let time = Number(prompt("Enter Time (in years)"));
+
+  let simpleInterest = (principal * rate * time) / 100;
+  let totalAmount = principal + simpleInterest;
+
+  alert(
+    "Simple Interest Calculator\n" +
+    "----------------------------\n" +
+    "Principal: ₹" + principal + "\n" +
+    "Rate: " + rate + "%\n" +
+    "Time: " + time + " years\n" +
+    "Simple Interest: ₹" + simpleInterest + "\n" +
+    "Total Amount Payable: ₹" + totalAmount
+  );
+</script>
+
+
+
+
+</body>
+</html>

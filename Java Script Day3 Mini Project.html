@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 3 Mini Projects</title>
+</head>
+<body>
+
+  <h2>Day 3 – JavaScript Mini Projects</h2>
+  <p>Open the console (F12) to see the output for Project <strong>1,4</strong></p>
+
+
+  <hr>
+<h3>Project 2: Traffic Light System</h3>
+<div class="container">
+  <h2>🚦 Traffic Light System</h2>
+  <p>Click the button and enter a color (red, yellow, green)</p>
+  <button onclick="trafficLight()">Check Traffic Rule</button>
+  <div id="trafficResult"></div>
+</div>
+
+
+<hr>
+<h3>Project 3: Number Guessing Game</h3>
+
+<div class="container">
+  <h2>🎯 Number Guessing Game</h2>
+  <p>Click the button to guess a number between 1 and 10</p>
+  <button onclick="guessNumber()">Start Game</button>
+  <div id="guessResult"></div>
+</div>
+
+<hr>
+<h3>Project 5:Grading systems with Remarks</h3>
+
+<div class="container">
+  <h2>🎓 Grading System with Remarks</h2>
+  <p>Click the button to enter your marks (0–100)</p>
+  <button onclick="gradingSystem()">Check Grade</button>
+  <div id="gradeResult"></div>
+</div><hr>
+
+
+<h3>Project 6:Game</h3>
+
+<div class="container">
+  <h2>✊ Rock-Paper-Scissors Game</h2>
+  <p>Click the button to play against the computer</p>
+  <button onclick="playRPS()">Play Game</button>
+  <div id="rpsResult"></div>
+</div>
+
+
+
+
+
+
+
+  <script>
+    // -------------------------------
+    // Mini Project 1: Simple Login System
+    // -------------------------------
+
+    // Stored credentials
+    let storedUsername = "admin";
+    let storedPassword = "1234";
+
+    // User input
+    let username = prompt("Enter Username:");
+    let password = prompt("Enter Password:");
+
+    // Check login
+    if (username === storedUsername && password === storedPassword) {
+      console.log("Login successful");
+    } else {
+      console.log("Invalid credentials!");
+    }
+  </script>
+
+
+<!-- Project 2 JS -->
+
+<script>
+  function trafficLight() {
+    let color = prompt("Enter traffic light color (red, yellow, green):").toLowerCase();
+    let message = "";
+
+    if (color === "red") {
+      message = "Stop!";
+    } else if (color === "yellow") {
+      message = "Slow down!";
+    } else if (color === "green") {
+      message = "Go!";
+    } else {
+      message = "Invalid color!";
+    }
+
+    document.getElementById("trafficResult").innerHTML = `
+      <p><strong>Traffic Rule:</strong> ${message}</p>
+    `;
+  }
+</script>
+
+
+<!-- Project 3 JS -->
+<script>
+  // Store random number once
+  let randomNumber = Math.floor(Math.random() * 10) + 1;
+  let attempts = 0;
+
+  function guessNumber() {
+    let guess = Number(prompt("Guess a number between 1 and 10:"));
+    attempts++;
+
+    let message = "";
+
+    if (guess < randomNumber) {
+      message = "Too low! Try again.";
+      alert(message);
+    } else if (guess > randomNumber) {
+      message = "Too high! Try again.";
+      alert(message);
+    } else if (guess === randomNumber) {
+      message = `🎉 Correct! The number was ${randomNumber}. You guessed it in ${attempts} attempt(s).`;
+      alert(message);
+    } else {
+      message = "Please enter a valid number!";
+      alert(message);
+    }
+
+    document.getElementById("guessResult").innerHTML = `<p>${message}</p>`;
+  }
+</script>
+
+
+<!-- Project 4 JS -->
+ <script>
+  // -------------------------------
+  // Mini Project 4: Age Eligibility Checker
+  // -------------------------------
+
+  let age = Number(prompt("Enter your age:"));
+
+  if (age >= 25) {
+    console.log("You are eligible to vote, can drink alcohol, and can rent a car.");
+  } else if (age >= 21) {
+    console.log("You are eligible to vote and can drink alcohol.");
+  } else if (age >= 18) {
+    console.log("You are eligible to vote.");
+  } else {
+    console.log("You are not eligible for these activities.");
+  }
+</script>
+
+
+<!-- Project 5 JS -->
+ <script>
+  function gradingSystem() {
+    let marks = Number(prompt("Enter your marks (0-100):"));
+    let grade = "";
+    let remark = "";
+
+    if (marks >= 90 && marks <= 100) {
+      grade = "A+";
+      remark = "Excellent";
+    } else if (marks >= 80) {
+      grade = "A";
+      remark = "Good";
+    } else if (marks >= 70) {
+      grade = "B";
+      remark = "Average";
+    } else if (marks >= 60) {
+      grade = "C";
+      remark = "Poor";
+    } else if (marks >= 0) {
+      grade = "F";
+      remark = "Fail";
+    } else {
+      grade = "Invalid";
+      remark = "Please enter a valid marks value";
+    }
+
+    document.getElementById("gradeResult").innerHTML = `
+      <p><strong>Marks:</strong> ${marks}</p>
+      <p><strong>Grade:</strong> ${grade}</p>
+      <p><strong>Remark:</strong> ${remark}</p>
+    `;
+  }
+</script>
+
+
+<!-- Project 6 JS -->
+ <script>
+  function playRPS() {
+    let playerChoice = prompt("Choose rock, paper, or scissors:").toLowerCase();
+    const choices = ["rock", "paper", "scissors"];
+    
+    if (!choices.includes(playerChoice)) {
+      document.getElementById("rpsResult").innerHTML = `<p>Invalid choice! Please try again.</p>`;
+      return;
+    }
+
+    // Random computer choice
+    let computerChoice = choices[Math.floor(Math.random() * 3)];
+
+    // Determine winner
+    let result = "";
+    if (playerChoice === computerChoice) {
+      result = "It's a tie!";
+    } else if (
+      (playerChoice === "rock" && computerChoice === "scissors") ||
+      (playerChoice === "paper" && computerChoice === "rock") ||
+      (playerChoice === "scissors" && computerChoice === "paper")
+    ) {
+      result = "You win!";
+    } else {
+      result = "Computer wins!";
+    }
+
+    // Display results
+    document.getElementById("rpsResult").innerHTML = `
+      <p><strong>Your Choice:</strong> ${playerChoice}</p>
+      <p><strong>Computer Choice:</strong> ${computerChoice}</p>
+      <p><strong>Result:</strong> ${result}</p>
+    `;
+  }
+</script>
+
+
+
+
+
+</body>
+</html>
