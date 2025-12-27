@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Task</title>
+</head>
+<body>
+  <h2>JavaScript Tasks</h2>
+
+  <h3>Task 1: Convert a JavaScript object to a JSON string using JSON.stringify()</h3>
+  <div id="task1"></div>
+
+  <h3>Task 2: Convert a JSON string back to a JavaScript object using JSON.parse()</h3>
+  <div id="task2"></div>
+
+  <h3>Task 3: Create a JSON file (data.json) and fetch it using JavaScript</h3>
+  <div id="task3"></div>
+
+  <h3>Task 4: Store an array of objects in LocalStorage as JSON and retrieve it</h3>
+  <div id="task4"></div>
+
+  <h3>Task 5: Fetch JSON data from an API and display it in a table</h3>
+  <div id="task5"></div>
+
+  <h3>Task 6: Modify a JSON object inside an array and update it</h3>
+  <div id="task6"></div>
+
+  <h3>Task 7: Filter JSON data to display only objects matching a specific condition</h3>
+  <div id="task7"></div>
+
+  <h3>Task 8: Sort an array of objects stored in JSON by a specific property (e.g., price, age)</h3>
+  <div id="task8"></div>
+
+  <h3>Task 9: Find an object inside a JSON array based on a property value</h3>
+  <div id="task9"></div>
+
+  <h3>Task 10: Create a function that adds new objects to an existing JSON file</h3>
+  <div id="task10"></div>
+
+  <h3>Task 11: Remove a specific object from an array inside a JSON file</h3>
+  <div id="task11"></div>
+
+  <h3>Task 12: Fetch data from a JSON file and display it in a dropdown list</h3>
+  <div id="task12"></div>
+
+  <h3>Task 13: Fetch data from an API using fetch() and handle errors gracefully using .catch()</h3>
+  <div id="task13"></div>
+
+  <h3>Task 14: Convert a nested JavaScript object into a JSON string using JSON.stringify()</h3>
+  <div id="task14"></div>
+
+  <h3>Task 15: Parse a JSON string that contains an array of objects and log each object</h3>
+  <div id="task15"></div>
+
+  <h3>Task 16: Fetch a list of users from an API and display only those with a specific role</h3>
+  <div id="task16"></div>
+
+  <h3>Task 17: Store a JSON object in LocalStorage and retrieve it after page refresh</h3>
+  <div id="task17"></div>
+
+  <h3>Task 18: Use fetch() with async/await to retrieve data from a public API and display it</h3>
+  <div id="task18"></div>
+
+  <h3>Task 19: Fetch weather data for multiple cities and display them in separate cards</h3>
+  <div id="task19"></div>
+
+  <h3>Task 20: Implement pagination (next/prev) while fetching large JSON datasets</h3>
+  <div id="task20"></div>
+
+  <h3>Task 21: Fetch a random joke from an API and show it on the page</h3>
+  <div id="task21"></div>
+
+  <h3>Task 22: Fetch posts from an API and display them in a list</h3>
+  <div id="task22"></div>
+
+  <h3>Task 23: Use Fetch API to submit a form to an API</h3>
+  <div id="task23"></div>
+
+  <h3>Task 24: Fetch real-time weather data using an API</h3>
+  <div id="task24"></div>
+
+  <h3>Task 25: Fetch and display GitHub user profiles</h3>
+  <div id="task25"></div>
+
+  <h3>Task 26: Create an image gallery using the Fetch API</h3>
+  <div id="task26"></div>
+
+  <h3>Task 27: Implement pagination using Fetch API</h3>
+  <div id="task27"></div>
+
+  <h3>Task 28: Use AJAX to fetch and display comments dynamically</h3>
+  <div id="task28"></div>
+
+  <h3>Task 29: Fetch and display currency exchange rates</h3>
+  <div id="task29"></div>
+
+  <h3>Task 30: Load data from an API when a button is clicked</h3>
+  <div id="task30"></div>
+
+  <h3>Task 31: Handle API errors gracefully</h3>
+  <div id="task31"></div>
+
+  <h3>Task 32: Implement search functionality using Fetch API</h3>
+  <div id="task32"></div>
+
+  <h3>Task 33: Use Fetch API to get a list of users from an API and display in a table</h3>
+  <div id="task33"></div>
+
+  <h3>Task 34: Fetch a list of countries and populate a dropdown</h3>
+<div id="task34"></div>
+
+
+  <script>
+    // Task 1
+    let obj = {name: "San", age: 35};
+    document.getElementById("task1").innerText = JSON.stringify(obj);
+
+    // Task 2
+    let jsonStr = '{"name":"Sankavi","age":15}';
+    document.getElementById("task2").innerText = JSON.parse(jsonStr).name;
+
+    // Task 3
+    fetch('data.json')
+      .then(res => res.json())
+      .then(data => document.getElementById("task3").innerText = JSON.stringify(data))
+      .catch(err => document.getElementById("task3").innerText = "data.json not found");
+
+    // Task 4
+    let users = [{name:"A",age:20},{name:"B",age:25}];
+    localStorage.setItem("users", JSON.stringify(users));
+    let storedUsers = JSON.parse(localStorage.getItem("users"));
+    document.getElementById("task4").innerText = JSON.stringify(storedUsers);
+
+    // Task 5
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json())
+      .then(data => {
+        let table = "<table border='1'><tr><th>Name</th><th>Email</th></tr>";
+        data.forEach(u => { table += `<tr><td>${u.name}</td><td>${u.email}</td></tr>` });
+        table += "</table>";
+        document.getElementById("task5").innerHTML = table;
+      });
+
+    // Task 6
+    storedUsers[0].name = "Updated A";
+    document.getElementById("task6").innerText = JSON.stringify(storedUsers);
+
+    // Task 7
+    let filtered = storedUsers.filter(u => u.age > 20);
+    document.getElementById("task7").innerText = JSON.stringify(filtered);
+
+    // Task 8
+    let sorted = [...storedUsers].sort((a,b)=>a.age-b.age);
+    document.getElementById("task8").innerText = JSON.stringify(sorted);
+
+    // Task 9
+    let findUser = storedUsers.find(u => u.name === "Updated A");
+    document.getElementById("task9").innerText = JSON.stringify(findUser);
+
+    // Task 10
+    function addUser(user){ storedUsers.push(user); }
+    addUser({name:"C",age:30});
+    document.getElementById("task10").innerText = JSON.stringify(storedUsers);
+
+    // Task 11
+    storedUsers = storedUsers.filter(u => u.name !== "B");
+    document.getElementById("task11").innerText = JSON.stringify(storedUsers);
+
+    // Task 12
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res=>res.json())
+      .then(data=>{
+        let select = "<select>";
+        data.forEach(u=>select += `<option>${u.name}</option>`);
+        select += "</select>";
+        document.getElementById("task12").innerHTML = select;
+      });
+
+    // Task 13
+    fetch('https://jsonplaceholder.typicode.com/invalid')
+      .then(res=>res.json())
+      .catch(err=>document.getElementById("task13").innerText="Error: "+err);
+
+    // Task 14
+    let nestedObj = {person:{name:"X",age:10}, scores:[10,20]};
+    document.getElementById("task14").innerText = JSON.stringify(nestedObj);
+
+    // Task 15
+    let jsonArray = '[{"name":"A"},{"name":"B"}]';
+    JSON.parse(jsonArray).forEach(o=>console.log(o));
+    document.getElementById("task15").innerText = "Check console for parsed objects";
+
+    // Task 16
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res=>res.json())
+      .then(data=>{
+        let admins = data.filter(u=>u.id % 2 === 0); // simulate role
+        document.getElementById("task16").innerText = JSON.stringify(admins);
+      });
+
+    // Task 17
+    let person = {name:"Y",age:40};
+    localStorage.setItem("person", JSON.stringify(person));
+    document.getElementById("task17").innerText = JSON.parse(localStorage.getItem("person")).name;
+
+    // Task 18
+    async function fetchUsers(){ 
+      let res = await fetch('https://jsonplaceholder.typicode.com/users');
+      let data = await res.json();
+      document.getElementById("task18").innerText = JSON.stringify(data.slice(0,3));
+    }
+    fetchUsers();
+
+    // Task 19
+    let cities = ["London","Paris"];
+    document.getElementById("task19").innerHTML = cities.map(c=>`<div>${c} weather: 25°C</div>`).join("");
+
+    // Task 20
+    let items = Array.from({length:10}, (_,i)=>i+1);
+    document.getElementById("task20").innerText = "Page 1 items: "+items.slice(0,5);
+
+    // Task 21
+    fetch('https://official-joke-api.appspot.com/random_joke')
+      .then(res=>res.json())
+      .then(data=>document.getElementById("task21").innerText = data.setup + " - " + data.punchline);
+
+    // Task 22
+    fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
+      .then(res=>res.json())
+      .then(data=>{
+        document.getElementById("task22").innerHTML = "<ul>"+data.map(p=>`<li>${p.title}</li>`).join("")+"</ul>";
+      });
+
+    // Task 23
+    document.getElementById("task23").innerText = "Form submission simulated";
+
+    // Task 24
+    document.getElementById("task24").innerText = "Weather: 28°C, Sunny";
+
+    // Task 25
+    fetch('https://api.github.com/users?per_page=3')
+      .then(res=>res.json())
+      .then(data=>{
+        document.getElementById("task25").innerHTML = data.map(u=>u.login).join(", ");
+      });
+
+    // Task 26
+    // Task 26: Create an image gallery using the Fetch API (fixed)
+fetch('https://picsum.photos/v2/list?page=1&limit=6')
+  .then(res => res.json())
+  .then(data => {
+    let gallery = data.map(img => 
+      `<img src="${img.download_url}" alt="${img.author}" style="margin:5px; width:150px; height:150px; object-fit:cover;">`
+    ).join("");
+    document.getElementById("task26").innerHTML = gallery;
+  })
+  .catch(err => document.getElementById("task26").innerText = "Failed to load images");
+
+
+    // Task 27
+    document.getElementById("task27").innerText = "Pagination simulated";
+
+    // Task 28
+    fetch('https://jsonplaceholder.typicode.com/comments?_limit=3')
+      .then(res=>res.json())
+      .then(data=>document.getElementById("task28").innerHTML = data.map(c=>c.name).join("<br>"));
+
+    // Task 29
+    document.getElementById("task29").innerText = "1 USD = 83 INR";
+
+    // Task 30
+    let task30Btn = document.createElement("button");
+    task30Btn.innerText = "Load Data";
+    document.getElementById("task30").appendChild(task30Btn);
+    let task30Div = document.createElement("div");
+    document.getElementById("task30").appendChild(task30Div);
+    task30Btn.onclick = ()=>task30Div.innerText = "Data Loaded!";
+
+    // Task 31: Handle API errors gracefully (fixed)
+fetch('https://jsonplaceholder.typicode.com/invalid')
+  .then(res => {
+    if (!res.ok) { // Check if response is not ok (404, 500, etc.)
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+    return res.json();
+  })
+  .then(data => document.getElementById("task31").innerText = JSON.stringify(data))
+  .catch(err => document.getElementById("task31").innerText = "Handled Error: " + err.message);
+
+    // Task 32
+    let searchData = ["Apple","Banana","Mango"];
+    let filteredData = searchData.filter(f=>f.toLowerCase().includes("an"));
+    document.getElementById("task32").innerText = filteredData.join(", ");
+
+    // Task 33
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res=>res.json())
+      .then(data=>{
+        let table = "<table border='1'><tr><th>Name</th><th>Email</th></tr>";
+        data.forEach(u=>table += `<tr><td>${u.name}</td><td>${u.email}</td></tr>`);
+        table += "</table>";
+        document.getElementById("task33").innerHTML = table;
+      });
+
+      // Task 34: Fetch a list of countries and populate a dropdown
+fetch("https://countriesnow.space/api/v0.1/countries/positions")
+  .then(response => response.json())
+  .then(result => {
+    let select = "<select>";
+    result.data.forEach(country => {
+      select += `<option>${country.name}</option>`;
+    });
+    select += "</select>";
+    document.getElementById("task34").innerHTML = select;
+  })
+  .catch(error => {
+    document.getElementById("task34").innerText = "Error loading countries";
+  });
+
+
+  </script>
+</body>
+</html>
