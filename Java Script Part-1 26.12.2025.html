@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JavaScript Tasks 1–25</title>
+<style>
+  body { font-family: Arial, sans-serif; }
+  .task {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+  }
+  .title { font-weight: bold; }
+  .input { color: #555; margin-left: 10px; }
+  .output { color: green; margin-left: 10px; }
+</style>
+</head>
+<body>
+
+<h2>JavaScript Tasks 1–25</h2>
+<div id="tasks"></div>
+
+<script>
+const tasks = document.getElementById("tasks");
+
+/* 1 */
+let n1 = -10;
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">1. Check whether a number is positive, negative, or zero</div>
+  <div class="input">Input: ${n1}</div>
+  <div class="output">Output: ${n1>0?"Positive":n1<0?"Negative":"Zero"}</div>
+</div>`;
+
+/* 2 */
+let n2 = 7;
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">2. Find if a given number is even or odd</div>
+  <div class="input">Input: ${n2}</div>
+  <div class="output">Output: ${n2%2===0?"Even":"Odd"}</div>
+</div>`;
+
+/* 3 */
+let age = 20;
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">3. Check voting eligibility</div>
+  <div class="input">Input (Age): ${age}</div>
+  <div class="output">Output: ${age>=18?"Eligible":"Not Eligible"}</div>
+</div>`;
+
+/* 4 */
+let a = 15, b = 9;
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">4. Compare two numbers</div>
+  <div class="input">Input: ${a}, ${b}</div>
+  <div class="output">Output: Greater number is ${a>b?a:b}</div>
+</div>`;
+
+/* 5 */
+let year = 2024;
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">5. Check whether a year is a leap year</div>
+  <div class="input">Input (Year): ${year}</div>
+  <div class="output">Output: ${((year%4===0&&year%100!==0)||year%400===0)?"Leap Year":"Not Leap Year"}</div>
+</div>`;
+
+/* 6 */
+let username = "admin123";
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">6. Validate username length (minimum 5 characters)</div>
+  <div class="input">Input: ${username}</div>
+  <div class="output">Output: ${username.length>=5?"Valid":"Invalid"}</div>
+</div>`;
+
+/* 7 */
+let ch = "e";
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">7. Check if a character is vowel or consonant</div>
+  <div class="input">Input: ${ch}</div>
+  <div class="output">Output: ${"aeiou".includes(ch)?"Vowel":"Consonant"}</div>
+</div>`;
+
+/* 8 */
+let marks = 78;
+let grade = marks>=90?"A":marks>=75?"B":marks>=60?"C":"Fail";
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">8. Print grade based on marks</div>
+  <div class="input">Input (Marks): ${marks}</div>
+  <div class="output">Output: Grade ${grade}</div>
+</div>`;
+
+/* 9 */
+let n9 = 45;
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">9. Check if a number is divisible by both 3 and 5</div>
+  <div class="input">Input: ${n9}</div>
+  <div class="output">Output: ${n9%3===0&&n9%5===0?"Yes":"No"}</div>
+</div>`;
+
+/* 10 */
+let hour = 14;
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">10. Display AM or PM based on hour</div>
+  <div class="input">Input (Hour): ${hour}</div>
+  <div class="output">Output: ${hour<12?"AM":"PM"}</div>
+</div>`;
+
+/* 11 */
+let nums11 = "";
+for(let i=1;i<=10;i++) nums11 += i+" ";
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">11. Print numbers from 1 to 10</div>
+  <div class="input">Input: 1 to 10</div>
+  <div class="output">Output: ${nums11}</div>
+</div>`;
+
+/* 12 */
+let nums12 = "";
+for(let i=2;i<=50;i+=2) nums12 += i+" ";
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">12. Print all even numbers between 1 and 50</div>
+  <div class="input">Input: 1 to 50</div>
+  <div class="output">Output: ${nums12}</div>
+</div>`;
+
+/* 13 */
+let n13 = 5, sum = 0;
+for(let i=1;i<=n13;i++) sum+=i;
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">13. Calculate the sum of numbers from 1 to n</div>
+  <div class="input">Input (n): ${n13}</div>
+  <div class="output">Output: ${sum}</div>
+</div>`;
+
+/* 14 */
+let t = 3, table = "";
+for(let i=1;i<=10;i++) table += `${t} x ${i} = ${t*i} `;
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">14. Print multiplication table</div>
+  <div class="input">Input: ${t}</div>
+  <div class="output">Output: ${table}</div>
+</div>`;
+
+/* 15 */
+let num15 = "12345";
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">15. Reverse a number</div>
+  <div class="input">Input: ${num15}</div>
+  <div class="output">Output: ${num15.split("").reverse().join("")}</div>
+</div>`;
+
+/* 16 */
+let num16 = "9876";
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">16. Count digits in a number</div>
+  <div class="input">Input: ${num16}</div>
+  <div class="output">Output: ${num16.length}</div>
+</div>`;
+
+/* 17 */
+let arr17 = [10,20,30];
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">17. Print all elements of an array</div>
+  <div class="input">Input: [${arr17.join(", ")}]</div>
+  <div class="output">Output: ${arr17.join(", ")}</div>
+</div>`;
+
+/* 18 */
+let fnum = 5, fact = 1;
+for(let i=1;i<=fnum;i++) fact*=i;
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">18. Find factorial of a number</div>
+  <div class="input">Input: ${fnum}</div>
+  <div class="output">Output: ${fact}</div>
+</div>`;
+
+/* 19 */
+let terms = 6, x = 0, y = 1, fib = "";
+for(let i=0;i<terms;i++){ fib+=x+" "; [x,y]=[y,x+y]; }
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">19. Print Fibonacci series</div>
+  <div class="input">Input (Terms): ${terms}</div>
+  <div class="output">Output: ${fib}</div>
+</div>`;
+
+/* 20 */
+let arr20 = [3,9,2,7];
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">20. Find the largest number in an array</div>
+  <div class="input">Input: [${arr20.join(", ")}]</div>
+  <div class="output">Output: ${Math.max(...arr20)}</div>
+</div>`;
+
+/* 21 */
+let s21 = "JavaScript";
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">21. Find the length of a string</div>
+  <div class="input">Input: ${s21}</div>
+  <div class="output">Output: ${s21.length}</div>
+</div>`;
+
+/* 22 */
+let s22 = "frontend";
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">22. Convert a string to uppercase</div>
+  <div class="input">Input: ${s22}</div>
+  <div class="output">Output: ${s22.toUpperCase()}</div>
+</div>`;
+
+/* 23 */
+let s23 = "I love JavaScript";
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">23. Check whether a string contains JavaScript</div>
+  <div class="input">Input: ${s23}</div>
+  <div class="output">Output: ${s23.includes("JavaScript")?"Yes":"No"}</div>
+</div>`;
+
+/* 24 */
+let s24 = "hello";
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">24. Reverse a given string</div>
+  <div class="input">Input: ${s24}</div>
+  <div class="output">Output: ${s24.split("").reverse().join("")}</div>
+</div>`;
+
+/* 25 */
+let s25 = "education", count = 0;
+for(let c of s25) if("aeiou".includes(c)) count++;
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">25. Count number of vowels in a string</div>
+  <div class="input">Input: ${s25}</div>
+  <div class="output">Output: ${count}</div>
+</div>`;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tasks 26–50</title>
+<style>
+  body { font-family: Arial; margin: 20px; }
+  .task-box { border: 1px solid #ccc; padding: 10px; margin-bottom: 15px; }
+  .error { color: red; }
+  .dark { background-color: #121212; color: white; transition: 0.3s; }
+  .flex-container { display: flex; gap: 10px; flex-wrap: wrap; }
+  .tab-content { display: none; }
+  .active-tab { display: block; }
+  .accordion { cursor: pointer; padding: 10px; border: 1px solid #ccc; margin: 5px 0; }
+  .accordion-content { display: none; padding: 5px; border: 1px solid #ccc; }
+  #scrollTopBtn { display: none; position: fixed; bottom: 20px; right: 20px; padding: 10px; }
+</style>
+</head>
+<body>
+
+<!-- Task 26: Form Validation -->
+<div class="task-box">
+<h3>26. Form Validation</h3>
+<form id="t26_form">
+  <input type="text" id="t26_name" placeholder="Name"><br>
+  <span class="error" id="t26_error"></span><br>
+  <button type="submit">Submit</button>
+</form>
+</div>
+
+<!-- Task 27: Flexbox Responsive Layout -->
+<div class="task-box flex-container">
+<h3>27. Flexbox Layout</h3>
+<div style="background:lightblue;padding:10px;">Box 1</div>
+<div style="background:lightgreen;padding:10px;">Box 2</div>
+<div style="background:lightcoral;padding:10px;">Box 3</div>
+</div>
+
+<!-- Task 28: Add/Remove List Items -->
+<div class="task-box">
+<h3>28. Add/Remove List</h3>
+<input id="t28_input" placeholder="Item">
+<button onclick="t28_add()">Add</button>
+<ul id="t28_list"></ul>
+</div>
+
+<!-- Task 29: Popup -->
+<div class="task-box">
+<h3>29. Popup</h3>
+<button onclick="document.getElementById('t29_popup').style.display='block'">Open Popup</button>
+<div id="t29_popup" style="display:none; border:1px solid black; padding:10px;">
+Popup Content
+<button onclick="document.getElementById('t29_popup').style.display='none'">Close</button>
+</div>
+</div>
+
+<!-- Task 30: Image Slider -->
+<div class="task-box">
+<h3>30. Image Slider</h3>
+<img id="t30_img" src="Toy.jpg">
+<button onclick="t30_prev()">Prev</button>
+<button onclick="t30_next()">Next</button>
+</div>
+
+<!-- Task 31: Filter List -->
+<div class="task-box">
+<h3>31. Filter List</h3>
+<input id="t31_input" placeholder="Search" onkeyup="t31_filter()">
+<ul id="t31_list">
+  <li>Apple</li><li>Banana</li><li>Orange</li>
+</ul>
+</div>
+
+<!-- Task 32: localStorage -->
+<div class="task-box">
+<h3>32. localStorage</h3>
+<input id="t32_input" placeholder="Enter name">
+<button onclick="localStorage.setItem('name', t32_input.value)">Save</button>
+<button onclick="alert(localStorage.getItem('name'))">Show</button>
+</div>
+
+<!-- Task 33: Dark/Light Theme -->
+<div class="task-box">
+<h3>33. Dark/Light Theme</h3>
+<button onclick="document.body.classList.toggle('dark')">Toggle Theme</button>
+</div>
+
+<!-- Task 34: Display JSON Data -->
+<div class="task-box">
+<h3>34. Display JSON</h3>
+<div id="t34_output"></div>
+</div>
+
+<!-- Task 35: Button Click Counter -->
+<div class="task-box">
+<h3>35. Button Click Count</h3>
+<button onclick="t35_count++ ; t35_out.innerText=t35_count">Click Me</button>
+<span id="t35_out">0</span>
+</div>
+
+<!-- Task 36: Sticky Header -->
+<div class="task-box" style="position:sticky; top:0; background:lightgray;">36. Sticky Header</div>
+
+<!-- Task 37: Password Length Check -->
+<div class="task-box">
+<h3>37. Password Length Check</h3>
+<input type="password" id="t37_pass" onkeyup="t37_check()">
+<span id="t37_msg"></span>
+</div>
+
+<!-- Task 38: Countdown Timer -->
+<div class="task-box">
+<h3>38. Countdown Timer</h3>
+<p id="t38_timer">10</p>
+<button onclick="t38_start()">Start</button>
+</div>
+
+<!-- Task 39: BMI Calculator -->
+<div class="task-box">
+<h3>39. BMI Calculator</h3>
+<input id="t39_height" placeholder="Height (m)">
+<input id="t39_weight" placeholder="Weight (kg)">
+<button onclick="t39_calc()">Calculate</button>
+<p id="t39_out"></p>
+</div>
+
+<!-- Task 40: Tabs -->
+<div class="task-box">
+<h3>40. Tabs</h3>
+<button onclick="t40_show(1)">Tab1</button>
+<button onclick="t40_show(2)">Tab2</button>
+<div id="t40_1" class="tab-content">Content 1</div>
+<div id="t40_2" class="tab-content">Content 2</div>
+</div>
+
+<!-- Task 41: Accordion -->
+<div class="task-box">
+<h3>41. Accordion</h3>
+<div class="accordion" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">Section 1</div>
+<div class="accordion-content">Details 1</div>
+<div class="accordion" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">Section 2</div>
+<div class="accordion-content">Details 2</div>
+</div>
+
+<!-- Task 42: Simple Login using localStorage -->
+<div class="task-box">
+<h3>42. Simple Login</h3>
+<input id="t42_user" placeholder="Username">
+<input id="t42_pass" placeholder="Password">
+<button onclick="localStorage.setItem('user', t42_user.value); localStorage.setItem('pass', t42_pass.value)">Login</button>
+<button onclick="alert('User:'+localStorage.getItem('user')+' Pass:'+localStorage.getItem('pass'))">Show</button>
+</div>
+
+<!-- Task 43: Scroll to Top -->
+<button id="scrollTopBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})">Top</button>
+
+<!-- Task 44: Email Validation -->
+<div class="task-box">
+<h3>44. Email Validation</h3>
+<input id="t44_email">
+<button onclick="t44_check()">Check</button>
+<span id="t44_msg"></span>
+</div>
+
+<!-- Task 45: Image Preview -->
+<div class="task-box">
+<h3>45. Image Preview</h3>
+<input type="file" onchange="t45_preview(event)">
+<img id="t45_img" width="100">
+</div>
+
+<!-- Task 46: Number Guessing Game -->
+<div class="task-box">
+<h3>46. Number Guessing</h3>
+<input id="t46_guess" placeholder="Enter 1-10">
+<button onclick="t46_check()">Guess</button>
+<p id="t46_msg"></p>
+</div>
+
+<!-- Task 47: Multiple Buttons -->
+<div class="task-box">
+<h3>47. Multiple Buttons</h3>
+<button onclick="t47_click(1)">1</button>
+<button onclick="t47_click(2)">2</button>
+<p id="t47_out"></p>
+</div>
+
+<!-- Task 48: Disable Submit if Validation Fails -->
+<div class="task-box">
+<h3>48. Disable Form Submit</h3>
+<form onsubmit="if(!t48_input.value){alert('Fill input');return false}">
+<input id="t48_input">
+<button type="submit">Submit</button>
+</form>
+</div>
+
+<!-- Task 49: Search Products -->
+<div class="task-box">
+<h3>49. Search Products</h3>
+<input id="t49_input" placeholder="Search" onkeyup="t49_search()">
+<ul id="t49_list">
+<li>Shirt</li><li>Pants</li><li>Shoes</li>
+</ul>
+</div>
+
+<!-- Task 50: Landing Page -->
+<div class="task-box" style="text-align:center;">
+<h1>Landing Page</h1>
+<p>Welcome to my page</p>
+<img src="Toy.jpg">
+</div>
+
+<script>
+/* Task 26 */
+document.getElementById("t26_form").onsubmit = function(e){
+  e.preventDefault();
+  let name = document.getElementById("t26_name").value;
+  document.getElementById("t26_error").innerText = name ? "" : "Name is required";
+}
+
+/* Task 28 */
+function t28_add(){
+  let val=document.getElementById("t28_input").value;
+  if(val){
+    let li=document.createElement("li");
+    li.innerText=val;
+    document.getElementById("t28_list").appendChild(li);
+  }
+}
+
+/* Task 30: Image Slider */
+let t30_images=["https://via.placeholder.com/100","https://via.placeholder.com/120"];
+let t30_index=0;
+function t30_next(){ t30_index=(t30_index+1)%t30_images.length; document.getElementById("t30_img").src=t30_images[t30_index]; }
+function t30_prev(){ t30_index=(t30_index-1+t30_images.length)%t30_images.length; document.getElementById("t30_img").src=t30_images[t30_index]; }
+
+/* Task 31: Filter List */
+function t31_filter(){
+  let val=document.getElementById("t31_input").value.toLowerCase();
+  let lis=document.getElementById("t31_list").getElementsByTagName("li");
+  for(let li of lis){
+    li.style.display = li.innerText.toLowerCase().includes(val) ? "" : "none";
+  }
+}
+
+/* Task 34: Display JSON */
+let t34_data=[{"name":"John"},{"name":"Jane"}];
+let t34_out="";
+t34_data.forEach(d=>t34_out+="Name: "+d.name+"<br>");
+document.getElementById("t34_output").innerHTML = t34_out;
+
+/* Task 35 */
+let t35_count=0;
+
+/* Task 37: Password Length */
+function t37_check(){
+  let pass=document.getElementById("t37_pass").value;
+  document.getElementById("t37_msg").innerText=pass.length<6?"Password too short":"";
+}
+
+/* Task 38: Countdown */
+let t38_timer=10, t38_interval;
+function t38_start(){
+  clearInterval(t38_interval);
+  t38_timer=10;
+  t38_interval=setInterval(function(){
+    document.getElementById("t38_timer").innerText=t38_timer;
+    t38_timer--;
+    if(t38_timer<0) clearInterval(t38_interval);
+  },1000);
+}
+
+/* Task 39: BMI */
+function t39_calc(){
+  let h=parseFloat(document.getElementById("t39_height").value);
+  let w=parseFloat(document.getElementById("t39_weight").value);
+  if(h>0 && w>0) document.getElementById("t39_out").innerText="BMI: "+(w/(h*h)).toFixed(2);
+}
+
+/* Task 40: Tabs */
+function t40_show(n){
+  document.getElementById("t40_1").classList.remove("active-tab");
+  document.getElementById("t40_2").classList.remove("active-tab");
+  document.getElementById("t40_"+n).classList.add("active-tab");
+}
+
+/* Task 44: Email Validation */
+function t44_check(){
+  let email=document.getElementById("t44_email").value;
+  let regex=/^\S+@\S+\.\S+$/;
+  document.getElementById("t44_msg").innerText=regex.test(email)?"Valid":"Invalid";
+}
+
+/* Task 45: Image Preview */
+function t45_preview(e){
+  let img=document.getElementById("t45_img");
+  img.src=URL.createObjectURL(e.target.files[0]);
+}
+
+/* Task 46: Number Guessing */
+let t46_number=Math.floor(Math.random()*10)+1;
+function t46_check(){
+  let g=parseInt(document.getElementById("t46_guess").value);
+  if(g===t46_number) document.getElementById("t46_msg").innerText="Correct!";
+  else document.getElementById("t46_msg").innerText=g<t46_number?"Too Low":"Too High";
+}
+
+/* Task 47 */
+function t47_click(n){
+  document.getElementById("t47_out").innerText="Button "+n+" clicked";
+}
+
+/* Task 49: Search Products */
+function t49_search(){
+  let val=document.getElementById("t49_input").value.toLowerCase();
+  let lis=document.getElementById("t49_list").getElementsByTagName("li");
+  for(let li of lis){
+    li.style.display=li.innerText.toLowerCase().includes(val)?"":"none";
+  }
+}
+
+/* Task 43: Scroll To Top */
+window.onscroll=function(){
+  document.getElementById("scrollTopBtn").style.display=(window.scrollY>100)?"block":"none";
+}
+</script>
+
+</body>
+</html>

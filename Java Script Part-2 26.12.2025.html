@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JavaScript Tasks 26–50</title>
+<style>
+  body { font-family: Arial, sans-serif; }
+  .task {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+  }
+  .title { font-weight: bold; }
+  .input { color: #555; margin-left: 10px; }
+  .output { color: green; margin-left: 10px; }
+</style>
+</head>
+<body>
+
+<h2>JavaScript Tasks 26–50</h2>
+<div id="tasks"></div>
+
+<script>
+const tasks = document.getElementById("tasks");
+
+/* 26 */
+let str26 = "hello world program";
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">26. Replace all spaces in a string with hyphens</div>
+  <div class="input">Input: ${str26}</div>
+  <div class="output">Output: ${str26.replace(/ /g,"-")}</div>
+</div>`;
+
+/* 27 */
+let str27 = "madam";
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">27. Check if a string is a palindrome</div>
+  <div class="input">Input: ${str27}</div>
+  <div class="output">Output: ${str27 === str27.split("").reverse().join("") ? "Palindrome" : "Not Palindrome"}</div>
+</div>`;
+
+/* 28 */
+let str28 = "JavaScript";
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">28. Extract first 5 characters from a string</div>
+  <div class="input">Input: ${str28}</div>
+  <div class="output">Output: ${str28.slice(0,5)}</div>
+</div>`;
+
+/* 29 */
+let str29 = "  Hello   World  ";
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">29. Remove extra spaces from a string</div>
+  <div class="input">Input: "${str29}"</div>
+  <div class="output">Output: "${str29.trim().replace(/\s+/g," ")}"</div>
+</div>`;
+
+/* 30 */
+let str30 = "developer";
+let char30 = "e";
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">30. Find the index of a specific character</div>
+  <div class="input">Input: ${str30}, Character: ${char30}</div>
+  <div class="output">Output: ${str30.indexOf(char30)}</div>
+</div>`;
+
+/* 31 */
+let arr31 = [1,2,3];
+arr31.push(4);
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">31. Add a new element to the end of an array</div>
+  <div class="input">Input: [1,2,3]</div>
+  <div class="output">Output: [${arr31.join(", ")}]</div>
+</div>`;
+
+/* 32 */
+let arr32 = [10,20,30];
+let removed32 = arr32.shift();
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">32. Remove the first element from an array</div>
+  <div class="input">Input: [10,20,30]</div>
+  <div class="output">Output: [${arr32.join(", ")}]</div>
+</div>`;
+
+/* 33 */
+let arr33 = [5,10,15,20];
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">33. Find the length of an array</div>
+  <div class="input">Input: [${arr33.join(", ")}]</div>
+  <div class="output">Output: ${arr33.length}</div>
+</div>`;
+
+/* 34 */
+let arr34 = ["apple","banana","mango"];
+let search34 = "banana";
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">34. Check if an element exists in an array</div>
+  <div class="input">Input: [${arr34.join(", ")}], Element: ${search34}</div>
+  <div class="output">Output: ${arr34.includes(search34) ? "Exists" : "Does not exist"}</div>
+</div>`;
+
+/* 35 */
+let arr35 = [5,2,9,1];
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">35. Sort an array in ascending order</div>
+  <div class="input">Input: [5,2,9,1]</div>
+  <div class="output">Output: [${arr35.sort((a,b)=>a-b).join(", ")}]</div>
+</div>`;
+
+/* 36 */
+let arr36 = [1,2,3,4];
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">36. Reverse an array</div>
+  <div class="input">Input: [1,2,3,4]</div>
+  <div class="output">Output: [${arr36.reverse().join(", ")}]</div>
+</div>`;
+
+/* 37 */
+let arr37 = [10,20,30];
+let sum37 = arr37.reduce((a,b)=>a+b,0);
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">37. Find the sum of all elements in an array</div>
+  <div class="input">Input: [10,20,30]</div>
+  <div class="output">Output: ${sum37}</div>
+</div>`;
+
+/* 38 */
+let arr38 = [4,1,9,3];
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">38. Find the smallest number in an array</div>
+  <div class="input">Input: [4,1,9,3]</div>
+  <div class="output">Output: ${Math.min(...arr38)}</div>
+</div>`;
+
+/* 39 */
+let arr39a = [1,2];
+let arr39b = [3,4];
+let merged39 = arr39a.concat(arr39b);
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">39. Merge two arrays</div>
+  <div class="input">Input: [1,2] and [3,4]</div>
+  <div class="output">Output: [${merged39.join(", ")}]</div>
+</div>`;
+
+/* 40 */
+let arr40 = [1,2,2,3,3,4];
+let unique40 = [...new Set(arr40)];
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">40. Remove duplicate values from an array</div>
+  <div class="input">Input: [1,2,2,3,3,4]</div>
+  <div class="output">Output: [${unique40.join(", ")}]</div>
+</div>`;
+
+/* 41 */
+localStorage.setItem("username","sankavi");
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">41. Store a username in localStorage</div>
+  <div class="input">Input: sankavi</div>
+  <div class="output">Output: Stored successfully</div>
+</div>`;
+
+/* 42 */
+let user42 = localStorage.getItem("username");
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">42. Retrieve data from localStorage</div>
+  <div class="input">Input: username</div>
+  <div class="output">Output: ${user42}</div>
+</div>`;
+
+/* 43 */
+localStorage.removeItem("username");
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">43. Remove a specific item from localStorage</div>
+  <div class="input">Input: username</div>
+  <div class="output">Output: Removed successfully</div>
+</div>`;
+
+/* 44 */
+sessionStorage.clear();
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">44. Clear all data from sessionStorage</div>
+  <div class="input">Input: sessionStorage</div>
+  <div class="output">Output: Cleared successfully</div>
+</div>`;
+
+/* 45 */
+let arr45 = [10,20,30];
+localStorage.setItem("numbers", JSON.stringify(arr45));
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">45. Store an array in localStorage using JSON</div>
+  <div class="input">Input: [10,20,30]</div>
+  <div class="output">Output: Stored as JSON</div>
+</div>`;
+
+/* 46 */
+let obj46 = {name:"JS",level:"Beginner"};
+let json46 = JSON.stringify(obj46);
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">46. Convert object to JSON string</div>
+  <div class="input">Input: {name:"JS", level:"Beginner"}</div>
+  <div class="output">Output: ${json46}</div>
+</div>`;
+
+/* 47 */
+let parsed47 = JSON.parse(json46);
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">47. Convert JSON string back to object</div>
+  <div class="input">Input: ${json46}</div>
+  <div class="output">Output: name = ${parsed47.name}</div>
+</div>`;
+
+/* 48 */
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">48. Access a specific value from JSON object</div>
+  <div class="input">Input: ${json46}</div>
+  <div class="output">Output: ${parsed47.level}</div>
+</div>`;
+
+/* 49 */
+let result49;
+try {
+  let a = 10, b = 0;
+  if(b === 0) throw "Division by zero";
+  result49 = a / b;
+} catch(e) {
+  result49 = e;
+}
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">49. Handle division by zero using try-catch</div>
+  <div class="input">Input: 10 / 0</div>
+  <div class="output">Output: ${result49}</div>
+</div>`;
+
+/* 50 */
+let input50 = "";
+let msg50;
+try {
+  if(input50 === "") throw "Input cannot be empty";
+  msg50 = "Valid input";
+} catch(e) {
+  msg50 = e;
+}
+tasks.innerHTML += `
+<div class="task">
+  <div class="title">50. Display custom error message when input is empty</div>
+  <div class="input">Input: (empty)</div>
+  <div class="output">Output: ${msg50}</div>
+</div>`;
+</script>
+
+</body>
+</html>

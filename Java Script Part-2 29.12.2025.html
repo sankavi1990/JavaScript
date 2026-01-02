@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Tasks 26–45</title>
+  <style>
+    body { font-family: Arial; }
+    .task-box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 12px 0;
+    }
+    button { margin: 4px; }
+  body {
+    background-color: white;
+    color: black;
+    transition: 0.3s;
+  }
+
+  .dark {
+    background-color: #e96262;
+    color: white;
+  }
+</style>
+
+  </style>
+</head>
+<body>
+
+<script>
+/* Task 26 */
+let t26_arr = [1,2,2,3,4,4]
+let t26_unique = [...new Set(t26_arr)]
+document.write(`<div class="task-box"><h3>26. Remove Duplicates</h3>
+Input: ${t26_arr}<br>Output: ${t26_unique}</div>`)
+
+/* Task 27 */
+let t27_arr = [5,1,4,2]
+for(let i=0;i<t27_arr.length;i++){
+  for(let j=i+1;j<t27_arr.length;j++){
+    if(t27_arr[i] > t27_arr[j]){
+      [t27_arr[i],t27_arr[j]] = [t27_arr[j],t27_arr[i]]
+    }
+  }
+}
+document.write(`<div class="task-box"><h3>27. Sort Without sort()</h3>
+Input: [5,1,4,2]<br>Output: ${t27_arr}</div>`)
+
+/* Task 28 */
+let t28_arr=[2,7,11,15], t28_target=9
+let t28_pair=""
+for(let i=0;i<t28_arr.length;i++){
+  for(let j=i+1;j<t28_arr.length;j++){
+    if(t28_arr[i]+t28_arr[j]===t28_target)
+      t28_pair=`${t28_arr[i]}, ${t28_arr[j]}`
+  }
+}
+document.write(`<div class="task-box"><h3>28. Target Sum</h3>
+Input: ${t28_arr}, Target=${t28_target}<br>
+Output: ${t28_pair}</div>`)
+
+/* Task 29 */
+let t29_matrix=[[1,2],[3,4]]
+document.write(`<div class="task-box"><h3>29. 2D Array</h3>
+Input: [[1,2],[3,4]]<br>Output: ${t29_matrix[1][0]}</div>`)
+
+/* Task 30 */
+let t30_arr=[1,2,3,4,5], t30_size=2
+let t30_chunks=[]
+for(let i=0;i<t30_arr.length;i+=t30_size)
+  t30_chunks.push(t30_arr.slice(i,i+t30_size))
+document.write(`<div class="task-box"><h3>30. Array Chunks</h3>
+Input: ${t30_arr}, Size=2<br>Output: ${JSON.stringify(t30_chunks)}</div>`)
+
+/* Task 31 */
+let t31_person={name:"Ravi",age:25}
+t31_person.city="Chennai"
+delete t31_person.age
+let t31_keys=""
+for(let k in t31_person) t31_keys+=k+" "
+document.write(`<div class="task-box"><h3>31. Person Object</h3>
+Input: name, age<br>Output: ${JSON.stringify(t31_person)} | Keys: ${t31_keys}</div>`)
+
+/* Task 32 */
+let t32_products=[
+  {price:100,qty:2},
+  {price:50,qty:3}
+]
+let t32_total=0
+t32_products.forEach(p=>t32_total+=p.price*p.qty)
+document.write(`<div class="task-box"><h3>32. Product Total</h3>
+Input: Products array<br>Output: ${t32_total}</div>`)
+
+/* Task 33 */
+let t33_obj={grades:[80,90,70]}
+let t33_avg=t33_obj.grades.reduce((a,b)=>a+b)/t33_obj.grades.length
+document.write(`<div class="task-box"><h3>33. Grades</h3>
+Input: ${t33_obj.grades}<br>
+Output: Avg=${t33_avg}, Max=${Math.max(...t33_obj.grades)}</div>`)
+
+/* Task 34 */
+let t34_original={a:1,b:{c:2}}
+let t34_copy=JSON.parse(JSON.stringify(t34_original))
+document.write(`<div class="task-box"><h3>34. Deep Copy</h3>
+Input: ${JSON.stringify(t34_original)}<br>
+Output: ${JSON.stringify(t34_copy)}</div>`)
+
+/* Task 35 */
+let t35_o1={a:1}, t35_o2={b:2}
+let t35_combined={...t35_o1,...t35_o2}
+document.write(`<div class="task-box"><h3>35. Combine Objects</h3>
+Input: {a:1},{b:2}<br>Output: ${JSON.stringify(t35_combined)}</div>`)
+</script>
+
+<!-- Task 36 -->
+<div class="task-box">
+<h3>36. Interactive List</h3>
+Input: Item text<br>
+<ul id="t36_list"></ul>
+<button onclick="t36_add()">Add</button>
+<button onclick="t36_remove()">Remove</button>
+</div>
+
+<!-- Task 37 -->
+<div class="task-box">
+  <h3>37. Dark / Light Mode</h3>
+  <p>Input: Click toggle button</p>
+  <p>Output: Page switches between light and dark mode</p>
+  <button onclick="document.body.classList.toggle('dark')">Toggle</button>
+</div>
+
+
+<!-- Task 38 -->
+<div class="task-box">
+<h3>38. Form Validation</h3>
+Input: Empty / Filled<br>
+<input id="t38_input" onkeyup="t38_validate()">
+<span id="t38_msg"></span>
+</div>
+
+<!-- Task 39 -->
+<div class="task-box">
+<h3>39. Counter</h3>
+<span id="t39_count">0</span><br>
+<button onclick="t39_change(1)">+</button>
+<button onclick="t39_change(-1)">-</button>
+</div>
+
+<!-- Task 40 -->
+<div class="task-box">
+<h3>40. Simple Gallery</h3>
+<img id="t40_img" src="Alphabets.jpg">
+<br>
+<button onclick="t40_next()">Next</button>
+</div>
+
+<script>
+/* Task 36 */
+function t36_add(){
+  let li=document.createElement("li")
+  li.textContent="Item"
+  document.getElementById("t36_list").appendChild(li)
+}
+function t36_remove(){
+  let ul=document.getElementById("t36_list")
+  if(ul.lastChild) ul.removeChild(ul.lastChild)
+}
+
+/* Task 38 */
+function t38_validate(){
+  let val=document.getElementById("t38_input").value
+  document.getElementById("t38_msg").textContent = val ? "Valid" : "Empty"
+}
+
+/* Task 39 */
+let t39_val=0
+function t39_change(n){
+  t39_val+=n
+  document.getElementById("t39_count").textContent=t39_val
+}
+
+/* Task 40 */
+function t40_next(){
+  document.getElementById("t40_img").src="https://via.placeholder.com/120"
+}
+
+/* Task 41 */
+let t41_arr=[1,2], t41_merge=[...t41_arr,3]
+document.write(`<div class="task-box"><h3>41. Spread & Rest</h3>
+Input: [1,2]<br>Output: ${t41_merge}</div>`)
+
+/* Task 42 */
+let t42_obj={x:10,y:20}
+let {x,y}=t42_obj
+document.write(`<div class="task-box"><h3>42. Destructuring</h3>
+Input: ${JSON.stringify(t42_obj)}<br>Output: x=${x}, y=${y}</div>`)
+
+/* Task 43 */
+let t43_set=new Set([1,1,2])
+document.write(`<div class="task-box"><h3>43. Set</h3>
+Input: [1,1,2]<br>Output: ${[...t43_set]}</div>`)
+
+/* Task 44 */
+let t44_promise=new Promise((res,rej)=>true?res("Success"):rej())
+t44_promise.then(r=>document.write(`<div class="task-box"><h3>44. Promise</h3>Output: ${r}</div>`))
+
+/* Task 45 */
+async function t45_fetch(){
+  let data={title:"Mock Data"}
+  document.write(`<div class="task-box"><h3>45. Async/Await</h3>
+Output: ${data.title}</div>`)
+}
+t45_fetch()
+</script>
+
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JS Task Part 1</title>
+
+<style>
+  body { font-family: Arial; margin: 20px; }
+  .task-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+  .red-text { color: red; }
+  .hover-btn:hover { background-color: orange; }
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Task 1 -->
+<div class="task-box">
+<h3>1. Heading, Paragraph & Image</h3>
+Input: Static content<br>
+Output:
+<h4>Hello World</h4>
+<p>This is a paragraph</p>
+<img src="Toy.jpg">
+</div>
+
+<!-- Task 2 -->
+<div class="task-box">
+<h3>2. Simple Form</h3>
+Input: Name, Email<br>
+Output:
+<form>
+<input placeholder="Name">
+<input placeholder="Email">
+<button>Submit</button>
+</form>
+</div>
+
+<!-- Task 3 -->
+<div class="task-box">
+<h3>3. Alert on Button Click</h3>
+Input: Button click<br>
+Output:
+<button onclick="alert('Button Clicked')">Click</button>
+</div>
+
+<!-- Task 4 -->
+<div class="task-box">
+<h3>4. Change Paragraph Text</h3>
+Input: Button click<br>
+Output:
+<p id="t4_para">Old Text</p>
+<button onclick="document.getElementById('t4_para').innerText='New Text'">Change</button>
+</div>
+
+<!-- Task 5 -->
+<div class="task-box">
+<h3>5. CSS Text Color</h3>
+Input: CSS class<br>
+Output:
+<p class="red-text">Red Text</p>
+</div>
+
+<!-- Task 6 -->
+<div class="task-box">
+<h3>6. Background Color Change</h3>
+Input: Button click<br>
+Output:
+<button onclick="document.body.style.background='lightblue'">Change BG</button>
+</div>
+
+<!-- Task 7 -->
+<div class="task-box">
+<h3>7. Login Form</h3>
+Input: Username, Password<br>
+Output:
+<input placeholder="Username">
+<input type="password" placeholder="Password">
+</div>
+
+<!-- Task 8 -->
+<div class="task-box">
+<h3>8. Current Date</h3>
+Input: System date<br>
+Output:
+<span id="t8_date"></span>
+</div>
+
+<!-- Task 9 -->
+<div class="task-box">
+<h3>9. Hide / Show Paragraph</h3>
+Input: Button click<br>
+Output:
+<p id="t9_para">Visible Text</p>
+<button onclick="t9_para.style.display='none'">Hide</button>
+<button onclick="t9_para.style.display='block'">Show</button>
+</div>
+
+<!-- Task 10 -->
+<div class="task-box">
+<h3>10. Table with CSS</h3>
+Input: Static data<br>
+Output:
+<table>
+<tr><th>Name</th><th>Age</th></tr>
+<tr><td>Ana</td><td>20</td></tr>
+</table>
+</div>
+
+<!-- Task 11 -->
+<div class="task-box">
+<h3>11. Empty Input Validation</h3>
+Input: Empty / Filled<br>
+Output:
+<input id="t11_input">
+<button onclick="alert(t11_input.value ? 'Valid' : 'Empty')">Check</button>
+</div>
+
+<div class="task-box">
+  <h3>12. Change Image</h3>
+  Input: Click button to change image<br>
+  Output:
+  <img id="t12_img" src="Toy.jpg" alt="Placeholder Image">
+  <br>
+  <button onclick="document.getElementById('t12_img').src='kurti.jpg'">Change</button>
+</div>
+
+
+<!-- Task 13 -->
+<div class="task-box">
+<h3>13. Display Input Value</h3>
+Input: Text<br>
+Output:
+<input id="t13_input">
+<button onclick="t13_out.innerText=t13_input.value">Show</button>
+<p id="t13_out"></p>
+</div>
+
+<!-- Task 14 -->
+<div class="task-box">
+<h3>14. Disable Button</h3>
+Input: Button click<br>
+Output:
+<button onclick="this.disabled=true">Click Once</button>
+</div>
+
+<!-- Task 15 -->
+<div class="task-box">
+<h3>15. Dropdown Value</h3>
+Input: Select option<br>
+Output:
+<select onchange="t15_out.innerText=this.value">
+<option>Apple</option>
+<option>Banana</option>
+</select>
+<p id="t15_out"></p>
+</div>
+
+<!-- Task 16 -->
+<div class="task-box">
+<h3>16. Hover Effect</h3>
+Input: Mouse hover<br>
+Output:
+<button class="hover-btn">Hover Me</button>
+</div>
+
+<!-- Task 17 -->
+<div class="task-box">
+<h3>17. Counter</h3>
+Input: Button click<br>
+Output:
+<span id="t17">0</span><br>
+<button onclick="t17.innerText++">+</button>
+<button onclick="t17.innerText--">-</button>
+</div>
+
+<!-- Task 18 -->
+<div class="task-box">
+<h3>18. Change Font Size</h3>
+Input: Button click<br>
+Output:
+<p id="t18">Text</p>
+<button onclick="t18.style.fontSize='24px'">Increase</button>
+</div>
+
+<!-- Task 19 -->
+<div class="task-box">
+<h3>19. Checkbox Message</h3>
+Input: Check box<br>
+Output:
+<input type="checkbox" onchange="alert('Checked')">
+</div>
+
+<!-- Task 20 -->
+<div class="task-box">
+<h3>20. Show / Hide Password</h3>
+Input: Toggle click<br>
+Output:
+<input type="password" id="t20">
+<button onclick="t20.type = t20.type==='password'?'text':'password'">Toggle</button>
+</div>
+
+<!-- Task 21 -->
+<div class="task-box">
+<h3>21. Navbar</h3>
+Input: Static links<br>
+Output:
+<nav>
+<a href="#">Home</a> |
+<a href="#">About</a>
+</nav>
+</div>
+
+<!-- Task 22 -->
+<div class="task-box">
+<h3>22. Console Message</h3>
+Input: Page load<br>
+Output: Check console
+</div>
+
+<!-- Task 23 -->
+<div class="task-box">
+<h3>23. Prevent Form Submit</h3>
+Input: Submit click<br>
+Output:
+<form onsubmit="event.preventDefault();alert('Stopped')">
+<button>Submit</button>
+</form>
+</div>
+
+<!-- Task 24 -->
+<div class="task-box">
+<h3>24. Textarea Character Count</h3>
+Input: Type text<br>
+Output:
+<textarea onkeyup="t24.innerText=this.value.length"></textarea>
+<p>Count: <span id="t24">0</span></p>
+</div>
+
+<!-- Task 25 -->
+<div class="task-box">
+<h3>25. External JS File</h3>
+Input: External script<br>
+Output: See alert
+</div>
+
+<script>
+/* Task 8 */
+document.getElementById("t8_date").innerText = new Date().toDateString()
+
+/* Task 22 */
+console.log("Hello from Console")
+</script>
+
+<script src="external.js"></script>
+
+</body>
+</html>

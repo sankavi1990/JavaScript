@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Tasks 1–25</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .task-box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 12px;
+    }
+    h3 {
+      margin: 0;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+/* Task 1 */
+var t1_name = "Sam"
+let t1_greeting = "Hello"
+const t1_message = t1_greeting + ", " + t1_name
+document.write(`<div class="task-box"><h3>Task 1: Greeting</h3>Input: Name = ${t1_name}<br>Output: ${t1_message}</div>`)
+
+/* Task 2 */
+let t2_num = 10
+let t2_str = "JS"
+let t2_bool = true
+document.write(`<div class="task-box"><h3>Task 2: typeof</h3>
+Input: 10, "JS", true<br>
+Output: ${typeof t2_num}, ${typeof t2_str}, ${typeof t2_bool}</div>`)
+
+/* Task 3 */
+let t3_a = 10
+let t3_b = 5
+document.write(`<div class="task-box"><h3>Task 3: Arithmetic</h3>
+Input: ${t3_a}, ${t3_b}<br>
+Output: Add=${t3_a+t3_b}, Sub=${t3_a-t3_b}, Mul=${t3_a*t3_b}, Div=${t3_a/t3_b}</div>`)
+
+/* Task 4 */
+let t4_text = "JavaScript"
+document.write(`<div class="task-box"><h3>Task 4: String Operations</h3>
+Input: ${t4_text}<br>
+Output: Length=${t4_text.length}, Part=${t4_text.slice(0,4)}</div>`)
+
+/* Task 5 */
+let t5_name = "Student"
+let t5_age = 20
+document.write(`<div class="task-box"><h3>Task 5: Template Literals</h3>
+Input: Name=${t5_name}, Age=${t5_age}<br>
+Output: My name is ${t5_name} and I am ${t5_age}</div>`)
+
+/* Task 6 */
+let t6_num = 7
+let t6_result = (t6_num % 2 === 0) ? "Even" : "Odd"
+document.write(`<div class="task-box"><h3>Task 6: Even or Odd</h3>
+Input: ${t6_num}<br>
+Output: ${t6_result}</div>`)
+
+/* Task 7 */
+let t7_score = 85
+let t7_grade = t7_score >= 90 ? "A" : t7_score >= 75 ? "B" : "C"
+document.write(`<div class="task-box"><h3>Task 7: Grade</h3>
+Input: ${t7_score}<br>
+Output: ${t7_grade}</div>`)
+
+/* Task 8 */
+let t8_day = 3
+let t8_name = ""
+switch(t8_day) {
+  case 1: t8_name="Monday"; break
+  case 2: t8_name="Tuesday"; break
+  case 3: t8_name="Wednesday"; break
+  default: t8_name="Invalid"
+}
+document.write(`<div class="task-box"><h3>Task 8: Switch Day</h3>
+Input: ${t8_day}<br>
+Output: ${t8_name}</div>`)
+
+/* Task 9 */
+let t9_year = 2024
+let t9_leap = (t9_year % 4 === 0) ? "Leap Year" : "Not Leap"
+document.write(`<div class="task-box"><h3>Task 9: Leap Year</h3>
+Input: ${t9_year}<br>
+Output: ${t9_leap}</div>`)
+
+/* Task 10 */
+let t10_age = 30
+let t10_cat = t10_age < 13 ? "Child" : t10_age < 20 ? "Teenager" : t10_age < 60 ? "Adult" : "Senior"
+document.write(`<div class="task-box"><h3>Task 10: Age Category</h3>
+Input: ${t10_age}<br>
+Output: ${t10_cat}</div>`)
+
+/* Task 11 */
+let t11_num = 5
+let t11_table = ""
+for(let i=1;i<=5;i++) t11_table += `${t11_num*i} `
+document.write(`<div class="task-box"><h3>Task 11: Multiplication Table</h3>
+Input: ${t11_num}<br>
+Output: ${t11_table}</div>`)
+
+/* Task 12 */
+let t12_pattern = ""
+for(let i=1;i<=3;i++){
+  for(let j=1;j<=i;j++) t12_pattern += j
+  t12_pattern += "<br>"
+}
+document.write(`<div class="task-box"><h3>Task 12: Number Pyramid</h3>
+Input: 3 rows<br>
+Output:<br>${t12_pattern}</div>`)
+
+/* Task 13 */
+let t13_n = 5
+let t13_sum = 0
+for(let i=1;i<=t13_n;i++) t13_sum += i
+document.write(`<div class="task-box"><h3>Task 13: Sum 1 to N</h3>
+Input: ${t13_n}<br>
+Output: ${t13_sum}</div>`)
+
+/* Task 14 */
+let t14_output=""
+for(let i=1;i<=15;i++){
+  if(i%15===0) t14_output+="FizzBuzz "
+  else if(i%3===0) t14_output+="Fizz "
+  else if(i%5===0) t14_output+="Buzz "
+  else t14_output+=i+" "
+}
+document.write(`<div class="task-box"><h3>Task 14: FizzBuzz</h3>
+Input: 1–15<br>
+Output: ${t14_output}</div>`)
+
+/* Task 15 */
+let t15_str = "hello"
+let t15_rev=""
+for(let i=t15_str.length-1;i>=0;i--) t15_rev+=t15_str[i]
+document.write(`<div class="task-box"><h3>Task 15: Reverse String</h3>
+Input: ${t15_str}<br>
+Output: ${t15_rev}</div>`)
+
+/* Task 16 */
+let t16_arr = [1,2,3]
+t16_arr.push(4)
+t16_arr.shift()
+document.write(`<div class="task-box"><h3>Task 16: Array Ops</h3>
+Input: [1,2,3]<br>
+Output: ${t16_arr} Length=${t16_arr.length}</div>`)
+
+/* Task 17 */
+let t17_arr=[5,9,2]
+document.write(`<div class="task-box"><h3>Task 17: Largest in Array</h3>
+Input: ${t17_arr}<br>
+Output: ${Math.max(...t17_arr)}</div>`)
+
+/* Task 18 */
+let t18_arr=[10,20,30]
+let t18_sum=t18_arr.reduce((a,b)=>a+b)
+document.write(`<div class="task-box"><h3>Task 18: Sum & Average</h3>
+Input: ${t18_arr}<br>
+Output: Sum=${t18_sum}, Avg=${t18_sum/t18_arr.length}</div>`)
+
+/* Task 19 */
+let t19_even = t18_arr.filter(n=>n%2===0)
+document.write(`<div class="task-box"><h3>Task 19: Even Numbers</h3>
+Input: ${t18_arr}<br>
+Output: ${t19_even}</div>`)
+
+/* Task 20 */
+document.write(`<div class="task-box"><h3>Task 20: Value Exists</h3>
+Input: 20<br>
+Output: ${t18_arr.includes(20)}</div>`)
+
+/* Task 21 */
+let t21_str="madam"
+let t21_pal = t21_str === t21_str.split("").reverse().join("")
+document.write(`<div class="task-box"><h3>Task 21: Palindrome</h3>
+Input: ${t21_str}<br>
+Output: ${t21_pal}</div>`)
+
+/* Task 22 */
+function t22_fact(n){ return n<=1?1:n*t22_fact(n-1) }
+document.write(`<div class="task-box"><h3>Task 22: Factorial</h3>
+Input: 5<br>
+Output: ${t22_fact(5)}</div>`)
+
+/* Task 23 */
+function t23_prime(n){
+  for(let i=2;i<n;i++) if(n%i===0) return false
+  return true
+}
+document.write(`<div class="task-box"><h3>Task 23: Prime</h3>
+Input: 7<br>
+Output: ${t23_prime(7)}</div>`)
+
+/* Task 24 */
+let t24_fib=[0,1]
+for(let i=2;i<6;i++) t24_fib.push(t24_fib[i-1]+t24_fib[i-2])
+document.write(`<div class="task-box"><h3>Task 24: Fibonacci</h3>
+Input: 6 terms<br>
+Output: ${t24_fib}</div>`)
+
+/* Task 25 */
+let t25_pass="Abc12345"
+let t25_valid = /(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}/.test(t25_pass)
+document.write(`<div class="task-box"><h3>Task 25: Password Validation</h3>
+Input: ${t25_pass}<br>
+Output: ${t25_valid}</div>`)
+</script>
+
+</body>
+</html>
