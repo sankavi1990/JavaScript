@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Script Mini Project Day8</title>
+</head>
+<body>
+    <!-- =============================== -->
+<!-- Day 8 - Mini Project 1 -->
+<!-- Username Generator -->
+<!-- =============================== -->
+<section class="day8-username">
+  <h2>👤 1.Username Generator</h2>
+
+  <input type="text" id="firstName" placeholder="First Name">
+  <input type="text" id="lastName" placeholder="Last Name">
+  <br><br>
+  <button onclick="generateUsername()">Generate Username</button>
+
+  <p id="usernameOutput"></p>
+</section>
+
+<style>
+  .day8-username {
+    border: 1px solid #aaa;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .day8-username input {
+    padding: 5px;
+    margin: 5px;
+  }
+</style>
+
+<script>
+  function generateUsername() {
+    let first = document.getElementById("firstName").value;
+    let last = document.getElementById("lastName").value;
+
+    if (first.length < 3 || last.length < 3) {
+      document.getElementById("usernameOutput").innerText =
+        "Please enter at least 3 letters in each name.";
+      return;
+    }
+
+    let randomNum = Math.floor(100 + Math.random() * 900);
+
+    let username =
+      first.substring(0, 3).toLowerCase() +
+      last.substring(0, 3).toLowerCase() +
+      randomNum;
+
+    document.getElementById("usernameOutput").innerText =
+      "Generated Username: " + username;
+  }
+</script>
+
+
+<!-- =============================== -->
+<!-- Day 8 - Mini Project 2 -->
+<!-- Palindrome Checker -->
+<!-- =============================== -->
+<section class="day8-palindrome">
+  <h2>🔁 2.Palindrome Checker</h2>
+
+  <input type="text" id="palInput" placeholder="Enter word or sentence">
+  <br><br>
+  <button onclick="checkPalindrome()">Check</button>
+
+  <p id="palResult"></p>
+</section>
+
+<style>
+  .day8-palindrome {
+    border: 1px solid #aaa;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .day8-palindrome input {
+    padding: 5px;
+    width: 250px;
+  }
+</style>
+
+<script>
+  function checkPalindrome() {
+    let text = document.getElementById("palInput").value;
+
+    // Remove spaces & special characters, convert to lowercase
+    let cleanedText = text.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+    let reversedText = cleanedText.split("").reverse().join("");
+
+    if (cleanedText === "") {
+      document.getElementById("palResult").innerText =
+        "Please enter some text.";
+    } else if (cleanedText === reversedText) {
+      document.getElementById("palResult").innerText =
+        "Palindrome ✅";
+    } else {
+      document.getElementById("palResult").innerText =
+        "Not a Palindrome ❌";
+    }
+  }
+</script>
+
+<!-- =============================== -->
+<!-- Day 8 - Mini Project 3 -->
+<!-- Text Reverser -->
+<!-- =============================== -->
+<section class="day8-reverse">
+  <h2>🔄 3.Text Reverser</h2>
+
+  <input type="text" id="reverseInput" placeholder="Enter text">
+  <br><br>
+  <button onclick="reverseText()">Reverse</button>
+
+  <p id="reverseOutput"></p>
+</section>
+
+<style>
+  .day8-reverse {
+    border: 1px solid #aaa;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .day8-reverse input {
+    padding: 5px;
+    width: 250px;
+  }
+</style>
+
+<script>
+  function reverseText() {
+    let text = document.getElementById("reverseInput").value;
+
+    if (text === "") {
+      document.getElementById("reverseOutput").innerText =
+        "Please enter some text.";
+      return;
+    }
+
+    let reversed = text.split("").reverse().join("");
+    document.getElementById("reverseOutput").innerText =
+      "Reversed Text: " + reversed;
+  }
+</script>
+
+
+
+<!-- =============================== -->
+<!-- Day 8 - Mini Project 4 -->
+<!-- Word Counter -->
+<!-- =============================== -->
+<section class="day8-wordcount">
+  <h2>📝4. Word Counter</h2>
+
+  <input type="text" id="sentenceInput" placeholder="Enter a sentence">
+  <br><br>
+  <button onclick="countWords()">Count Words</button>
+
+  <p id="wordCountOutput"></p>
+</section>
+
+<style>
+  .day8-wordcount {
+    border: 1px solid #aaa;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .day8-wordcount input {
+    padding: 5px;
+    width: 300px;
+  }
+</style>
+
+<script>
+  function countWords() {
+    let sentence = document.getElementById("sentenceInput").value.trim();
+
+    if (sentence === "") {
+      document.getElementById("wordCountOutput").innerText =
+        "Please enter a sentence.";
+      return;
+    }
+
+    // Split sentence by spaces and filter out empty strings
+    let words = sentence.split(/\s+/);
+    let wordCount = words.length;
+
+    document.getElementById("wordCountOutput").innerText =
+      "Word Count: " + wordCount;
+  }
+</script>
+
+
+<!-- =============================== -->
+<!-- Day 8 - Mini Project 5 -->
+<!-- Email Formatter & Validator -->
+<!-- =============================== -->
+<section class="day8-emailvalidator">
+  <h2>📧 5.Email Formatter & Validator</h2>
+
+  <input type="text" id="emailInput" placeholder="Enter your email">
+  <br><br>
+  <button onclick="validateEmail()">Validate Email</button>
+
+  <p id="emailOutput"></p>
+</section>
+
+<style>
+  .day8-emailvalidator {
+    border: 1px solid #aaa;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .day8-emailvalidator input {
+    padding: 5px;
+    width: 300px;
+  }
+</style>
+
+<script>
+  function validateEmail() {
+    let email = document.getElementById("emailInput").value.trim();
+
+    // Basic email regex
+    let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$/;
+
+    if (!emailRegex.test(email)) {
+      document.getElementById("emailOutput").innerText =
+        "Invalid email format ❌";
+      return;
+    }
+
+    // Split username and domain
+    let [username, domain] = email.split("@");
+
+    document.getElementById("emailOutput").innerText =
+      `Valid Email ✅\nUsername: ${username}\nDomain: ${domain}`;
+  }
+</script>
+
+
+<!-- =============================== -->
+<!-- Day 8 - Mini Project 6 -->
+<!-- Sentence Transformer -->
+<!-- =============================== -->
+<section class="day8-sentence-transformer">
+  <h2>✏️ 6.Sentence Transformer</h2>
+
+  <input type="text" id="sentenceInput6" placeholder="Enter any sentence" style="width:350px;">
+  <br><br>
+  <button onclick="transformSentence()">Transform Sentence</button>
+
+  <pre id="sentenceOutput6"></pre>
+</section>
+
+<style>
+  .day8-sentence-transformer {
+    border: 1px solid #aaa;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+</style>
+
+<script>
+  function transformSentence() {
+    let sentence = document.getElementById("sentenceInput6").value.trim();
+
+    if (sentence === "") {
+      document.getElementById("sentenceOutput6").innerText = "Please enter a sentence.";
+      return;
+    }
+
+    // Split words
+    let words = sentence.split(/\s+/);
+
+    // Capitalize each word
+    let capitalized = words.map(w => w[0].toUpperCase() + w.slice(1)).join(" ");
+
+    // Word & character count
+    let wordCount = words.length;
+    let charCount = sentence.replace(/\s+/g, '').length;
+
+    // kebab-case & snake_case
+    let kebabCase = words.join("-").toLowerCase();
+    let snakeCase = words.join("_").toLowerCase();
+
+    // Longest & shortest word
+    let longest = words.reduce((a,b)=> a.length>=b.length?a:b);
+    let shortest = words.reduce((a,b)=> a.length<=b.length?a:b);
+
+    document.getElementById("sentenceOutput6").innerText = 
+      `Capitalized: ${capitalized}\n` +
+      `Word Count: ${wordCount}\n` +
+      `Character Count: ${charCount}\n` +
+      `Kebab-case: ${kebabCase}\n` +
+      `Snake_case: ${snakeCase}\n` +
+      `Longest Word: ${longest}\n` +
+      `Shortest Word: ${shortest}`;
+  }
+</script>
+
+</body>
+</html>

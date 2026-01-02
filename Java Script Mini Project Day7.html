@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 7 JavaScript Mini Projects</title>
+
+  <style>
+    .day7-project1 {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #999;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================= -->
+  <!-- Day 7 - Mini Project 1 -->
+  <!-- Employee Management System -->
+  <!-- ========================= -->
+  <div class="day7-project1">
+    <h2>👨‍💼1. Employee Management System</h2>
+    <button onclick="addEmployee()">Add Employee</button>
+    <button onclick="increaseSalary()">Increase Salary</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Salary (₹)</th>
+        </tr>
+      </thead>
+      <tbody id="employeeTable">
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    // Constructor function
+    function Employee(name, position, salary) {
+      this.name = name;
+      this.position = position;
+      this.salary = salary;
+
+      this.increaseSalary = function (amount) {
+        this.salary += amount;
+      };
+    }
+
+    // Employee storage
+    let employees = [];
+
+    function addEmployee() {
+      let name = prompt("Enter employee name:");
+      let position = prompt("Enter position:");
+      let salary = Number(prompt("Enter salary:"));
+
+      if (name && position && salary > 0) {
+        let emp = new Employee(name, position, salary);
+        employees.push(emp);
+        displayEmployees();
+      }
+    }
+
+    function increaseSalary() {
+      let name = prompt("Enter employee name to increase salary:");
+      let amount = Number(prompt("Enter increment amount:"));
+
+      let emp = employees.find(e => e.name === name);
+      if (emp && amount > 0) {
+        emp.increaseSalary(amount);
+        displayEmployees();
+      }
+    }
+
+    function displayEmployees() {
+      let tableBody = document.getElementById("employeeTable");
+      tableBody.innerHTML = "";
+
+      employees.forEach(emp => {
+        let row = `
+          <tr>
+            <td>${emp.name}</td>
+            <td>${emp.position}</td>
+            <td>${emp.salary}</td>
+          </tr>
+        `;
+        tableBody.innerHTML += row;
+      });
+    }
+  </script>
+
+
+
+<!-- ========================= -->
+<!-- Day 7 - Mini Project 2 -->
+<!-- Library Management System -->
+<!-- ========================= -->
+<div class="day7-project2">
+  <h2>📚2. Library Management System</h2>
+
+  <button onclick="addBook()">Add Book</button>
+  <button onclick="searchBook()">Search Book by Title</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+      </tr>
+    </thead>
+    <tbody id="bookTable">
+    </tbody>
+  </table>
+</div>
+
+<script>
+  // Book constructor
+  function Book(title, author, year) {
+    this.title = title;
+    this.author = author;
+    this.year = year;
+  }
+
+  // Book storage
+  let books = [];
+
+  function addBook() {
+    let title = prompt("Enter book title:");
+    let author = prompt("Enter author name:");
+    let year = prompt("Enter published year:");
+
+    if (title && author && year) {
+      let book = new Book(title, author, year);
+      books.push(book);
+      displayBooks(books);
+    }
+  }
+
+  function displayBooks(bookList) {
+    let tableBody = document.getElementById("bookTable");
+    tableBody.innerHTML = "";
+
+    bookList.forEach(book => {
+      let row = `
+        <tr>
+          <td>${book.title}</td>
+          <td>${book.author}</td>
+          <td>${book.year}</td>
+        </tr>
+      `;
+      tableBody.innerHTML += row;
+    });
+  }
+
+  function searchBook() {
+    let searchTitle = prompt("Enter book title to search:");
+
+    let filteredBooks = books.filter(book =>
+      book.title.toLowerCase().includes(searchTitle.toLowerCase())
+    );
+
+    if (filteredBooks.length > 0) {
+      displayBooks(filteredBooks);
+    } else {
+      alert("Book not found");
+    }
+  }
+</script>
+
+
+
+<!-- ========================= -->
+<!-- Day 7 - Mini Project 3 -->
+<!-- Student Record Manager -->
+<!-- ========================= -->
+<div class="day7-project3">
+  <h2>🎓 3.Student Record Manager</h2>
+
+  <button onclick="addStudent()">Add Student</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Roll No</th>
+        <th>Marks</th>
+        <th>Grade</th>
+      </tr>
+    </thead>
+    <tbody id="studentTable">
+    </tbody>
+  </table>
+</div>
+
+<script>
+  // Student constructor
+  function Student(name, roll, marks) {
+    this.name = name;
+    this.roll = roll;
+    this.marks = marks;
+  }
+
+  // Prototype method for grade calculation
+  Student.prototype.calculateGrade = function () {
+    if (this.marks >= 90) return "A";
+    if (this.marks >= 75) return "B";
+    if (this.marks >= 50) return "C";
+    return "F";
+  };
+
+  // Student storage
+  let students = [];
+
+  function addStudent() {
+    let name = prompt("Enter student name:");
+    let roll = prompt("Enter roll number:");
+    let marks = parseInt(prompt("Enter marks:"));
+
+    if (name && roll && !isNaN(marks)) {
+      let student = new Student(name, roll, marks);
+      students.push(student);
+      displayStudents();
+    }
+  }
+
+  function displayStudents() {
+    let tableBody = document.getElementById("studentTable");
+    tableBody.innerHTML = "";
+
+    students.forEach(student => {
+      let row = `
+        <tr>
+          <td>${student.name}</td>
+          <td>${student.roll}</td>
+          <td>${student.marks}</td>
+          <td>${student.calculateGrade()}</td>
+        </tr>
+      `;
+      tableBody.innerHTML += row;
+    });
+  }
+</script>
+
+
+<!-- <h1>Day 7 Mini Projects</h1> -->
+
+  <!-- Project 4: Budget Manager -->
+  <section class="budget-manager">
+    <h2>4.Budget Manager (Using Modules+Factory Functions)</h2>
+    <button onclick="addIncomeUI()">Add Income</button>
+    <button onclick="addExpenseUI()">Add Expense</button>
+    <button onclick="showSummary()">Show Summary</button>
+    <p id="output"></p>
+  </section>
+
+  <!-- Load ONLY ONE module -->
+  <script type="module" src="main.js"></script>
+
+
+<!-- =============================== -->
+<!-- Day 7 - Mini Project 5 -->
+<!-- Shopping Cart System -->
+<!-- =============================== -->
+<section class="day7-cart">
+  <h2>🛒5.Shopping Cart</h2>
+
+  <button onclick="addItem()">Add Item</button>
+  <button onclick="viewCart()">View Cart</button>
+
+  <pre id="cartOutput"></pre>
+</section>
+
+<style>
+  .day7-cart {
+    border: 1px solid #aaa;
+    padding: 15px;
+    margin-top: 20px;
+  }
+</style>
+
+<script>
+  let cart = [];
+
+  function addItem() {
+    let name = prompt("Enter item name:");
+    let price = Number(prompt("Enter item price:"));
+
+    if (name && price > 0) {
+      cart.push({ name, price });
+      alert("Item added to cart");
+    }
+  }
+
+  function viewCart() {
+    if (cart.length === 0) {
+      document.getElementById("cartOutput").innerText = "Cart is empty";
+      return;
+    }
+
+    let total = 0;
+    let output = "Items in Cart:\n";
+
+    cart.forEach(item => {
+      output += `${item.name} - ₹${item.price}\n`;
+      total += item.price;
+    });
+
+    output += "\nTotal Price: ₹" + total;
+    document.getElementById("cartOutput").innerText = output;
+  }
+</script>
+
+
+<!-- =============================== -->
+<!-- Day 7 - Mini Project 6 -->
+<!-- Bank Account Management System -->
+<!-- =============================== -->
+<section class="day7-bank">
+  <h2>🏦 6.Bank Account</h2>
+
+  <button onclick="depositMoney()">Deposit</button>
+  <button onclick="withdrawMoney()">Withdraw</button>
+  <button onclick="checkBalance()">Check Balance</button>
+
+  <p id="bankOutput"></p>
+</section>
+
+<style>
+  .day7-bank {
+    border: 1px solid #666;
+    padding: 15px;
+    margin-top: 20px;
+  }
+</style>
+
+<script>
+  // Constructor
+  function BankAccount(accountNumber, balance) {
+    this.accountNumber = accountNumber;
+    this.balance = balance;
+
+    this.deposit = function (amount) {
+      this.balance += amount;
+    };
+
+    this.withdraw = function (amount) {
+      if (amount <= this.balance) {
+        this.balance -= amount;
+        return true;
+      } else {
+        return false;
+      }
+    };
+  }
+
+  // Create account
+  let myAccount = new BankAccount("ACC1001", 1000);
+
+  function depositMoney() {
+    let amount = Number(prompt("Enter deposit amount:"));
+    if (amount > 0) {
+      myAccount.deposit(amount);
+      document.getElementById("bankOutput").innerText =
+        "Deposit successful. Balance: ₹" + myAccount.balance;
+    }
+  }
+
+  function withdrawMoney() {
+    let amount = Number(prompt("Enter withdraw amount:"));
+    let success = myAccount.withdraw(amount);
+
+    if (success) {
+      document.getElementById("bankOutput").innerText =
+        "Withdrawal successful. Balance: ₹" + myAccount.balance;
+    } else {
+      document.getElementById("bankOutput").innerText =
+        "Insufficient balance!";
+    }
+  }
+
+  function checkBalance() {
+    document.getElementById("bankOutput").innerText =
+      "Current Balance: ₹" + myAccount.balance;
+  }
+</script>
+
+
+
+</body>
+</html>

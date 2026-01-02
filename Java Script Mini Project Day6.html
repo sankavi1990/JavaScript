@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 6 JavaScript Mini Projects</title>
+
+  <style>
+    .day6-project1 {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================= -->
+  <!-- Day 6 - Mini Project 1 -->
+  <!-- Movie Booking System -->
+  <!-- ========================= -->
+  <div class="day6-project1">
+    <h2>🎬 1.Movie Booking System</h2>
+    <p>Available Movies : Avatar , Inception, Titanic , Jawan, Leo</p>
+    <button onclick="bookMovie()">Book Movie</button>
+    <p id="movieResult"></p>
+  </div>
+
+  <script>
+    function bookMovie() {
+      // Movie list storage
+      let movies = ["Avatar", "Inception", "Titanic", "Jawan", "Leo"];
+
+      // User input
+      let userMovie = prompt("Enter movie name to book:");
+
+      // Check availability
+      if (movies.includes(userMovie)) {
+        document.getElementById("movieResult").innerText =
+          "🎟️ Ticket booked for " + userMovie;
+      } else {
+        document.getElementById("movieResult").innerText =
+          "❌ Movie not available";
+      }
+    }
+  </script>
+
+
+<!-- ========================= -->
+<!-- Day 6 - Mini Project 2 -->
+<!-- Product Inventory System -->
+<!-- ========================= -->
+<div class="day6-project2">
+  <h2>📦 2.Product Inventory System</h2>
+  <button onclick="addProduct()">Add Product</button>
+  <button onclick="removeProduct()">Remove Product</button>
+  <pre id="inventoryResult"></pre>
+</div>
+
+<style>
+  .day6-project2 {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+</style>
+
+<script>
+  // Inventory storage
+  let inventory = [
+    { name: "Rice", quantity: 10 },
+    { name: "Sugar", quantity: 5 },
+    { name: "Oil", quantity: 8 }
+  ];
+
+  function displayInventory() {
+    let output = "Current Inventory:\n";
+    inventory.forEach(item => {
+      output += `${item.name} - Qty: ${item.quantity}\n`;
+    });
+    document.getElementById("inventoryResult").innerText = output;
+  }
+
+  function addProduct() {
+    let name = prompt("Enter product name:");
+    let qty = Number(prompt("Enter quantity:"));
+
+    if (name && qty > 0) {
+      inventory.push({ name: name, quantity: qty });
+      displayInventory();
+    }
+  }
+
+  function removeProduct() {
+    let name = prompt("Enter product name to remove:");
+    inventory = inventory.filter(item => item.name !== name);
+    displayInventory();
+  }
+
+  // Show inventory initially
+  displayInventory();
+</script>
+
+
+<!-- ========================= -->
+<!-- Day 6 - Mini Project 3 -->
+<!-- Library Book Tracker -->
+<!-- ========================= -->
+<div class="day6-project3">
+  <h2>📚 3.Library Book Tracker</h2>
+  <p>Available Books : Wings of Fire, Harry Potter, The Alchemist</p>
+  <button onclick="borrowBook()">Borrow Book</button>
+  <button onclick="returnBook()">Return Book</button>
+  <button onclick="showBorrowedBooks()">Show Borrowed Books</button>
+  <pre id="libraryResult"></pre>
+</div>
+
+<style>
+  .day6-project3 {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+</style>
+
+<script>
+  // Book storage
+  let books = [
+    { title: "Wings of Fire", author: "A.P.J. Abdul Kalam", isBorrowed: false },
+    { title: "Harry Potter", author: "J.K. Rowling", isBorrowed: false },
+    { title: "The Alchemist", author: "Paulo Coelho", isBorrowed: false }
+  ];
+
+  function borrowBook() {
+    let bookTitle = prompt("Enter book title to borrow:");
+
+    let book = books.find(b => b.title === bookTitle);
+
+    if (book && !book.isBorrowed) {
+      book.isBorrowed = true;
+      document.getElementById("libraryResult").innerText =
+        `"${book.title}" has been borrowed.`;
+    } else {
+      document.getElementById("libraryResult").innerText =
+        "Book not available or already borrowed.";
+    }
+  }
+
+  function returnBook() {
+    let bookTitle = prompt("Enter book title to return:");
+
+    let book = books.find(b => b.title === bookTitle);
+
+    if (book && book.isBorrowed) {
+      book.isBorrowed = false;
+      document.getElementById("libraryResult").innerText =
+        `"${book.title}" has been returned.`;
+    } else {
+      document.getElementById("libraryResult").innerText =
+        "Book not found or not borrowed.";
+    }
+  }
+
+  function showBorrowedBooks() {
+    let borrowed = books.filter(b => b.isBorrowed);
+
+    if (borrowed.length === 0) {
+      document.getElementById("libraryResult").innerText =
+        "No books are currently borrowed.";
+      return;
+    }
+
+    let output = "Borrowed Books:\n";
+    borrowed.forEach(b => {
+      output += `${b.title} by ${b.author}\n`;
+    });
+
+    document.getElementById("libraryResult").innerText = output;
+  }
+</script>
+
+
+
+<!-- ========================= -->
+<!-- Day 6 - Mini Project 4 -->
+<!-- Employee Management System -->
+<!-- ========================= -->
+<div class="day6-project4">
+  <h2>👨‍💼 4.Employee Management System</h2>
+  <button onclick="addEmployee()">Add Employee</button>
+  <button onclick="removeEmployee()">Remove Employee</button>
+  <button onclick="showAverageSalary()">Average Salary</button>
+  <button onclick="listRoles()">List Roles</button>
+  <pre id="employeeResult"></pre>
+</div>
+
+<style>
+  .day6-project4 {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+</style>
+
+<script>
+  // Employee storage
+  let employees = [
+    { name: "Ravi", role: "Developer", salary: 50000 },
+    { name: "Anu", role: "Tester", salary: 40000 },
+    { name: "Kumar", role: "Developer", salary: 55000 }
+  ];
+
+  function addEmployee() {
+    let name = prompt("Enter employee name:");
+    let role = prompt("Enter employee role:");
+    let salary = Number(prompt("Enter employee salary:"));
+
+    if (name && role && salary > 0) {
+      employees.push({ name, role, salary });
+      document.getElementById("employeeResult").innerText =
+        "Employee added successfully.";
+    }
+  }
+
+  function removeEmployee() {
+    let name = prompt("Enter employee name to remove:");
+    employees = employees.filter(emp => emp.name !== name);
+    document.getElementById("employeeResult").innerText =
+      "Employee removed (if existed).";
+  }
+
+  function showAverageSalary() {
+    if (employees.length === 0) {
+      document.getElementById("employeeResult").innerText =
+        "No employees available.";
+      return;
+    }
+
+    let total = 0;
+    employees.forEach(emp => total += emp.salary);
+    let average = total / employees.length;
+
+    document.getElementById("employeeResult").innerText =
+      "Average Salary: ₹" + average.toFixed(2);
+  }
+
+  function listRoles() {
+    let roles = [];
+
+    employees.forEach(emp => {
+      if (!roles.includes(emp.role)) {
+        roles.push(emp.role);
+      }
+    });
+
+    document.getElementById("employeeResult").innerText =
+      "Roles in Company:\n" + roles.join(", ");
+  }
+</script>
+
+
+
+<!-- ========================= -->
+<!-- Day 6 - Mini Project 5 -->
+<!-- Product Inventory System -->
+<!-- ========================= -->
+<div class="day6-project5">
+  <h2>📦 5.Product Inventory (Simple)</h2>
+  <button onclick="addStock()">Add Product</button>
+  <button onclick="removeStock()">Remove Product</button>
+  <pre id="stockResult"></pre>
+</div>
+
+<style>
+  .day6-project5 {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+</style>
+
+<script>
+  let stockItems = [
+    { name: "Soap", qty: 20 },
+    { name: "Shampoo", qty: 15 }
+  ];
+
+  function showStock() {
+    let output = "Available Products:\n";
+    stockItems.forEach(item => {
+      output += `${item.name} - Quantity: ${item.qty}\n`;
+    });
+    document.getElementById("stockResult").innerText = output;
+  }
+
+  function addStock() {
+    let name = prompt("Enter product name:");
+    let qty = Number(prompt("Enter quantity:"));
+
+    if (name && qty > 0) {
+      stockItems.push({ name: name, qty: qty });
+      showStock();
+    }
+  }
+
+  function removeStock() {
+    let name = prompt("Enter product name to remove:");
+    stockItems = stockItems.filter(item => item.name !== name);
+    showStock();
+  }
+
+  // Show stock initially
+  showStock();
+</script>
+
+
+<!-- ========================= -->
+<!-- Day 6 - Mini Project 6 -->
+<!-- Student Record Management -->
+<!-- ========================= -->
+<div class="day6-project6">
+  <h2>🎓6. Student Record Management System</h2>
+  <button onclick="showStudentRecords()">Show Records</button>
+  <pre id="studentResult"></pre>
+</div>
+
+<style>
+  .day6-project6 {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+</style>
+
+<script>
+  // Student data storage
+  let students = [
+    { name: "Asha", age: 18, marks: 85 },
+    { name: "Rahul", age: 19, marks: 78 },
+    { name: "Meena", age: 18, marks: 92 }
+  ];
+
+  function showStudentRecords() {
+    let totalMarks = 0;
+    let output = "Student Details:\n";
+
+    // Loop through students
+    students.forEach(student => {
+      output += `Name: ${student.name}, Age: ${student.age}, Marks: ${student.marks}\n`;
+      totalMarks += student.marks;
+    });
+
+    // Calculate average marks
+    let average = totalMarks / students.length;
+
+    output += `\nClass Average Marks: ${average.toFixed(2)}`;
+
+    document.getElementById("studentResult").innerText = output;
+  }
+</script>
+
+
+
+</body>
+</html>
