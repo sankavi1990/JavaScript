@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Java Script -Tasks 26 to 50</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .task-box { border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; }
+    .grid-box {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .grid-box div { background: #ddd; padding: 10px; }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 30%;
+      left: 40%;
+      background: white;
+      border: 1px solid black;
+      padding: 20px;
+    }
+    .active { color: red; font-weight: bold; }
+    .faq-answer { display: none; }
+  </style>
+</head>
+
+<body>
+
+<!-- Task 26 -->
+<div class="task-box">
+  <h3>26. Allow only numbers</h3>
+  <input oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+</div>
+
+<!-- Task 27 -->
+<div class="task-box">
+  <h3>27. Remove list item on click</h3>
+  <ul>
+    <li onclick="this.remove()">Item 1</li>
+    <li onclick="this.remove()">Item 2</li>
+    <li onclick="this.remove()">Item 3</li>
+  </ul>
+</div>
+
+<!-- Task 28 -->
+<div class="task-box">
+  <h3>28. Password length check</h3>
+  <input type="password" id="t28_pw" oninput="t28_msg.innerText=this.value.length<8?'Too short':''">
+  <p id="t28_msg" style="color:red"></p>
+</div>
+
+<!-- Task 29 -->
+<div class="task-box">
+  <h3>29. CSS Grid layout</h3>
+  <div class="grid-box">
+    <div>A</div><div>B</div><div>C</div>
+  </div>
+</div>
+
+<!-- Task 30 -->
+<div class="task-box">
+  <h3>30. Change multiple styles</h3>
+  <p class="t30">Text 1</p>
+  <p class="t30">Text 2</p>
+  <button onclick="document.querySelectorAll('.t30').forEach(e=>e.style.color='blue')">Change</button>
+</div>
+
+<!-- Task 31 -->
+<div class="task-box">
+  <h3>31. localStorage username</h3>
+  <input id="t31_in">
+  <button onclick="localStorage.setItem('user',t31_in.value)">Save</button>
+  <p id="t31_out"></p>
+</div>
+
+<!-- Task 32 -->
+<div class="task-box">
+  <h3>32. Disable right click</h3>
+</div>
+
+<script>
+document.addEventListener("contextmenu", e => e.preventDefault());
+t31_out.innerText = localStorage.getItem("user") || "";
+</script>
+
+<!-- Task 33 -->
+<div class="task-box">
+  <h3>33. Count vowels</h3>
+  <input id="t33_txt">
+  <button onclick="t33_out.innerText=(t33_txt.value.match(/[aeiou]/gi)||[]).length">Count</button>
+  <p id="t33_out"></p>
+</div>
+
+<!-- Task 34 -->
+<div class="task-box">
+  <h3>34. Modal box</h3>
+  <button onclick="t34_modal.style.display='block'">Open</button>
+  <div id="t34_modal" class="modal">
+    Modal Content<br>
+    <button onclick="this.parentElement.style.display='none'">Close</button>
+  </div>
+</div>
+
+<!-- Task 35 -->
+<div class="task-box">
+  <h3>35. Sort numbers</h3>
+  <input id="t35_nums" placeholder="3,1,2">
+  <button onclick="t35_out.innerText=t35_nums.value.split(',').sort((a,b)=>a-b)">Sort</button>
+  <p id="t35_out"></p>
+</div>
+
+<!-- Task 36 -->
+<div class="task-box">
+  <h3>36. Change image from dropdown</h3>
+  <img id="t36_img" src="Toy.jpg"><br>
+  <select onchange="t36_img.src=this.value">
+    <option value="">Select</option>
+    <option value="Alphabets.jpg">Image 1</option>
+    <option value="kurti.jpg">Image 2</option>
+  </select>
+</div>
+
+<!-- Task 37 -->
+<div class="task-box">
+  <h3>37. Active menu</h3>
+  <p onclick="this.classList.toggle('active')">Menu Item</p>
+</div>
+
+<!-- Task 38 -->
+<div class="task-box">
+  <h3>38. Match passwords</h3>
+  <input id="t38_a" type="password">
+  <input id="t38_b" type="password" oninput="t38_msg.innerText=(t38_a.value!==this.value?'Mismatch':'')">
+  <p id="t38_msg" style="color:red"></p>
+</div>
+
+<!-- Task 39 -->
+<div class="task-box">
+  <h3>39. Length warning</h3>
+  <input oninput="t39_out.innerText=this.value.length>10?'Too long':''">
+  <p id="t39_out"></p>
+</div>
+
+<!-- Task 40 -->
+<div class="task-box">
+  <h3>40. Scroll to section</h3>
+  <button onclick="document.getElementById('bottom').scrollIntoView()">Go Down</button>
+</div>
+
+<div id="bottom" style="margin-top:600px;">Bottom Section</div>
+
+<!-- Task 41 -->
+<div class="task-box">
+  <h3>41. Log form inputs</h3>
+  <form onsubmit="console.log(this.elements[0].value,this.elements[1].value);return false;">
+    <input><input>
+    <button>Submit</button>
+  </form>
+</div>
+
+<!-- Task 42 -->
+<div class="task-box">
+  <h3>42. Toggle text</h3>
+  <p id="t42_txt">Hello</p>
+  <button onclick="t42_txt.innerText=t42_txt.innerText==='Hello'?'Bye':'Hello'">Toggle</button>
+</div>
+
+<!-- Task 43 -->
+<div class="task-box">
+  <h3>43. FAQ</h3>
+  <p onclick="t43_ans.style.display='block'">Question?</p>
+  <p id="t43_ans" class="faq-answer">Answer</p>
+</div>
+
+<!-- Task 44 -->
+<div class="task-box">
+  <h3>44. Copy message</h3>
+  <p oncopy="alert('Text copied')">Copy this text</p>
+</div>
+
+<!-- Task 45 -->
+<div class="task-box">
+  <h3>45. Uppercase</h3>
+  <input oninput="t45_out.innerText=this.value.toUpperCase()">
+  <p id="t45_out"></p>
+</div>
+
+<!-- Task 46 -->
+<div class="task-box">
+  <h3>46. Word count</h3>
+  <textarea oninput="t46_out.innerText=this.value.trim().split(/\s+/).length"></textarea>
+  <p id="t46_out">0</p>
+</div>
+
+<!-- Task 47 -->
+<div class="task-box">
+  <h3>47. Disable all inputs</h3>
+  <input><input>
+  <button onclick="document.querySelectorAll('input').forEach(i=>i.disabled=true)">Disable</button>
+</div>
+
+<!-- Task 48 -->
+<div class="task-box">
+  <h3>48. Page layout</h3>
+  <header>Header</header>
+  <section>Section</section>
+  <footer>Footer</footer>
+</div>
+
+<!-- Task 49 -->
+<div class="task-box">
+  <h3>49. Success message</h3>
+  <form onsubmit="t49_out.innerText='Submitted successfully';return false;">
+    <button>Submit</button>
+  </form>
+  <p id="t49_out"></p>
+</div>
+
+<!-- Task 50 -->
+<div class="task-box">
+  <h3>50. Change page title</h3>
+  <button onclick="document.title='New Title'">Change</button>
+</div>
+
+</body>
+</html>

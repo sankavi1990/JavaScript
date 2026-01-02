@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Java Scripts Tasks 1 to 25</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .task-box { border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; }
+    .card { border: 1px solid #888; padding: 10px; width: 200px; }
+    footer { background: #333; color: white; padding: 10px; text-align: center; }
+  </style>
+</head>
+
+<body>
+
+<!-- Task 1 -->
+<div class="task-box">
+  <h3>1. Display name and change color</h3>
+  <p id="t1_name" onclick="this.style.color='red'">My Name: Sankavi</p>
+</div>
+
+<!-- Task 2 -->
+<div class="task-box">
+  <h3>2. Two buttons with different messages</h3>
+  <button onclick="alert('Button 1 clicked')">Button 1</button>
+  <button onclick="alert('Button 2 clicked')">Button 2</button>
+</div>
+
+<!-- Task 3 -->
+<div class="task-box">
+  <h3>3. Display input value</h3>
+  Input: <input id="t3_input">
+  <button onclick="t3_out.innerText=t3_input.value">Show</button>
+  <p id="t3_out"></p>
+</div>
+
+<!-- Task 4 -->
+<div class="task-box">
+  <h3>4. Change background on mouse enter</h3>
+  <div style="width:150px;height:50px;background:lightgray"
+       onmouseenter="this.style.background='yellow'"></div>
+</div>
+
+<!-- Task 5 -->
+<div class="task-box">
+  <h3>5. Reset form</h3>
+  <form id="t5_form">
+    <input placeholder="Name">
+    <input placeholder="Email">
+  </form>
+  <button onclick="t5_form.reset()">Reset</button>
+</div>
+
+<!-- Task 6 -->
+<div class="task-box">
+  <h3>6. Show / Hide image</h3>
+  <img id="t6_img" src="Toy.jpg"><br>
+  <button onclick="t6_img.style.display='block'">Show</button>
+  <button onclick="t6_img.style.display='none'">Hide</button>
+</div>
+
+<!-- Task 7 -->
+<div class="task-box">
+  <h3>7. Make text bold</h3>
+  <p id="t7_p">Normal text</p>
+  <button onclick="t7_p.style.fontWeight='bold'">Bold</button>
+</div>
+
+<!-- Task 8 -->
+<div class="task-box">
+  <h3>8. Styled unordered list</h3>
+  <ul style="color:blue">
+    <li>Apple</li><li>Banana</li><li>Mango</li>
+  </ul>
+</div>
+
+<!-- Task 9 -->
+<div class="task-box">
+  <h3>9. Character count</h3>
+  <input id="t9_in" oninput="t9_out.innerText=this.value.length">
+  <p>Count: <span id="t9_out">0</span></p>
+</div>
+
+<!-- Task 10 -->
+<div class="task-box">
+  <h3>10. Toggle text</h3>
+  <p id="t10_txt">Hello World</p>
+  <button onclick="t10_txt.style.display = t10_txt.style.display==='none'?'block':'none'">Toggle</button>
+</div>
+
+<!-- Task 11 -->
+<div class="task-box">
+  <h3>11. Border color on focus</h3>
+  <input onfocus="this.style.border='2px solid red'">
+</div>
+
+<!-- Task 12 -->
+<div class="task-box">
+  <h3>12. Display today’s day</h3>
+  <button onclick="t12_out.innerText=new Date().toLocaleString('en',{weekday:'long'})">Show Day</button>
+  <p id="t12_out"></p>
+</div>
+
+<!-- Task 13 -->
+<div class="task-box">
+  <h3>13. Enable button on checkbox</h3>
+  <input type="checkbox" onclick="t13_btn.disabled=!this.checked"> Agree
+  <button id="t13_btn" disabled>Submit</button>
+</div>
+
+<!-- Task 14 -->
+<div class="task-box">
+  <h3>14. Change font family</h3>
+  <p id="t14_txt">Sample Text</p>
+  <button onclick="t14_txt.style.fontFamily='Courier New'">Change</button>
+</div>
+
+<!-- Task 15 -->
+<div class="task-box">
+  <h3>15. Card layout</h3>
+  <div class="card">This is a card</div>
+</div>
+
+<!-- Task 16 -->
+<div class="task-box">
+  <h3>16. Confirmation before submit</h3>
+  <form onsubmit="return confirm('Are you sure?')">
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<!-- Task 17 -->
+<div class="task-box">
+  <h3>17. Change value based on another</h3>
+  <input id="t17_a" oninput="t17_b.value=this.value">
+  <input id="t17_b">
+</div>
+
+<!-- Task 18 -->
+<div class="task-box">
+  <h3>18. Clear paragraph</h3>
+  <p id="t18_p">Clear me</p>
+  <button onclick="t18_p.innerText=''">Clear</button>
+</div>
+
+<!-- Task 19 -->
+<div class="task-box">
+  <h3>19. Even or Odd</h3>
+  <input id="t19_n" type="number">
+  <button onclick="t19_out.innerText=(t19_n.value%2==0?'Even':'Odd')">Check</button>
+  <p id="t19_out"></p>
+</div>
+
+<!-- Task 20 -->
+<div class="task-box">
+  <h3>20. Background change from dropdown</h3>
+  <select onchange="document.body.style.background=this.value">
+    <option value="">Select</option>
+    <option value="lightblue">Blue</option>
+    <option value="lightgreen">Green</option>
+  </select>
+</div>
+
+<!-- Task 21 -->
+<div class="task-box">
+  <h3>21. String length</h3>
+  <input id="t21_s">
+  <button onclick="t21_out.innerText=t21_s.value.length">Length</button>
+  <p id="t21_out"></p>
+</div>
+
+<!-- Task 22 -->
+<div class="task-box">
+  <h3>22. Disabled submit button</h3>
+  <button disabled>Submit</button>
+</div>
+
+<!-- Task 23 -->
+<div class="task-box">
+  <h3>23. Add multiple CSS classes</h3>
+  <p id="t23_p">Styled Text</p>
+  <button onclick="t23_p.classList.add('c1','c2')">Add Classes</button>
+</div>
+
+<!-- Task 24 -->
+<footer>
+  <h3>24. Simple Footer</h3>
+</footer>
+
+<!-- Task 25 -->
+<div class="task-box">
+  <h3>25. Page load message</h3>
+</div>
+
+<script>
+window.onload = function(){
+  alert("Page Loaded Successfully");
+}
+</script>
+
+</body>
+</html>
