@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Java Script Tasks 1–25</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .task-box { border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; }
+    .box { width: 100px; height: 50px; background: lightgray; }
+    table, td, th { border: 1px solid black; border-collapse: collapse; padding: 5px; }
+  </style>
+</head>
+
+<body>
+
+<!-- Task 1 -->
+<div class="task-box">
+  <h3>1. Welcome message on load</h3>
+  <p id="t1_msg"></p>
+</div>
+
+<!-- Task 2 -->
+<div class="task-box">
+  <h3>2. Change text color</h3>
+  <p id="t2_p">Sample Text</p>
+  <button onclick="t2_p.style.color='red'">Change Color</button>
+</div>
+
+<!-- Task 3 -->
+<div class="task-box">
+  <h3>3. Clear input</h3>
+  <input id="t3_in">
+  <button onclick="t3_in.value=''">Clear</button>
+</div>
+
+<!-- Task 4 -->
+<div class="task-box">
+  <h3>4. Current year</h3>
+  <p id="t4_year"></p>
+</div>
+
+<!-- Task 5 -->
+<div class="task-box">
+  <h3>5. Hide one paragraph</h3>
+  <p>Visible Paragraph</p>
+  <p id="t5_p">Hidden Paragraph</p>
+  <button onclick="t5_p.style.display='none'">Hide</button>
+</div>
+
+<!-- Task 6 -->
+<div class="task-box">
+  <h3>6. Increase div width</h3>
+  <div id="t6_div" class="box"></div>
+  <button onclick="t6_div.style.width='200px'">Increase</button>
+</div>
+
+<!-- Task 7 -->
+<div class="task-box">
+  <h3>7. Textarea character count</h3>
+  <textarea id="t7_ta" oninput="t7_out.innerText=this.value.length"></textarea>
+  <p>Count: <span id="t7_out">0</span></p>
+</div>
+
+<!-- Task 8 -->
+<div class="task-box">
+  <h3>8. Print form values in console</h3>
+  <form onsubmit="console.log(this.name.value,this.email.value);return false;">
+    <input name="name" placeholder="Name">
+    <input name="email" placeholder="Email">
+    <button>Submit</button>
+  </form>
+</div>
+
+<!-- Task 9 -->
+<div class="task-box">
+  <h3>9. Change background using checkbox</h3>
+  <input type="checkbox" onclick="document.body.style.background=this.checked?'lightblue':'white'"> Check me
+</div>
+
+<!-- Task 10 -->
+<div class="task-box">
+  <h3>10. Change text alignment</h3>
+  <p id="t10_p">Aligned Text</p>
+  <button onclick="t10_p.style.textAlign='center'">Center</button>
+</div>
+
+<!-- Task 11 -->
+<div class="task-box">
+  <h3>11. Styled ordered list</h3>
+  <ol style="color:green">
+    <li>One</li><li>Two</li><li>Three</li>
+  </ol>
+</div>
+
+<!-- Task 12 -->
+<div class="task-box">
+  <h3>12. Input length</h3>
+  <input id="t12_in">
+  <button onclick="t12_out.innerText=t12_in.value.length">Length</button>
+  <p id="t12_out"></p>
+</div>
+
+<!-- Task 13 -->
+<div class="task-box">
+  <h3>13. Password empty check</h3>
+  <input type="password" id="t13_pw" onblur="t13_out.innerText=this.value==''?'Password empty':''">
+  <p id="t13_out" style="color:red"></p>
+</div>
+
+<!-- Task 14 -->
+<div class="task-box">
+  <h3>14. Enable disabled input</h3>
+  <input id="t14_in" disabled>
+  <button onclick="t14_in.disabled=false">Enable</button>
+</div>
+
+<!-- Task 15 -->
+<div class="task-box">
+  <h3>15. Change font size of multiple elements</h3>
+  <p class="t15">Text 1</p>
+  <p class="t15">Text 2</p>
+  <button onclick="document.querySelectorAll('.t15').forEach(e=>e.style.fontSize='20px')">Change</button>
+</div>
+
+<!-- Task 16 -->
+<div class="task-box">
+  <h3>16. Today’s date (DD-MM-YYYY)</h3>
+  <p id="t16_date"></p>
+</div>
+
+<!-- Task 17 -->
+<div class="task-box">
+  <h3>17. Toggle div background</h3>
+  <div id="t17_div" class="box"></div>
+  <button onclick="t17_div.style.background=t17_div.style.background=='yellow'?'lightgray':'yellow'">Toggle</button>
+</div>
+
+<!-- Task 18 -->
+<div class="task-box">
+  <h3>18. Show input value</h3>
+  <input id="t18_in" oninput="t18_out.innerText=this.value">
+  <p id="t18_out"></p>
+</div>
+
+<!-- Task 19 -->
+<div class="task-box">
+  <h3>19. Simple table</h3>
+  <table>
+    <tr><th>Name</th><th>Age</th></tr>
+    <tr><td>A</td><td>20</td></tr>
+  </table>
+</div>
+
+<!-- Task 20 -->
+<div class="task-box">
+  <h3>20. Mouse leave message</h3>
+  <div class="box" onmouseleave="alert('Mouse left the box')"></div>
+</div>
+
+<!-- Task 21 -->
+<div class="task-box">
+  <h3>21. Alert before submit</h3>
+  <form onsubmit="alert('Submitting');return false;">
+    <button>Submit</button>
+  </form>
+</div>
+
+<!-- Task 22 -->
+<div class="task-box">
+  <h3>22. Underline text</h3>
+  <p id="t22_p">Underline me</p>
+  <button onclick="t22_p.style.textDecoration='underline'">Underline</button>
+</div>
+
+<!-- Task 23 -->
+<div class="task-box">
+  <h3>23. Word count</h3>
+  <textarea id="t23_ta" oninput="t23_out.innerText=this.value.trim().split(/\s+/).length"></textarea>
+  <p>Words: <span id="t23_out">0</span></p>
+</div>
+
+<!-- Task 24 -->
+<div class="task-box">
+  <h3>24. Hide all paragraphs</h3>
+  <button onclick="document.querySelectorAll('p').forEach(p=>p.style.display='none')">Hide</button>
+</div>
+
+<!-- Task 25 -->
+<div class="task-box">
+  <h3>25. Key press message</h3>
+  <input onkeydown="alert('Key pressed')">
+</div>
+
+<script>
+  // Task 1
+  t1_msg.innerText = "Welcome to the webpage!";
+  // Task 4
+  t4_year.innerText = new Date().getFullYear();
+  // Task 16
+  let d = new Date();
+  t16_date.innerText =
+    String(d.getDate()).padStart(2,'0') + "-" +
+    String(d.getMonth()+1).padStart(2,'0') + "-" +
+    d.getFullYear();
+</script>
+
+</body>
+</html>
