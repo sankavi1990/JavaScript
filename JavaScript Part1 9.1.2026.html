@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Real-Time Input Tasks 1–25</title>
+<style>
+body { font-family: Arial, sans-serif; padding:20px; }
+.task { margin-bottom:30px; border-bottom:1px solid #ccc; padding-bottom:20px; }
+
+/* Task 1: Character count */
+.task1-input { width:200px; padding:5px; }
+.task1-output { margin-top:5px; }
+
+/* Task 2: Border color on typing */
+.task2-input { width:200px; padding:5px; }
+
+/* Task 3: Live preview */
+.task3-input { width:200px; padding:5px; }
+.task3-preview { margin-top:5px; font-weight:bold; }
+
+/* Task 4: Remaining characters */
+.task4-textarea { width:300px; height:60px; }
+.task4-output { margin-top:5px; }
+
+/* Task 5: Immediate empty input error */
+.task5-input { width:200px; padding:5px; }
+.task5-error { color:red; margin-top:5px; }
+
+/* Task 6: Enable submit when all required fields filled */
+.task6-input { width:200px; padding:5px; margin-bottom:5px; }
+
+/* Task 7: Mouse position */
+.task7-output { margin-top:5px; font-weight:bold; }
+
+/* Task 8: Background change on scroll */
+.task8-section { height:100px; background:#ddd; margin-top:10px; }
+
+/* Task 9: Highlight invalid input */
+.task9-input { width:200px; padding:5px; }
+
+/* Task 10: Password strength */
+.task10-input { width:200px; padding:5px; }
+.task10-output { margin-top:5px; }
+
+/* Task 11 & 12: Counter / live time */
+.task11-counter, .task12-time { font-weight:bold; margin-top:5px; }
+
+/* Task 13: Text color based on input length */
+.task13-input { width:200px; padding:5px; }
+
+/* Task 14: Word count */
+.task14-textarea { width:300px; height:60px; }
+.task14-output { margin-top:5px; }
+
+/* Task 15: Caps Lock warning */
+.task15-input { width:200px; padding:5px; }
+.task15-warning { color:red; margin-top:5px; }
+
+/* Task 16: Auto uppercase */
+.task16-input { width:200px; padding:5px; }
+
+/* Task 17: Helper text show/hide */
+.task17-input { width:200px; padding:5px; }
+.task17-helper { color:blue; margin-top:5px; display:none; }
+
+/* Task 18: Range slider value */
+.task18-input { width:200px; }
+.task18-output { margin-top:5px; font-weight:bold; }
+
+/* Task 19: Button press style */
+.task19-btn { padding:10px 20px; }
+
+/* Task 20: Loading message */
+.task20-input { width:200px; padding:5px; }
+.task20-msg { margin-top:5px; color:green; }
+
+/* Task 21: Success message */
+.task21-input { width:200px; padding:5px; }
+.task21-msg { margin-top:5px; color:green; }
+
+/* Task 22: Highlight matching search */
+.task22-input { width:200px; padding:5px; }
+.task22-list li { margin-top:5px; }
+
+/* Task 23: Disable button if input exceeds limit */
+.task23-input { width:200px; padding:5px; }
+
+/* Task 24: Page title dynamically */
+.task24-input { width:200px; padding:5px; }
+
+/* Task 25: Stop typing message */
+.task25-input { width:200px; padding:5px; }
+.task25-msg { margin-top:5px; color:blue; }
+
+</style>
+</head>
+<body>
+<h2>Real-Time Input Tasks 1–25</h2>
+
+<!-- Task 1 -->
+<div class="task">
+  <h3>Task 1: Display number of characters typed</h3>
+  <input class="task1-input" type="text" placeholder="Type here...">
+  <div class="task1-output">Characters: 0</div>
+</div>
+
+<!-- Task 2 -->
+<div class="task">
+  <h3>Task 2: Change border color while typing</h3>
+  <input class="task2-input" type="text" placeholder="Type here...">
+</div>
+
+<!-- Task 3 -->
+<div class="task">
+  <h3>Task 3: Live preview of input</h3>
+  <input class="task3-input" type="text" placeholder="Type here...">
+  <div class="task3-preview"></div>
+</div>
+
+<!-- Task 4 -->
+<div class="task">
+  <h3>Task 4: Remaining characters in textarea</h3>
+  <textarea class="task4-textarea" maxlength="50" placeholder="Type here..."></textarea>
+  <div class="task4-output">Remaining: 50</div>
+</div>
+
+<!-- Task 5 -->
+<div class="task">
+  <h3>Task 5: Error if input empty</h3>
+  <input class="task5-input" type="text" placeholder="Type here...">
+  <div class="task5-error"></div>
+</div>
+
+<!-- Task 6 -->
+<div class="task">
+  <h3>Task 6: Enable submit only when all fields filled</h3>
+  <input class="task6-input" type="text" placeholder="Field 1">
+  <input class="task6-input" type="text" placeholder="Field 2">
+  <button class="task6-btn" disabled>Submit</button>
+</div>
+
+<!-- Task 7 -->
+<div class="task">
+  <h3>Task 7: Display mouse X & Y position</h3>
+  <div class="task7-output">X: 0, Y: 0</div>
+</div>
+
+<!-- Task 8 -->
+<div class="task">
+  <h3>Task 8: Change background color on scroll</h3>
+  <div class="task8-section">Scroll me</div>
+</div>
+
+<!-- Task 9 -->
+<div class="task">
+  <h3>Task 9: Highlight invalid input</h3>
+  <input class="task9-input" type="text" placeholder="Only letters">
+</div>
+
+<!-- Task 10 -->
+<div class="task">
+  <h3>Task 10: Show password strength</h3>
+  <input class="task10-input" type="password" placeholder="Enter password">
+  <div class="task10-output"></div>
+</div>
+
+<!-- Task 11 -->
+<div class="task">
+  <h3>Task 11: Counter updates every second</h3>
+  <div class="task11-counter">0</div>
+</div>
+
+<!-- Task 12 -->
+<div class="task">
+  <h3>Task 12: Display live current time</h3>
+  <div class="task12-time"></div>
+</div>
+
+<!-- Task 13 -->
+<div class="task">
+  <h3>Task 13: Change text color based on input length</h3>
+  <input class="task13-input" type="text" placeholder="Type here...">
+</div>
+
+<!-- Task 14 -->
+<div class="task">
+  <h3>Task 14: Live word count in textarea</h3>
+  <textarea class="task14-textarea" placeholder="Type here..."></textarea>
+  <div class="task14-output">Words: 0</div>
+</div>
+
+<!-- Task 15 -->
+<div class="task">
+  <h3>Task 15: Caps Lock warning</h3>
+  <input class="task15-input" type="text" placeholder="Type here...">
+  <div class="task15-warning"></div>
+</div>
+
+<!-- Task 16 -->
+<div class="task">
+  <h3>Task 16: Auto uppercase while typing</h3>
+  <input class="task16-input" type="text" placeholder="Type here...">
+</div>
+
+<!-- Task 17 -->
+<div class="task">
+  <h3>Task 17: Show/hide helper text on focus</h3>
+  <input class="task17-input" type="text" placeholder="Focus me">
+  <div class="task17-helper">Helper Text</div>
+</div>
+
+<!-- Task 18 -->
+<div class="task">
+  <h3>Task 18: Show range slider value</h3>
+  <input class="task18-input" type="range" min="0" max="100" value="50">
+  <div class="task18-output">Value: 50</div>
+</div>
+
+<!-- Task 19 -->
+<div class="task">
+  <h3>Task 19: Change button style while pressed</h3>
+  <button class="task19-btn">Press Me</button>
+</div>
+
+<!-- Task 20 -->
+<div class="task">
+  <h3>Task 20: Loading message while processing</h3>
+  <input class="task20-input" type="text" placeholder="Type and press Enter">
+  <div class="task20-msg"></div>
+</div>
+
+<!-- Task 21 -->
+<div class="task">
+  <h3>Task 21: Show success message immediately</h3>
+  <input class="task21-input" type="text" placeholder="Enter value">
+  <div class="task21-msg"></div>
+</div>
+
+<!-- Task 22 -->
+<div class="task">
+  <h3>Task 22: Highlight matching text in search</h3>
+  <input class="task22-input" type="text" placeholder="Search...">
+  <ul class="task22-list">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Orange</li>
+  </ul>
+</div>
+
+<!-- Task 23 -->
+<div class="task">
+  <h3>Task 23: Disable button if input exceeds limit</h3>
+  <input class="task23-input" type="text" maxlength="10">
+  <button class="task23-btn">Submit</button>
+</div>
+
+<!-- Task 24 -->
+<div class="task">
+  <h3>Task 24: Change page title based on input</h3>
+  <input class="task24-input" type="text" placeholder="Enter title">
+</div>
+
+<!-- Task 25 -->
+<div class="task">
+  <h3>Task 25: Display message when user stops typing</h3>
+  <input class="task25-input" type="text" placeholder="Type here...">
+  <div class="task25-msg"></div>
+</div>
+
+<script>
+// Task 1: character count
+const task1Input = document.querySelector('.task1-input');
+const task1Output = document.querySelector('.task1-output');
+task1Input.addEventListener('input', () => {
+  task1Output.textContent = 'Characters: ' + task1Input.value.length;
+});
+
+// Task 2: border color on typing
+const task2Input = document.querySelector('.task2-input');
+task2Input.addEventListener('input', () => {
+  task2Input.style.borderColor = 'blue';
+});
+
+// Task 3: live preview
+const task3Input = document.querySelector('.task3-input');
+const task3Preview = document.querySelector('.task3-preview');
+task3Input.addEventListener('input', () => {
+  task3Preview.textContent = task3Input.value;
+});
+
+// Task 4: remaining characters
+const task4Input = document.querySelector('.task4-textarea');
+const task4Output = document.querySelector('.task4-output');
+task4Input.addEventListener('input', () => {
+  task4Output.textContent = 'Remaining: ' + (50 - task4Input.value.length);
+});
+
+// Task 5: immediate error
+const task5Input = document.querySelector('.task5-input');
+const task5Error = document.querySelector('.task5-error');
+task5Input.addEventListener('input', () => {
+  task5Error.textContent = task5Input.value.trim() === '' ? 'Input cannot be empty' : '';
+});
+
+// Task 6: enable submit
+const task6Inputs = document.querySelectorAll('.task6-input');
+const task6Btn = document.querySelector('.task6-btn');
+task6Inputs.forEach(inp => inp.addEventListener('input', () => {
+  const allFilled = Array.from(task6Inputs).every(i => i.value.trim() !== '');
+  task6Btn.disabled = !allFilled;
+}));
+
+// Task 7: mouse position
+const task7Output = document.querySelector('.task7-output');
+document.addEventListener('mousemove', (e) => {
+  task7Output.textContent = `X: ${e.clientX}, Y: ${e.clientY}`;
+});
+
+// Task 10: password strength
+const task10Input = document.querySelector('.task10-input');
+const task10Output = document.querySelector('.task10-output');
+task10Input.addEventListener('input', () => {
+  const val = task10Input.value;
+  if(val.length < 4) task10Output.textContent='Weak';
+  else if(val.length <8) task10Output.textContent='Medium';
+  else task10Output.textContent='Strong';
+});
+
+// Task 11: counter every second
+const task11Counter = document.querySelector('.task11-counter');
+let counter = 0;
+setInterval(() => { task11Counter.textContent = counter++; },1000);
+
+// Task 12: live time
+const task12Time = document.querySelector('.task12-time');
+setInterval(() => {
+  const now = new Date();
+  task12Time.textContent = now.toLocaleTimeString();
+},1000);
+
+// Task 16: auto uppercase
+const task16Input = document.querySelector('.task16-input');
+task16Input.addEventListener('input', () => {
+  task16Input.value = task16Input.value.toUpperCase();
+});
+
+// Task 17: helper show/hide
+const task17Input = document.querySelector('.task17-input');
+const task17Helper = document.querySelector('.task17-helper');
+task17Input.addEventListener('focus', () => task17Helper.style.display='block');
+task17Input.addEventListener('blur', () => task17Helper.style.display='none');
+
+// Task 18: range value
+const task18Input = document.querySelector('.task18-input');
+const task18Output = document.querySelector('.task18-output');
+task18Output.textContent = 'Value: ' + task18Input.value;
+task18Input.addEventListener('input', ()=> task18Output.textContent='Value: '+task18Input.value);
+
+// Task 24: change page title
+const task24Input = document.querySelector('.task24-input');
+task24Input.addEventListener('input', () => document.title = task24Input.value);
+
+// Task 25: stop typing message
+const task25Input = document.querySelector('.task25-input');
+const task25Msg = document.querySelector('.task25-msg');
+let typingTimer;
+task25Input.addEventListener('input', () => {
+  clearTimeout(typingTimer);
+  typingTimer = setTimeout(() => { task25Msg.textContent = 'You stopped typing'; }, 1000);
+});
+</script>
+</body>
+</html>

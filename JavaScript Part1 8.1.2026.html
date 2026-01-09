@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS Animation Tasks 1–25</title>
+
+<style>
+/* =======================
+   COMMON STYLES
+======================= */
+body{
+  font-family: Arial, sans-serif;
+  padding:20px;
+}
+.task{
+  margin-bottom:30px;
+  padding-bottom:20px;
+  border-bottom:1px solid #ccc;
+}
+
+/* =======================
+   TASK 1: Move box left to right
+======================= */
+@keyframes task1Move {
+  from { left: 0; }
+  to { left: 200px; }
+}
+.task1-box{
+  width:50px;
+  height:50px;
+  background:red;
+  position:relative;
+  animation: task1Move 2s infinite alternate;
+}
+
+/* =======================
+   TASK 2: Loading text animation
+======================= */
+@keyframes task2Dots {
+  0% { content:""; }
+  33% { content:"."; }
+  66% { content:".."; }
+  100% { content:"..."; }
+}
+.task2::after{
+  content:"";
+  animation: task2Dots 1.5s infinite;
+}
+
+/* =======================
+   TASK 3: Fade in + slide up
+======================= */
+@keyframes task3FadeSlide {
+  from { opacity:0; transform:translateY(30px); }
+  to { opacity:1; transform:translateY(0); }
+}
+.task3{
+  animation: task3FadeSlide 1s forwards;
+}
+
+/* =======================
+   TASK 4: Animate on button click
+======================= */
+@keyframes task4Jump {
+  50% { transform:translateY(-30px); }
+}
+.task4-animate{
+  animation: task4Jump 0.6s;
+}
+
+/* =======================
+   TASK 5: Flip card on hover
+======================= */
+.task5-card{
+  width:150px;
+  height:100px;
+  background:#4caf50;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  transition:transform 0.6s;
+}
+.task5-card:hover{
+  transform: rotateY(180deg);
+}
+
+/* =======================
+   TASK 6: Progress bar animation
+======================= */
+@keyframes task6Progress {
+  from { width:0; }
+  to { width:100%; }
+}
+.task6-bar{
+  height:20px;
+  background:blue;
+  animation: task6Progress 3s forwards;
+}
+
+/* =======================
+   TASK 7: Bouncing ball
+======================= */
+@keyframes task7Bounce {
+  50% { transform:translateY(-50px); }
+}
+.task7-ball{
+  width:40px;
+  height:40px;
+  background:orange;
+  border-radius:50%;
+  animation: task7Bounce 1s infinite;
+}
+
+/* =======================
+   TASK 8: Rotating loader
+======================= */
+@keyframes task8Spin {
+  to { transform:rotate(360deg); }
+}
+.task8-loader{
+  width:40px;
+  height:40px;
+  border:5px solid #ccc;
+  border-top:5px solid black;
+  border-radius:50%;
+  animation: task8Spin 1s linear infinite;
+}
+
+/* =======================
+   TASK 9: Text color animation
+======================= */
+@keyframes task9Color {
+  0%{color:red;}
+  50%{color:blue;}
+  100%{color:green;}
+}
+.task9-text{
+  animation: task9Color 2s infinite;
+}
+
+/* =======================
+   TASK 10: Pulse button
+======================= */
+@keyframes task10Pulse {
+  50% { transform:scale(1.2); }
+}
+.task10-btn{
+  animation: task10Pulse 1.5s infinite;
+}
+
+/* =======================
+   TASK 11: Pause animation on hover
+======================= */
+.task11:hover{
+  animation-play-state: paused;
+}
+
+/* =======================
+   TASK 12: Slow animation
+======================= */
+.task12{
+  animation-duration:4s;
+}
+
+/* =======================
+   TASK 13: Run animation once
+======================= */
+.task13{
+  animation: task3FadeSlide 1s forwards;
+}
+
+/* =======================
+   TASK 14: Alternate direction
+======================= */
+@keyframes task14Move {
+  from { left:0; }
+  to { left:100px; }
+}
+.task14{
+  position:relative;
+  animation: task14Move 2s infinite alternate;
+}
+
+/* =======================
+   TASK 15: Animation delay
+======================= */
+.task15{
+  animation: task3FadeSlide 1s forwards;
+  animation-delay:2s;
+}
+
+/* =======================
+   TASK 16: Add/remove class via JS
+======================= */
+@keyframes task16Grow {
+  to { transform:scale(1.3); }
+}
+.task16.active{
+  animation: task16Grow 0.5s forwards;
+}
+
+/* =======================
+   TASK 17: Scale + rotate on hover
+======================= */
+.task17:hover{
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* =======================
+   TASK 18: Typing effect
+======================= */
+@keyframes task18Typing {
+  from { width:0; }
+  to { width:100%; }
+}
+.task18{
+  white-space:nowrap;
+  overflow:hidden;
+  border-right:2px solid black;
+  width:0;
+  animation: task18Typing 3s steps(20) forwards;
+}
+
+/* =======================
+   TASK 19: Gradient animation
+======================= */
+@keyframes task19Gradient {
+  from { background-position:0%; }
+  to { background-position:100%; }
+}
+.task19{
+  height:50px;
+  background:linear-gradient(90deg,red,blue);
+  background-size:200%;
+  animation: task19Gradient 3s infinite alternate;
+}
+
+/* =======================
+   TASK 20: Shake animation
+======================= */
+@keyframes task20Shake {
+  25%{transform:translateX(-5px);}
+  75%{transform:translateX(5px);}
+}
+.task20.shake{
+  animation: task20Shake 0.4s;
+}
+
+/* =======================
+   TASK 21–25: Reuse patterns safely
+======================= */
+.task21{ animation: task7Bounce 1s infinite; }
+.task22{ animation: task6Progress 2s forwards; }
+.task24{ animation: task3FadeSlide 1s forwards; }
+.task25{ animation: task3FadeSlide 1s forwards; }
+</style>
+</head>
+
+<body>
+
+<h2>CSS Animation Tasks (1–25)</h2>
+
+<div class="task">
+  <h3>Task 1: Move box left to right</h3>
+  <div class="task1-box"></div>
+</div>
+
+<div class="task">
+  <h3>Task 2: Loading text animation</h3>
+  <span class="task2">Loading</span>
+</div>
+
+<div class="task">
+  <h3>Task 3: Fade in and slide up</h3>
+  <div class="task3">Animated Text</div>
+</div>
+
+<div class="task">
+  <h3>Task 4: Trigger animation on click</h3>
+  <button onclick="this.classList.add('task4-animate')">Animate</button>
+</div>
+
+<div class="task">
+  <h3>Task 5: Flip card on hover</h3>
+  <div class="task5-card">Flip Me</div>
+</div>
+
+<div class="task">
+  <h3>Task 6: Progress bar</h3>
+  <div class="task6-bar"></div>
+</div>
+
+<div class="task">
+  <h3>Task 7: Bouncing ball</h3>
+  <div class="task7-ball"></div>
+</div>
+
+<div class="task">
+  <h3>Task 8: Rotating loader</h3>
+  <div class="task8-loader"></div>
+</div>
+
+<div class="task">
+  <h3>Task 9: Text color animation</h3>
+  <p class="task9-text">Color Changing Text</p>
+</div>
+
+<div class="task">
+  <h3>Task 10: Pulse button</h3>
+  <button class="task10-btn">Pulse</button>
+</div>
+
+<!-- Tasks 11–25 follow same clear pattern -->
+ <!-- Task 11: Pause animation on hover -->
+<div class="task">
+  <h3>Task 11: Pause animation on hover</h3>
+  <div class="task7-ball task11"></div>
+</div>
+
+<!-- Task 12: Slow animation -->
+<div class="task">
+  <h3>Task 12: Slow animation</h3>
+  <div class="task7-ball task12"></div>
+</div>
+
+<!-- Task 13: Run animation once -->
+<div class="task">
+  <h3>Task 13: Run animation once</h3>
+  <div class="task3 task13">Run Once</div>
+</div>
+
+<!-- Task 14: Alternate direction -->
+<div class="task">
+  <h3>Task 14: Alternate direction</h3>
+  <div class="task14">Alternate Move</div>
+</div>
+
+<!-- Task 15: Animation delay -->
+<div class="task">
+  <h3>Task 15: Animation delay</h3>
+  <div class="task15">Delayed Start</div>
+</div>
+
+<!-- Task 16: Add/remove class via JS -->
+<div class="task">
+  <h3>Task 16: Add/Remove class via JS</h3>
+  <button onclick="document.getElementById('task16').classList.toggle('active')">Toggle Grow</button>
+  <div id="task16" class="task16">Grow Me</div>
+</div>
+
+<!-- Task 17: Scale + rotate on hover -->
+<div class="task">
+  <h3>Task 17: Scale + rotate on hover</h3>
+  <div class="task5-card task17">Hover Me</div>
+</div>
+
+<!-- Task 18: Typing effect -->
+<div class="task">
+  <h3>Task 18: Typing effect</h3>
+  <div class="task18">Typing Animation</div>
+</div>
+
+<!-- Task 19: Gradient animation -->
+<div class="task">
+  <h3>Task 19: Gradient animation</h3>
+  <div class="task19"></div>
+</div>
+
+<!-- Task 20: Shake animation -->
+<div class="task">
+  <h3>Task 20: Shake animation</h3>
+  <button onclick="document.getElementById('task20').classList.add('shake')">Shake</button>
+  <div id="task20">Shake Me</div>
+</div>
+
+<!-- Task 21: Bounce animation reuse -->
+<div class="task">
+  <h3>Task 21: Bounce animation reuse</h3>
+  <div class="task7-ball task21"></div>
+</div>
+
+<!-- Task 22: Progress bar reuse -->
+<div class="task">
+  <h3>Task 22: Progress bar reuse</h3>
+  <div class="task6-bar task22"></div>
+</div>
+
+<!-- Task 23: Multiple elements different delay -->
+<div class="task">
+  <h3>Task 23: Multiple elements different delays</h3>
+  <div class="task7-ball task23"></div>
+  <div class="task7-ball task23b"></div>
+</div>
+
+<!-- Task 24: Animation-fill-mode -->
+<div class="task">
+  <h3>Task 24: Animation fill mode</h3>
+  <div class="task24">Fill Mode Animation</div>
+</div>
+
+<!-- Task 25: Change opacity + position -->
+<div class="task">
+  <h3>Task 25: Change opacity + position</h3>
+  <div class="task25">Opacity & Move</div>
+</div>
+
+
+<script>
+/* TASK 16 JS */
+function toggleTask16(){
+  document.getElementById("task16").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>

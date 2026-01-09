@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS Responsive & Adaptive Animations Tasks 26–50</title>
+
+<style>
+/* =======================
+   COMMON STYLES
+======================= */
+body {
+  font-family: Arial, sans-serif;
+  padding:20px;
+}
+.task {
+  margin-bottom:30px;
+  padding-bottom:20px;
+  border-bottom:1px solid #ccc;
+}
+
+/* =======================
+   TASK 26: Responsive layout 3 breakpoints
+======================= */
+.task26 {
+  background:#f0f0f0;
+  padding:20px;
+  display:grid;
+  grid-template-columns: 1fr;
+}
+@media(min-width:600px) {
+  .task26 { grid-template-columns: repeat(2,1fr); }
+}
+@media(min-width:992px) {
+  .task26 { grid-template-columns: repeat(3,1fr); }
+}
+
+/* =======================
+   TASK 27: Change animation behavior with media queries
+======================= */
+@keyframes task27Anim {
+  0% { transform:translateX(0);}
+  100% { transform:translateX(100px);}
+}
+.task27 {
+  width:50px; height:50px; background:red;
+  animation: task27Anim 2s infinite alternate;
+}
+@media(max-width:600px){
+  .task27 { animation: task27Anim 1s infinite alternate-reverse; }
+}
+
+/* =======================
+   TASK 28: Disable animations < 600px
+======================= */
+.task28 {
+  width:50px; height:50px; background:blue;
+  animation: task27Anim 2s infinite alternate;
+}
+@media(max-width:600px){
+  .task28 { animation:none; }
+}
+
+/* =======================
+   TASK 29: Responsive navbar animation
+======================= */
+.task29-nav {
+  display:flex;
+  flex-direction:column;
+  background:#333; color:white;
+  width:200px;
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.5s ease;
+}
+.task29-nav.open { max-height:500px; }
+
+/* =======================
+   TASK 30: Change animation duration mobile/desktop
+======================= */
+.task30-box {
+  width:50px; height:50px; background:green;
+  animation: task27Anim 3s infinite alternate;
+}
+@media(max-width:600px){
+  .task30-box { animation-duration:1s; }
+}
+
+/* =======================
+   TASK 31: Responsive cards hover animation
+======================= */
+.task31-card {
+  width:150px; height:100px; background:#4caf50;
+  transition: transform 0.5s;
+}
+.task31-card:hover { transform: scale(1.2) rotate(5deg); }
+
+/* =======================
+   TASK 32: Switch grid to flex
+======================= */
+.task32 {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+}
+@media(max-width:768px){
+  .task32 { display:flex; flex-direction:column; }
+}
+
+/* =======================
+   TASK 33: Sidebar slides in mobile
+======================= */
+.task33-sidebar {
+  position:fixed;
+  left:-200px; top:0;
+  width:200px; height:100%;
+  background:#444; color:white;
+  transition:left 0.5s;
+}
+.task33-sidebar.open { left:0; }
+
+/* =======================
+   TASK 34: Layout reflow animation
+======================= */
+@keyframes task34Reflow { from {opacity:0} to {opacity:1} }
+.task34 { animation: task34Reflow 0.5s; }
+
+/* =======================
+   TASK 35: Responsive image gallery hover zoom
+======================= */
+.task35-img {
+  width:100px; height:100px;
+  transition: transform 0.3s;
+}
+.task35-img:hover { transform:scale(1.2); }
+
+/* =======================
+   TASK 36: Keyframe animation direction mobile
+======================= */
+@keyframes task36Anim { from{left:0;} to{left:100px;} }
+.task36 { position:relative; animation:task36Anim 2s infinite alternate; }
+@media(max-width:600px){ .task36{ animation-direction:alternate-reverse; } }
+
+/* =======================
+   TASK 37: Text animation mobile vs desktop
+======================= */
+.task37 {
+  display:inline-block; animation:task27Anim 2s infinite alternate;
+}
+@media(max-width:600px){ .task37{ animation:task27Anim 1s infinite; } }
+
+/* =======================
+   TASK 38: Responsive banner with animated text
+======================= */
+.task38-banner {
+  background:#ffeb3b; padding:20px;
+}
+.task38-banner span {
+  display:inline-block; animation:task27Anim 2s infinite alternate;
+}
+
+/* =======================
+   TASK 39: Reduce motion small screens
+======================= */
+@media(max-width:600px){
+  .task39 * { transition:none !important; animation:none !important; }
+}
+
+/* =======================
+   TASK 40: Responsive button hover animation
+======================= */
+.task40-btn { padding:10px 20px; transition: transform 0.5s; }
+@media(max-width:600px){ .task40-btn:hover{ transform:scale(1.1); } }
+@media(min-width:601px){ .task40-btn:hover{ transform:scale(1.3) rotate(5deg); } }
+
+/* =======================
+   TASK 41: Animate height change
+======================= */
+.task41 { background:#ccc; width:100px; height:50px; transition: height 0.5s; }
+.task41:hover { height:100px; }
+
+/* =======================
+   TASK 42: Responsive modal open/close
+======================= */
+.task42-modal { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
+  background:white; padding:20px; box-shadow:0 0 10px #000; transition: all 0.3s;}
+.task42-modal.open { display:block; }
+
+/* =======================
+   TASK 43: Change animation timing with media queries
+======================= */
+.task43-box { width:50px;height:50px;background:orange;
+animation:task27Anim 2s infinite alternate linear; }
+@media(max-width:600px){ .task43-box{ animation-timing-function:ease-in-out; } }
+
+/* =======================
+   TASK 44: Responsive footer animated links
+======================= */
+.task44-footer a { display:inline-block; margin:0 5px; transition: transform 0.3s;}
+.task44-footer a:hover{ transform:scale(1.2); }
+@media(max-width:600px){ .task44-footer a:hover{ transform:scale(1.1); } }
+
+/* =======================
+   TASK 45: Animate menu items based on screen size
+======================= */
+.task45-menu li { transition: transform 0.3s;}
+@media(max-width:600px){ .task45-menu li:hover{ transform:translateX(5px); } }
+@media(min-width:601px){ .task45-menu li:hover{ transform:translateX(10px) rotate(2deg); } }
+
+/* =======================
+   TASK 46: Trigger animation on scroll
+======================= */
+.task46 { opacity:0; transition: opacity 0.5s; }
+.task46.show { opacity:1; }
+
+/* =======================
+   TASK 47: Combine transition + keyframes
+======================= */
+.task47 { width:50px;height:50px;background:#f00; transition:all 0.5s; }
+.task47:hover{ animation:task27Anim 1s infinite alternate; }
+
+/* =======================
+   TASK 48: Dashboard responsive cards
+======================= */
+.task48 { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+@media(max-width:768px){ .task48{ grid-template-columns:repeat(2,1fr); } }
+@media(max-width:480px){ .task48{ grid-template-columns:1fr; } }
+
+/* =======================
+   TASK 49: Animations enabled only on desktop
+======================= */
+.task49 { animation:task27Anim 2s infinite alternate; }
+@media(max-width:600px){ .task49{ animation:none; } }
+
+/* =======================
+   TASK 50: Fully responsive adaptive animations
+======================= */
+.task50 { width:50px;height:50px;background:purple; animation:task27Anim 2s infinite alternate; }
+@media(max-width:600px){ .task50{ animation:none; } }
+
+</style>
+</head>
+
+<body>
+<h2>Responsive & Adaptive Animation Tasks 26–50</h2>
+
+<div class="task">
+  <h3>Task 26: Responsive layout 3 breakpoints</h3>
+  <div class="task26">
+    <div style="background:#ccc;height:50px;">Box1</div>
+    <div style="background:#aaa;height:50px;">Box2</div>
+    <div style="background:#888;height:50px;">Box3</div>
+  </div>
+</div>
+
+<div class="task">
+  <h3>Task 27: Change animation behavior via media queries</h3>
+  <div class="task27"></div>
+</div>
+
+<div class="task">
+  <h3>Task 28: Disable animations on screens <600px</h3>
+  <div class="task28"></div>
+</div>
+
+<div class="task">
+  <h3>Task 29: Responsive navbar with animation</h3>
+  <button onclick="document.getElementById('task29nav').classList.toggle('open')">Toggle Menu</button>
+  <div id="task29nav" class="task29-nav">
+    <a href="#">Home</a><br>
+    <a href="#">About</a><br>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<div class="task">
+  <h3>Task 30: Change animation duration for mobile/desktop</h3>
+  <div class="task30-box"></div>
+</div>
+
+<div class="task">
+  <h3>Task 31: Responsive cards hover animation</h3>
+  <div class="task31-card">Card</div>
+</div>
+
+<div class="task">
+  <h3>Task 32: Switch grid to flex</h3>
+  <div class="task32">
+    <div style="background:#ccc;height:50px;">Item1</div>
+    <div style="background:#aaa;height:50px;">Item2</div>
+  </div>
+</div>
+
+<div class="task">
+  <h3>Task 33: Sidebar slides in mobile</h3>
+  <button onclick="document.getElementById('task33').classList.toggle('open')">Toggle Sidebar</button>
+  <div id="task33" class="task33-sidebar">Sidebar Content</div>
+</div>
+
+<div class="task">
+  <h3>Task 34: Layout reflow animation</h3>
+  <div class="task34">Reflow Animated Box</div>
+</div>
+
+<div class="task">
+  <h3>Task 35: Responsive image gallery hover zoom</h3>
+  <img class="task35-img" src="Toy.jpg" alt="Gallery Image">
+</div>
+
+<!-- Tasks 36–50 continue same structure -->
+ <!-- Task 36: Keyframe animation direction mobile -->
+<div class="task">
+  <h3>Task 36: Keyframe animation direction mobile</h3>
+  <div class="task36"></div>
+</div>
+
+<!-- Task 37: Text animation mobile vs desktop -->
+<div class="task">
+  <h3>Task 37: Text animation mobile vs desktop</h3>
+  <div class="task37">Responsive Text</div>
+</div>
+
+<!-- Task 38: Responsive banner with animated text -->
+<div class="task">
+  <h3>Task 38: Responsive banner with animated text</h3>
+  <div class="task38-banner">
+    <span>Animated Banner Text</span>
+  </div>
+</div>
+
+<!-- Task 39: Reduce animation motion on small screens -->
+<div class="task">
+  <h3>Task 39: Reduce animation motion on small screens</h3>
+  <div class="task39" style="width:50px;height:50px;background:#f00;"></div>
+</div>
+
+<!-- Task 40: Responsive button hover animation -->
+<div class="task">
+  <h3>Task 40: Responsive button hover animation</h3>
+  <button class="task40-btn">Hover Me</button>
+</div>
+
+<!-- Task 41: Animate height changes -->
+<div class="task">
+  <h3>Task 41: Animate height changes</h3>
+  <div class="task41"></div>
+</div>
+
+<!-- Task 42: Responsive modal open/close -->
+<div class="task">
+  <h3>Task 42: Responsive modal open/close</h3>
+  <button onclick="document.getElementById('task42').classList.toggle('open')">Open Modal</button>
+  <div id="task42" class="task42-modal">
+    Modal Content
+    <button onclick="document.getElementById('task42').classList.remove('open')">Close</button>
+  </div>
+</div>
+
+<!-- Task 43: Change animation timing with media queries -->
+<div class="task">
+  <h3>Task 43: Change animation timing with media queries</h3>
+  <div class="task43-box"></div>
+</div>
+
+<!-- Task 44: Responsive footer with animated links -->
+<div class="task">
+  <h3>Task 44: Responsive footer with animated links</h3>
+  <div class="task44-footer">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div>
+</div>
+
+<!-- Task 45: Animate menu items differently based on screen size -->
+<div class="task">
+  <h3>Task 45: Animate menu items differently based on screen size</h3>
+  <ul class="task45-menu">
+    <li>Menu 1</li>
+    <li>Menu 2</li>
+    <li>Menu 3</li>
+  </ul>
+</div>
+
+<!-- Task 46: Trigger animation on scroll -->
+<div class="task">
+  <h3>Task 46: Trigger animation on scroll</h3>
+  <div class="task46">Scroll to Animate</div>
+</div>
+
+<!-- Task 47: Combine transition + keyframes -->
+<div class="task">
+  <h3>Task 47: Combine transition + keyframes</h3>
+  <div class="task47"></div>
+</div>
+
+<!-- Task 48: Dashboard responsive cards -->
+<div class="task">
+  <h3>Task 48: Dashboard responsive cards</h3>
+  <div class="task48">
+    <div style="background:#ccc;height:50px;">Card1</div>
+    <div style="background:#aaa;height:50px;">Card2</div>
+    <div style="background:#888;height:50px;">Card3</div>
+  </div>
+</div>
+
+<!-- Task 49: Animations enabled only on desktop -->
+<div class="task">
+  <h3>Task 49: Animations enabled only on desktop</h3>
+  <div class="task49"></div>
+</div>
+
+<!-- Task 50: Fully responsive adaptive animations -->
+<div class="task">
+  <h3>Task 50: Fully responsive adaptive animations</h3>
+  <div class="task50"></div>
+</div>
+
+<script>
+// Task 46: Add scroll animation trigger
+window.addEventListener('scroll', () => {
+  const el = document.querySelector('.task46');
+  const rect = el.getBoundingClientRect();
+  if(rect.top < window.innerHeight) el.classList.add('show');
+});
+</script>
+
+
+</body>
+</html>

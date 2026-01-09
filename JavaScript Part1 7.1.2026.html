@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JS Tasks 1–25</title>
+
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; }
+  .task-box { border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; border-radius: 6px; }
+  footer { background: #eee; padding: 10px; }
+</style>
+</head>
+
+<body>
+
+<h1 id="header">JavaScript Tasks 1 to 25</h1>
+
+<!-- Task 1 -->
+<div class="task-box">
+<h3>Task 1: Random quote on page load</h3>
+<p id="t1_quote"></p>
+<script>
+const quotes = ["Believe in yourself", "Practice makes perfect", "Never give up"];
+t1_quote.innerText = quotes[Math.floor(Math.random() * quotes.length)];
+</script>
+</div>
+
+<!-- Task 2 -->
+<div class="task-box">
+<h3>Task 2: Change text color of clicked element</h3>
+<p onclick="this.style.color='red'">Click me</p>
+</div>
+
+<!-- Task 3 -->
+<div class="task-box">
+<h3>Task 3: Count input clicks</h3>
+<input onclick="t3_count.innerText = ++t3_val">
+<p id="t3_count">0</p>
+<script>let t3_val = 0;</script>
+</div>
+
+<!-- Task 4 -->
+<div class="task-box">
+<h3>Task 4: Display current hour</h3>
+<p id="t4_out"></p>
+<script>t4_out.innerText = new Date().getHours();</script>
+</div>
+
+<!-- Task 5 -->
+<div class="task-box">
+<h3>Task 5: Toggle underline</h3>
+<p id="t5_p">Underline text</p>
+<button onclick="t5_p.style.textDecoration = t5_p.style.textDecoration==='underline'?'none':'underline'">Toggle</button>
+</div>
+
+<!-- Task 6 -->
+<div class="task-box">
+<h3>Task 6: Change background of last section</h3>
+<section>First</section>
+<section id="t6_last">Last section</section>
+<button onclick="t6_last.style.background='lightgreen'">Change</button>
+</div>
+
+<!-- Task 7 -->
+<div class="task-box">
+<h3>Task 7: Count paragraphs</h3>
+<button onclick="t7_out.innerText='Paragraphs: '+document.querySelectorAll('p').length">Count</button>
+<p id="t7_out"></p>
+</div>
+
+<!-- Task 8 -->
+<div class="task-box">
+<h3>Task 8: Input length in real time</h3>
+<input oninput="t8_out.innerText=this.value.length">
+<p id="t8_out"></p>
+</div>
+
+<!-- Task 9 -->
+<div class="task-box">
+<h3>Task 9: Hide last list item</h3>
+<ul id="t9_ul"><li>A</li><li>B</li><li>C</li></ul>
+<button onclick="t9_ul.lastElementChild.style.display='none'">Hide</button>
+</div>
+
+<!-- Task 10 -->
+<div class="task-box">
+<h3>Task 10: Window width</h3>
+<p id="t10_out"></p>
+<script>
+window.onresize = () => t10_out.innerText = window.innerWidth;
+t10_out.innerText = window.innerWidth;
+</script>
+</div>
+
+<!-- Task 11 -->
+<div class="task-box">
+<h3>Task 11: Change line height</h3>
+<p id="t11_p">Line height example</p>
+<button onclick="t11_p.style.lineHeight='2'">Change</button>
+</div>
+
+<!-- Task 12 -->
+<div class="task-box">
+<h3>Task 12: Detect number key</h3>
+<input onkeydown="if(event.key>=0 && event.key<=9) t12_out.innerText='Number key pressed'">
+<p id="t12_out"></p>
+</div>
+
+<!-- Task 13 -->
+<div class="task-box">
+<h3>Task 13: Change font style of all links</h3>
+<a href="#">Link 1</a> <a href="#">Link 2</a>
+<button onclick="document.querySelectorAll('a').forEach(a=>a.style.fontStyle='italic')">Change</button>
+</div>
+
+<!-- Task 14 -->
+<div class="task-box">
+<h3>Task 14: Count radio buttons</h3>
+<input type="radio"><input type="radio">
+<button onclick="t14_out.innerText='Radios: '+document.querySelectorAll('input[type=radio]').length">Count</button>
+<p id="t14_out"></p>
+</div>
+
+<!-- Task 15 -->
+<div class="task-box">
+<h3>Task 15: Toggle footer visibility</h3>
+<footer id="t15_footer">Footer content</footer>
+<button onclick="t15_footer.style.display=t15_footer.style.display==='none'?'block':'none'">Toggle</button>
+</div>
+
+<!-- Task 16 -->
+<div class="task-box">
+<h3>Task 16: Disable form submission</h3>
+<form onsubmit="event.preventDefault(); t16_out.innerText='Submission disabled'">
+<input>
+<button type="submit">Submit</button>
+</form>
+<p id="t16_out"></p>
+</div>
+
+<!-- Task 17 -->
+<div class="task-box">
+<h3>Task 17: Random border color</h3>
+<div id="t17_div" style="border:2px solid;width:100px">Box</div>
+<button onclick="t17_div.style.borderColor='#'+Math.floor(Math.random()*16777215).toString(16)">Change</button>
+</div>
+
+<!-- Task 18 -->
+<div class="task-box">
+<h3>Task 18: Display protocol</h3>
+<p id="t18_out"></p>
+<script>t18_out.innerText = location.protocol;</script>
+</div>
+
+<!-- Task 19 -->
+<div class="task-box">
+<h3>Task 19: Clear all textareas</h3>
+<textarea></textarea>
+<textarea></textarea>
+<button onclick="document.querySelectorAll('textarea').forEach(t=>t.value='')">Clear</button>
+</div>
+
+<!-- Task 20 -->
+<div class="task-box">
+<h3>Task 20: Change text transform</h3>
+<p id="t20_p">Transform text</p>
+<button onclick="t20_p.style.textTransform='uppercase'">Uppercase</button>
+</div>
+
+<!-- Task 21 -->
+<div class="task-box">
+<h3>Task 21: Change header background</h3>
+<button onclick="header.style.background='lightblue'">Change</button>
+</div>
+
+<!-- Task 22 -->
+<div class="task-box">
+<h3>Task 22: Count list items</h3>
+<ul><li>1</li><li>2</li></ul>
+<button onclick="t22_out.innerText='Items: '+document.querySelectorAll('li').length">Count</button>
+<p id="t22_out"></p>
+</div>
+
+<!-- Task 23 -->
+<div class="task-box">
+<h3>Task 23: Detect Caps Lock</h3>
+<input onkeyup="t23_out.innerText=event.getModifierState('CapsLock')?'Caps Lock ON':''">
+<p id="t23_out"></p>
+</div>
+
+<!-- Task 24 -->
+<div class="task-box">
+<h3>Task 24: Hide all buttons</h3>
+<button onclick="document.querySelectorAll('button').forEach(b=>b.style.display='none')">Hide</button>
+</div>
+
+<!-- Task 25 -->
+<div class="task-box">
+<h3>Task 25: Detect double click on page</h3>
+<p id="t25_out"></p>
+<script>
+document.ondblclick = () => t25_out.innerText = 'Page double-clicked';
+</script>
+</div>
+
+</body>
+</html>

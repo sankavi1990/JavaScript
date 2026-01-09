@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tasks 26–50 Real-Time UI</title>
+
+<style>
+body { font-family: Arial; padding: 20px; }
+.task { border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; }
+.invalid { border-color: red; }
+.valid { border-color: green; }
+.hidden { display: none; }
+.tooltip { display:none; background:#000;color:#fff;padding:5px;position:absolute; }
+.progress { height: 5px; background: green; width: 0%; }
+</style>
+</head>
+
+<body>
+
+<h1>Tasks 26–50 (Live Interaction)</h1>
+
+<!-- Task 26 -->
+<div class="task">
+<h3>Task 26: Live form validation</h3>
+<input id="t26" placeholder="Type something">
+<p id="t26-msg"></p>
+</div>
+
+<!-- Task 27 -->
+<div class="task">
+<h3>Task 27: Image preview</h3>
+<input type="file" id="t27">
+<img id="t27-img" width="100">
+</div>
+
+<!-- Task 28 -->
+<div class="task">
+<h3>Task 28: Live filter list</h3>
+<input id="t28">
+<ul id="t28-list">
+<li>Apple</li><li>Banana</li><li>Orange</li>
+</ul>
+</div>
+
+<!-- Task 29 + 30 -->
+<div class="task">
+<h3>Task 29 & 30: Auto-save & restore input</h3>
+<input id="t29">
+</div>
+
+<!-- Task 31 -->
+<div class="task">
+<h3>Task 31: Online / Offline status</h3>
+<p id="t31"></p>
+</div>
+
+<!-- Task 32 -->
+<div class="task">
+<h3>Task 32: Checkbox UI update</h3>
+<input type="checkbox" id="t32"> Check me
+<p id="t32-msg"></p>
+</div>
+
+<!-- Task 33 -->
+<div class="task">
+<h3>Task 33: All fields valid message</h3>
+<input id="t33a">
+<input id="t33b">
+<p id="t33-msg"></p>
+</div>
+
+<!-- Task 34 -->
+<div class="task">
+<h3>Task 34: Time spent on page</h3>
+<p id="t34"></p>
+</div>
+
+<!-- Task 35 -->
+<div class="task">
+<h3>Task 35: Typing speed</h3>
+<input id="t35">
+<p id="t35-msg"></p>
+</div>
+
+<!-- Task 36 -->
+<div class="task">
+<h3>Task 36: Layout change on resize</h3>
+<p id="t36"></p>
+</div>
+
+<!-- Task 37 -->
+<div class="task">
+<h3>Task 37: Scroll percentage</h3>
+<p id="t37"></p>
+</div>
+
+<!-- Task 38 -->
+<div class="task">
+<h3>Task 38: Active section highlight</h3>
+<p>Scroll page</p>
+</div>
+
+<!-- Task 39 -->
+<div class="task">
+<h3>Task 39: Disable field based on checkbox</h3>
+<input type="checkbox" id="t39"> Disable input
+<input id="t39-inp">
+</div>
+
+<!-- Task 40 -->
+<div class="task">
+<h3>Task 40: Tooltip</h3>
+<span id="t40">Hover me</span>
+<p id="t40tip" class="tooltip">Tooltip text</p>
+</div>
+
+<!-- Task 41 -->
+<div class="task">
+<h3>Task 41: Multiple UI update</h3>
+<button id="t41">Click</button>
+<p id="t41a"></p>
+<p id="t41b"></p>
+</div>
+
+<!-- Task 42 -->
+<div class="task">
+<h3>Task 42: Countdown</h3>
+<p id="t42"></p>
+</div>
+
+<!-- Task 43 -->
+<div class="task">
+<h3>Task 43: Suggestions</h3>
+<input id="t43">
+<p id="t43-msg"></p>
+</div>
+
+<!-- Task 44 -->
+<div class="task">
+<h3>Task 44: Instant invalid highlight</h3>
+<input id="t44">
+</div>
+
+<!-- Task 45 -->
+<div class="task">
+<h3>Task 45: Live calculation</h3>
+<input id="t45a" type="number">
+<input id="t45b" type="number">
+<p id="t45"></p>
+</div>
+
+<!-- Task 46 -->
+<div class="task">
+<h3>Task 46: Lock submit while processing</h3>
+<button id="t46">Submit</button>
+</div>
+
+<!-- Task 47 -->
+<div class="task">
+<h3>Task 47: Last activity time</h3>
+<p id="t47"></p>
+</div>
+
+<!-- Task 48 -->
+<div class="task">
+<h3>Task 48: Tab visibility</h3>
+<p id="t48"></p>
+</div>
+
+<!-- Task 49 -->
+<div class="task">
+<h3>Task 49: Unsaved data warning</h3>
+<input id="t49">
+</div>
+
+<!-- Task 50 -->
+<div class="task">
+<h3>Task 50: One action – many reactions</h3>
+<button id="t50">React</button>
+<p id="t50msg"></p>
+</div>
+
+<script>
+// Task 26
+document.getElementById("t26").addEventListener("input", function(){
+  document.getElementById("t26-msg").innerText = this.value ? "Valid" : "Empty";
+});
+
+// Task 27
+document.getElementById("t27").addEventListener("change", function(e){
+  document.getElementById("t27-img").src = URL.createObjectURL(e.target.files[0]);
+});
+
+// Task 28
+document.getElementById("t28").addEventListener("input", function(){
+  document.querySelectorAll("#t28-list li").forEach(function(li){
+    li.style.display = li.innerText.toLowerCase().includes(this.value.toLowerCase()) ? "" : "none";
+  }, this);
+});
+
+// Task 29 & 30
+var t29 = document.getElementById("t29");
+t29.value = localStorage.getItem("t29") || "";
+t29.addEventListener("input", function(){
+  localStorage.setItem("t29", this.value);
+});
+
+// Task 31
+function updateStatus(){ document.getElementById("t31").innerText = navigator.onLine ? "Online" : "Offline"; }
+window.addEventListener("online", updateStatus);
+window.addEventListener("offline", updateStatus);
+updateStatus();
+
+// Task 32
+document.getElementById("t32").addEventListener("change", function(){
+  document.getElementById("t32-msg").innerText = this.checked ? "Checked" : "Unchecked";
+});
+
+// Task 33
+document.querySelectorAll("#t33a,#t33b").forEach(function(i){
+  i.addEventListener("input", function(){
+    document.getElementById("t33-msg").innerText =
+    (t33a.value && t33b.value) ? "All valid" : "";
+  });
+});
+
+// Task 34
+let start = Date.now();
+setInterval(()=>document.getElementById("t34").innerText =
+Math.floor((Date.now()-start)/1000)+" seconds",1000);
+
+// Task 35
+let t35start;
+document.getElementById("t35").addEventListener("input",function(){
+  if(!t35start) t35start = Date.now();
+  let speed = this.value.length / ((Date.now()-t35start)/1000);
+  document.getElementById("t35-msg").innerText = speed.toFixed(2)+" chars/sec";
+});
+
+// Task 36
+window.addEventListener("resize",()=>document.getElementById("t36").innerText=window.innerWidth);
+
+// Task 37
+window.addEventListener("scroll",()=>document.getElementById("t37").innerText=
+Math.round((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100)+"%");
+
+// Task 39
+document.getElementById("t39").addEventListener("change",function(){
+  document.getElementById("t39-inp").disabled = this.checked;
+});
+
+// Task 40
+t40.onmouseover=()=>t40tip.style.display="block";
+t40.onmouseout=()=>t40tip.style.display="none";
+
+// Task 41
+t41.onclick=()=>{t41a.innerText="Updated";t41b.innerText="Also updated";};
+
+// Task 42
+let future=Date.now()+60000;
+setInterval(()=>t42.innerText=Math.max(0,Math.floor((future-Date.now())/1000))+" sec",1000);
+
+// Task 44
+t44.oninput=function(){this.className=this.value? "valid":"invalid";};
+
+// Task 45
+function calc(){t45.innerText=(+t45a.value||0)+(+t45b.value||0);}
+t45a.oninput=calc; t45b.oninput=calc;
+
+// Task 46
+t46.onclick=function(){this.disabled=true;setTimeout(()=>this.disabled=false,2000);};
+
+// Task 47
+document.addEventListener("mousemove",()=>t47.innerText=new Date().toLocaleTimeString());
+
+// Task 48
+document.addEventListener("visibilitychange",()=>t48.innerText=document.hidden?"Hidden":"Visible");
+
+// Task 49
+let dirty=false;
+t49.oninput=()=>dirty=true;
+window.onbeforeunload=()=>dirty?"Unsaved data":null;
+
+// Task 50
+t50.onclick=()=>t50msg.innerText="Multiple UI reacted!";
+
+</script>
+
+</body>
+</html>

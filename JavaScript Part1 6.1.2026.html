@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JS Tasks 1–25</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+
+  .task-box {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+  }
+
+  section {
+    padding: 10px;
+    background: #f2f2f2;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>JavaScript Tasks 1 to 25</h1>
+
+<!-- Task 1 -->
+<div class="task-box">
+<h3>Task 1: Greeting based on time</h3>
+<p id="t1_out"></p>
+<script>
+  const hour = new Date().getHours();
+  t1_out.innerText =
+    hour < 12 ? "Good Morning" :
+    hour < 18 ? "Good Afternoon" :
+    "Good Evening";
+</script>
+</div>
+
+<!-- Task 2 -->
+<div class="task-box">
+<h3>Task 2: Change text color of all headings</h3>
+<button onclick="document.querySelectorAll('h3').forEach(h=>h.style.color='red')">Change Color</button>
+</div>
+
+<!-- Task 3 -->
+<div class="task-box">
+<h3>Task 3: Message on Enter key</h3>
+<input onkeydown="if(event.key==='Enter') t3_msg.innerText='Enter key pressed'">
+<p id="t3_msg"></p>
+</div>
+
+<!-- Task 4 -->
+<div class="task-box">
+<h3>Task 4: Show browser name</h3>
+<p id="t4_out"></p>
+<script>
+  t4_out.innerText = navigator.appName;
+</script>
+</div>
+
+<!-- Task 5 -->
+<div class="task-box">
+<h3>Task 5: Change letter spacing</h3>
+<p id="t5_p">Letter spacing text</p>
+<button onclick="t5_p.style.letterSpacing='4px'">Change</button>
+</div>
+
+<!-- Task 6 -->
+<div class="task-box">
+<h3>Task 6: Change background of one section</h3>
+<section id="t6_sec">Only this section changes</section>
+<button onclick="t6_sec.style.background='lightblue'">Change</button>
+</div>
+
+<!-- Task 7 -->
+<div class="task-box">
+<h3>Task 7: Count total links</h3>
+<a href="#">Link 1</a> <a href="#">Link 2</a>
+<button onclick="t7_out.innerText='Links: '+document.querySelectorAll('a').length">Count</button>
+<p id="t7_out"></p>
+</div>
+
+<!-- Task 8 -->
+<div class="task-box">
+<h3>Task 8: Reverse input text</h3>
+<input oninput="t8_out.innerText=this.value.split('').reverse().join('')">
+<p id="t8_out"></p>
+</div>
+
+<!-- Task 9 -->
+<div class="task-box">
+<h3>Task 9: Hide first list item</h3>
+<ul id="t9_ul">
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>
+<button onclick="t9_ul.firstElementChild.style.display='none'">Hide</button>
+</div>
+
+<!-- Task 10 -->
+<div class="task-box">
+<h3>Task 10: Screen width & height</h3>
+<p id="t10_out"></p>
+<script>
+  t10_out.innerText = `Width: ${screen.width}, Height: ${screen.height}`;
+</script>
+</div>
+
+<!-- Task 11 -->
+<div class="task-box">
+<h3>Task 11: Change text direction</h3>
+<p id="t11_p">Direction text</p>
+<button onclick="t11_p.dir = t11_p.dir==='rtl'?'ltr':'rtl'">Toggle</button>
+</div>
+
+<!-- Task 12 -->
+<div class="task-box">
+<h3>Task 12: Message on blur</h3>
+<input onblur="t12_msg.innerText='Input lost focus'">
+<p id="t12_msg"></p>
+</div>
+
+<!-- Task 13 -->
+<div class="task-box">
+<h3>Task 13: Change font color of even paragraphs</h3>
+<p>Para 1</p>
+<p>Para 2</p>
+<p>Para 3</p>
+<button onclick="document.querySelectorAll('p:nth-child(even)').forEach(p=>p.style.color='blue')">Change</button>
+</div>
+
+<!-- Task 14 -->
+<div class="task-box">
+<h3>Task 14: Count images</h3>
+<img src="Toy.jpg">
+<img src="Alphabets.jpg">
+<button onclick="t14_out.innerText='Images: '+document.images.length">Count</button>
+<p id="t14_out"></p>
+</div>
+
+<!-- Task 15 -->
+<div class="task-box">
+<h3>Task 15: Toggle uppercase/lowercase</h3>
+<p id="t15_p">Toggle Case</p>
+<button onclick="t15_p.innerText = t15_p.innerText === t15_p.innerText.toUpperCase()
+? t15_p.innerText.toLowerCase()
+: t15_p.innerText.toUpperCase()">Toggle</button>
+</div>
+
+<!-- Task 16 -->
+<div class="task-box">
+<h3>Task 16: Thank you after submit</h3>
+<input>
+<button onclick="t16_out.innerText='Thank you for submitting'">Submit</button>
+<p id="t16_out"></p>
+</div>
+
+<!-- Task 17 -->
+<div class="task-box">
+<h3>Task 17: Change border width</h3>
+<div id="t17_div" style="border:2px solid;width:100px">Box</div>
+<button onclick="t17_div.style.borderWidth='6px'">Change</button>
+</div>
+
+<!-- Task 18 -->
+<div class="task-box">
+<h3>Task 18: Display current URL</h3>
+<p id="t18_out"></p>
+<script>
+  t18_out.innerText = location.href;
+</script>
+</div>
+
+<!-- Task 19 -->
+<div class="task-box">
+<h3>Task 19: Reset one specific input</h3>
+<input id="t19_in">
+<button onclick="t19_in.value=''">Reset</button>
+</div>
+
+<!-- Task 20 -->
+<div class="task-box">
+<h3>Task 20: Extra word spacing</h3>
+<p id="t20_p">Word spacing example</p>
+<button onclick="t20_p.style.wordSpacing='10px'">Add Space</button>
+</div>
+
+<!-- Task 21 -->
+<div class="task-box">
+<h3>Task 21: Random background color</h3>
+<button onclick="document.body.style.background='#'+Math.floor(Math.random()*16777215).toString(16)">Change</button>
+</div>
+
+<!-- Task 22 -->
+<div class="task-box">
+<h3>Task 22: Characters excluding spaces</h3>
+<input oninput="t22_out.innerText=this.value.replace(/\s/g,'').length">
+<p id="t22_out"></p>
+</div>
+
+<!-- Task 23 -->
+<div class="task-box">
+<h3>Task 23: Hide all inputs</h3>
+<button onclick="document.querySelectorAll('input').forEach(i=>i.style.display='none')">Hide</button>
+</div>
+
+<!-- Task 24 -->
+<div class="task-box">
+<h3>Task 24: Message on page click</h3>
+<p id="t24_out"></p>
+<script>
+  document.addEventListener('click',()=>t24_out.innerText='Page clicked');
+</script>
+</div>
+
+<!-- Task 25 -->
+<div class="task-box">
+<h3>Task 25: Change header height</h3>
+<h2 id="t25_h">Header</h2>
+<button onclick="t25_h.style.height='80px'">Change Height</button>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JS Tasks 26–50</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+
+  .task-box {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+  }
+
+  button {
+    margin-top: 5px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .flex {
+    display: flex;
+    gap: 10px;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>JavaScript Tasks 26 to 50</h1>
+
+<!-- Task 26 -->
+<div class="task-box">
+<h3>Task 26: Allow only uppercase letters</h3>
+<input oninput="this.value=this.value.replace(/[^A-Z]/g,'')">
+</div>
+
+<!-- Task 27 -->
+<div class="task-box">
+<h3>Task 27: Enable all disabled inputs</h3>
+<input disabled>
+<input disabled>
+<button onclick="document.querySelectorAll('input').forEach(i=>i.disabled=false)">Enable</button>
+</div>
+
+<!-- Task 28 -->
+<div class="task-box">
+<h3>Task 28: Change style of all paragraphs</h3>
+<p>Para 1</p><p>Para 2</p>
+<button onclick="document.querySelectorAll('p').forEach(p=>p.style.color='blue')">Change</button>
+</div>
+
+<!-- Task 29 -->
+<div class="task-box">
+<h3>Task 29: Disable dropdown</h3>
+<select id="t29_sel">
+  <option>One</option><option>Two</option>
+</select>
+<button onclick="t29_sel.disabled=true">Disable</button>
+</div>
+
+<!-- Task 30 -->
+<div class="task-box">
+<h3>Task 30: Error if number is negative</h3>
+<input id="t30_in" type="number">
+<button onclick="t30_msg.innerText=t30_in.value<0?'Negative not allowed':''">Check</button>
+<p id="t30_msg" style="color:red"></p>
+</div>
+
+<!-- Task 31 -->
+<div class="task-box">
+<h3>Task 31: Store & retrieve theme color</h3>
+<button onclick="localStorage.setItem('theme','lightblue')">Save</button>
+<button onclick="document.body.style.background=localStorage.getItem('theme')">Apply</button>
+</div>
+
+<!-- Task 32 -->
+<div class="task-box">
+<h3>Task 32: Change multiple CSS properties</h3>
+<div id="t32_div" style="width:100px;height:50px;border:1px solid"></div>
+<button onclick="Object.assign(t32_div.style,{background:'pink',borderRadius:'10px'})">Change</button>
+</div>
+
+<!-- Task 33 -->
+<div class="task-box">
+<h3>Task 33: Message on scroll bottom</h3>
+<p id="t33_msg"></p>
+<script>
+window.onscroll=()=> {
+ if(window.innerHeight+window.scrollY>=document.body.offsetHeight){
+  t33_msg.innerText="Reached bottom";
+ }
+}
+</script>
+</div>
+
+<!-- Task 34 -->
+<div class="task-box">
+<h3>Task 34: Show submitted form values</h3>
+<input id="t34_a"><input id="t34_b">
+<button onclick="t34_out.innerText=t34_a.value+' '+t34_b.value">Submit</button>
+<p id="t34_out"></p>
+</div>
+
+<!-- Task 35 -->
+<div class="task-box">
+<h3>Task 35: Toggle text</h3>
+<p id="t35_p">Text One</p>
+<button onclick="t35_p.innerText=t35_p.innerText==='Text One'?'Text Two':'Text One'">Toggle</button>
+</div>
+
+<!-- Task 36 -->
+<div class="task-box">
+<h3>Task 36: Remaining characters</h3>
+<input maxlength="10" oninput="t36_out.innerText=10-this.value.length">
+<p id="t36_out"></p>
+</div>
+
+<!-- Task 37 -->
+<div class="task-box">
+<h3>Task 37: Add list item</h3>
+<ul id="t37_ul"></ul>
+<button onclick="t37_ul.innerHTML+='<li>New Item</li>'">Add</button>
+</div>
+
+<!-- Task 38 -->
+<div class="task-box">
+<h3>Task 38: Offline message</h3>
+<p id="t38_msg"></p>
+<script>
+window.addEventListener('offline',()=>t38_msg.innerText='You are offline');
+</script>
+</div>
+
+<!-- Task 39 -->
+<div class="task-box">
+<h3>Task 39: Remove last list item</h3>
+<ul id="t39_ul"><li>A</li><li>B</li></ul>
+<button onclick="t39_ul.lastElementChild?.remove()">Remove</button>
+</div>
+
+<!-- Task 40 -->
+<div class="task-box">
+<h3>Task 40: CSS Grid layout</h3>
+<div class="grid">
+  <div style="background:#ddd">1</div>
+  <div style="background:#ccc">2</div>
+  <div style="background:#bbb">3</div>
+</div>
+</div>
+
+<!-- Task 41 -->
+<div class="task-box">
+<h3>Task 41: Change border style</h3>
+<div id="t41_div" style="width:100px;height:50px;border:2px solid"></div>
+<button onclick="t41_div.style.borderStyle='dashed'">Change</button>
+</div>
+
+<!-- Task 42 -->
+<div class="task-box">
+<h3>Task 42: Paste detection</h3>
+<input onpaste="t42_msg.innerText='Text pasted'">
+<p id="t42_msg"></p>
+</div>
+
+<!-- Task 43 -->
+<div class="task-box">
+<h3>Task 43: Reset form</h3>
+<form id="t43_form">
+<input><input>
+<button type="reset">Reset</button>
+</form>
+</div>
+
+<!-- Task 44 -->
+<div class="task-box">
+<h3>Task 44: Sentence case</h3>
+<input id="t44_in">
+<button onclick="t44_in.value=t44_in.value.charAt(0).toUpperCase()+t44_in.value.slice(1).toLowerCase()">Convert</button>
+</div>
+
+<!-- Task 45 -->
+<div class="task-box">
+<h3>Task 45: Disable button after click</h3>
+<button onclick="this.disabled=true">Click Once</button>
+</div>
+
+<!-- Task 46 -->
+<div class="task-box">
+<h3>Task 46: Total characters in inputs</h3>
+<input class="t46"><input class="t46">
+<button onclick="t46_out.innerText=[...document.querySelectorAll('.t46')].reduce((a,b)=>a+b.value.length,0)">Count</button>
+<p id="t46_out"></p>
+</div>
+
+<!-- Task 47 -->
+<div class="task-box">
+<h3>Task 47: Hide all images</h3>
+<img src="Toy.jpg">
+<button onclick="document.querySelectorAll('img').forEach(i=>i.style.display='none')">Hide</button>
+</div>
+
+<!-- Task 48 -->
+<div class="task-box">
+<h3>Task 48: Window focus message</h3>
+<p id="t48_msg"></p>
+<script>
+window.addEventListener('focus',()=>t48_msg.innerText='Window focused');
+</script>
+</div>
+
+<!-- Task 49 -->
+<div class="task-box">
+<h3>Task 49: Flexbox section</h3>
+<div class="flex">
+  <div style="background:#ddd">A</div>
+  <div style="background:#ccc">B</div>
+</div>
+</div>
+
+<!-- Task 50 -->
+<div class="task-box">
+<h3>Task 50: Change page title</h3>
+<button onclick="document.title='Title Changed'">Change Title</button>
+</div>
+
+</body>
+</html>
