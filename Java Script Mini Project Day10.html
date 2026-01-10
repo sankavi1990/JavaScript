@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Script Day10 Projects</title>
+</head>
+<body>
+    <!-- =============================== -->
+<!-- Day 10 - Mini Project 1 -->
+<!-- Click Counter App -->
+<!-- =============================== -->
+<section class="day10-click-counter">
+  <h2>Project 1 - Click Counter</h2>
+
+  <p>Count: <span id="clickCount">0</span></p>
+
+  <button onclick="increaseCount()">Click Me</button>
+  <button onclick="resetCount()">Reset</button>
+</section>
+
+<style>
+  .day10-click-counter {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+</style>
+
+<script>
+  let count = 0;
+
+  function increaseCount() {
+    count++;
+    document.getElementById("clickCount").innerText = count;
+  }
+
+  function resetCount() {
+    count = 0;
+    document.getElementById("clickCount").innerText = count;
+  }
+</script>
+
+
+<!-- =============================== -->
+<!-- Day 10 - Mini Project 2 -->
+<!-- Image Preview Before Upload -->
+<!-- =============================== -->
+<section class="day10-image-preview">
+  <h2>Project 2 - Image Preview Before Upload</h2>
+
+  <input 
+    type="file" 
+    accept="image/*" 
+    onchange="showImagePreview(event)"
+  >
+
+  <br><br>
+
+  <img 
+    id="previewImage" 
+    class="day10-preview-img" 
+    alt="Image Preview"
+  >
+</section>
+
+<style>
+  .day10-image-preview {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .day10-preview-img {
+    width: 250px;
+    height: auto;
+    display: none;
+    border: 2px solid #4CAF50;
+    padding: 5px;
+  }
+</style>
+
+<script>
+  function showImagePreview(event) {
+    const image = document.getElementById("previewImage");
+    image.src = URL.createObjectURL(event.target.files[0]);
+    image.style.display = "block";
+  }
+</script>
+
+
+
+<!-- =============================== -->
+<!-- Day 10 - Mini Project 3 -->
+<!-- Keyboard Shortcut Trigger -->
+<!-- =============================== -->
+<section class="day10-shortcut">
+  <h2>Project 3 - Keyboard Shortcut Trigger</h2>
+  <p>Try pressing:</p>
+  <ul>
+    <li><b>Ctrl + S</b> → Save</li>
+    <li><b>Alt + M</b> → Menu</li>
+  </ul>
+
+  <p class="day10-shortcut-msg" id="shortcutMessage"></p>
+</section>
+
+<style>
+  .day10-shortcut {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .day10-shortcut-msg {
+    font-weight: bold;
+    color: green;
+  }
+</style>
+
+<script>
+  document.addEventListener("keydown", function (event) {
+
+    // Ctrl + S
+    if (event.ctrlKey && event.key === "s") {
+      event.preventDefault(); // stop browser save
+      document.getElementById("shortcutMessage").innerText =
+        "✅ Save Triggered (Ctrl + S)";
+    }
+
+    // Alt + M
+    if (event.altKey && event.key === "m") {
+      document.getElementById("shortcutMessage").innerText =
+        "📂 Menu Triggered (Alt + M)";
+    }
+
+  });
+</script>
+
+
+<!-- =============================== -->
+<!-- Day 10 - Mini Project 4 -->
+<!-- Quiz App with Live Score -->
+<!-- =============================== -->
+<section class="day10-quiz">
+  <h2>Project 4 - Quiz App</h2>
+
+  <p class="day10-question" id="quizQuestion"></p>
+
+  <div class="day10-options">
+    <button onclick="checkAnswer(0)" class="day10-option" id="opt0"></button>
+    <button onclick="checkAnswer(1)" class="day10-option" id="opt1"></button>
+    <button onclick="checkAnswer(2)" class="day10-option" id="opt2"></button>
+  </div>
+
+  <p class="day10-score">Score: <span id="quizScore">0</span></p>
+</section>
+
+<style>
+  .day10-quiz {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .day10-option {
+    display: block;
+    margin: 8px 0;
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  .correct {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .wrong {
+    background-color: #f44336;
+    color: white;
+  }
+</style>
+
+<script>
+  const quizData = [
+    {
+      question: "Which language runs in the browser?",
+      options: ["Java", "Python", "JavaScript"],
+      answer: 2
+    },
+    {
+      question: "What does HTML stand for?",
+      options: ["Hyper Text Markup Language", "High Text Machine Language", "Hyper Tool Markup Language"],
+      answer: 0
+    },
+    {
+      question: "Which symbol is used for comments in JS?",
+      options: ["//", "<!-- -->", "#"],
+      answer: 0
+    }
+  ];
+
+  let currentQuestion = 0;
+  let score = 0;
+
+  function loadQuestion() {
+    const q = quizData[currentQuestion];
+    document.getElementById("quizQuestion").innerText = q.question;
+
+    q.options.forEach((opt, index) => {
+      const btn = document.getElementById("opt" + index);
+      btn.innerText = opt;
+      btn.className = "day10-option";
+      btn.disabled = false;
+    });
+  }
+
+  function checkAnswer(selectedIndex) {
+    const correctIndex = quizData[currentQuestion].answer;
+
+    if (selectedIndex === correctIndex) {
+      document.getElementById("opt" + selectedIndex).classList.add("correct");
+      score++;
+      document.getElementById("quizScore").innerText = score;
+    } else {
+      document.getElementById("opt" + selectedIndex).classList.add("wrong");
+      document.getElementById("opt" + correctIndex).classList.add("correct");
+    }
+
+    document.querySelectorAll(".day10-option").forEach(btn => btn.disabled = true);
+
+    setTimeout(() => {
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
+      } else {
+        document.querySelector(".day10-quiz").innerHTML =
+          `<h2> Quiz Completed</h2>
+           <p>Your Score: ${score} / ${quizData.length}</p>`;
+      }
+    }, 1000);
+  }
+
+  loadQuestion();
+</script>
+
+<!-- =============================== -->
+<!-- Day 10 - Mini Project 5 -->
+<!-- Drag and Drop Box -->
+<!-- =============================== -->
+<section class="day10-dragdrop">
+  <h2>Project 5 - Drag and Drop Box</h2>
+
+  <div class="day10-drop-area"
+       ondragover="allowDrop(event)"
+       ondrop="dropItem(event)">
+    
+    <div class="day10-drag-box"
+         draggable="true"
+         ondragstart="dragItem(event)"
+         id="dragBox">
+      Drag Me
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .day10-dragdrop {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .day10-drop-area {
+    width: 300px;
+    height: 200px;
+    border: 2px dashed #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .day10-drag-box {
+    width: 100px;
+    height: 50px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    cursor: grab;
+  }
+</style>
+
+<script>
+  function allowDrop(event) {
+    event.preventDefault();
+  }
+
+  function dragItem(event) {
+    event.dataTransfer.setData("text", event.target.id);
+  }
+
+  function dropItem(event) {
+    event.preventDefault();
+    const data = event.dataTransfer.getData("text");
+    event.target.appendChild(document.getElementById(data));
+  }
+</script>
+
+
+<!-- =============================== -->
+<!-- Day 10 - Mini Project 6 -->
+<!-- Real-Time Key Logger -->
+<!-- =============================== -->
+<section class="day10-keylogger">
+  <h2>Project 6 - Real-Time Key Logger</h2>
+
+  <input
+    type="text"
+    class="day10-key-input"
+    placeholder="Type something..."
+    onkeydown="logKey(event)"
+  />
+
+  <p><strong>Last Key Pressed:</strong> <span id="day10-last-key">None</span></p>
+
+  <h4>All Pressed Keys:</h4>
+  <ul id="day10-key-list"></ul>
+</section>
+
+<style>
+  .day10-keylogger {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .day10-key-input {
+    width: 250px;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+
+  #day10-key-list {
+    margin-top: 10px;
+  }
+</style>
+
+<script>
+  function logKey(event) {
+    // Show last key pressed
+    document.getElementById("day10-last-key").innerText = event.key;
+
+    // Add key to list
+    const li = document.createElement("li");
+    li.innerText = event.key;
+    document.getElementById("day10-key-list").appendChild(li);
+  }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Project Day9</title>
+</head>
+<body>
+    
+    <!-- =============================== -->
+<!-- Day 9 - Mini Project 1 -->
+<!-- Light / Dark Mode Toggle -->
+<!-- =============================== -->
+<section class="day9-theme-toggle light-mode" id="themeSection">
+  <h2>Project 1 - Light / Dark Mode</h2>
+  <p>This section supports light and dark themes.</p>
+
+  <button onclick="toggleTheme()">Toggle Theme</button>
+</section>
+
+<style>
+  .day9-theme-toggle {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .day9-theme-toggle.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  .day9-theme-toggle.dark-mode {
+    background-color: #222222;
+    color: #ffffff;
+  }
+</style>
+
+<script>
+  function toggleTheme() {
+    const section = document.getElementById("themeSection");
+
+    if (section.classList.contains("light-mode")) {
+      section.classList.remove("light-mode");
+      section.classList.add("dark-mode");
+    } else {
+      section.classList.remove("dark-mode");
+      section.classList.add("light-mode");
+    }
+  }
+</script>
+
+
+<!-- =============================== -->
+<!-- Day 9 - Mini Project 2 -->
+<!-- Stopwatch Timer -->
+<!-- =============================== -->
+<section class="day9-stopwatch">
+  <h2>Project 2 - Stopwatch</h2>
+
+  <h3 id="stopwatchDisplay">0</h3>
+
+  <button onclick="startStopwatch()">Start</button>
+  <button onclick="stopStopwatch()">Stop</button>
+  <button onclick="resetStopwatch()">Reset</button>
+</section>
+
+<style>
+  .day9-stopwatch {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+   
+  }
+</style>
+
+<script>
+  let time = 0;
+  let timer = null;
+
+  function startStopwatch() {
+    if (timer !== null) return; // prevent multiple timers
+
+    timer = setInterval(() => {
+      time++;
+      document.getElementById("stopwatchDisplay").innerText = time;
+    }, 1000);
+  }
+
+  function stopStopwatch() {
+    clearInterval(timer);
+    timer = null;
+  }
+
+  function resetStopwatch() {
+    stopStopwatch();
+    time = 0;
+    document.getElementById("stopwatchDisplay").innerText = time;
+  }
+</script>
+
+
+
+<!-- =============================== -->
+<!-- Day 9 - Mini Project 3 -->
+<!-- Live Search Filter -->
+<!-- =============================== -->
+<section class="day9-live-search">
+  <h2>Project 3 - Live Search Filter</h2>
+
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Search items..."
+    onkeyup="filterItems()"
+  >
+
+  <ul id="itemList">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Orange</li>
+    <li>Mango</li>
+    <li>Pineapple</li>
+    <li>Grapes</li>
+  </ul>
+</section>
+
+<style>
+  .day9-live-search {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .day9-live-search input {
+    padding: 5px;
+    width: 200px;
+    margin-bottom: 10px;
+  }
+</style>
+
+<script>
+  function filterItems() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let items = document.querySelectorAll("#itemList li");
+
+    items.forEach(item => {
+      let text = item.innerText.toLowerCase();
+      item.style.display = text.includes(input) ? "block" : "none";
+    });
+  }
+</script>
+
+
+<!-- =============================== -->
+<!-- Day 9 - Mini Project 4 -->
+<!-- Dynamic Theme Switcher -->
+<!-- =============================== -->
+<section class="day9-theme-switcher" id="themeBox">
+  <h2>Project 4 - Theme Switcher</h2>
+  <p>Click a button to change theme.</p>
+
+  <button onclick="setTheme('blue')">Blue</button>
+  <button onclick="setTheme('green')">Green</button>
+  <button onclick="setTheme('yellow')">Yellow</button>
+</section>
+
+<style>
+  .day9-theme-switcher {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: background 0.3s, color 0.3s;
+  }
+</style>
+
+<script>
+  function setTheme(color) {
+    const box = document.getElementById("themeBox");
+
+    if (color === "blue") {
+      box.style.backgroundColor = "#1e90ff";
+      box.style.color = "white";
+    } 
+    else if (color === "green") {
+      box.style.backgroundColor = "#2e8b57";
+      box.style.color = "white";
+    } 
+    else if (color === "yellow") {
+      box.style.backgroundColor = "#ffd700";
+      box.style.color = "black";
+    }
+  }
+</script>
+
+
+<!-- =============================== -->
+<!-- Day 9 - Mini Project 5 -->
+<!-- To-Do List App -->
+<!-- =============================== -->
+<section class="day9-todo">
+  <h2>Project 5-To-Do List</h2>
+
+  <input type="text" id="todoInput" placeholder="Enter task">
+  <button onclick="addTask()">Add</button>
+
+  <ul id="todoList"></ul>
+</section>
+
+<style>
+  .day9-todo {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .day9-todo input {
+    padding: 5px;
+  }
+
+  .completed {
+    text-decoration: line-through;
+    color: gray;
+  }
+</style>
+
+<script>
+  function addTask() {
+    let taskText = document.getElementById("todoInput").value;
+
+    if (taskText === "") return;
+
+    let li = document.createElement("li");
+    li.innerText = taskText;
+
+    // Mark completed on click
+    li.onclick = function () {
+      li.classList.toggle("completed");
+    };
+
+    // Remove task on double click
+    li.ondblclick = function () {
+      li.remove();
+    };
+
+    document.getElementById("todoList").appendChild(li);
+    document.getElementById("todoInput").value = "";
+  }
+</script>
+
+<!-- =============================== -->
+<!-- Day 9 - Mini Project 6 -->
+<!-- Live Word Counter -->
+<!-- =============================== -->
+<section class="day9-word-counter">
+  <h2>Project 6 - Live Word Counter</h2>
+
+  <textarea
+    id="wordInput"
+    rows="5"
+    cols="40"
+    placeholder="Start typing here..."
+    oninput="countWordsLive()"
+  ></textarea>
+
+  <p>Word Count: <span id="wordCount">0</span></p>
+</section>
+
+<style>
+  .day9-word-counter {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .day9-word-counter textarea {
+    width: 100%;
+    max-width: 400px;
+    padding: 8px;
+  }
+</style>
+
+<script>
+  function countWordsLive() {
+    let text = document.getElementById("wordInput").value.trim();
+
+    if (text === "") {
+      document.getElementById("wordCount").innerText = 0;
+      return;
+    }
+
+    let words = text.split(/\s+/);
+    document.getElementById("wordCount").innerText = words.length;
+  }
+</script>
+
+
+</body>
+</html>

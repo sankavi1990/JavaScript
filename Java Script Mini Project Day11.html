@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Day11 Mini Projects</title>
+</head>
+<body>
+    <!-- =============================== -->
+<!-- Day 11 - Mini Project 1 -->
+<!-- Stopwatch with sessionStorage -->
+<!-- =============================== -->
+
+<section class="day11-stopwatch">
+  <h2>Project 1 - Stopwatch (Session Storage)</h2>
+
+  <div id="day11-time">0</div>
+
+  <button onclick="startStopwatch()">Start</button>
+  <button onclick="stopStopwatch()">Stop</button>
+  <button onclick="resetStopwatch()">Reset</button>
+</section>
+
+<style>
+  .day11-stopwatch {
+    border: 1px solid #aaa;
+    padding: 20px;
+    width: 250px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  #day11-time {
+    font-size: 30px;
+    margin: 15px 0;
+  }
+
+  .day11-stopwatch button {
+    margin: 5px;
+    padding: 6px 10px;
+  }
+</style>
+
+<script>
+  let day11Seconds = sessionStorage.getItem("day11Time")
+    ? Number(sessionStorage.getItem("day11Time"))
+    : 0;
+
+  let day11Timer = null;
+
+  document.getElementById("day11-time").innerText = day11Seconds;
+
+  function startStopwatch() {
+    if (day11Timer !== null) return;
+
+    day11Timer = setInterval(() => {
+      day11Seconds++;
+      document.getElementById("day11-time").innerText = day11Seconds;
+      sessionStorage.setItem("day11Time", day11Seconds);
+    }, 1000);
+  }
+
+  function stopStopwatch() {
+    clearInterval(day11Timer);
+    day11Timer = null;
+  }
+
+  function resetStopwatch() {
+    stopStopwatch();
+    day11Seconds = 0;
+    document.getElementById("day11-time").innerText = 0;
+    sessionStorage.removeItem("day11Time");
+  }
+</script>
+
+
+
+<!-- =============================== -->
+<!-- Day 11 - Mini Project 2 -->
+<!-- Notes App with LocalStorage -->
+<!-- =============================== -->
+
+<section class="day11-notes-app">
+  <h2>Project 2 - Notes App</h2>
+
+  <textarea
+    id="day11-note-input"
+    placeholder="Write your note here..."
+  ></textarea>
+
+  <br />
+  <button onclick="saveDay11Note()">Save Note</button>
+
+  <h3>Your Notes</h3>
+  <div id="day11-notes-list"></div>
+</section>
+
+<style>
+  .day11-notes-app {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 400px;
+    margin-bottom: 30px;
+  }
+
+  .day11-notes-app textarea {
+    width: 100%;
+    height: 80px;
+    padding: 8px;
+  }
+
+  .day11-notes-app button {
+    margin-top: 10px;
+    padding: 6px 12px;
+  }
+
+  .day11-note-item {
+    border: 1px solid #ddd;
+    padding: 8px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .day11-note-item span {
+    flex: 1;
+  }
+
+  .day11-delete-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  let day11Notes = JSON.parse(localStorage.getItem("day11Notes")) || [];
+
+  function renderDay11Notes() {
+    const notesList = document.getElementById("day11-notes-list");
+    notesList.innerHTML = "";
+
+    day11Notes.forEach((note, index) => {
+      const noteDiv = document.createElement("div");
+      noteDiv.className = "day11-note-item";
+
+      noteDiv.innerHTML = `
+        <span>${note}</span>
+        <button class="day11-delete-btn" onclick="deleteDay11Note(${index})">X</button>
+      `;
+
+      notesList.appendChild(noteDiv);
+    });
+  }
+
+  function saveDay11Note() {
+    const input = document.getElementById("day11-note-input");
+
+    if (input.value.trim() === "") return;
+
+    day11Notes.push(input.value);
+    localStorage.setItem("day11Notes", JSON.stringify(day11Notes));
+    input.value = "";
+    renderDay11Notes();
+  }
+
+  function deleteDay11Note(index) {
+    day11Notes.splice(index, 1);
+    localStorage.setItem("day11Notes", JSON.stringify(day11Notes));
+    renderDay11Notes();
+  }
+
+  renderDay11Notes();
+</script>
+
+
+
+<!-- =============================== -->
+<!-- Day 11 - Mini Project 3 -->
+<!-- To-Do List with LocalStorage -->
+<!-- =============================== -->
+
+<section class="day11-todo-app">
+  <h2>Project 3 To-Do List</h2>
+
+  <input
+    type="text"
+    id="day11-todo-input"
+    placeholder="Enter a task"
+  />
+  <button onclick="addDay11Task()">Add Task</button>
+
+  <ul id="day11-todo-list"></ul>
+</section>
+
+<style>
+  .day11-todo-app {
+    border: 1px solid #bbb;
+    padding: 20px;
+    width: 400px;
+    margin-bottom: 30px;
+  }
+
+  .day11-todo-app input {
+    width: 70%;
+    padding: 6px;
+  }
+
+  .day11-todo-app button {
+    padding: 6px 10px;
+  }
+
+  .day11-todo-item {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .day11-completed {
+    text-decoration: line-through;
+    color: gray;
+  }
+
+  .day11-delete {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 3px 7px;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  let day11Tasks = JSON.parse(localStorage.getItem("day11Tasks")) || [];
+
+  function renderDay11Tasks() {
+    const list = document.getElementById("day11-todo-list");
+    list.innerHTML = "";
+
+    day11Tasks.forEach((task, index) => {
+      const li = document.createElement("li");
+      li.className = "day11-todo-item";
+
+      li.innerHTML = `
+        <span class="${task.completed ? "day11-completed" : ""}"
+              onclick="toggleDay11Task(${index})">
+          ${task.name}
+        </span>
+        <button class="day11-delete" onclick="deleteDay11Task(${index})">X</button>
+      `;
+
+      list.appendChild(li);
+    });
+  }
+
+  function addDay11Task() {
+    const input = document.getElementById("day11-todo-input");
+    if (input.value.trim() === "") return;
+
+    day11Tasks.push({
+      name: input.value,
+      completed: false
+    });
+
+    localStorage.setItem("day11Tasks", JSON.stringify(day11Tasks));
+    input.value = "";
+    renderDay11Tasks();
+  }
+
+  function toggleDay11Task(index) {
+    day11Tasks[index].completed = !day11Tasks[index].completed;
+    localStorage.setItem("day11Tasks", JSON.stringify(day11Tasks));
+    renderDay11Tasks();
+  }
+
+  function deleteDay11Task(index) {
+    day11Tasks.splice(index, 1);
+    localStorage.setItem("day11Tasks", JSON.stringify(day11Tasks));
+    renderDay11Tasks();
+  }
+
+  renderDay11Tasks();
+</script>
+
+<!-- =============================== -->
+<!-- Day 11 - Mini Project 4 -->
+<!-- Persistent Survey Form -->
+<!-- =============================== -->
+
+<section class="day11-survey-form">
+  <h2>Project 4-Survey Form</h2>
+
+  <label>Name:</label><br />
+  <input type="text" id="day11-name" /><br /><br />
+
+  <label>Age:</label><br />
+  <input type="number" id="day11-age" /><br /><br />
+
+  <label>Rating (1–5):</label><br />
+  <select id="day11-rating">
+    <option value="">Select</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select><br /><br />
+
+  <label>Comments:</label><br />
+  <textarea id="day11-comments"></textarea><br /><br />
+
+  <button onclick="saveDay11Survey()">Save</button>
+</section>
+
+<style>
+  .day11-survey-form {
+    border: 1px solid #aaa;
+    padding: 20px;
+    width: 400px;
+    margin-bottom: 30px;
+  }
+
+  .day11-survey-form input,
+  .day11-survey-form select,
+  .day11-survey-form textarea {
+    width: 100%;
+    padding: 6px;
+  }
+
+  .day11-survey-form button {
+    padding: 6px 12px;
+  }
+</style>
+
+<script>
+  function saveDay11Survey() {
+    const surveyData = {
+      name: document.getElementById("day11-name").value,
+      age: document.getElementById("day11-age").value,
+      rating: document.getElementById("day11-rating").value,
+      comments: document.getElementById("day11-comments").value
+    };
+
+    localStorage.setItem("day11Survey", JSON.stringify(surveyData));
+    alert("Survey saved!");
+  }
+
+  function loadDay11Survey() {
+    const data = JSON.parse(localStorage.getItem("day11Survey"));
+
+    if (!data) return;
+
+    document.getElementById("day11-name").value = data.name;
+    document.getElementById("day11-age").value = data.age;
+    document.getElementById("day11-rating").value = data.rating;
+    document.getElementById("day11-comments").value = data.comments;
+  }
+
+  loadDay11Survey();
+</script>
+
+
+<!-- ======================================= -->
+<!-- Day 11 - Mini Project 5 -->
+<!-- Add to Cart with Search + LocalStorage -->
+<!-- ======================================= -->
+
+<section class="day11-cart-app">
+  <h2>Project 5  - Shopping Cart</h2>
+
+  <input
+    type="text"
+    id="day11-search"
+    placeholder="Search products..."
+    onkeyup="searchDay11Products()"
+  />
+
+  <ul id="day11-product-list"></ul>
+
+  <h3>Cart</h3>
+  <ul id="day11-cart-list"></ul>
+
+  <p><strong>Total:</strong> ₹<span id="day11-total">0</span></p>
+
+  <button onclick="clearDay11Cart()">Clear Cart</button>
+</section>
+
+<style>
+  .day11-cart-app {
+    border: 1px solid #999;
+    padding: 20px;
+    width: 400px;
+    margin-bottom: 30px;
+  }
+
+  .day11-cart-app input {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 10px;
+  }
+
+  .day11-cart-app ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .day11-cart-app li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .day11-cart-app button {
+    padding: 4px 8px;
+  }
+</style>
+
+<script>
+  const day11Products = [
+    { name: "Apple", price: 50 },
+    { name: "Banana", price: 20 },
+    { name: "Milk", price: 40 },
+    { name: "Bread", price: 30 },
+    { name: "Eggs", price: 60 }
+  ];
+
+  let day11Cart = JSON.parse(localStorage.getItem("day11Cart")) || [];
+
+  function displayDay11Products(products) {
+    const list = document.getElementById("day11-product-list");
+    list.innerHTML = "";
+
+    products.forEach((product) => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        ${product.name} - ₹${product.price}
+        <button onclick="addDay11ToCart('${product.name}')">Add</button>
+      `;
+      list.appendChild(li);
+    });
+  }
+
+  function addDay11ToCart(name) {
+    const product = day11Products.find(p => p.name === name);
+    day11Cart.push(product);
+    localStorage.setItem("day11Cart", JSON.stringify(day11Cart));
+    displayDay11Cart();
+  }
+
+  function displayDay11Cart() {
+    const cartList = document.getElementById("day11-cart-list");
+    const totalSpan = document.getElementById("day11-total");
+
+    cartList.innerHTML = "";
+    let total = 0;
+
+    day11Cart.forEach((item, index) => {
+      total += item.price;
+      const li = document.createElement("li");
+      li.innerHTML = `
+        ${item.name} - ₹${item.price}
+        <button onclick="removeDay11Item(${index})">X</button>
+      `;
+      cartList.appendChild(li);
+    });
+
+    totalSpan.innerText = total;
+  }
+
+  function removeDay11Item(index) {
+    day11Cart.splice(index, 1);
+    localStorage.setItem("day11Cart", JSON.stringify(day11Cart));
+    displayDay11Cart();
+  }
+
+  function clearDay11Cart() {
+    day11Cart = [];
+    localStorage.removeItem("day11Cart");
+    displayDay11Cart();
+  }
+
+  function searchDay11Products() {
+    const searchText = document
+      .getElementById("day11-search")
+      .value.toLowerCase();
+
+    const filtered = day11Products.filter(p =>
+      p.name.toLowerCase().includes(searchText)
+    );
+
+    displayDay11Products(filtered);
+  }
+
+  displayDay11Products(day11Products);
+  displayDay11Cart();
+</script>
+
+
+
+<!-- ===================================== -->
+<!-- Day 11 - Mini Project 6 -->
+<!-- Expense Tracker with LocalStorage -->
+<!-- ===================================== -->
+
+<section class="day11-expense-tracker">
+  <h2>Project 6 - Expense Tracker</h2>
+
+  <input
+    type="text"
+    id="day11-expense-name"
+    placeholder="Expense name"
+  />
+
+  <input
+    type="number"
+    id="day11-expense-amount"
+    placeholder="Amount"
+  />
+
+  <button onclick="addDay11Expense()">Add Expense</button>
+
+  <ul id="day11-expense-list"></ul>
+
+  <p><strong>Total Expense:</strong> ₹<span id="day11-expense-total">0</span></p>
+</section>
+
+<style>
+  .day11-expense-tracker {
+    border: 1px solid #999;
+    padding: 20px;
+    width: 400px;
+    margin-bottom: 30px;
+  }
+
+  .day11-expense-tracker input {
+    width: 45%;
+    padding: 6px;
+    margin-bottom: 10px;
+  }
+
+  .day11-expense-tracker button {
+    padding: 6px 12px;
+  }
+
+  .day11-expense-tracker ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .day11-expense-tracker li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .day11-expense-tracker button {
+    margin-left: 5px;
+  }
+</style>
+
+<script>
+  let day11Expenses = JSON.parse(localStorage.getItem("day11Expenses")) || [];
+
+  function renderDay11Expenses() {
+    const list = document.getElementById("day11-expense-list");
+    const totalSpan = document.getElementById("day11-expense-total");
+
+    list.innerHTML = "";
+    let total = 0;
+
+    day11Expenses.forEach((expense, index) => {
+      total += expense.amount;
+
+      const li = document.createElement("li");
+      li.innerHTML = `
+        ${expense.name} - ₹${expense.amount}
+        <button onclick="deleteDay11Expense(${index})">X</button>
+      `;
+      list.appendChild(li);
+    });
+
+    totalSpan.innerText = total;
+  }
+
+  function addDay11Expense() {
+    const name = document.getElementById("day11-expense-name").value;
+    const amount = Number(
+      document.getElementById("day11-expense-amount").value
+    );
+
+    if (name === "" || amount <= 0) return;
+
+    day11Expenses.push({ name, amount });
+    localStorage.setItem("day11Expenses", JSON.stringify(day11Expenses));
+
+    document.getElementById("day11-expense-name").value = "";
+    document.getElementById("day11-expense-amount").value = "";
+
+    renderDay11Expenses();
+  }
+
+  function deleteDay11Expense(index) {
+    day11Expenses.splice(index, 1);
+    localStorage.setItem("day11Expenses", JSON.stringify(day11Expenses));
+    renderDay11Expenses();
+  }
+
+  renderDay11Expenses();
+</script>
+
+
+
+</body>
+</html>

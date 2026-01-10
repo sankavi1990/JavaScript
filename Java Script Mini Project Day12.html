@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Mini Project Day12</title>
+</head>
+<body>
+    <!-- ================================= -->
+<!-- Day 12 - Mini Project 1 -->
+<!-- Inventory Management System -->
+<!-- ================================= -->
+
+<section class="day12-inventory">
+  <h2>Project 1 - Inventory Management</h2>
+
+  <input id="day12-search" placeholder="Search by ID or Name" />
+  <button onclick="searchDay12Product()">Search</button>
+
+  <p id="day12-search-result"></p>
+
+  <h3>Add / Remove Stock</h3>
+  <input id="day12-product-id" placeholder="Product ID" />
+  <input id="day12-qty" type="number" placeholder="Quantity (+ / -)" />
+  <button onclick="updateDay12Stock()">Update</button>
+
+  <h3>Inventory List</h3>
+  <ul id="day12-product-list"></ul>
+
+  <p>
+    <strong>Total Inventory Value:</strong>
+    ₹<span id="day12-total-value">0</span>
+  </p>
+</section>
+
+<style>
+  .day12-inventory {
+    border: 1px solid #888;
+    padding: 20px;
+    width: 450px;
+    margin-bottom: 30px;
+  }
+
+  .day12-inventory input {
+    padding: 6px;
+    margin: 4px 0;
+    width: 45%;
+  }
+
+  .day12-inventory button {
+    padding: 6px 10px;
+    margin: 4px 0;
+  }
+
+  .day12-inventory ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .day12-inventory li {
+    margin-bottom: 6px;
+  }
+</style>
+
+<script>
+  let day12Inventory = [
+    { id: "P1", name: "Laptop", category: "Electronics", quantity: 5, price: 50000 },
+    { id: "P2", name: "Phone", category: "Electronics", quantity: 10, price: 20000 },
+    { id: "P3", name: "Chair", category: "Furniture", quantity: 8, price: 3000 }
+  ];
+
+  function displayDay12Inventory() {
+    const list = document.getElementById("day12-product-list");
+    list.innerHTML = "";
+
+    let totalValue = 0;
+
+    day12Inventory.forEach(p => {
+      totalValue += p.quantity * p.price;
+      list.innerHTML += `
+        <li>
+          ${p.id} | ${p.name} | ${p.category} |
+          Qty: ${p.quantity} | ₹${p.price}
+        </li>
+      `;
+    });
+
+    document.getElementById("day12-total-value").innerText = totalValue;
+  }
+
+  function searchDay12Product() {
+    const text = document.getElementById("day12-search").value.toLowerCase();
+    const product = day12Inventory.find(
+      p => p.id.toLowerCase() === text || p.name.toLowerCase() === text
+    );
+
+    document.getElementById("day12-search-result").innerText =
+      product
+        ? `${product.name} is in stock. Quantity: ${product.quantity}`
+        : "Product not found";
+  }
+
+  function updateDay12Stock() {
+    const id = document.getElementById("day12-product-id").value;
+    const qty = Number(document.getElementById("day12-qty").value);
+
+    const product = day12Inventory.find(p => p.id === id);
+    if (!product) return alert("Product not found");
+
+    product.quantity += qty;
+    displayDay12Inventory();
+  }
+
+  displayDay12Inventory();
+</script>
+
+
+<!-- ===================================== -->
+<!-- Day 12 - Mini Project 2 -->
+<!-- Library Book Management System -->
+<!-- ===================================== -->
+
+<section class="day12-library">
+  <h2>Project 2 -Library Book Management</h2>
+
+  <input
+    type="text"
+    id="day12-lib-search"
+    placeholder="Search by title / author / genre"
+  />
+  <button onclick="searchDay12Books()">Search</button>
+
+  <p id="day12-lib-result"></p>
+
+  <h3>Issue / Return Book</h3>
+  <input id="day12-book-id" placeholder="Book ID" />
+  <input id="day12-borrower" placeholder="Borrower Name (for issue)" />
+  <button onclick="issueDay12Book()">Issue</button>
+  <button onclick="returnDay12Book()">Return</button>
+
+  <h3>Available Books</h3>
+  <ul id="day12-available-books"></ul>
+</section>
+
+<style>
+  .day12-library {
+    border: 1px solid #777;
+    padding: 20px;
+    width: 500px;
+    margin-bottom: 30px;
+  }
+
+  .day12-library input {
+    padding: 6px;
+    margin: 4px 0;
+    width: 45%;
+  }
+
+  .day12-library button {
+    padding: 6px 10px;
+    margin: 4px 0;
+  }
+
+  .day12-library ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .day12-library li {
+    margin-bottom: 6px;
+  }
+</style>
+
+<script>
+  let day12Books = [
+    {
+      id: "B1",
+      title: "Harry Potter",
+      author: "J K Rowling",
+      genre: "Fantasy",
+      available: true,
+      borrower: ""
+    },
+    {
+      id: "B2",
+      title: "Atomic Habits",
+      author: "James Clear",
+      genre: "Self Help",
+      available: false,
+      borrower: "Ravi"
+    },
+    {
+      id: "B3",
+      title: "The Alchemist",
+      author: "Paulo Coelho",
+      genre: "Fiction",
+      available: true,
+      borrower: ""
+    }
+  ];
+
+  function listDay12AvailableBooks() {
+    const list = document.getElementById("day12-available-books");
+    list.innerHTML = "";
+
+    day12Books
+      .filter(book => book.available)
+      .forEach(book => {
+        list.innerHTML += `
+          <li>
+            ${book.id} | ${book.title} | ${book.author} | ${book.genre}
+          </li>
+        `;
+      });
+  }
+
+  function searchDay12Books() {
+    const text = document
+      .getElementById("day12-lib-search")
+      .value.toLowerCase();
+
+    const results = day12Books.filter(
+      b =>
+        b.title.toLowerCase().includes(text) ||
+        b.author.toLowerCase().includes(text) ||
+        b.genre.toLowerCase().includes(text)
+    );
+
+    document.getElementById("day12-lib-result").innerText =
+      results.length > 0
+        ? `Found ${results.length} book(s)`
+        : "No books found";
+  }
+
+  function issueDay12Book() {
+    const id = document.getElementById("day12-book-id").value;
+    const borrower = document.getElementById("day12-borrower").value;
+
+    const book = day12Books.find(b => b.id === id);
+    if (!book || !book.available) return alert("Book not available");
+
+    book.available = false;
+    book.borrower = borrower;
+    listDay12AvailableBooks();
+  }
+
+  function returnDay12Book() {
+    const id = document.getElementById("day12-book-id").value;
+    const book = day12Books.find(b => b.id === id);
+    if (!book || book.available) return alert("Invalid return");
+
+    book.available = true;
+    book.borrower = "";
+    listDay12AvailableBooks();
+  }
+
+  listDay12AvailableBooks();
+</script>
+
+
+
+<!-- ===================================== -->
+<!-- Day 12 - Mini Project 3 -->
+<!-- Student Marks Database -->
+<!-- ===================================== -->
+
+<section class="day12-student-db">
+  <h2>Project 3 - Student Marks Database</h2>
+
+  <input id="day12-stu-name" placeholder="Student Name" />
+  <input id="day12-stu-marks" placeholder="Marks (comma separated)" />
+  <button onclick="addDay12Student()">Add Student</button>
+
+  <h3>Student Records</h3>
+  <ul id="day12-student-list"></ul>
+
+  <p>
+    <strong>Class Average:</strong>
+    <span id="day12-class-avg">0</span>
+  </p>
+</section>
+
+<style>
+  .day12-student-db {
+    border: 1px solid #666;
+    padding: 20px;
+    width: 480px;
+    margin-bottom: 30px;
+  }
+
+  .day12-student-db input {
+    padding: 6px;
+    width: 45%;
+    margin-bottom: 6px;
+  }
+
+  .day12-student-db button {
+    padding: 6px 12px;
+  }
+
+  .day12-student-db ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .day12-student-db li {
+    margin-bottom: 6px;
+  }
+</style>
+
+<script>
+  let day12Students = [];
+
+  function addDay12Student() {
+    const name = document.getElementById("day12-stu-name").value;
+    const marksInput = document.getElementById("day12-stu-marks").value;
+
+    if (name === "" || marksInput === "") return;
+
+    const marks = marksInput.split(",").map(Number);
+    const total = marks.reduce((a, b) => a + b, 0);
+    const average = (total / marks.length).toFixed(2);
+
+    day12Students.push({ name, marks, average });
+
+    document.getElementById("day12-stu-name").value = "";
+    document.getElementById("day12-stu-marks").value = "";
+
+    renderDay12Students();
+  }
+
+  function renderDay12Students() {
+    const list = document.getElementById("day12-student-list");
+    list.innerHTML = "";
+
+    let classTotal = 0;
+
+    day12Students.forEach(student => {
+      classTotal += Number(student.average);
+      list.innerHTML += `
+        <li>
+          ${student.name} | Marks: ${student.marks.join(", ")} |
+          Avg: ${student.average}
+        </li>
+      `;
+    });
+
+    const classAvg =
+      day12Students.length > 0
+        ? (classTotal / day12Students.length).toFixed(2)
+        : 0;
+
+    document.getElementById("day12-class-avg").innerText = classAvg;
+  }
+</script>
+
+
+<!-- ===================================== -->
+<!-- Day 12 - Mini Project 4 -->
+<!-- Customer Orders Management -->
+<!-- ===================================== -->
+
+<section class="day12-orders">
+  <h2>Mini Project 4 - Customer Orders Management</h2>
+
+  <input id="day12-order-id" placeholder="Order ID" />
+  <input id="day12-customer-name" placeholder="Customer Name" />
+  <input id="day12-order-items" placeholder="Items (comma separated)" />
+  <input id="day12-order-total" placeholder="Total Amount" />
+  <button onclick="addDay12Order()">Add Order</button>
+
+  <h3>Search / Filter Orders</h3>
+  <input
+    id="day12-search-order"
+    placeholder="Search by Order ID or Customer Name"
+    onkeyup="searchDay12Orders()"
+  />
+
+  <h3>Order List</h3>
+  <ul id="day12-order-list"></ul>
+
+  <p>
+    <strong>Total Revenue:</strong>
+    ₹<span id="day12-total-revenue">0</span>
+  </p>
+</section>
+
+<style>
+  .day12-orders {
+    border: 1px solid #444;
+    padding: 20px;
+    width: 500px;
+    margin-bottom: 30px;
+  }
+
+  .day12-orders input {
+    padding: 6px;
+    width: 47%;
+    margin-bottom: 6px;
+  }
+
+  .day12-orders button {
+    padding: 6px 12px;
+  }
+
+  .day12-orders ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .day12-orders li {
+    margin-bottom: 6px;
+  }
+</style>
+
+<script>
+  let day12Orders = [];
+
+  function addDay12Order() {
+    const id = document.getElementById("day12-order-id").value;
+    const customer = document.getElementById("day12-customer-name").value;
+    const items = document
+      .getElementById("day12-order-items")
+      .value.split(",");
+    const total = Number(
+      document.getElementById("day12-order-total").value
+    );
+
+    if (!id || !customer || isNaN(total)) return;
+
+    day12Orders.push({ id, customer, items, total });
+
+    document.getElementById("day12-order-id").value = "";
+    document.getElementById("day12-customer-name").value = "";
+    document.getElementById("day12-order-items").value = "";
+    document.getElementById("day12-order-total").value = "";
+
+    renderDay12Orders(day12Orders);
+  }
+
+  function renderDay12Orders(orderArray) {
+    const list = document.getElementById("day12-order-list");
+    list.innerHTML = "";
+
+    let revenue = 0;
+
+    orderArray.forEach(order => {
+      revenue += order.total;
+      list.innerHTML += `
+        <li>
+          Order #${order.id} |
+          ${order.customer} |
+          Items: ${order.items.join(", ")} |
+          ₹${order.total}
+        </li>
+      `;
+    });
+
+    document.getElementById("day12-total-revenue").innerText = revenue;
+  }
+
+  function searchDay12Orders() {
+    const keyword = document
+      .getElementById("day12-search-order")
+      .value.toLowerCase();
+
+    const filtered = day12Orders.filter(
+      order =>
+        order.id.toLowerCase().includes(keyword) ||
+        order.customer.toLowerCase().includes(keyword)
+    );
+
+    renderDay12Orders(filtered);
+  }
+</script>
+
+<!-- ===================================== -->
+<!-- Day 12 - Mini Project 5 -->
+<!-- Student Performance Dashboard -->
+<!-- ===================================== -->
+
+<section class="day12-student-dashboard">
+  <h2>Project 5 -Student Performance Dashboard</h2>
+
+  <input id="day12-student-name" placeholder="Student Name" />
+  <input id="day12-roll-no" placeholder="Roll Number" />
+  <input id="day12-marks" placeholder="Marks (Math,Science,English)" />
+  <button onclick="addDay12Student()">Add Student</button>
+
+  <br /><br />
+  <button onclick="sortDay12Students()">Sort by Performance</button>
+
+  <h3>Student List</h3>
+  <table border="1" width="100%">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Roll No</th>
+        <th>Total</th>
+        <th>Average</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="day12-student-table"></tbody>
+  </table>
+</section>
+
+<style>
+  .day12-student-dashboard {
+    border: 1px solid #444;
+    padding: 20px;
+    width: 600px;
+    margin-bottom: 30px;
+  }
+
+  .pass {
+    background-color: #c8f7c5;
+  }
+
+  .fail {
+    background-color: #f7c5c5;
+  }
+
+  .distinction {
+    font-weight: bold;
+    color: green;
+  }
+</style>
+
+<script>
+  let day12Students1 = [];
+
+  function addDay12Student() {
+    const name = document.getElementById("day12-student-name").value;
+    const roll = document.getElementById("day12-roll-no").value;
+    const marks = document
+      .getElementById("day12-marks")
+      .value.split(",")
+      .map(Number);
+
+    if (!name || !roll || marks.length === 0) return;
+
+    const total = marks.reduce((a, b) => a + b, 0);
+    const average = total / marks.length;
+
+    day12Students1.push({ name, roll, total, average });
+
+    document.getElementById("day12-student-name").value = "";
+    document.getElementById("day12-roll-no").value = "";
+    document.getElementById("day12-marks").value = "";
+
+    renderDay12Students(day12Students1);
+  }
+
+  function renderDay12Students(studentArray) {
+    const table = document.getElementById("day12-student-table");
+    table.innerHTML = "";
+
+    studentArray.forEach ((student => {
+      const status = student.average >= 40 ? "Pass" : "Fail";
+      const rowClass = status === "Pass" ? "pass" : "fail";
+      const distinction =
+        student.average >= 75 ? "distinction" : "";
+
+      table.innerHTML += `
+        <tr class="${rowClass}">
+          <td class="${distinction}">${student.name}</td>
+          <td>${student.roll}</td>
+          <td>${student.total}</td>
+          <td>${student.average.toFixed(2)}</td>
+          <td>${status}</td>
+        </tr>
+      `;
+    }));
+  }
+
+  function sortDay12Students() {
+    day12Students.sort((a, b) => b.average - a.average);
+    renderDay12Students(day12Students1);
+  }
+</script>
+
+
+<!-- ===================================== -->
+<!-- Day 12 - Mini Project 6 -->
+<!-- Online Order Fulfillment System -->
+<!-- ===================================== -->
+
+<section class="day12-fulfillment-system">
+  <h2>Online Order Fulfillment System</h2>
+
+  <input id="of-order-id" placeholder="Order ID">
+  <input id="of-customer-name" placeholder="Customer Name">
+  <input id="of-items" placeholder="Items (comma separated)">
+  <input id="of-quantity" type="number" placeholder="Quantity">
+  <button onclick="addFulfillmentOrder()">Add Order</button>
+
+  <br><br>
+  <input id="of-fulfill-id" placeholder="Order ID to Fulfill">
+  <button onclick="fulfillOrder()">Fulfill Order</button>
+
+  <br><br>
+  <button onclick="showPendingOrders()">Show Pending Orders</button>
+  <button onclick="calculateFulfilledRevenue()">Calculate Revenue</button>
+
+  <h3>All Orders</h3>
+  <ul id="of-order-list"></ul>
+
+  <h3>Customer-wise Summary</h3>
+  <ul id="of-customer-summary"></ul>
+
+  <h3 id="of-revenue"></h3>
+</section>
+
+
+ <style>
+    .day12-fulfillment-system {
+      border: 2px solid #444;
+      padding: 20px;
+      width: 700px;
+      margin: 20px auto;
+      font-family: Arial, sans-serif;
+    }
+
+    input, button {
+      margin: 5px 0;
+      padding: 6px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .pending {
+      color: orange;
+      font-weight: bold;
+    }
+
+    .fulfilled {
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+
+<!-- <script>
+  let day12Orders1 = [];
+
+  function addDay12Order() {
+    const id = document.getElementById("day12-order-id").value;
+    const customer = document.getElementById("day12-customer-name").value;
+    const items = document
+      .getElementById("day12-items")
+      .value.split(",");
+    const quantity = Number(
+      document.getElementById("day12-quantity").value
+    );
+
+    if (!id || !customer || !items || !quantity) return;
+
+    day12Orders.push({
+      id,
+      customer,
+      items,
+      quantity,
+      status: "pending",
+      price: quantity * 100 // fixed price per item
+    });
+
+    clearDay12OrderInputs();
+    renderDay12Orders(day12Orders1);
+    renderCustomerSummary();
+  }
+
+  function clearDay12OrderInputs() {
+    document.getElementById("day12-order-id").value = "";
+    document.getElementById("day12-customer-name").value = "";
+    document.getElementById("day12-items").value = "";
+    document.getElementById("day12-quantity").value = "";
+  }
+
+  function renderDay12Orders(orderArray) {
+    const list = document.getElementById("day12-order-list");
+    list.innerHTML = "";
+
+    orderArray.forEach((order, index) => {
+      list.innerHTML += `
+        <li class="${order.status}">
+          Order ${order.id} | ${order.customer} | ${order.status.toUpperCase()}
+          <button onclick="fulfillDay12Order(${index})">Fulfill</button>
+        </li>
+      `;
+    });
+  }
+
+  function fulfillDay12Order(index) {
+    day12Orders[index].status = "fulfilled";
+    renderDay12Orders(day12Orders1);
+    renderCustomerSummary();
+  }
+
+  function showPendingOrders() {
+    const pending = day12Orders1.filter(
+      order => order.status === "pending"
+    );
+    renderDay12Orders(pending);
+  }
+
+  function calculateRevenue() {
+    const revenue = day12Orders1
+      .filter(order => order.status === "fulfilled")
+      .reduce((sum, order) => sum + order.price, 0);
+
+    document.getElementById(
+      "day12-revenue"
+    ).innerText = `Total Revenue: ₹${revenue}`;
+  }
+
+  function renderCustomerSummary() {
+    const summary = document.getElementById("day12-customer-summary");
+    summary.innerHTML = "";
+
+    const customerMap = {};
+
+    day12Orders.forEach(order => {
+      if (!customerMap[order.customer]) {
+        customerMap[order.customer] = 0;
+      }
+      customerMap[order.customer] += 1;
+    });
+
+    for (let customer in customerMap) {
+      summary.innerHTML += `
+        <li>${customer} - ${customerMap[customer]} orders</li>
+      `;
+    }
+  }
+</script> -->
+
+<script>
+  let fulfillmentOrders = [];
+
+  function addFulfillmentOrder() {
+    const id = document.getElementById("of-order-id").value;
+    const customer = document.getElementById("of-customer-name").value;
+    const items = document.getElementById("of-items").value.split(",");
+    const quantity = Number(document.getElementById("of-quantity").value);
+
+    if (!id || !customer || items.length === 0 || quantity <= 0) {
+      alert("Please enter all order details");
+      return;
+    }
+
+    fulfillmentOrders.push({
+      id,
+      customer,
+      items,
+      quantity,
+      status: "pending",
+      price: quantity * 100   // simple fixed price per item
+    });
+
+    displayAllOrders();
+    displayCustomerSummary();
+  }
+
+  function fulfillOrder() {
+    const fulfillId = document.getElementById("of-fulfill-id").value;
+
+    fulfillmentOrders.forEach(order => {
+      if (order.id === fulfillId) {
+        order.status = "fulfilled";
+      }
+    });
+
+    displayAllOrders();
+    displayCustomerSummary();
+  }
+
+  function showPendingOrders() {
+    const list = document.getElementById("of-order-list");
+    list.innerHTML = "";
+
+    fulfillmentOrders
+      .filter(order => order.status === "pending")
+      .forEach(order => {
+        const li = document.createElement("li");
+        li.className = "pending";
+        li.textContent = `Order ${order.id} - ${order.customer} (Pending)`;
+        list.appendChild(li);
+      });
+  }
+
+  function calculateFulfilledRevenue() {
+    let totalRevenue = 0;
+
+    fulfillmentOrders.forEach(order => {
+      if (order.status === "fulfilled") {
+        totalRevenue += order.price;
+      }
+    });
+
+    document.getElementById("of-revenue").textContent =
+      "Total Revenue from Fulfilled Orders: ₹" + totalRevenue;
+  }
+
+  function displayAllOrders() {
+    const list = document.getElementById("of-order-list");
+    list.innerHTML = "";
+
+    fulfillmentOrders.forEach(order => {
+      const li = document.createElement("li");
+      li.className = order.status === "fulfilled" ? "fulfilled" : "pending";
+      li.textContent = `Order ${order.id} | ${order.customer} | ${order.status.toUpperCase()}`;
+      list.appendChild(li);
+    });
+  }
+
+  function displayCustomerSummary() {
+    const summary = document.getElementById("of-customer-summary");
+    summary.innerHTML = "";
+
+    const customerMap = {};
+
+    fulfillmentOrders.forEach(order => {
+      if (!customerMap[order.customer]) {
+        customerMap[order.customer] = 0;
+      }
+      customerMap[order.customer] += order.price;
+    });
+
+    for (let customer in customerMap) {
+      const li = document.createElement("li");
+      li.textContent = `${customer} → Total Order Value: ₹${customerMap[customer]}`;
+      summary.appendChild(li);
+    }
+  }
+</script>
+
+
+</body>
+</html>
