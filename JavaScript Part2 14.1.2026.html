@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Advanced Mini Apps – Tasks 26 to 50</title>
+
+<style>
+body{font-family:Arial;background:#f4f6fb;padding:20px}
+section{background:#fff;padding:15px;margin-bottom:20px;border-radius:6px}
+h3{color:#222}
+input,button,select,textarea{margin:5px;padding:6px}
+.hidden{display:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.card{background:#dde3ff;padding:10px;border-radius:4px}
+.active{background:#b3c0ff}
+</style>
+</head>
+
+<body>
+
+<h2>Advanced Mini Apps – Tasks 26 to 50</h2>
+
+<!-- TASK 26 -->
+<section>
+<h3>Task 26: Settings Management App</h3>
+<select id="t26theme" onchange="saveSetting()">
+<option value="">Select Theme</option>
+<option>Light</option>
+<option>Dark</option>
+</select>
+<p id="t26msg"></p>
+</section>
+
+<!-- TASK 27 -->
+<section>
+<h3>Task 27: Dynamic Dropdown App</h3>
+<select id="t27country" onchange="loadCities()">
+<option>India</option>
+<option>USA</option>
+</select>
+<select id="t27city"></select>
+</section>
+
+<!-- TASK 28 -->
+<section>
+<h3>Task 28: Search + Highlight App</h3>
+<input id="t28search">
+<p id="t28text">JavaScript makes web pages interactive</p>
+</section>
+
+<!-- TASK 29 -->
+<section>
+<h3>Task 29: Progress Tracker App</h3>
+<button onclick="progress()">Complete Step</button>
+<p id="t29prog">0%</p>
+</section>
+
+<!-- TASK 30 -->
+<section>
+<h3>Task 30: Client-Side Validation Library</h3>
+<input id="t30input">
+<p id="t30err"></p>
+</section>
+
+<!-- TASK 31 -->
+<section>
+<h3>Task 31: Mini Admin Panel</h3>
+<button onclick="adminAction('Add')">Add</button>
+<button onclick="adminAction('Delete')">Delete</button>
+<p id="t31log"></p>
+</section>
+
+<!-- TASK 32 -->
+<section>
+<h3>Task 32: User Activity Log App</h3>
+<button onclick="logActivity()">Click Me</button>
+<ul id="t32list"></ul>
+</section>
+
+<!-- TASK 33 -->
+<section>
+<h3>Task 33: Offline Data Handling App</h3>
+<input id="t33data">
+<button onclick="saveOffline()">Save</button>
+<p id="t33msg"></p>
+</section>
+
+<!-- TASK 34 -->
+<section>
+<h3>Task 34: Form Wizard with Conditional Steps</h3>
+<select id="t34type" onchange="condStep()">
+<option value="">Select</option>
+<option value="student">Student</option>
+<option value="employee">Employee</option>
+</select>
+<p id="t34step"></p>
+</section>
+
+<!-- TASK 35 -->
+<section>
+<h3>Task 35: Dashboard Notification Center</h3>
+<button onclick="notify35()">Add Notification</button>
+<ul id="t35list"></ul>
+</section>
+
+<!-- TASK 36 -->
+<section>
+<h3>Task 36: Responsive Grid Layout App</h3>
+<div class="grid">
+<div class="card">1</div><div class="card">2</div><div class="card">3</div>
+</div>
+</section>
+
+<!-- TASK 37 -->
+<section>
+<h3>Task 37: User Feedback Analyzer</h3>
+<select id="t37rate" onchange="analyze()">
+<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+</select>
+<p id="t37out"></p>
+</section>
+
+<!-- TASK 38 -->
+<section>
+<h3>Task 38: State Management Mini-App</h3>
+<button onclick="setState()">Toggle State</button>
+<p id="t38state"></p>
+</section>
+
+<!-- TASK 39 -->
+<section>
+<h3>Task 39: Tab Management System</h3>
+<button onclick="tab('A')">Tab A</button>
+<button onclick="tab('B')">Tab B</button>
+<p id="t39content"></p>
+</section>
+
+<!-- TASK 40 -->
+<section>
+<h3>Task 40: Search & Filter Dashboard</h3>
+<input id="t40search">
+<ul id="t40list">
+<li>Admin</li><li>User</li><li>Manager</li>
+</ul>
+</section>
+
+<!-- TASK 41 -->
+<section>
+<h3>Task 41: Form Rules Engine App</h3>
+<input id="t41age">
+<p id="t41rule"></p>
+</section>
+
+<!-- TASK 42 -->
+<section>
+<h3>Task 42: Login Attempt Limit App</h3>
+<button onclick="attempt()">Login Attempt</button>
+<p id="t42msg"></p>
+</section>
+
+<!-- TASK 43 -->
+<section>
+<h3>Task 43: Dynamic Content Loader</h3>
+<button onclick="loadContent()">Load Content</button>
+<p id="t43data"></p>
+</section>
+
+<!-- TASK 44 -->
+<section>
+<h3>Task 44: Simple Reporting Dashboard</h3>
+<p>Total Users: 120</p>
+<p>Active Users: 95</p>
+</section>
+
+<!-- TASK 45 -->
+<section>
+<h3>Task 45: Keyboard Accessibility App</h3>
+<button id="t45btn">Press Enter</button>
+<p id="t45msg"></p>
+</section>
+
+<!-- TASK 46 -->
+<section>
+<h3>Task 46: UI Error Handling System</h3>
+<button onclick="tryError()">Trigger Error</button>
+<p id="t46msg"></p>
+</section>
+
+<!-- TASK 47 -->
+<section>
+<h3>Task 47: Dashboard Theme Customizer</h3>
+<button onclick="theme47()">Change Color</button>
+</section>
+
+<!-- TASK 48 -->
+<section>
+<h3>Task 48: User Onboarding Flow App</h3>
+<button onclick="nextOnboard()">Next Step</button>
+<p id="t48step"></p>
+</section>
+
+<!-- TASK 49 -->
+<section>
+<h3>Task 49: Client-Side Routing App</h3>
+<button onclick="route('home')">Home</button>
+<button onclick="route('about')">About</button>
+<p id="t49page"></p>
+</section>
+
+<!-- TASK 50 -->
+<section>
+<h3>Task 50: Complete Interview-Ready Mini Application</h3>
+<input id="t50name" placeholder="Name">
+<button onclick="add50()">Add</button>
+<ul id="t50list"></ul>
+<p>Total Records: <span id="t50count">0</span></p>
+</section>
+
+<script>
+/* 26 */ function saveSetting(){localStorage.theme=t26theme.value;t26msg.innerText="Saved"}
+/* 27 */ function loadCities(){
+t27city.innerHTML=t27country.value=="India"?"<option>Chennai</option><option>Delhi</option>":"<option>NY</option><option>LA</option>"}
+/* 28 */ t28search.oninput=()=>t28text.innerHTML=t28text.innerText.replaceAll(t28search.value,`<mark>${t28search.value}</mark>`)
+/* 29 */ let pr=0;function progress(){pr+=20;t29prog.innerText=pr+"%"}
+/* 30 */ t30input.oninput=()=>t30err.innerText=t30input.value.length<3?"Too short":"Valid"
+/* 31 */ function adminAction(a){t31log.innerText=a+" action performed"}
+/* 32 */ function logActivity(){t32list.innerHTML+=`<li>User clicked</li>`}
+/* 33 */ function saveOffline(){localStorage.off=t33data.value;t33msg.innerText="Saved Offline"}
+/* 34 */ function condStep(){t34step.innerText=t34type.value+" step shown"}
+/* 35 */ function notify35(){t35list.innerHTML+=`<li>New notification</li>`}
+/* 37 */ function analyze(){t37out.innerText="Rating: "+t37rate.value}
+/* 38 */ let st=false;function setState(){st=!st;t38state.innerText=st}
+/* 39 */ function tab(t){t39content.innerText="Tab "+t}
+/* 40 */ t40search.oninput=()=>[...t40list.children].forEach(li=>li.style.display=li.innerText.toLowerCase().includes(t40search.value.toLowerCase())?"":"none")
+/* 41 */ t41age.oninput=()=>t41rule.innerText=t41age.value>=18?"Allowed":"Not Allowed"
+/* 42 */ let tries=0;function attempt(){tries++;t42msg.innerText=tries>3?"Blocked":"Attempt "+tries}
+/* 43 */ function loadContent(){t43data.innerText="Content Loaded"}
+/* 45 */ t45btn.onkeydown=e=>{if(e.key=="Enter")t45msg.innerText="Keyboard Activated"}
+/* 46 */ function tryError(){try{abc()}catch{t46msg.innerText="Handled Error"}}
+/* 47 */ function theme47(){document.body.style.background="#e0ffe0"}
+/* 48 */ let ob=1;function nextOnboard(){t48step.innerText="Step "+(++ob)}
+/* 49 */ function route(p){t49page.innerText="Page: "+p}
+/* 50 */ let c50=0;function add50(){t50list.innerHTML+=`<li>${t50name.value}</li>`;t50count.innerText=++c50}
+</script>
+
+</body>
+</html>

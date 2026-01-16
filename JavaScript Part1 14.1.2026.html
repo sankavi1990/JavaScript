@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Advanced Mini Apps (Tasks 1–25)</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f2f4f7;
+  padding:20px;
+}
+section{
+  background:#fff;
+  padding:15px;
+  margin-bottom:20px;
+  border-radius:6px;
+}
+h3{color:#222}
+input,button,textarea,select{
+  padding:6px;
+  margin:5px 0;
+}
+table{border-collapse:collapse;width:100%}
+td,th{border:1px solid #ccc;padding:6px}
+.hidden{display:none}
+.card{display:inline-block;padding:10px;margin:5px;background:#e3e7ff}
+</style>
+</head>
+
+<body>
+
+<h2>Advanced Mini Apps – Tasks 1 to 25</h2>
+
+<!-- TASK 1 -->
+<section>
+<h3>Task 1: Login System with Validation & Session</h3>
+<input id="t1user" placeholder="Username">
+<input id="t1pass" type="password" placeholder="Password">
+<button onclick="login1()">Login</button>
+<button onclick="logout1()">Logout</button>
+<p id="t1msg"></p>
+</section>
+
+<!-- TASK 2 -->
+<section>
+<h3>Task 2: CRUD App – Manage Users</h3>
+<input id="t2name" placeholder="User Name">
+<button onclick="addUser()">Add</button>
+<ul id="t2list"></ul>
+</section>
+
+<!-- TASK 3 -->
+<section>
+<h3>Task 3: Dynamic Table with Search</h3>
+<input id="t3search" placeholder="Search name">
+<table>
+<tr><th>Name</th></tr>
+<tr><td>Alice</td></tr>
+<tr><td>Bob</td></tr>
+<tr><td>Charlie</td></tr>
+</table>
+</section>
+
+<!-- TASK 4 -->
+<section>
+<h3>Task 4: Form Validation with Custom Errors</h3>
+<input id="t4email" placeholder="Email">
+<p id="t4err"></p>
+</section>
+
+<!-- TASK 5 -->
+<section>
+<h3>Task 5: To-Do App (Persistent)</h3>
+<input id="t5todo">
+<button onclick="addTodo5()">Add</button>
+<ul id="t5list"></ul>
+</section>
+
+<!-- TASK 6 -->
+<section>
+<h3>Task 6: Theme Switcher (Saved Preference)</h3>
+<button onclick="toggleTheme()">Toggle Theme</button>
+</section>
+
+<!-- TASK 7 -->
+<section>
+<h3>Task 7: Pagination App</h3>
+<p id="pageData">Page 1 Data</p>
+<button onclick="prev()">Prev</button>
+<button onclick="next()">Next</button>
+</section>
+
+<!-- TASK 8 -->
+<section>
+<h3>Task 8: Reusable Modal App</h3>
+<button onclick="openModal()">Open Modal</button>
+<div id="modal" class="hidden">
+<p>This is a modal</p>
+<button onclick="closeModal()">Close</button>
+</div>
+</section>
+
+<!-- TASK 9 -->
+<section>
+<h3>Task 9: Multi-Step Form</h3>
+<input id="step1" placeholder="Step 1">
+<button onclick="nextStep()">Next</button>
+</section>
+
+<!-- TASK 10 -->
+<section>
+<h3>Task 10: Dashboard Layout with Sidebar</h3>
+<button onclick="showDash('home')">Home</button>
+<button onclick="showDash('profile')">Profile</button>
+<p id="homeDash">Dashboard Home</p>
+<p id="profileDash" class="hidden">Dashboard Profile</p>
+</section>
+
+<!-- TASK 11 -->
+<section>
+<h3>Task 11: Search Suggestion App</h3>
+<input id="t11search">
+<ul id="t11list">
+<li>Apple</li><li>Banana</li><li>Mango</li>
+</ul>
+</section>
+
+<!-- TASK 12 -->
+<section>
+<h3>Task 12: Password Strength Analyzer</h3>
+<input id="t12pwd" type="password">
+<p id="t12strength"></p>
+</section>
+
+<!-- TASK 13 -->
+<section>
+<h3>Task 13: Notification System</h3>
+<button onclick="notify13()">Notify</button>
+<p id="t13note"></p>
+</section>
+
+<!-- TASK 14 -->
+<section>
+<h3>Task 14: Form Auto-Save</h3>
+<input id="t14input" placeholder="Auto saved">
+</section>
+
+<!-- TASK 15 -->
+<section>
+<h3>Task 15: Profile Editor with Live Preview</h3>
+<input id="t15name">
+<p>Preview: <span id="t15preview"></span></p>
+</section>
+
+<!-- TASK 16 -->
+<section>
+<h3>Task 16: Sortable Table</h3>
+<button onclick="sortTable()">Sort Names</button>
+<ul id="t16list">
+<li>John</li><li>Amy</li><li>Mark</li>
+</ul>
+</section>
+
+<!-- TASK 17 -->
+<section>
+<h3>Task 17: Responsive Navbar</h3>
+<p>Resize screen to see responsiveness</p>
+</section>
+
+<!-- TASK 18 -->
+<section>
+<h3>Task 18: Role-Based UI Access</h3>
+<select id="t18role" onchange="setRole()">
+<option>User</option>
+<option>Admin</option>
+</select>
+<p id="t18access"></p>
+</section>
+
+<!-- TASK 19 -->
+<section>
+<h3>Task 19: Cart Logic App</h3>
+<button onclick="addCart()">Add Item</button>
+<p>Items in Cart: <span id="cartCount">0</span></p>
+</section>
+
+<!-- TASK 20 -->
+<section>
+<h3>Task 20: Reusable Component System</h3>
+<button onclick="showMsg('Hello Component')">Click</button>
+<p id="t20out"></p>
+</section>
+
+<!-- TASK 21 -->
+<section>
+<h3>Task 21: Data Dashboard Summary Cards</h3>
+<div class="card">Users: 50</div>
+<div class="card">Orders: 120</div>
+</section>
+
+<!-- TASK 22 -->
+<section>
+<h3>Task 22: Confirmation Dialog System</h3>
+<button onclick="confirmAction()">Delete</button>
+<p id="t22msg"></p>
+</section>
+
+<!-- TASK 23 -->
+<section>
+<h3>Task 23: Image Upload & Preview</h3>
+<input type="file" onchange="previewImg(event)">
+<img id="t23img" width="100">
+</section>
+
+<!-- TASK 24 -->
+<section>
+<h3>Task 24: Form Submission Tracker</h3>
+<button onclick="track()">Submit</button>
+<p>Total Submissions: <span id="t24count">0</span></p>
+</section>
+
+<!-- TASK 25 -->
+<section>
+<h3>Task 25: Session Timeout App</h3>
+<button onclick="startTimeout()">Start Session</button>
+<p id="t25msg"></p>
+</section>
+
+<script>
+/* Task 1 */
+function login1(){
+  if(t1user.value && t1pass.value){
+    localStorage.user=t1user.value;
+    t1msg.innerText="Logged in as "+t1user.value;
+  } else t1msg.innerText="Fill all fields";
+}
+function logout1(){localStorage.clear();t1msg.innerText="Logged out"}
+
+/* Task 2 */
+function addUser(){
+  t2list.innerHTML+=`<li>${t2name.value}
+  <button onclick="this.parentElement.remove()">Delete</button></li>`;
+}
+
+/* Task 3 */
+t3search.oninput=()=>[...document.querySelectorAll("table td")]
+.forEach(td=>td.parentElement.style.display=
+td.innerText.toLowerCase().includes(t3search.value.toLowerCase())?"":"none");
+
+/* Task 4 */
+t4email.oninput=()=>t4err.innerText=
+t4email.value.includes("@")?"":"Invalid email";
+
+/* Task 5 */
+function addTodo5(){
+  t5list.innerHTML+=`<li>${t5todo.value}</li>`;
+  localStorage.todos=t5list.innerHTML;
+}
+t5list.innerHTML=localStorage.todos||"";
+
+/* Task 6 */
+function toggleTheme(){
+  document.body.classList.toggle("dark");
+}
+
+/* Task 7 */
+let p=1;
+function next(){pageData.innerText="Page "+(++p)+" Data"}
+function prev(){if(p>1)pageData.innerText="Page "+(--p)+" Data"}
+
+/* Task 8 */
+function openModal(){modal.classList.remove("hidden")}
+function closeModal(){modal.classList.add("hidden")}
+
+/* Task 9 */
+function nextStep(){alert("Next Step Validated")}
+
+/* Task 10 */
+function showDash(id){
+  homeDash.classList.add("hidden");
+  profileDash.classList.add("hidden");
+  document.getElementById(id+"Dash").classList.remove("hidden");
+}
+
+/* Task 11 */
+t11search.oninput=()=>[...t11list.children]
+.forEach(li=>li.style.display=
+li.innerText.toLowerCase().includes(t11search.value.toLowerCase())?"":"none");
+
+/* Task 12 */
+t12pwd.oninput=()=>t12strength.innerText=
+t12pwd.value.length<6?"Weak":"Strong";
+
+/* Task 13 */
+function notify13(){
+  t13note.innerText="Notification shown";
+  setTimeout(()=>t13note.innerText="",2000);
+}
+
+/* Task 14 */
+t14input.oninput=()=>localStorage.auto=t14input.value;
+t14input.value=localStorage.auto||"";
+
+/* Task 15 */
+t15name.oninput=()=>t15preview.innerText=t15name.value;
+
+/* Task 16 */
+function sortTable(){
+  const items=[...t16list.children].map(li=>li.innerText).sort();
+  t16list.innerHTML=items.map(i=>`<li>${i}</li>`).join("");
+}
+
+/* Task 18 */
+function setRole(){t18access.innerText="Access: "+t18role.value}
+
+/* Task 19 */
+let cart=0;
+function addCart(){cartCount.innerText=++cart}
+
+/* Task 20 */
+function showMsg(msg){t20out.innerText=msg}
+
+/* Task 22 */
+function confirmAction(){
+  if(confirm("Are you sure?")) t22msg.innerText="Deleted";
+}
+
+/* Task 23 */
+function previewImg(e){
+  t23img.src=URL.createObjectURL(e.target.files[0]);
+}
+
+/* Task 24 */
+let c=0;
+function track(){t24count.innerText=++c}
+
+/* Task 25 */
+function startTimeout(){
+  t25msg.innerText="Session Active";
+  setTimeout(()=>t25msg.innerText="Session Timeout",3000);
+}
+</script>
+
+</body>
+</html>

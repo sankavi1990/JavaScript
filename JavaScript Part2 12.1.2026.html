@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard Tasks 26–50</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f2f2f2;
+  padding:20px;
+}
+section{
+  background:#fff;
+  padding:15px;
+  margin-bottom:20px;
+  border-radius:6px;
+}
+h3{color:#333}
+input,select,button{
+  padding:6px;
+  margin:5px 0;
+}
+table{
+  border-collapse:collapse;
+  width:100%;
+}
+td,th{
+  border:1px solid #444;
+  padding:6px;
+}
+.sidebar{
+  background:#222;
+  color:#fff;
+  padding:10px;
+}
+.active{background:#555}
+.notification{padding:8px;margin-top:5px}
+.success{background:#c8f7c5}
+.error{background:#f7c5c5}
+
+@media(max-width:600px){
+  body{font-size:14px}
+}
+</style>
+</head>
+
+<body>
+
+<h2>Admin Dashboard – Tasks 26 to 50</h2>
+
+<!-- TASK 26 -->
+<section>
+<h3>Task 26: Multi-Step Form</h3>
+<div id="step1">
+<input id="s1" placeholder="Step 1 Name">
+<button onclick="nextStep()">Next</button>
+</div>
+<div id="step2" style="display:none">
+<input id="s2" placeholder="Step 2 Email">
+<button onclick="prevStep()">Back</button>
+</div>
+</section>
+
+<!-- TASK 27 -->
+<section>
+<h3>Task 27: Validate Each Step</h3>
+<p><strong>Output:</strong> Empty step cannot continue</p>
+</section>
+
+<!-- TASK 28 -->
+<section>
+<h3>Task 28: Dashboard Table – Add Row</h3>
+<input id="rowData">
+<button onclick="addRow()">Add</button>
+<table>
+<thead><tr><th>Data</th><th>Action</th></tr></thead>
+<tbody id="dashTable"></tbody>
+</table>
+</section>
+
+<!-- TASK 29 -->
+<section>
+<h3>Task 29: Edit Table Row</h3>
+<p><strong>Output:</strong> Click row text to edit</p>
+</section>
+
+<!-- TASK 30 -->
+<section>
+<h3>Task 30: Delete Row with Confirmation</h3>
+<p><strong>Output:</strong> Confirm before delete</p>
+</section>
+
+<!-- TASK 31 -->
+<section>
+<h3>Task 31: Dashboard Filter</h3>
+<input id="filter" placeholder="Filter text">
+</section>
+
+<!-- TASK 32 -->
+<section>
+<h3>Task 32: Total Records Count</h3>
+<p><strong>Total Records:</strong> <span id="count">0</span></p>
+</section>
+
+<!-- TASK 33 -->
+<section>
+<h3>Task 33: Auto-Save Form Data</h3>
+<input id="autoSave" placeholder="Typing saves automatically">
+</section>
+
+<!-- TASK 34 -->
+<section>
+<h3>Task 34: Restore Saved Data</h3>
+<p><strong>Output:</strong> <span id="restore"></span></p>
+</section>
+
+<!-- TASK 35 -->
+<section>
+<h3>Task 35: Notification Area</h3>
+<div id="notify"></div>
+</section>
+
+<!-- TASK 36 -->
+<section>
+<h3>Task 36: Success / Error Notifications</h3>
+<button onclick="notifySuccess()">Success</button>
+<button onclick="notifyError()">Error</button>
+</section>
+
+<!-- TASK 37 -->
+<section>
+<h3>Task 37: Conditional Fields</h3>
+<select onchange="toggleExtra(this.value)">
+<option value="">Select</option>
+<option value="yes">Yes</option>
+</select>
+<input id="extra" placeholder="Extra field" style="display:none">
+</section>
+
+<!-- TASK 38 -->
+<section>
+<h3>Task 38: Disable Actions if Invalid</h3>
+<button id="actionBtn" disabled>Dashboard Action</button>
+</section>
+
+<!-- TASK 39 -->
+<section>
+<h3>Task 39: Responsive Dashboard Layout</h3>
+<p>Layout adapts automatically</p>
+</section>
+
+<!-- TASK 40 -->
+<section>
+<h3>Task 40: Mobile View Layout</h3>
+<p>Uses media queries</p>
+</section>
+
+<!-- TASK 41 -->
+<section>
+<h3>Task 41: Active Sidebar Menu</h3>
+<div class="sidebar">
+<p class="menu active">Dashboard</p>
+<p class="menu">Settings</p>
+</div>
+</section>
+
+<!-- TASK 42 -->
+<section>
+<h3>Task 42: Logout & Clear Data</h3>
+<button onclick="logout()">Logout</button>
+</section>
+
+<!-- TASK 43 -->
+<section>
+<h3>Task 43: Last Login Time</h3>
+<p><strong>Last Login:</strong> <span id="loginTime"></span></p>
+</section>
+
+<!-- TASK 44 -->
+<section>
+<h3>Task 44: Update Profile & Reflect UI</h3>
+<input id="profileName" placeholder="New name">
+<button onclick="updateProfile()">Update</button>
+<p id="profileOut"></p>
+</section>
+
+<!-- TASK 45 -->
+<section>
+<h3>Task 45: Dashboard Widget Update</h3>
+<button onclick="widget()">Update Widget</button>
+<p id="widgetData">Value: 0</p>
+</section>
+
+<!-- TASK 46 -->
+<section>
+<h3>Task 46: Prevent Duplicate Entries</h3>
+<p><strong>Output:</strong> Duplicate blocked</p>
+</section>
+
+<!-- TASK 47 -->
+<section>
+<h3>Task 47: Summary Section</h3>
+<p>Total Records: <span id="summary">0</span></p>
+</section>
+
+<!-- TASK 48 -->
+<section>
+<h3>Task 48: Reset Confirmation</h3>
+<button onclick="resetDash()">Reset Dashboard</button>
+</section>
+
+<!-- TASK 49 -->
+<section>
+<h3>Task 49: Submission History</h3>
+<ul id="history"></ul>
+</section>
+
+<!-- TASK 50 -->
+<section>
+<h3>Task 50: Admin Dashboard (Form + Table + Summary)</h3>
+<p>All components combined successfully ✔</p>
+</section>
+
+<script>
+let step=1,widgetVal=0;
+let records=[];
+
+function nextStep(){
+  if(!s1.value) return alert("Fill step 1");
+  step1.style.display="none";
+  step2.style.display="block";
+}
+function prevStep(){
+  step2.style.display="none";
+  step1.style.display="block";
+}
+
+function addRow(){
+  if(records.includes(rowData.value)) return alert("Duplicate!");
+  records.push(rowData.value);
+  dashTable.innerHTML+=`<tr>
+    <td onclick="edit(this)">${rowData.value}</td>
+    <td><button onclick="del(this)">Delete</button></td>
+  </tr>`;
+  count.innerText=records.length;
+  summary.innerText=records.length;
+  history.innerHTML+=`<li>${rowData.value}</li>`;
+}
+
+function edit(td){
+  let val=prompt("Edit value",td.innerText);
+  if(val) td.innerText=val;
+}
+
+function del(btn){
+  if(confirm("Delete row?")){
+    btn.closest("tr").remove();
+    records.pop();
+    count.innerText=records.length;
+    summary.innerText=records.length;
+  }
+}
+
+filter.oninput=()=>{
+  [...dashTable.rows].forEach(r=>{
+    r.style.display=r.innerText.includes(filter.value)?"":"none";
+  });
+};
+
+autoSave.oninput=()=>localStorage.setItem("auto",autoSave.value);
+restore.innerText=localStorage.getItem("auto")||"No saved data";
+
+function notifySuccess(){notify.innerHTML='<div class="notification success">Success</div>'}
+function notifyError(){notify.innerHTML='<div class="notification error">Error</div>'}
+
+function toggleExtra(v){extra.style.display=v==="yes"?"block":"none"}
+
+function logout(){localStorage.clear();alert("Logged out")}
+
+loginTime.innerText=new Date().toLocaleString();
+
+function updateProfile(){profileOut.innerText="Updated: "+profileName.value}
+
+function widget(){widgetData.innerText="Value: "+(++widgetVal)}
+
+function resetDash(){if(confirm("Reset dashboard?")) location.reload();}
+</script>
+
+</body>
+</html>

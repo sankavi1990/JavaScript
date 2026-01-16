@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mini Apps Collection (Tasks 1–25)</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f4f6f8;
+  padding:20px;
+}
+section{
+  background:#fff;
+  padding:15px;
+  margin-bottom:20px;
+  border-radius:6px;
+}
+h3{color:#333}
+input,button,textarea,select{
+  padding:6px;
+  margin:5px 0;
+}
+ul{padding-left:20px}
+.completed{text-decoration:line-through;color:green}
+.nav button{margin-right:5px}
+.hidden{display:none}
+</style>
+</head>
+
+<body>
+
+<h2>Mini Apps – Tasks 1 to 25</h2>
+
+<!-- TASK 1 -->
+<section>
+<h3>Task 1: Student Registration Mini-App</h3>
+<input id="sname" placeholder="Student Name">
+<button onclick="addStudent()">Register</button>
+<ul id="students"></ul>
+</section>
+
+<!-- TASK 2 -->
+<section>
+<h3>Task 2: Login & Logout App (localStorage)</h3>
+<input id="loginName" placeholder="Username">
+<button onclick="login()">Login</button>
+<button onclick="logout()">Logout</button>
+<p id="loginMsg"></p>
+</section>
+
+<!-- TASK 3 -->
+<section>
+<h3>Task 3: To-Do Manager</h3>
+<input id="todoInput">
+<button onclick="addTodo()">Add</button>
+<ul id="todoList"></ul>
+</section>
+
+<!-- TASK 4 -->
+<section>
+<h3>Task 4: Notes App</h3>
+<textarea id="note"></textarea>
+<button onclick="saveNote()">Save</button>
+<p id="savedNote"></p>
+</section>
+
+<!-- TASK 5 -->
+<section>
+<h3>Task 5: User Profile Manager</h3>
+<input id="profile" placeholder="Your name">
+<p><strong>Preview:</strong> <span id="preview"></span></p>
+</section>
+
+<!-- TASK 6 -->
+<section>
+<h3>Task 6: Contact Management App</h3>
+<input id="contact">
+<button onclick="addContact()">Add</button>
+<ul id="contacts"></ul>
+</section>
+
+<!-- TASK 7 -->
+<section>
+<h3>Task 7: Feedback Collection App</h3>
+<select id="rating">
+<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+</select>
+<button onclick="submitFeedback()">Submit</button>
+<p id="feedbackOut"></p>
+</section>
+
+<!-- TASK 8 -->
+<section>
+<h3>Task 8: Expense Tracker</h3>
+<input id="amount" type="number">
+<button onclick="addExpense()">Add Expense</button>
+<p>Total: ₹<span id="total">0</span></p>
+</section>
+
+<!-- TASK 9 -->
+<section>
+<h3>Task 9: Daily Task Planner</h3>
+<input id="taskDate" type="date">
+<input id="taskText">
+<button onclick="planTask()">Add</button>
+<ul id="planner"></ul>
+</section>
+
+<!-- TASK 10 -->
+<section>
+<h3>Task 10: Password Strength Checker</h3>
+<input id="pwd" type="password">
+<p id="strength"></p>
+</section>
+
+<!-- TASK 11 -->
+<section>
+<h3>Task 11: Real-Time Form Validation</h3>
+<input id="email" placeholder="Email">
+<p id="emailErr"></p>
+</section>
+
+<!-- TASK 12 -->
+<section>
+<h3>Task 12: Search & Filter App</h3>
+<input id="search">
+<ul id="products">
+<li>Apple</li><li>Orange</li><li>Mango</li>
+</ul>
+</section>
+
+<!-- TASK 13 -->
+<section>
+<h3>Task 13: Dashboard App</h3>
+<div class="nav">
+<button onclick="showTab('home')">Home</button>
+<button onclick="showTab('settings')">Settings</button>
+</div>
+<p id="home">Dashboard Home</p>
+<p id="settings" class="hidden">Dashboard Settings</p>
+</section>
+
+<!-- TASK 14 -->
+<section>
+<h3>Task 14: Multi-Step Registration</h3>
+<input id="stepOne" placeholder="Step 1">
+<button onclick="next()">Next</button>
+</section>
+
+<!-- TASK 15 -->
+<section>
+<h3>Task 15: Theme Switcher</h3>
+<button onclick="toggleTheme()">Toggle Theme</button>
+</section>
+
+<!-- TASK 16 -->
+<section>
+<h3>Task 16: Login Attempts Tracker</h3>
+<button onclick="attempt()">Login Attempt</button>
+<p id="attempts">0</p>
+</section>
+
+<!-- TASK 17 -->
+<section>
+<h3>Task 17: Feedback Dashboard</h3>
+<p>Total Feedbacks: <span id="feedCount">0</span></p>
+</section>
+
+<!-- TASK 18 -->
+<section>
+<h3>Task 18: Admin Panel (CRUD)</h3>
+<input id="adminData">
+<button onclick="addAdmin()">Add</button>
+<ul id="adminList"></ul>
+</section>
+
+<!-- TASK 19 -->
+<section>
+<h3>Task 19: Submission History</h3>
+<ul id="history"></ul>
+</section>
+
+<!-- TASK 20 -->
+<section>
+<h3>Task 20: Notification Center</h3>
+<button onclick="notify()">Notify</button>
+<p id="notifyMsg"></p>
+</section>
+
+<!-- TASK 21 -->
+<section>
+<h3>Task 21: Responsive Navigation Menu</h3>
+<p>Resize screen to see effect</p>
+</section>
+
+<!-- TASK 22 -->
+<section>
+<h3>Task 22: User Activity Tracker</h3>
+<p id="activity">No activity</p>
+</section>
+
+<!-- TASK 23 -->
+<section>
+<h3>Task 23: Profile Completion Status</h3>
+<progress value="60" max="100"></progress>
+</section>
+
+<!-- TASK 24 -->
+<section>
+<h3>Task 24: Survey Form App</h3>
+<select onchange="survey(this.value)">
+<option>Select</option>
+<option>Yes</option>
+<option>No</option>
+</select>
+<p id="surveyOut"></p>
+</section>
+
+<!-- TASK 25 -->
+<section>
+<h3>Task 25: Simple Chat UI</h3>
+<input id="chat">
+<button onclick="send()">Send</button>
+<ul id="chatBox"></ul>
+</section>
+
+<script>
+function addStudent(){students.innerHTML+=`<li>${sname.value}</li>`}
+function login(){localStorage.user=loginName.value;loginMsg.innerText="Welcome "+loginName.value}
+function logout(){localStorage.clear();loginMsg.innerText="Logged out"}
+function addTodo(){todoList.innerHTML+=`<li onclick="this.classList.toggle('completed')">${todoInput.value}</li>`}
+function saveNote(){savedNote.innerText=note.value}
+profile.oninput=()=>preview.innerText=profile.value
+function addContact(){contacts.innerHTML+=`<li>${contact.value}</li>`}
+function submitFeedback(){feedCount.innerText++;feedbackOut.innerText="Thanks!"}
+let sum=0;function addExpense(){sum+=+amount.value;total.innerText=sum}
+function planTask(){planner.innerHTML+=`<li>${taskDate.value} - ${taskText.value}</li>`}
+pwd.oninput=()=>strength.innerText=pwd.value.length<6?"Weak":"Strong"
+email.oninput=()=>emailErr.innerText=email.value.includes("@")?"":"Invalid Email"
+search.oninput=()=>[...products.children].forEach(li=>li.style.display=li.innerText.includes(search.value)?"":"none")
+function showTab(t){home.classList.add("hidden");settings.classList.add("hidden");document.getElementById(t).classList.remove("hidden")}
+function next(){alert("Next step")}
+function toggleTheme(){document.body.classList.toggle("dark")}
+let tries=0;function attempt(){attempts.innerText=++tries}
+function addAdmin(){adminList.innerHTML+=`<li>${adminData.value}</li>`;history.innerHTML+=`<li>${adminData.value}</li>`}
+function notify(){notifyMsg.innerText="New Notification!"}
+document.onclick=()=>activity.innerText="User Active"
+function survey(v){surveyOut.innerText="You chose "+v}
+function send(){chatBox.innerHTML+=`<li>${chat.value}</li>`}
+</script>
+
+</body>
+</html>

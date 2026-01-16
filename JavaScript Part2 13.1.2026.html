@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mini Apps Collection (Tasks 26–50)</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#eef1f4;
+  padding:20px;
+}
+section{
+  background:#fff;
+  padding:15px;
+  margin-bottom:20px;
+  border-radius:6px;
+}
+h3{color:#222}
+input,button,select{
+  padding:6px;
+  margin:5px 0;
+}
+table{border-collapse:collapse;width:100%}
+td,th{border:1px solid #ccc;padding:6px;text-align:left}
+.hidden{display:none}
+</style>
+</head>
+
+<body>
+
+<h2>Mini Apps – Tasks 26 to 50</h2>
+
+<!-- TASK 26 -->
+<section>
+<h3>Task 26: User Settings App (Auto-Save)</h3>
+<input id="setting" placeholder="Theme preference">
+<p>Saved: <span id="savedSetting"></span></p>
+</section>
+
+<!-- TASK 27 -->
+<section>
+<h3>Task 27: Product Management App (Search)</h3>
+<input id="prodSearch" placeholder="Search product">
+<ul id="prodList">
+<li>Phone</li><li>Laptop</li><li>Tablet</li>
+</ul>
+</section>
+
+<!-- TASK 28 -->
+<section>
+<h3>Task 28: Registration Approval App</h3>
+<button onclick="approve()">Approve User</button>
+<p id="status">Status: Pending</p>
+</section>
+
+<!-- TASK 29 -->
+<section>
+<h3>Task 29: Form Draft Save App</h3>
+<input id="draftInput" placeholder="Type here">
+<p>Draft Saved Automatically</p>
+</section>
+
+<!-- TASK 30 -->
+<section>
+<h3>Task 30: Session Timeout Warning App</h3>
+<button onclick="startSession()">Start Session</button>
+<p id="timeoutMsg"></p>
+</section>
+
+<!-- TASK 31 -->
+<section>
+<h3>Task 31: Mini CRM App</h3>
+<input id="customer">
+<button onclick="addCustomer()">Add</button>
+<ul id="customers"></ul>
+</section>
+
+<!-- TASK 32 -->
+<section>
+<h3>Task 32: Support Ticket System UI</h3>
+<input id="ticket">
+<button onclick="addTicket()">Raise Ticket</button>
+<ul id="tickets"></ul>
+</section>
+
+<!-- TASK 33 -->
+<section>
+<h3>Task 33: Employee Attendance App</h3>
+<button onclick="mark()">Mark Present</button>
+<p id="attendance"></p>
+</section>
+
+<!-- TASK 34 -->
+<section>
+<h3>Task 34: Dashboard Analytics App</h3>
+<p>Total Users: 120</p>
+<p>Total Sales: ₹45,000</p>
+</section>
+
+<!-- TASK 35 -->
+<section>
+<h3>Task 35: Form Wizard App</h3>
+<input id="wiz1" placeholder="Step 1">
+<button onclick="wizard()">Next</button>
+</section>
+
+<!-- TASK 36 -->
+<section>
+<h3>Task 36: User Role Management App</h3>
+<select id="role">
+<option>User</option>
+<option>Admin</option>
+</select>
+<p>Selected Role: <span id="roleOut"></span></p>
+</section>
+
+<!-- TASK 37 -->
+<section>
+<h3>Task 37: Simple Polling App</h3>
+<button onclick="vote()">Vote</button>
+<p>Total Votes: <span id="votes">0</span></p>
+</section>
+
+<!-- TASK 38 -->
+<section>
+<h3>Task 38: Profile Image Upload Preview</h3>
+<input type="file" onchange="previewImg(event)">
+<img id="img" width="100">
+</section>
+
+<!-- TASK 39 -->
+<section>
+<h3>Task 39: Notification Preference App</h3>
+<input type="checkbox" id="notifyChk"> Enable Notifications
+</section>
+
+<!-- TASK 40 -->
+<section>
+<h3>Task 40: Login History Viewer</h3>
+<ul id="logins"></ul>
+</section>
+
+<!-- TASK 41 -->
+<section>
+<h3>Task 41: E-Learning Course Listing</h3>
+<ul>
+<li>HTML</li><li>CSS</li><li>JavaScript</li>
+</ul>
+</section>
+
+<!-- TASK 42 -->
+<section>
+<h3>Task 42: Task Progress Monitoring</h3>
+<progress value="40" max="100"></progress>
+</section>
+
+<!-- TASK 43 -->
+<section>
+<h3>Task 43: Form Validation Rules Manager</h3>
+<p>Email must include @ symbol</p>
+</section>
+
+<!-- TASK 44 -->
+<section>
+<h3>Task 44: User Account Deactivation App</h3>
+<button onclick="deactivate()">Deactivate</button>
+<p id="accStatus">Active</p>
+</section>
+
+<!-- TASK 45 -->
+<section>
+<h3>Task 45: Mini Project Tracker</h3>
+<ul>
+<li>Project A – In Progress</li>
+<li>Project B – Completed</li>
+</ul>
+</section>
+
+<!-- TASK 46 -->
+<section>
+<h3>Task 46: System Settings Dashboard</h3>
+<p>System Mode: Normal</p>
+</section>
+
+<!-- TASK 47 -->
+<section>
+<h3>Task 47: User Report Generation App</h3>
+<button onclick="generate()">Generate Report</button>
+<p id="report"></p>
+</section>
+
+<!-- TASK 48 -->
+<section>
+<h3>Task 48: Booking Form App</h3>
+<input placeholder="Name">
+<input type="date">
+<button>Book</button>
+</section>
+
+<!-- TASK 49 -->
+<section>
+<h3>Task 49: Form-Based Calculator</h3>
+<input id="n1" type="number">
+<input id="n2" type="number">
+<button onclick="calc()">Add</button>
+<p id="calcOut"></p>
+</section>
+
+<!-- TASK 50 -->
+<section>
+<h3>Task 50: Complete Mini Admin Dashboard</h3>
+<p>Users: 50 | Orders: 120 | Revenue: ₹90,000</p>
+</section>
+
+<script>
+setting.oninput=()=>{localStorage.setting=setting.value;savedSetting.innerText=setting.value}
+prodSearch.oninput=()=>[...prodList.children].forEach(li=>li.style.display=li.innerText.toLowerCase().includes(prodSearch.value.toLowerCase())?"":"none")
+function approve(){status.innerText="Status: Approved"}
+draftInput.oninput=()=>localStorage.draft=draftInput.value
+function startSession(){setTimeout(()=>timeoutMsg.innerText="Session Expiring!",3000)}
+function addCustomer(){customers.innerHTML+=`<li>${customer.value}</li>`}
+function addTicket(){tickets.innerHTML+=`<li>${ticket.value}</li>`}
+function mark(){attendance.innerText="Present"}
+function wizard(){alert("Next Step")}
+role.onchange=()=>roleOut.innerText=role.value
+let v=0;function vote(){votes.innerText=++v}
+function previewImg(e){img.src=URL.createObjectURL(e.target.files[0])}
+function deactivate(){accStatus.innerText="Deactivated"}
+function generate(){report.innerText="Report Generated"}
+function calc(){calcOut.innerText=Number(n1.value)+Number(n2.value)}
+</script>
+
+</body>
+</html>

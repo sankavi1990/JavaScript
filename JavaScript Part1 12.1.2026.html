@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Forms & Dashboard Tasks 1–25</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    section {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    h3 {
+      color: #333;
+    }
+    input, textarea, select, button {
+      display: block;
+      margin: 6px 0;
+      padding: 6px;
+      width: 250px;
+    }
+    button {
+      cursor: pointer;
+    }
+    .required {
+      border: 2px solid red;
+    }
+    table {
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    td, th {
+      border: 1px solid #333;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>HTML + JavaScript Tasks (1–25)</h2>
+
+<!-- TASK 1 -->
+<section>
+  <h3>Task 1: Registration Form – Display Summary</h3>
+  <input id="rName" placeholder="Name">
+  <input id="rEmail" placeholder="Email">
+  <button onclick="register()">Register</button>
+  <p><strong>Output:</strong></p>
+  <p id="regOut">No data submitted</p>
+</section>
+
+<!-- TASK 2 -->
+<section>
+  <h3>Task 2: Login Form – Welcome Message</h3>
+  <input id="lUser" placeholder="Username">
+  <input id="lPass" type="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+  <p><strong>Output:</strong></p>
+  <p id="loginOut">Waiting for login</p>
+</section>
+
+<!-- TASK 3 -->
+<section>
+  <h3>Task 3: Disable Submit Until Required Fields Filled</h3>
+  <input class="t3" placeholder="Field 1">
+  <input class="t3" placeholder="Field 2">
+  <button id="t3btn" disabled>Submit</button>
+  <p><strong>Output:</strong> Button enables automatically</p>
+</section>
+
+<!-- TASK 4 -->
+<section>
+  <h3>Task 4: Inline Error Messages</h3>
+  <input id="t4" placeholder="Required field">
+  <p id="t4err" style="color:red"></p>
+</section>
+
+<!-- TASK 5 -->
+<section>
+  <h3>Task 5: Clear Form After Submission</h3>
+  <input id="t5">
+  <button onclick="clearForm()">Submit</button>
+</section>
+
+<!-- TASK 6 -->
+<section>
+  <h3>Task 6: Count Total Submissions</h3>
+  <button onclick="countSubmit()">Submit</button>
+  <p><strong>Output:</strong> <span id="subCount">0</span></p>
+</section>
+
+<!-- TASK 7 -->
+<section>
+  <h3>Task 7: Contact Form – Success Without Reload</h3>
+  <input id="t7">
+  <button onclick="contact()">Send</button>
+  <p id="t7out"></p>
+</section>
+
+<!-- TASK 8 -->
+<section>
+  <h3>Task 8: Highlight Required Fields</h3>
+  <input class="required" placeholder="Required">
+</section>
+
+<!-- TASK 9 -->
+<section>
+  <h3>Task 9: Profile Live Preview</h3>
+  <input id="profile">
+  <p><strong>Output:</strong> <span id="preview"></span></p>
+</section>
+
+<!-- TASK 10 -->
+<section>
+  <h3>Task 10: Password Confirmation</h3>
+  <input id="p1" type="password" placeholder="Password">
+  <input id="p2" type="password" placeholder="Confirm">
+  <p id="pmsg"></p>
+</section>
+
+<!-- TASK 11 -->
+<section>
+  <h3>Task 11: Show Values in Table</h3>
+  <input id="t11">
+  <button onclick="addRow()">Add</button>
+  <table>
+    <tr><th>Value</th></tr>
+    <tbody id="tableBody"></tbody>
+  </table>
+</section>
+
+<!-- TASK 12 -->
+<section>
+  <h3>Task 12: Dashboard Layout</h3>
+  <p>Header | Sidebar | Content</p>
+</section>
+
+<!-- TASK 13 -->
+<section>
+  <h3>Task 13: Display Date & Time</h3>
+  <p><strong>Output:</strong> <span id="time"></span></p>
+</section>
+
+<!-- TASK 14 -->
+<section>
+  <h3>Task 14: Save Settings (localStorage)</h3>
+  <input id="setting">
+  <button onclick="saveSetting()">Save</button>
+</section>
+
+<!-- TASK 15 -->
+<section>
+  <h3>Task 15: Load Saved Settings</h3>
+  <p><strong>Output:</strong> <span id="loadSetting"></span></p>
+</section>
+
+<!-- TASK 16 -->
+<section>
+  <h3>Task 16: Feedback Average Rating</h3>
+  <input id="rate" type="number">
+  <button onclick="avg()">Submit</button>
+  <p id="avgOut"></p>
+</section>
+
+<!-- TASK 17 -->
+<section>
+  <h3>Task 17: Character Count</h3>
+  <textarea id="fb"></textarea>
+  <p><strong>Output:</strong> <span id="fbCount">0</span></p>
+</section>
+
+<!-- TASK 18 -->
+<section>
+  <h3>Task 18: Prevent Submission on Error</h3>
+  <p>Validation enforced</p>
+</section>
+
+<!-- TASK 19 -->
+<section>
+  <h3>Task 19: Radio Button Selection</h3>
+  <input type="radio" name="g" value="Male"> Male
+  <input type="radio" name="g" value="Female"> Female
+  <p id="gender"></p>
+</section>
+
+<!-- TASK 20 -->
+<section>
+  <h3>Task 20: Dashboard Card – Total Users</h3>
+  <p><strong>Output:</strong> Total Users: 150</p>
+</section>
+
+<!-- TASK 21 -->
+<section>
+  <h3>Task 21: Conditional Message</h3>
+  <input id="age">
+  <p id="ageMsg"></p>
+</section>
+
+<!-- TASK 22 -->
+<section>
+  <h3>Task 22: Search Filter</h3>
+  <input id="search">
+  <ul id="list">
+    <li>Home</li><li>Profile</li><li>Settings</li>
+  </ul>
+</section>
+
+<!-- TASK 23 -->
+<section>
+  <h3>Task 23: Loading Message</h3>
+  <button onclick="loading()">Submit</button>
+  <p id="loadMsg"></p>
+</section>
+
+<!-- TASK 24 -->
+<section>
+  <h3>Task 24: Reset Form</h3>
+  <form>
+    <input>
+    <button type="reset">Reset</button>
+  </form>
+</section>
+
+<!-- TASK 25 -->
+<section>
+  <h3>Task 25: Dropdown Selection</h3>
+  <select onchange="showSel(this.value)">
+    <option>Choose</option>
+    <option>HTML</option>
+    <option>CSS</option>
+  </select>
+  <p id="selOut"></p>
+</section>
+
+<script>
+function register(){regOut.innerText = rName.value+" - "+rEmail.value;}
+function login(){loginOut.innerText="Welcome "+lUser.value;}
+document.querySelectorAll('.t3').forEach(i=>i.oninput=()=>t3btn.disabled=[...document.querySelectorAll('.t3')].some(f=>!f.value));
+t4.onblur=()=>t4err.innerText=t4.value===""?"Field required":"";
+function clearForm(){t5.value="";}
+let c=0; function countSubmit(){subCount.innerText=++c;}
+function contact(){t7out.innerText="Message sent successfully";}
+profile.oninput=()=>preview.innerText=profile.value;
+p2.oninput=()=>pmsg.innerText=p1.value===p2.value?"Match":"Not match";
+function addRow(){tableBody.innerHTML+=`<tr><td>${t11.value}</td></tr>`;}
+setInterval(()=>time.innerText=new Date().toLocaleString(),1000);
+function saveSetting(){localStorage.setItem("s",setting.value);}
+loadSetting.innerText=localStorage.getItem("s")||"No setting saved";
+fb.oninput=()=>fbCount.innerText=fb.value.length;
+document.querySelectorAll('[name="g"]').forEach(r=>r.onclick=()=>gender.innerText=r.value);
+age.oninput=()=>ageMsg.innerText=age.value>=18?"Adult":"Minor";
+search.oninput=()=>[...list.children].forEach(li=>li.style.display=li.innerText.toLowerCase().includes(search.value.toLowerCase())?"":"none");
+function loading(){loadMsg.innerText="Loading...";}
+function showSel(v){selOut.innerText=v;}
+</script>
+
+</body>
+</html>
