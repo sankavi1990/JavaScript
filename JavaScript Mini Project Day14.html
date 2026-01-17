@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 14 Projects</title>
+</head>
+<body>
+    <!-- Day 14 - Project 1 -->
+<section class="day14-typing-test">
+  <h2>Project 1 - Typing Speed Tester</h2>
+
+  <p id="day14-sentence">Click Start to load a sentence</p>
+
+  <textarea
+    id="day14-input"
+    placeholder="Start typing here..."
+
+  ></textarea>
+
+  <br /><br />
+  <button onclick="startTypingTest()">Start</button>
+
+  <p id="day14-result"></p>
+</section>
+
+<style>
+  .day14-typing-test {
+    border: 1px solid #444;
+    padding: 20px;
+    width: 500px;
+    margin-bottom: 30px;
+  }
+
+  #day14-input {
+    width: 100%;
+    height: 80px;
+  }
+</style>
+
+<script>
+  let startTime = 0;
+  let testSentence = "";
+
+  async function startTypingTest() {
+    const sentenceEl = document.getElementById("day14-sentence");
+    const inputEl = document.getElementById("day14-input");
+    const resultEl = document.getElementById("day14-result");
+
+    resultEl.textContent = "";
+    inputEl.value = "";
+
+    // ENABLE TYPING FIRST (IMPORTANT)
+    inputEl.disabled = false;
+    inputEl.focus();
+
+    startTime = Date.now();
+
+    // Fallback sentence
+    testSentence = "Practice typing to improve your speed and accuracy.";
+
+    try {
+      const response = await fetch(
+        "https://baconipsum.com/api/?type=meat-and-filler&sentences=1"
+      );
+      const data = await response.json();
+      testSentence = data[0];
+    } catch (error) {
+      console.warn("Using fallback sentence");
+    }
+
+    sentenceEl.textContent = testSentence;
+
+    inputEl.oninput = () => {
+      if (inputEl.value.length >= testSentence.length) {
+        const timeTaken = (Date.now() - startTime) / 1000;
+        const words = testSentence.split(" ").length;
+        const wpm = Math.round((words / timeTaken) * 60);
+
+        resultEl.innerHTML = `
+          <strong>Completed!</strong><br>
+          Time Taken: ${timeTaken.toFixed(2)} seconds<br>
+          Typing Speed: ${wpm} WPM
+        `;
+
+        inputEl.disabled = true;
+      }
+    };
+  }
+</script>
+
+<!-- Day 14 - Project 2 -->
+<section class="day14-aqi-checker">
+  <h2>Project 2 - Real-Time Air Quality Checker</h2>
+
+  <select id="day14-city-select">
+    <option value="">Select City</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Chennai">Chennai</option>
+    <option value="Mumbai">Mumbai</option>
+    <option value="Bangalore">Bangalore</option>
+  </select>
+
+  <button onclick="getAQI()">Check AQI</button>
+
+  <div id="day14-aqi-result"></div>
+</section>
+
+<style>
+  .day14-aqi-checker {
+    border: 1px solid #444;
+    padding: 20px;
+    width: 450px;
+    margin-bottom: 30px;
+  }
+
+  #day14-aqi-result {
+    margin-top: 15px;
+    font-weight: bold;
+  }
+</style>
+
+<script>
+  async function getAQI() {
+    const city = document.getElementById("day14-city-select").value;
+    const result = document.getElementById("day14-aqi-result");
+
+    if (!city) {
+      result.textContent = "Please select a city";
+      return;
+    }
+
+    result.textContent = "Loading AQI data...";
+
+    try {
+      // WAQI demo token
+      const response = await fetch(
+        `https://api.waqi.info/feed/${city}/?token=demo`
+      );
+
+      const data = await response.json();
+
+      if (data.status !== "ok") {
+        throw new Error("City data not available");
+      }
+
+      const aqi = data.data.aqi;
+      let level = "";
+      let advice = "";
+
+      if (aqi <= 50) {
+        level = "Good";
+        advice = "Air quality is satisfactory.";
+      } else if (aqi <= 100) {
+        level = "Moderate";
+        advice = "Acceptable, but sensitive people should be cautious.";
+      } else if (aqi <= 200) {
+        level = "Unhealthy";
+        advice = "Reduce outdoor activities.";
+      } else {
+        level = "Very Unhealthy";
+        advice = "Avoid going outside.";
+      }
+
+      result.innerHTML = `
+        AQI: ${aqi}<br>
+        Level: ${level}<br>
+        Advice: ${advice}
+      `;
+    } catch (error) {
+      result.textContent = "Failed to fetch air quality data.";
+    }
+  }
+</script>
+
+
+<!-- Project 3 -------------------------->
+<!-- Day 14 - Mini Project 3 -->
+<section class="day14-github-finder">
+  <h2>Project 3 - GitHub User Finder</h2>
+  <p>My Github User Name : sankavi1990</p>
+
+  <input
+    type="text"
+    id="day14-github-input"
+    placeholder="Enter GitHub username"
+  />
+
+  <button onclick="findGitHubUser()">Search</button>
+
+  <div id="day14-github-result"></div>
+</section>
+
+<style>
+  .day14-github-finder {
+    border: 1px solid #444;
+    padding: 20px;
+    width: 450px;
+    margin-bottom: 30px;
+  }
+
+  .day14-github-finder img {
+    width: 120px;
+    border-radius: 50%;
+    margin-top: 10px;
+  }
+
+  #day14-github-result {
+    margin-top: 15px;
+  }
+</style>
+
+<script>
+  async function findGitHubUser() {
+    const username = document
+      .getElementById("day14-github-input")
+      .value.trim();
+
+    const result = document.getElementById("day14-github-result");
+
+    if (!username) {
+      result.textContent = "Please enter a username";
+      return;
+    }
+
+    result.textContent = "Loading...";
+
+    try {
+      const response = await fetch(
+        `https://api.github.com/users/${username}`
+      );
+
+      if (!response.ok) {
+        throw new Error("User not found");
+      }
+
+      const data = await response.json();
+
+      result.innerHTML = `
+        <img src="${data.avatar_url}">
+        <h3>${data.name || data.login}</h3>
+        <p>${data.bio || "No bio available"}</p>
+        <p>Public Repos: ${data.public_repos}</p>
+        <p>Followers: ${data.followers}</p>
+      `;
+    } catch (error) {
+      result.textContent = "User not found. Please check username.";
+    }
+  }
+</script>
+
+<!-- Project 4------------------------------------------ -->
+<!-- ===== MINI PROJECT 4 : Currency Converter ===== -->
+<section class="day14-currency">
+  <h2>Mini Project 4: Currency Converter</h2>
+
+  <input type="number" id="amount" placeholder="Enter amount" />
+
+  <br /><br />
+
+  <select id="from-currency">
+    <option value="USD">USD</option>
+    <option value="INR">INR</option>
+    <option value="EUR">EUR</option>
+    <option value="GBP">GBP</option>
+  </select>
+
+  ➡️
+
+  <select id="to-currency">
+    <option value="INR">INR</option>
+    <option value="USD">USD</option>
+    <option value="EUR">EUR</option>
+    <option value="GBP">GBP</option>
+  </select>
+
+  <br /><br />
+
+  <button onclick="convertCurrency()">Convert</button>
+
+  <h3 id="conversion-result"></h3>
+</section>
+
+<style>
+  .day14-currency {
+    border: 1px solid #444;
+    padding: 20px;
+    width: 400px;
+    margin-bottom: 30px;
+  }
+
+  .day14-currency input,
+  .day14-currency select {
+    padding: 6px;
+    margin: 5px;
+  }
+
+  .day14-currency button {
+    padding: 8px 15px;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  async function convertCurrency() {
+    const amount = document.getElementById("amount").value;
+    const from = document.getElementById("from-currency").value;
+    const to = document.getElementById("to-currency").value;
+    const result = document.getElementById("conversion-result");
+
+    if (amount === "" || amount <= 0) {
+      result.textContent = "Please enter a valid amount";
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        `https://api.exchangerate-api.com/v4/latest/${from}`
+      );
+
+      const data = await response.json();
+      const rate = data.rates[to];
+      const convertedAmount = (amount * rate).toFixed(2);
+
+      result.textContent = `${amount} ${from} = ${convertedAmount} ${to}`;
+    } catch (error) {
+      result.textContent = "Error fetching exchange rates";
+    }
+  }
+</script>
+
+<!-- Project 5----------------------------------------------------- -->
+<!-- ===== MINI PROJECT 5 : Dictionary App ===== -->
+<section class="day14-dictionary">
+  <h2>Mini Project 5: Dictionary App</h2>
+
+  <input
+    type="text"
+    id="word-input"
+    placeholder="Enter a word"
+  />
+  <button onclick="searchWord()">Search</button>
+
+  <p id="meaning"></p>
+</section>
+
+<style>
+  .day14-dictionary {
+    border: 1px solid #444;
+    padding: 20px;
+    width: 400px;
+    margin-bottom: 30px;
+  }
+
+  .day14-dictionary input {
+    padding: 6px;
+  }
+
+  .day14-dictionary button {
+    padding: 6px 10px;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  async function searchWord() {
+    const word = document.getElementById("word-input").value.trim();
+    const meaning = document.getElementById("meaning");
+
+    if (word === "") {
+      meaning.textContent = "Please enter a word";
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+      );
+
+      if (!response.ok) {
+        meaning.textContent = "Word not found";
+        return;
+      }
+
+      const data = await response.json();
+      const definition =
+        data[0].meanings[0].definitions[0].definition;
+
+      meaning.textContent = "Meaning: " + definition;
+    } catch (error) {
+      meaning.textContent = "Error fetching data";
+    }
+  }
+</script>
+
+
+<!-- Project 6 ----------------------------------------------------->
+
+<!-- ===== MINI PROJECT 6 : NASA Picture of the Day ===== -->
+<section class="day14-nasa">
+  <h2>Mini Project 6: NASA Picture of the Day</h2>
+
+  <input type="date" id="nasa-date" />
+  <button onclick="loadNASA()">View</button>
+
+  <h3 id="nasa-title"></h3>
+  <div id="nasa-media"></div>
+  <p id="nasa-desc"></p>
+</section>
+
+<style>
+  .day14-nasa {
+    border: 1px solid #444;
+    padding: 20px;
+    width: 600px;
+    margin-bottom: 30px;
+  }
+
+  .day14-nasa img,
+  .day14-nasa iframe {
+    width: 100%;
+    max-height: 350px;
+    margin-top: 10px;
+  }
+
+  .day14-nasa button {
+    padding: 6px 10px;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  async function loadNASA() {
+    const date = document.getElementById("nasa-date").value;
+    const title = document.getElementById("nasa-title");
+    const media = document.getElementById("nasa-media");
+    const desc = document.getElementById("nasa-desc");
+
+    const apiKey = "DEMO_KEY";
+    let url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
+
+    if (date) {
+      url += `&date=${date}`;
+    }
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+
+      title.textContent = data.title;
+      desc.textContent = data.explanation;
+
+      // Handle image or video
+      if (data.media_type === "image") {
+        media.innerHTML = `<img src="${data.url}" alt="NASA Image">`;
+      } else {
+        media.innerHTML = `
+          <iframe src="${data.url}" frameborder="0" allowfullscreen></iframe>
+        `;
+      }
+    } catch (error) {
+      title.textContent = "Error loading NASA data";
+      media.innerHTML = "";
+      desc.textContent = "";
+    }
+  }
+
+  // Load today's picture by default
+  loadNASA();
+</script>
+
+
+
+
+
+
+</body>
+</html>

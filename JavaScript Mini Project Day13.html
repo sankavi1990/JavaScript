@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 13 Projects</title>
+</head>
+<body>
+    <section class="day13-product-catalog">
+  <h2>Project 1 - E-Commerce Product Catalog</h2>
+
+  <button onclick="filterBelow500()">Show Below $500</button>
+  <button onclick="sortLowToHigh()">Sort Price Low → High</button>
+
+  <ul id="day13-product-list"></ul>
+
+  <div id="day13-product-details"></div>
+</section>
+
+<style>
+  .day13-product-catalog {
+    border: 2px solid #333;
+    padding: 20px;
+    margin-bottom: 30px;
+    width: 600px;
+  }
+
+  .day13-product-catalog li {
+    cursor: pointer;
+    margin: 6px 0;
+  }
+
+  #day13-product-details {
+    margin-top: 15px;
+    padding: 10px;
+    border-top: 1px solid #aaa;
+    font-weight: bold;
+  }
+</style>
+
+<script>
+  let day13Products = [];
+
+  // Fetch products from JSON
+  fetch("products.json")
+    .then(response => response.json())
+    .then(data => {
+      day13Products = data;
+      displayProducts(day13Products);
+    });
+
+  function displayProducts(products) {
+    const list = document.getElementById("day13-product-list");
+    list.innerHTML = "";
+
+    products.forEach(product => {
+      const li = document.createElement("li");
+      li.textContent = `${product.name} - $${product.price}`;
+      li.onclick = () => showProductDetails(product);
+      list.appendChild(li);
+    });
+  }
+
+  function filterBelow500() {
+    const filtered = day13Products.filter(p => p.price < 500);
+    displayProducts(filtered);
+  }
+
+  function sortLowToHigh() {
+    const sorted = [...day13Products].sort((a, b) => a.price - b.price);
+    displayProducts(sorted);
+  }
+
+  function showProductDetails(product) {
+    document.getElementById("day13-product-details").innerHTML =
+      `Name: ${product.name}<br>
+       Price: $${product.price}<br>
+       Category: ${product.category}`;
+  }
+</script>
+
+
+<!-- Project 2 ------------------------------------------------------->
+
+<section class="day13-movie-search">
+  <h2>Project 2 : Movie Search</h2>
+
+  <input
+    type="text"
+    id="day13-movie-input"
+    placeholder="Enter movie title"
+  />
+  <button onclick="searchMovie()">Search</button>
+
+  <div id="day13-movie-result"></div>
+</section>
+
+<style>
+  .day13-movie-search {
+    border: 2px solid #333;
+    padding: 20px;
+    width: 600px;
+    margin-bottom: 30px;
+    font-family: Arial, sans-serif;
+  }
+
+  #day13-movie-result img {
+    width: 150px;
+    margin-top: 10px;
+  }
+
+  #day13-movie-result {
+    margin-top: 15px;
+  }
+</style>
+
+<script>
+async function searchMovie() {
+  const title = document.getElementById("day13-movie-input").value.trim();
+  const resultDiv = document.getElementById("day13-movie-result");
+
+  if (title === "") {
+    resultDiv.innerHTML = "Please enter a movie title";
+    return;
+  }
+
+  const apiKey = "26918545";
+  const url = `https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${apiKey}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    console.log(data); // IMPORTANT for debugging
+
+    if (data.Response === "False") {
+      resultDiv.innerHTML = data.Error;
+      return;
+    }
+
+    resultDiv.innerHTML = `
+      <h3>${data.Title} (${data.Year})</h3>
+      <p><strong>Plot:</strong> ${data.Plot}</p>
+      <img src="${data.Poster}" alt="Poster">
+    `;
+  } catch (error) {
+    resultDiv.innerHTML = "Error fetching movie data";
+  }
+}
+</script>
+
+<!-- Project 3 ---------------------------------------->
+ <section class="day13-weather-app">
+  <h2>Project 3 - Weather App</h2>
+
+  <input
+    type="text"
+    id="day13-weather-city"
+    placeholder="Enter city name"
+  />
+  <button onclick="getWeather()">Get Weather</button>
+
+  <div id="day13-weather-result"></div>
+</section>
+
+<style>
+  .day13-weather-app {
+    border: 2px solid #333;
+    padding: 20px;
+    width: 600px;
+    margin-bottom: 30px;
+    font-family: Arial, sans-serif;
+  }
+
+  #day13-weather-result {
+    margin-top: 15px;
+    font-size: 16px;
+  }
+</style>
+
+<script>
+  async function getWeather() {
+    const city = document.getElementById("day13-weather-city").value.trim();
+    const resultDiv = document.getElementById("day13-weather-result");
+
+    if (city === "") {
+      resultDiv.innerHTML = "Please enter a city name";
+      return;
+    }
+
+    const apiKey = "7bb03a94fbf3503d6c71d868733e5d24";
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
+      city
+    )}&units=metric&appid=${apiKey}`;
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (data.cod !== 200) {
+        resultDiv.innerHTML = "City not found!";
+        return;
+      }
+
+      resultDiv.innerHTML = `
+        <h3>${data.name}</h3>
+        <p>🌡️ Temperature: ${data.main.temp} °C</p>
+        <p>☁️ Condition: ${data.weather[0].description}</p>
+        <p>💧 Humidity: ${data.main.humidity}%</p>
+      `;
+    } catch (error) {
+      resultDiv.innerHTML = "Error fetching weather data";
+    }
+  }
+</script>
+
+
+<!-- Project 4 ----------------------------------------------->
+<h2>Project  4 - Employee Management System</h2>
+
+<input id="emp-name" placeholder="Employee Name">
+<input id="emp-role" placeholder="Role">
+<input id="emp-salary" type="number" placeholder="Salary">
+<button onclick="addEmployee()">Add Employee</button>
+
+<h3>Employee List</h3>
+<ul id="employee-list"></ul>
+
+<script>
+    let employees = [];
+
+// Fetch employees from JSON
+fetch("employees.json")
+  .then(res => res.json())
+  .then(data => {
+    const storedEmployees = localStorage.getItem("employees");
+
+    if (storedEmployees) {
+      employees = JSON.parse(storedEmployees);
+    } else {
+      employees = data;
+      localStorage.setItem("employees", JSON.stringify(employees));
+    }
+
+    displayEmployees();
+  });
+
+// Display employees
+function displayEmployees() {
+  const list = document.getElementById("employee-list");
+  list.innerHTML = "";
+
+  employees.forEach((emp, index) => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      ${emp.name} - ${emp.role} - ₹${emp.salary}
+      <button onclick="deleteEmployee(${index})">Delete</button>
+    `;
+    list.appendChild(li);
+  });
+}
+
+// Add employee
+function addEmployee() {
+  const name = document.getElementById("emp-name").value;
+  const role = document.getElementById("emp-role").value;
+  const salary = document.getElementById("emp-salary").value;
+
+  if (!name || !role || !salary) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  const newEmployee = {
+    id: Date.now(),
+    name,
+    role,
+    salary
+  };
+
+  employees.push(newEmployee);
+  localStorage.setItem("employees", JSON.stringify(employees));
+  displayEmployees();
+
+  document.getElementById("emp-name").value = "";
+  document.getElementById("emp-role").value = "";
+  document.getElementById("emp-salary").value = "";
+}
+
+// Delete employee
+function deleteEmployee(index) {
+  employees.splice(index, 1);
+  localStorage.setItem("employees", JSON.stringify(employees));
+  displayEmployees();
+}
+
+
+
+
+
+
+</script>
+
+
+
+<section class="crypto-tracker">
+  <h2>Project 5 - Crypto Tracker</h2>
+  <p>Live prices (Auto refresh every 60 seconds)</p>
+
+  <div id="crypto-container" class="crypto-container"></div>
+</section>
+
+<style>
+  .crypto-tracker {
+    max-width: 900px;
+    /* margin: 20px auto; */
+    padding: 20px;
+    border: 1px solid #444;
+  }
+
+  .crypto-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+
+  .crypto-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    background: #f9f9f9;
+  }
+
+  .crypto-card h3 {
+    margin-bottom: 5px;
+  }
+
+  .price {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .positive {
+    color: green;
+  }
+
+  .negative {
+    color: red;
+  }
+</style>
+
+<script>
+  const cryptoContainer = document.getElementById("crypto-container");
+
+  async function fetchCryptoData() {
+    try {
+      const response = await fetch(
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false"
+      );
+
+      const data = await response.json();
+      displayCryptos(data);
+    } catch (error) {
+      cryptoContainer.innerHTML = "<p>Error fetching crypto data</p>";
+    }
+  }
+
+  function displayCryptos(cryptos) {
+    cryptoContainer.innerHTML = "";
+
+    cryptos.forEach(coin => {
+      const changeClass =
+        coin.price_change_percentage_24h >= 0 ? "positive" : "negative";
+
+      const card = document.createElement("div");
+      card.className = "crypto-card";
+
+      card.innerHTML = `
+        <h3>${coin.name} (${coin.symbol.toUpperCase()})</h3>
+        <p class="price">$${coin.current_price}</p>
+        <p class="${changeClass}">
+          24h Change: ${coin.price_change_percentage_24h.toFixed(2)}%
+        </p>
+      `;
+
+      cryptoContainer.appendChild(card);
+    });
+  }
+
+  // Initial load
+  fetchCryptoData();
+
+  // Auto refresh every 60 seconds
+  setInterval(fetchCryptoData, 60000);
+</script>
+
+
+
+<!-- Project 6 -->
+ <section class="day13-country-explorer">
+  <h2>Project 6 - Country Explorer</h2>
+
+  <input
+    type="text"
+    id="day13-search"
+    placeholder="Search country..."
+    oninput="filterCountries()"
+  />
+
+  <br /><br />
+
+  <select id="day13-country-select">
+    <option value="">Select a country</option>
+  </select>
+
+  <div id="day13-country-details"></div>
+</section>
+
+
+
+<style>
+    .day13-country-explorer {
+  border: 1px solid #444;
+  padding: 20px;
+  width: 500px;
+  margin-bottom: 30px;
+}
+
+.day13-country-explorer img {
+  width: 150px;
+  display: block;
+  margin-top: 10px;
+}
+
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const searchInput = document.getElementById("day13-search");
+  const countrySelect = document.getElementById("day13-country-select");
+  const countryDetails = document.getElementById("day13-country-details");
+
+  let allCountries = [];
+
+  async function loadCountries() {
+    try {
+      const response = await fetch(
+        "https://restcountries.com/v3.1/all?fields=name,capital,region,population,flags"
+      );
+
+      const data = await response.json();
+
+      if (!Array.isArray(data)) {
+        throw new Error("API did not return array");
+      }
+
+      allCountries = data;
+      populateDropdown(allCountries);
+
+    } catch (error) {
+      console.error("Error loading countries:", error);
+      countrySelect.innerHTML =
+        `<option>Error loading countries</option>`;
+    }
+  }
+
+  function populateDropdown(countries) {
+    countrySelect.innerHTML = `<option value="">Select a country</option>`;
+
+    countries.forEach(country => {
+      const option = document.createElement("option");
+      option.value = country.name.common;
+      option.textContent = country.name.common;
+      countrySelect.appendChild(option);
+    });
+  }
+
+  window.filterCountries = function () {
+    const text = searchInput.value.toLowerCase();
+
+    const filtered = allCountries.filter(c =>
+      c.name.common.toLowerCase().includes(text)
+    );
+
+    populateDropdown(filtered);
+  };
+
+  countrySelect.addEventListener("change", () => {
+    const selected = allCountries.find(
+      c => c.name.common === countrySelect.value
+    );
+
+    if (!selected) {
+      countryDetails.innerHTML = "";
+      return;
+    }
+
+    countryDetails.innerHTML = `
+      <h3>${selected.name.common}</h3>
+      <img src="${selected.flags.png}">
+      <p><b>Capital:</b> ${selected.capital ? selected.capital[0] : "N/A"}</p>
+      <p><b>Region:</b> ${selected.region}</p>
+      <p><b>Population:</b> ${selected.population.toLocaleString()}</p>
+    `;
+  });
+
+  loadCountries();
+
+});
+</script>
+
+
+
+</body>
+</html>
