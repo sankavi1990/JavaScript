@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DailyTask Part1 20.1.2026</title>
+<style>
+  body { font-family: Arial; padding:20px }
+  section { border:1px solid #ccc; padding:15px; margin-bottom:20px }
+  h2 { color:#333 }
+  .dark { background:#222; color:#fff }
+</style>
+</head>
+<body>
+
+<!-- 1 -->
+<section>
+    <h1>Task 1-25 </h1>
+<h2>1. Login App (validation + saved login)</h2>
+<input id="loginUser" placeholder="Username">
+<input id="loginPass" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
+<p id="loginMsg"></p>
+</section>
+
+<!-- 2 -->
+<section>
+<h2>2. User Management (Add / Delete)</h2>
+<input id="userName">
+<button onclick="addUser()">Add</button>
+<ul id="userList"></ul>
+</section>
+
+<!-- 3 -->
+<section>
+<h2>3. To-Do App</h2>
+<input id="todoText">
+<button onclick="addTodo()">Add</button>
+<ul id="todoList"></ul>
+</section>
+
+<!-- 4 -->
+<section>
+<h2>4. Dynamic Table from Form</h2>
+<input id="tableName">
+<button onclick="addRow()">Add</button>
+<table border="1"><tbody id="tableBody"></tbody></table>
+</section>
+
+<!-- 5 -->
+<section>
+<h2>5. Multi-Step Registration</h2>
+<div id="step1">
+  <input placeholder="Name">
+  <button onclick="nextStep()">Next</button>
+</div>
+<div id="step2" hidden>
+  <input placeholder="Email">
+  <button>Submit</button>
+</div>
+</section>
+
+<!-- 6 -->
+<section>
+<h2>6. Theme Switcher</h2>
+<button onclick="toggleTheme()">Toggle Theme</button>
+</section>
+
+<!-- 7 -->
+<section>
+<h2>7. Search & Filter</h2>
+<input onkeyup="filterList(this.value)">
+<ul id="searchList">
+<li>Apple</li><li>Banana</li><li>Orange</li>
+</ul>
+</section>
+
+<!-- 8 -->
+<section>
+<h2>8. Modal Popup</h2>
+<button onclick="modal.show()">Open Modal</button>
+<dialog id="modal">
+  <p>Modal Content</p>
+  <button onclick="modal.close()">Close</button>
+</dialog>
+</section>
+
+<!-- 9 -->
+<section>
+<h2>9. Dashboard Navigation</h2>
+<button onclick="dashContent.innerText='Home'">Home</button>
+<button onclick="dashContent.innerText='Users'">Users</button>
+<div id="dashContent"></div>
+</section>
+
+<!-- 10 -->
+<section>
+<h2>10. Password Strength Checker</h2>
+<input type="password" oninput="strength.innerText=value.length>6?'Strong':'Weak'">
+<p id="strength"></p>
+</section>
+
+<!-- 11 -->
+<section>
+<h2>11. CRUD with localStorage</h2>
+<input id="crudInput">
+<button onclick="saveCrud()">Save</button>
+</section>
+
+<!-- 12 -->
+<section>
+<h2>12. Sortable Table</h2>
+<button onclick="sortTable()">Sort</button>
+<ul id="sortList"></ul>
+</section>
+
+<!-- 13 -->
+<section>
+<h2>13. Conditional Fields</h2>
+<select onchange="condField.hidden=this.value!=='Yes'">
+<option>No</option><option>Yes</option>
+</select>
+<input id="condField" hidden>
+</section>
+
+<!-- 14 -->
+<section>
+<h2>14. Notification Toast</h2>
+<button onclick="toast.innerText='Saved Successfully!'">Show Toast</button>
+<p id="toast"></p>
+</section>
+
+<!-- 15 -->
+<section>
+<h2>15. Image Upload & Preview</h2>
+<input type="file" onchange="img.src=URL.createObjectURL(files[0])">
+<img id="img" width="100">
+</section>
+
+<!-- 16 -->
+<section>
+<h2>16. Pagination</h2>
+<button onclick="page--">Prev</button>
+<button onclick="page++">Next</button>
+<p id="pageDisplay"></p>
+</section>
+
+<!-- 17 -->
+<section>
+<h2>17. Form Auto-Save</h2>
+<input oninput="localStorage.autoSave=value">
+</section>
+
+<!-- 18 -->
+<section>
+<h2>18. Tab Switching</h2>
+<button onclick="tab.innerText='Tab 1 Content'">Tab 1</button>
+<button onclick="tab.innerText='Tab 2 Content'">Tab 2</button>
+<div id="tab"></div>
+</section>
+
+<!-- 19 -->
+<section>
+<h2>19. Role-Based UI</h2>
+<button id="adminBtn">Admin Action</button>
+</section>
+
+<!-- 20 -->
+<section>
+<h2>20. Cart Logic</h2>
+<button onclick="cartCount++">Add</button>
+<p id="cart"></p>
+</section>
+
+<!-- 21 -->
+<section>
+<h2>21. Session Timeout Warning</h2>
+<p>Wait 5 seconds…</p>
+</section>
+
+<!-- 22 -->
+<section>
+<h2>22. Profile Edit & Preview</h2>
+<input oninput="profile.innerText=value">
+<p id="profile"></p>
+</section>
+
+<!-- 23 -->
+<section>
+<h2>23. Search Suggestion</h2>
+<input oninput="suggest.innerText=value">
+<p id="suggest"></p>
+</section>
+
+<!-- 24 -->
+<section>
+<h2>24. Dynamic Dropdown</h2>
+<select onchange="state.hidden=this.value!=='India'">
+<option>USA</option><option>India</option>
+</select>
+<select id="state" hidden><option>Tamil Nadu</option></select>
+</section>
+
+<!-- 25 -->
+<section>
+<h2>25. Dashboard Summary Cards</h2>
+<div>Total Users: <b>10</b></div>
+<div>Total Orders: <b>5</b></div>
+</section>
+
+<script>
+/* 1 */
+function login(){
+ if(loginUser.value && loginPass.value){
+  localStorage.user=loginUser.value
+  loginMsg.innerText="Logged In"
+ }
+}
+
+/* 2 */
+let users=[]
+function addUser(){
+ users.push(userName.value)
+ userList.innerHTML=users.map((u,i)=>`<li>${u}
+ <button onclick="users.splice(${i},1);addUser()">X</button></li>`).join('')
+}
+
+/* 3 */
+let todos=[]
+function addTodo(){
+ todos.push(todoText.value)
+ todoList.innerHTML=todos.map(t=>`<li>${t}</li>`).join('')
+}
+
+/* 4 */
+function addRow(){
+ tableBody.innerHTML+=`<tr><td>${tableName.value}</td></tr>`
+}
+
+/* 5 */
+function nextStep(){
+ step1.hidden=true
+ step2.hidden=false
+}
+
+/* 6 */
+function toggleTheme(){
+ document.body.classList.toggle("dark")
+}
+
+/* 7 */
+function filterList(val){
+ [...searchList.children].forEach(li=>{
+  li.hidden=!li.innerText.toLowerCase().includes(val.toLowerCase())
+ })
+}
+
+/* 11 */
+function saveCrud(){
+ let data=JSON.parse(localStorage.data||"[]")
+ data.push(crudInput.value)
+ localStorage.data=JSON.stringify(data)
+}
+
+/* 12 */
+let arr=["C","A","B"]
+function sortTable(){
+ arr.sort()
+ sortList.innerHTML=arr.map(a=>`<li>${a}</li>`).join('')
+}
+sortTable()
+
+/* 16 */
+let page=1
+setInterval(()=>pageDisplay.innerText="Page "+page)
+
+/* 19 */
+let role="user"
+if(role!=="admin") adminBtn.style.display="none"
+
+/* 20 */
+let cartCount=0
+setInterval(()=>cart.innerText="Items: "+cartCount)
+
+/* 21 */
+setTimeout(()=>alert("Session Expiring Soon"),5000)
+
+/* 17 */
+document.querySelectorAll('[oninput]').forEach(i=>{
+ if(localStorage.autoSave) i.value=localStorage.autoSave
+})
+</script>
+
+</body>
+</html>

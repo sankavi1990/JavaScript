@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tasks 26–49 Jan 20 Mini Apps</title>
+<style>
+body{font-family:Arial;padding:20px}
+section{border:1px solid #ccc;margin-bottom:20px;padding:15px}
+h2{color:#333}
+.hidden{display:none}
+.dark{background:#222;color:#fff}
+.nav{display:flex;gap:10px}
+.highlight{background:yellow}
+.modal{position:fixed;top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center}
+.modal-content{background:#fff;padding:20px}
+</style>
+</head>
+<body>
+
+<!-- 26 -->
+<section>
+<h2>26. Reusable Form Validation System</h2>
+<input data-rule="required" placeholder="Required field">
+<p id="valMsg"></p>
+</section>
+
+<!-- 27 -->
+<section>
+<h2>27. Client-Side Routing App</h2>
+<button onclick="route('home')">Home</button>
+<button onclick="route('about')">About</button>
+<div id="view"></div>
+</section>
+
+<!-- 28 -->
+<section>
+<h2>28. Admin Panel UI with Restrictions</h2>
+<button onclick="checkAdmin()">Admin Action</button>
+<p id="adminMsg"></p>
+</section>
+
+<!-- 29 -->
+<section>
+<h2>29. Offline-First Form App</h2>
+<input oninput="localStorage.offline=value">
+<p>Saved offline</p>
+</section>
+
+<!-- 30 -->
+<section>
+<h2>30. Keyboard Accessible Modal</h2>
+<button onclick="openModal()">Open Modal</button>
+<div class="modal" id="kbdModal" tabindex="0">
+<div class="modal-content">
+<p>Press ESC to close</p>
+<button onclick="closeModal()">Close</button>
+</div>
+</div>
+</section>
+
+<!-- 31 -->
+<section>
+<h2>31. User Activity Log App</h2>
+<button onclick="log('Clicked Button')">Click</button>
+<ul id="logList"></ul>
+</section>
+
+<!-- 32 -->
+<section>
+<h2>32. Dashboard Notification Center</h2>
+<button onclick="notify()">Notify</button>
+<ul id="notifyList"></ul>
+</section>
+
+<!-- 33 -->
+<section>
+<h2>33. State Management Mini-App</h2>
+<button onclick="state.count++">+</button>
+<p id="stateView"></p>
+</section>
+
+<!-- 34 -->
+<section>
+<h2>34. Responsive Navbar with Toggle</h2>
+<button onclick="nav.classList.toggle('hidden')">Toggle</button>
+<div id="nav" class="nav">
+<span>Home</span><span>About</span><span>Contact</span>
+</div>
+</section>
+
+<!-- 35 -->
+<section>
+<h2>35. Form Submission History</h2>
+<input id="histInput">
+<button onclick="saveHist()">Submit</button>
+<ul id="histList"></ul>
+</section>
+
+<!-- 36 -->
+<section>
+<h2>36. Settings Dashboard with Auto-Save</h2>
+<input oninput="localStorage.setting=value">
+<p>Saved</p>
+</section>
+
+<!-- 37 -->
+<section>
+<h2>37. Dynamic Content Loader</h2>
+<button onclick="loadContent()">Load</button>
+<div id="content"></div>
+</section>
+
+<!-- 38 -->
+<section>
+<h2>38. Progress Tracking App</h2>
+<button onclick="progress.value+=10">Progress</button>
+<progress id="progress" value="0" max="100"></progress>
+</section>
+
+<!-- 39 -->
+<section>
+<h2>39. Form Rules Engine</h2>
+<input oninput="ruleCheck(this)">
+<p id="ruleMsg"></p>
+</section>
+
+<!-- 40 -->
+<section>
+<h2>40. Search & Highlight App</h2>
+<input oninput="highlightText(this.value)">
+<p id="text">JavaScript makes UI interactive</p>
+</section>
+
+<!-- 41 -->
+<section>
+<h2>41. Mini Admin Dashboard</h2>
+<p>Total Users: 5</p>
+<p>Total Orders: 3</p>
+</section>
+
+<!-- 42 -->
+<section>
+<h2>42. User Onboarding Flow</h2>
+<p id="step">Welcome</p>
+<button onclick="nextOnboard()">Next</button>
+</section>
+
+<!-- 43 -->
+<section>
+<h2>43. Reporting Dashboard (Static)</h2>
+<table border="1">
+<tr><th>Month</th><th>Sales</th></tr>
+<tr><td>Jan</td><td>100</td></tr>
+</table>
+</section>
+
+<!-- 44 -->
+<section>
+<h2>44. Component-Based UI (JS Functions)</h2>
+<div id="comp"></div>
+</section>
+
+<!-- 45 -->
+<section>
+<h2>45. Performance Optimized List</h2>
+<button onclick="renderList()">Render</button>
+<ul id="bigList"></ul>
+</section>
+
+<!-- 46 -->
+<section>
+<h2>46. Login Attempt Limit</h2>
+<button onclick="attempt()">Login</button>
+<p id="attemptMsg"></p>
+</section>
+
+<!-- 47 -->
+<section>
+<h2>47. User Preference Manager</h2>
+<select onchange="localStorage.pref=value">
+<option>Light</option><option>Dark</option>
+</select>
+</section>
+
+<!-- 48 -->
+<section>
+<h2>48. Dashboard Theme Customizer</h2>
+<button onclick="document.body.classList.toggle('dark')">Toggle</button>
+</section>
+
+<!-- 49 -->
+<section>
+<h2>49. Reusable Confirmation Dialog</h2>
+<button onclick="confirmAction()">Delete</button>
+</section>
+
+<!-- 50 -->
+<!-- <section>
+<h2>50. Complete Interview-Ready Mini Application</h2>
+<p>Login + Dashboard + Storage + Validation Combined</p>
+<input id="appUser" placeholder="Username">
+<button onclick="finalApp()">Login</button>
+<p id="appMsg"></p>
+</section> -->
+
+<script>
+/* 26 */
+document.addEventListener("input",e=>{
+ if(e.target.dataset.rule==="required")
+ valMsg.innerText=e.target.value?"":"Required"
+})
+
+/* 27 */
+function route(p){view.innerText=p+" page"}
+
+/* 28 */
+function checkAdmin(){
+ let role="user"
+ adminMsg.innerText=role==="admin"?"Allowed":"Denied"
+}
+
+/* 30 */
+function openModal(){kbdModal.style.display="flex"}
+function closeModal(){kbdModal.style.display="none"}
+window.onkeydown=e=>e.key==="Escape"&&closeModal()
+
+/* 31 */
+function log(msg){
+ logList.innerHTML+=`<li>${msg}</li>`
+}
+
+/* 32 */
+function notify(){
+ notifyList.innerHTML+=`<li>New Notification</li>`
+}
+
+/* 33 */
+let state={count:0}
+setInterval(()=>stateView.innerText=state.count)
+
+/* 35 */
+function saveHist(){
+ let h=JSON.parse(localStorage.hist||"[]")
+ h.push(histInput.value)
+ localStorage.hist=JSON.stringify(h)
+ histList.innerHTML=h.map(i=>`<li>${i}</li>`).join("")
+}
+
+/* 37 */
+function loadContent(){content.innerText="Loaded Content"}
+
+/* 39 */
+function ruleCheck(i){
+ ruleMsg.innerText=i.value.length<5?"Min 5 chars":"Valid"
+}
+
+/* 40 */
+function highlightText(v){
+ text.innerHTML=text.innerText.replace(v,`<span class="highlight">${v}</span>`)
+}
+
+/* 42 */
+let steps=["Welcome","Profile","Finish"],s=0
+function nextOnboard(){step.innerText=steps[++s]||"Done"}
+
+/* 44 */
+function card(txt){return `<div>${txt}</div>`}
+comp.innerHTML=card("Component Loaded")
+
+/* 45 */
+function renderList(){
+ let f=document.createDocumentFragment()
+ for(let i=0;i<500;i++){
+  let li=document.createElement("li")
+  li.textContent="Item "+i
+  f.appendChild(li)
+ }
+ bigList.appendChild(f)
+}
+
+/* 46 */
+let tries=0
+function attempt(){
+ tries++
+ attemptMsg.innerText=tries>3?"Locked":"Attempt "+tries
+}
+
+/* 49 */
+function confirmAction(){
+ confirm("Are you sure?")&&alert("Deleted")
+}
+
+/* 50 */
+function finalApp(){
+ if(appUser.value){
+  localStorage.user=appUser.value
+  appMsg.innerText="Welcome "+appUser.value
+ }
+}
+</script>
+
+</body>
+</html>

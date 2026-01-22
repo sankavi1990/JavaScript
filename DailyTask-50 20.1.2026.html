@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Task 50 – 20.1.2026</title>
+
+<style>
+body{font-family:Arial;background:#f4f4f4;margin:0;padding:20px}
+
+.hidden{display:none}
+
+.card{background:#fff;padding:15px;margin-bottom:15px;border-radius:6px}
+
+button{padding:6px 12px;margin-top:5px}
+
+input{padding:6px;width:100%;margin:5px 0}
+
+table{width:100%;border-collapse:collapse;margin-top:10px}
+
+th,td{border:1px solid #ccc;padding:8px;text-align:left}
+th{background:#eee}
+header{display:flex;justify-content:space-between;align-items:center}
+.summary{display:flex;gap:10px}
+.summary div{flex:1;background:#e3f2fd;padding:10px;border-radius:5px}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN SECTION -->
+<div id="loginCard" class="card">
+    <h2>Task 50-</h2>
+  <h2>Login</h2>
+  <input id="username" placeholder="Username">
+  <input id="password" type="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+  <p id="loginMsg"></p>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="hidden">
+
+<header class="card">
+  <h2>Dashboard</h2>
+  <button onclick="logout()">Logout</button>
+</header>
+
+<!-- SUMMARY -->
+<div class="summary">
+  <div>Total Users: <span id="totalUsers">0</span></div>
+  <div>Last Login: <span id="lastLogin">-</span></div>
+</div>
+
+<!-- USER FORM -->
+<div class="card">
+  <h3>Add User</h3>
+  <input id="name" placeholder="Name">
+  <input id="email" placeholder="Email">
+  <button onclick="addUser()">Add</button>
+  <p id="formMsg"></p>
+</div>
+
+<!-- USER TABLE -->
+<div class="card">
+  <h3>User List</h3>
+  <table>
+    <thead>
+      <tr><th>Name</th><th>Email</th><th>Action</th></tr>
+    </thead>
+    <tbody id="userTable"></tbody>
+  </table>
+</div>
+
+</div>
+
+<script>
+/* ---------- SESSION CHECK ---------- */
+if(localStorage.loggedIn){
+ showDashboard()
+}
+
+/* ---------- LOGIN ---------- */
+function login(){
+ let u=username.value.trim()
+ let p=password.value.trim()
+
+ if(u==="" || p===""){
+  loginMsg.innerText="All fields required"
+  return
+ }
+
+ localStorage.loggedIn=true
+ localStorage.lastLogin=new Date().toLocaleString()
+ showDashboard()
+}
+
+/* ---------- LOGOUT ---------- */
+function logout(){
+ localStorage.removeItem("loggedIn")
+ location.reload()
+}
+
+/* ---------- SHOW DASHBOARD ---------- */
+function showDashboard(){
+ loginCard.classList.add("hidden")
+ dashboard.classList.remove("hidden")
+ lastLogin.innerText=localStorage.lastLogin
+ loadUsers()
+}
+
+/* ---------- CRUD LOGIC ---------- */
+function getUsers(){
+ return JSON.parse(localStorage.users || "[]")
+}
+
+function saveUsers(data){
+ localStorage.users=JSON.stringify(data)
+ loadUsers()
+}
+
+function addUser(){
+ let n=name.value.trim()
+ let e=email.value.trim()
+
+ if(n==="" || e===""){
+  formMsg.innerText="All fields required"
+  return
+ }
+
+ let users=getUsers()
+
+ // prevent duplicate
+ if(users.some(u=>u.email===e)){
+  formMsg.innerText="Duplicate email not allowed"
+  return
+ }
+
+ users.push({name:n,email:e})
+ saveUsers(users)
+ name.value=email.value=""
+ formMsg.innerText="User added successfully"
+}
+
+/* ---------- DELETE ---------- */
+function delUser(i){
+ if(confirm("Delete user?")){
+  let users=getUsers()
+  users.splice(i,1)
+  saveUsers(users)
+ }
+}
+
+/* ---------- LOAD USERS ---------- */
+function loadUsers(){
+ let users=getUsers()
+ userTable.innerHTML=""
+ users.forEach((u,i)=>{
+  userTable.innerHTML+=`
+   <tr>
+     <td>${u.name}</td>
+     <td>${u.email}</td>
+     <td><button onclick="delUser(${i})">Delete</button></td>
+   </tr>`
+ })
+ totalUsers.innerText=users.length
+}
+</script>
+
+</body>
+</html>

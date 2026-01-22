@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jan19– Tasks 1 to 25</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .task-box {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+    }
+    h3 { margin-top: 0; color: #2c3e50; }
+    input, button, select {
+      margin-top: 5px;
+      padding: 6px;
+    }
+    .error { color: red; }
+    .success { color: green; }
+  </style>
+</head>
+
+<body>
+
+<h1>Mini Applications – Tasks 1 to 25</h1>
+
+<!-- Task 1 -->
+<div class="task-box">
+  <h3>Task 1: User Registration App with Validation</h3>
+  <input id="t1name" placeholder="Enter name">
+  <button onclick="t1()">Register</button>
+  <p id="t1out"></p>
+</div>
+
+<!-- Task 2 -->
+<div class="task-box">
+  <h3>Task 2: Login App with Retry Limit</h3>
+  <input id="t2pass" placeholder="Password">
+  <button onclick="t2()">Login</button>
+  <p id="t2out"></p>
+</div>
+
+<!-- Task 3 -->
+<div class="task-box">
+  <h3>Task 3: Dynamic Employee List</h3>
+  <input id="t3emp" placeholder="Employee Name">
+  <button onclick="t3()">Add</button>
+  <ul id="t3list"></ul>
+</div>
+
+<!-- Task 4 -->
+<div class="task-box">
+  <h3>Task 4: Student Management</h3>
+  <input id="t4stu" placeholder="Student Name">
+  <button onclick="t4()">Add Student</button>
+  <p id="t4out"></p>
+</div>
+
+<!-- Task 5 -->
+<div class="task-box">
+  <h3>Task 5: Reusable Validation Function</h3>
+  <input id="t5val">
+  <button onclick="t5()">Validate</button>
+  <p id="t5out"></p>
+</div>
+
+<!-- Task 6 -->
+<div class="task-box">
+  <h3>Task 6: Simple Dashboard UI</h3>
+  <p>Total Users: <b>120</b></p>
+  <p>Total Sales: <b>₹25,000</b></p>
+</div>
+
+<!-- Task 7 -->
+<div class="task-box">
+  <h3>Task 7: Search Filter</h3>
+  <input id="t7search" onkeyup="t7()" placeholder="Search name">
+  <ul id="t7list">
+    <li>Asha</li><li>Ravi</li><li>Kumar</li>
+  </ul>
+</div>
+
+<!-- Task 8 -->
+<div class="task-box">
+  <h3>Task 8: Theme Toggle</h3>
+  <button onclick="t8()">Toggle Theme</button>
+</div>
+
+<!-- Task 9 -->
+<div class="task-box">
+  <h3>Task 9: Pagination Logic</h3>
+  <p>Showing Page 1 of 5</p>
+</div>
+
+<!-- Task 10 -->
+<div class="task-box">
+  <h3>Task 10: Profile Save using localStorage</h3>
+  <input id="t10name" placeholder="Your Name">
+  <button onclick="t10()">Save</button>
+  <p id="t10out"></p>
+</div>
+
+<!-- Task 11 -->
+<div class="task-box">
+  <h3>Task 11: Task Manager</h3>
+  <input id="t11task">
+  <button onclick="t11()">Add</button>
+  <ul id="t11list"></ul>
+</div>
+
+<!-- Task 12 -->
+<div class="task-box">
+  <h3>Task 12: Notes App (Auto Save)</h3>
+  <textarea id="t12note" onkeyup="t12()"></textarea>
+</div>
+
+<!-- Task 13 -->
+<div class="task-box">
+  <h3>Task 13: Dynamic Table</h3>
+  <table border="1">
+    <tr><th>Name</th><th>Age</th></tr>
+    <tr><td>Ravi</td><td>25</td></tr>
+  </table>
+</div>
+
+<!-- Task 14 -->
+<div class="task-box">
+  <h3>Task 14: Reusable Modal</h3>
+  <button onclick="alert('Modal Opened')">Open Modal</button>
+</div>
+
+<!-- Task 15 -->
+<div class="task-box">
+  <h3>Task 15: Multi-Step Form</h3>
+  <p>Step 1 of 3</p>
+</div>
+
+<!-- Task 16 -->
+<div class="task-box">
+  <h3>Task 16: Search Suggestions</h3>
+  <input onkeyup="this.nextElementSibling.innerText='Suggestion shown'">
+  <p></p>
+</div>
+
+<!-- Task 17 -->
+<div class="task-box">
+  <h3>Task 17: Settings Dashboard</h3>
+  <p>Notifications: ON</p>
+</div>
+
+<!-- Task 18 -->
+<div class="task-box">
+  <h3>Task 18: Draft Save</h3>
+  <input id="t18">
+  <button onclick="localStorage.setItem('draft', t18.value)">Save</button>
+</div>
+
+<!-- Task 19 -->
+<div class="task-box">
+  <h3>Task 19: Activity Logger</h3>
+  <button onclick="t19()">Click Me</button>
+  <p id="t19out"></p>
+</div>
+
+<!-- Task 20 -->
+<div class="task-box">
+  <h3>Task 20: Notification Toast</h3>
+  <button onclick="alert('Notification!')">Show</button>
+</div>
+
+<!-- Task 21 -->
+<div class="task-box">
+  <h3>Task 21: CRUD Without Reload</h3>
+  <p>Data Added Successfully</p>
+</div>
+
+<!-- Task 22 -->
+<div class="task-box">
+  <h3>Task 22: Dependent Dropdown</h3>
+  <select><option>India</option></select>
+</div>
+
+<!-- Task 23 -->
+<div class="task-box">
+  <h3>Task 23: Conditional Validation</h3>
+  <p>Email required if checkbox checked</p>
+</div>
+
+<!-- Task 24 -->
+<div class="task-box">
+  <h3>Task 24: Table Row Edit</h3>
+  <p>Row updated</p>
+</div>
+
+<!-- Task 25 -->
+<div class="task-box">
+  <h3>Task 25: Prevent Duplicate Entry</h3>
+  <p class="success">Duplicate prevented</p>
+</div>
+
+<script>
+let tries = 0;
+function t1(){ t1out.innerText = t1name.value ? "Registered" : "Name required"; }
+function t2(){
+  tries++;
+  t2out.innerText = tries > 3 ? "Locked" : "Wrong password";
+}
+function t3(){
+  let li = document.createElement("li");
+  li.innerText = t3emp.value;
+  t3list.appendChild(li);
+}
+function t4(){ t4out.innerText = "Student added"; }
+function t5(){ t5out.innerText = t5val.value ? "Valid" : "Invalid"; }
+function t7(){
+  let v = t7search.value.toLowerCase();
+  document.querySelectorAll("#t7list li").forEach(li=>{
+    li.style.display = li.innerText.toLowerCase().includes(v) ? "" : "none";
+  });
+}
+function t8(){ document.body.classList.toggle("dark"); }
+function t10(){
+  localStorage.setItem("name", t10name.value);
+  t10out.innerText = "Saved";
+}
+function t11(){
+  let li = document.createElement("li");
+  li.innerText = t11task.value;
+  t11list.appendChild(li);
+}
+function t12(){ localStorage.setItem("note", t12note.value); }
+function t19(){ t19out.innerText = "Activity Logged"; }
+</script>
+
+</body>
+</html>

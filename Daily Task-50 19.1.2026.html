@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task 50- Company Ready Mini App</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f6f8;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+    }
+    button {
+      background: #2ecc71;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #27ae60;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+    .dashboard {
+      background: #ecf0f1;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>Task 50 - Company-Ready User Management App</h2>
+
+  <!-- Dashboard -->
+  <div class="dashboard">
+    Total Users: <b id="totalUsers">0</b>
+  </div>
+
+  <!-- Form -->
+  <h3>Add User</h3>
+  <div class="error" id="errorMsg"></div>
+
+  <input type="text" id="name" placeholder="Enter Name">
+  <input type="email" id="email" placeholder="Enter Email">
+  <select id="role">
+    <option value="">Select Role</option>
+    <option>Admin</option>
+    <option>User</option>
+    <option>Manager</option>
+  </select>
+
+  <button onclick="addUser()">Save User</button>
+
+  <!-- Table -->
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="userTable"></tbody>
+  </table>
+</div>
+
+<script>
+let users = JSON.parse(localStorage.getItem("users")) || [];
+
+function addUser() {
+  let name = document.getElementById("name").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let role = document.getElementById("role").value;
+  let error = document.getElementById("errorMsg");
+
+  // Validation
+  if (!name || !email || !role) {
+    error.innerText = "All fields are required";
+    return;
+  }
+  if (!email.includes("@")) {
+    error.innerText = "Invalid email format";
+    return;
+  }
+
+  error.innerText = "";
+
+  users.push({ name, email, role });
+  localStorage.setItem("users", JSON.stringify(users));
+
+  clearForm();
+  renderUsers();
+}
+
+function renderUsers() {
+  let table = document.getElementById("userTable");
+  table.innerHTML = "";
+
+  users.forEach((user, index) => {
+    table.innerHTML += `
+      <tr>
+        <td>${user.name}</td>
+        <td>${user.email}</td>
+        <td>${user.role}</td>
+        <td>
+          <button onclick="deleteUser(${index})" style="background:#e74c3c">Delete</button>
+        </td>
+      </tr>
+    `;
+  });
+
+  document.getElementById("totalUsers").innerText = users.length;
+}
+
+function deleteUser(index) {
+  users.splice(index, 1);
+  localStorage.setItem("users", JSON.stringify(users));
+  renderUsers();
+}
+
+function clearForm() {
+  document.getElementById("name").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("role").value = "";
+}
+
+// Initial Load
+renderUsers();
+</script>
+
+</body>
+</html>

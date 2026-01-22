@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tasks 1–25 Jan 21 2026</title>
+
+<style>
+body { font-family: Arial; padding: 20px }
+.task { border: 1px solid #ccc; padding: 15px; margin-bottom: 15px }
+.hidden { display: none }
+ul li { margin: 4px 0 }
+.gallery img { width: 80px; display: none }
+</style>
+</head>
+
+<body>
+
+<h1>JavaScript Tasks 1–25</h1>
+
+<!-- Task 1 -->
+<div class="task">
+<h3>Task 1: Alert on Button Click</h3>
+<button onclick="alert('Button clicked!')">Click Me</button>
+</div>
+
+<!-- Task 2 -->
+<div class="task">
+<h3>Task 2: Display Entered Name</h3>
+<input id="t2name" placeholder="Enter name">
+<button onclick="t2out.innerText = t2name.value">Show</button>
+<p id="t2out"></p>
+</div>
+
+<!-- Task 3 -->
+<div class="task">
+<h3>Task 3: Change Background Color</h3>
+<button onclick="document.body.style.background='lightyellow'">Change</button>
+</div>
+
+<!-- Task 4 -->
+<div class="task">
+<h3>Task 4: Show / Hide Paragraph</h3>
+<p id="t4p">This paragraph can hide</p>
+<button onclick="t4p.classList.toggle('hidden')">Toggle</button>
+</div>
+
+<!-- Task 5 -->
+<div class="task">
+<h3>Task 5: Counter</h3>
+<button onclick="count--, t5.innerText=count">-</button>
+<span id="t5">0</span>
+<button onclick="count++, t5.innerText=count">+</button>
+<script>let count=0</script>
+</div>
+
+<!-- Task 6 -->
+<div class="task">
+<h3>Task 6: Display Today’s Date</h3>
+<p id="t6"></p>
+<script>t6.innerText = new Date().toDateString()</script>
+</div>
+
+<!-- Task 7 -->
+<div class="task">
+<h3>Task 7: Change Text Color on Hover</h3>
+<p onmouseover="this.style.color='red'" onmouseout="this.style.color='black'">
+Hover over me
+</p>
+</div>
+
+<!-- Task 8 -->
+<div class="task">
+<h3>Task 8: Show Image on Click</h3>
+<button onclick="img8.style.display='block'">Show Image</button><br>
+<img id="img8" src="Toy.jpg" style="display:none">
+</div>
+
+<!-- Task 9 -->
+<div class="task">
+<h3>Task 9: Login Form Validation</h3>
+<input id="u9" placeholder="Username">
+<input id="p9" placeholder="Password" type="password">
+<button onclick="t9msg.innerText = (u9.value==''||p9.value=='')?'Fields required':'Login OK'">
+Login
+</button>
+<p id="t9msg"></p>
+</div>
+
+<!-- Task 10 -->
+<div class="task">
+<h3>Task 10: Welcome Message</h3>
+<input id="t10inp" placeholder="Name">
+<button onclick="t10out.innerText='Welcome '+t10inp.value">Show</button>
+<p id="t10out"></p>
+</div>
+
+<!-- Task 11 -->
+<div class="task">
+<h3>Task 11: Dropdown Selected Value</h3>
+<select onchange="t11out.innerText=this.value">
+<option>Select</option>
+<option>Apple</option>
+<option>Banana</option>
+</select>
+<p id="t11out"></p>
+</div>
+
+<!-- Task 12 -->
+<div class="task">
+<h3>Task 12: Checkbox Status</h3>
+<input type="checkbox" id="chk12" onchange="t12.innerText=this.checked">
+<p id="t12"></p>
+</div>
+
+<!-- Task 13 -->
+<div class="task">
+<h3>Task 13: Change Text Content</h3>
+<p id="t13">Old Text</p>
+<button onclick="t13.innerText='New Text'">Change</button>
+</div>
+
+<!-- Task 14 -->
+<div class="task">
+<h3>Task 14: Add Table Row</h3>
+<table border="1">
+<tr><th>Name</th></tr>
+<tbody id="t14"></tbody>
+</table>
+<button onclick="t14.innerHTML+='<tr><td>New Row</td></tr>'">Add Row</button>
+</div>
+
+<!-- Task 15 -->
+<div class="task">
+<h3>Task 15: Hide After 5 Seconds</h3>
+<p id="t15">This will hide</p>
+<script>setTimeout(()=>t15.style.display='none',5000)</script>
+</div>
+
+<!-- Task 16 -->
+<div class="task">
+<h3>Task 16: Character Count</h3>
+<textarea oninput="t16.innerText=this.value.length"></textarea>
+<p>Count: <span id="t16">0</span></p>
+</div>
+
+<!-- Task 17 -->
+<div class="task">
+<h3>Task 17: Disable Button After Click</h3>
+<button onclick="this.disabled=true">Click Once</button>
+</div>
+
+<!-- Task 18 -->
+<div class="task">
+<h3>Task 18: Reset Form</h3>
+<form id="f18">
+<input>
+<input>
+<button type="button" onclick="f18.reset()">Reset</button>
+</form>
+</div>
+
+<!-- Task 19 -->
+<div class="task">
+<h3>Task 19: Toggle Password Visibility</h3>
+<input type="password" id="pw19">
+<button onclick="pw19.type = pw19.type==='password'?'text':'password'">Toggle</button>
+</div>
+
+<!-- Task 20 -->
+<div class="task">
+<h3>Task 20: Live Clock</h3>
+<p id="t20"></p>
+<script>
+setInterval(()=>t20.innerText=new Date().toLocaleTimeString(),1000)
+</script>
+</div>
+
+<!-- Task 21 -->
+<div class="task">
+<h3>Task 21: Image Gallery</h3>
+<div class="gallery">
+<img id="g1" src="Toy.jpg">
+<img id="g2" src="Alphabets.jpg">
+</div>
+<button onclick="g1.style.display='block'">Img 1</button>
+<button onclick="g2.style.display='block'">Img 2</button>
+</div>
+
+<!-- Task 22 -->
+<div class="task">
+<h3>Task 22: Font Size Control</h3>
+<p id="t22">Resize me</p>
+<button onclick="t22.style.fontSize='24px'">+</button>
+<button onclick="t22.style.fontSize='14px'">-</button>
+</div>
+
+<!-- Task 23 -->
+<div class="task">
+<h3>Task 23: Input Length Error</h3>
+<input oninput="t23.innerText=this.value.length<5?'Too short':''">
+<p id="t23"></p>
+</div>
+
+<!-- Task 24 -->
+<div class="task">
+<h3>Task 24: Search Filter</h3>
+<input oninput="
+[...document.querySelectorAll('#list24 li')].forEach(li=>{
+li.style.display = li.innerText.includes(this.value)?'':'none'
+})">
+<ul id="list24">
+<li>Apple</li><li>Banana</li><li>Orange</li>
+</ul>
+</div>
+
+<!-- Task 25 -->
+<div class="task">
+<h3>Task 25: Total Items Count</h3>
+<p>Total items: <span id="t25"></span></p>
+<script>
+t25.innerText = document.querySelectorAll('#list24 li').length
+</script>
+</div>
+
+</body>
+</html>

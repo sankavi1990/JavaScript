@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tasks 26–50 Jan 21 2026</title>
+
+<style>
+body { font-family: Arial; padding: 20px }
+.task { border: 1px solid #ccc; padding: 15px; margin-bottom: 15px }
+.hidden { display: none }
+.active { background: lightblue }
+.modal { background:#0008; position:fixed; inset:0; display:none; align-items:center; justify-content:center }
+.modal div { background:#fff; padding:20px }
+.sidebar { width:200px; background:#ddd; padding:10px; display:none }
+.notification { background:lightgreen; padding:10px; display:none }
+  body {
+    background: white;
+    color: black;
+    transition: 0.3s;
+  }
+
+  body.dark {
+    background: #121212;
+    color: white;
+  }
+</style>
+
+
+</style>
+</head>
+
+<body onload="t47.focus(); loadValue();">
+
+<h1>JavaScript Tasks 26–50</h1>
+
+<!-- Task 26 -->
+<div class="task">
+<h3>Task 26: Simple Calculator</h3>
+<input id="a26"> <input id="b26">
+<button onclick="r26.innerText = +a26.value + +b26.value">Add</button>
+<p id="r26"></p>
+</div>
+
+<!-- Task 27 -->
+<div class="task">
+<h3>Task 27: Loading Message</h3>
+<button onclick="t27.innerText='Loading...'">Click</button>
+<p id="t27"></p>
+</div>
+
+<!-- Task 28 -->
+<div class="task">
+<h3>Task 28: Highlight Selected List Item</h3>
+<ul>
+<li onclick="this.classList.toggle('active')">Item 1</li>
+<li onclick="this.classList.toggle('active')">Item 2</li>
+</ul>
+</div>
+
+<!-- Task 29 -->
+<div class="task">
+<h3>Task 29: Tab Switcher</h3>
+<button onclick="t29a.style.display='block';t29b.style.display='none'">Tab 1</button>
+<button onclick="t29b.style.display='block';t29a.style.display='none'">Tab 2</button>
+<p id="t29a">Tab 1 Content</p>
+<p id="t29b" style="display:none">Tab 2 Content</p>
+</div>
+
+<!-- Task 30 -->
+<div class="task">
+<h3>Task 30: Modal Box</h3>
+<button onclick="modal.style.display='flex'">Open</button>
+<div class="modal" id="modal" onclick="this.style.display='none'">
+<div>Modal Content</div>
+</div>
+</div>
+
+<!-- Task 31 -->
+<div class="task">
+<h3>Task 31: Prevent Empty Form Submit</h3>
+<form onsubmit="return t31.value!==''">
+<input id="t31">
+<button>Submit</button>
+</form>
+</div>
+
+<!-- Task 32 -->
+<div class="task">
+  <h3>Task 32: Change page theme using a toggle button</h3>
+  <button onclick="toggleTheme()">Toggle Theme</button>
+</div>
+
+
+<!-- Task 33 -->
+<div class="task">
+<h3>Task 33: Save input value in localStorage</h3>
+<input id="t33">
+<button onclick="saveValue()">Save</button>
+</div>
+
+<!-- Task 34 -->
+<div class="task">
+<h3>Task 34: Retrieve and display stored value on page load</h3>
+<p id="t34">No stored value</p>
+</div>
+
+<script>
+function saveValue() {
+  localStorage.setItem("storedValue", t33.value);
+  t34.innerText = t33.value;
+}
+
+window.onload = function () {
+  let value = localStorage.getItem("storedValue");
+  if (value) {
+    t34.innerText = value;
+  }
+};
+</script>
+
+
+<!-- Task 35 -->
+<div class="task">
+<h3>Task 35: To-Do List (Add Only)</h3>
+<input id="t35">
+<button onclick="l35.innerHTML+='<li>'+t35.value+'</li>'">Add</button>
+<ul id="l35"></ul>
+</div>
+
+<!-- Task 36 -->
+<div class="task">
+<h3>Task 36: Remove List Item</h3>
+<ul id="l36">
+<li>Item <button onclick="this.parentElement.remove()">X</button></li>
+</ul>
+</div>
+
+<!-- Task 37 -->
+<div class="task">
+<h3>Task 37: Button Click Counter</h3>
+<button onclick="c37++,t37.innerText=c37">Click</button>
+<p id="t37">0</p>
+<script>let c37=0</script>
+</div>
+
+<!-- Task 38 -->
+<div class="task">
+<h3>Task 38: Confirmation Before Clear</h3>
+<button onclick="confirm('Clear?') && alert('Cleared')">Clear</button>
+</div>
+
+<!-- Task 39 -->
+<div class="task">
+<h3>Task 39: Radio Button Message</h3>
+<input type="radio" name="r39" onclick="t39.innerText='Option A'">A
+<input type="radio" name="r39" onclick="t39.innerText='Option B'">B
+<p id="t39"></p>
+</div>
+
+<!-- Task 40 -->
+<div class="task">
+<h3>Task 40: Progress Indicator</h3>
+<button onclick="t40.innerText='50%'">Progress</button>
+<p id="t40">0%</p>
+</div>
+
+<!-- Task 41 -->
+<div class="task">
+<h3>Task 41: Enable Submit After Checkbox</h3>
+<input type="checkbox" onchange="b41.disabled=!this.checked">
+<button id="b41" disabled>Submit</button>
+</div>
+
+<!-- Task 42 -->
+<div class="task">
+<h3>Task 42: Success Message After Submit</h3>
+<form onsubmit="t42.innerText='Success';return false">
+<button>Submit</button>
+</form>
+<p id="t42"></p>
+</div>
+
+<!-- Task 43 -->
+<div class="task">
+<h3>Task 43: Image Change on Hover</h3>
+<img src="Toy.jpg"
+onmouseover="this.src='kurti.jpg'"
+onmouseout="this.src='Alphabets.jpg'">
+</div>
+
+<!-- Task 44 -->
+<div class="task">
+<h3>Task 44: Sidebar Toggle</h3>
+<button onclick="sb.style.display = sb.style.display?'':'block'">Toggle</button>
+<div class="sidebar" id="sb">Sidebar</div>
+</div>
+
+<!-- Task 45 -->
+<div class="task">
+<h3>Task 45: Window Width</h3>
+<p id="t45"></p>
+<script>
+window.onresize=()=>t45.innerText=window.innerWidth
+t45.innerText=window.innerWidth
+</script>
+</div>
+
+<!-- Task 46 -->
+<div class="task">
+<h3>Task 46: Email Validation</h3>
+<input oninput="t46.innerText=/@/.test(this.value)?'':'Invalid Email'">
+<p id="t46"></p>
+</div>
+
+<!-- Task 47 -->
+<div class="task">
+<h3>Task 47: Auto-Focus Input</h3>
+<input id="t47">
+</div>
+
+<!-- Task 48 -->
+<div class="task">
+<h3>Task 48: Notification Box</h3>
+<button onclick="n48.style.display='block'">Notify</button>
+<div class="notification" id="n48">Notification</div>
+</div>
+
+<!-- Task 49 -->
+<div class="task">
+<h3>Task 49: Active Menu Item</h3>
+<ul>
+<li onclick="this.classList.add('active')">Home</li>
+<li onclick="this.classList.add('active')">About</li>
+</ul>
+</div>
+
+<!-- Task 50 -->
+<div class="task">
+<h3>Task 50: Combined Mini Page</h3>
+<input id="t50">
+<button onclick="o50.innerText=t50.value">Show</button>
+<p id="o50"></p>
+</div>
+
+
+<script>
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+}
+</script>
+
+
+</body>
+</html>
