@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JS Logical Tasks 26–50</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    section { border: 1px solid #aaa; margin-bottom: 12px; padding: 20px; }
+    input { margin: 4px 0; width: 70%; }
+  </style>
+</head>
+<body>
+
+<h2>JavaScript Logical Tasks (26–50)</h2>
+
+<!-- 26 -->
+<section>
+<h3>26. Check Anagrams</h3>
+<input id="t26a" placeholder="word 1">
+<input id="t26b" placeholder="word 2">
+<button onclick="task26()">Check</button>
+<p id="o26"></p>
+</section>
+
+<!-- 27 -->
+<section>
+<h3>27. Second Largest Number</h3>
+<input id="t27" placeholder="1,2,3,4">
+<button onclick="task27()">Find</button>
+<p id="o27"></p>
+</section>
+
+<!-- 28 -->
+<section>
+<h3>28. Merge Arrays Without Duplicates</h3>
+<input id="t28a" placeholder="1,2,3">
+<input id="t28b" placeholder="3,4,5">
+<button onclick="task28()">Merge</button>
+<p id="o28"></p>
+</section>
+
+<!-- 29 -->
+<section>
+<h3>29. Count Each Value</h3>
+<input id="t29" placeholder="a,b,a,c">
+<button onclick="task29()">Count</button>
+<p id="o29"></p>
+</section>
+
+<!-- 30 -->
+<section>
+<h3>30. First Non-Repeating Character</h3>
+<input id="t30">
+<button onclick="task30()">Find</button>
+<p id="o30"></p>
+</section>
+
+<!-- 31 -->
+<section>
+<h3>31. Flatten Array (One Level)</h3>
+<input id="t31" placeholder="1,[2,3],4">
+<button onclick="task31()">Flatten</button>
+<p id="o31"></p>
+</section>
+
+<!-- 32 -->
+<section>
+<h3>32. Display Truthy Values</h3>
+<input id="t32" placeholder="0,1,false,true,,hello">
+<button onclick="task32()">Filter</button>
+<p id="o32"></p>
+</section>
+
+<!-- 33 -->
+<section>
+<h3>33. Common Values of Two Arrays</h3>
+<input id="t33a">
+<input id="t33b">
+<button onclick="task33()">Find</button>
+<p id="o33"></p>
+</section>
+
+<!-- 34 -->
+<section>
+<h3>34. Rotate Array by K</h3>
+<input id="t34" placeholder="1,2,3,4,5">
+<input id="k34" placeholder="K value">
+<button onclick="task34()">Rotate</button>
+<p id="o34"></p>
+</section>
+
+<!-- 35 -->
+<section>
+<h3>35. Longest Word</h3>
+<input id="t35">
+<button onclick="task35()">Find</button>
+<p id="o35"></p>
+</section>
+
+<!-- 36 -->
+<section>
+<h3>36. Title Case Sentence</h3>
+<input id="t36">
+<button onclick="task36()">Convert</button>
+<p id="o36"></p>
+</section>
+
+<!-- 37 -->
+<section>
+<h3>37. Unique Characters</h3>
+<input id="t37">
+<button onclick="task37()">Check</button>
+<p id="o37"></p>
+</section>
+
+<!-- 38 -->
+<section>
+<h3>38. Group by Data Type</h3>
+<input id="t38" placeholder="1,a,true,2,false">
+<button onclick="task38()">Group</button>
+<p id="o38"></p>
+</section>
+
+<!-- 39 -->
+<section>
+<h3>39. Missing Number</h3>
+<input id="t39" placeholder="1,2,4,5">
+<button onclick="task39()">Find</button>
+<p id="o39"></p>
+</section>
+
+<!-- 40 -->
+<section>
+<h3>40. Character Frequency</h3>
+<input id="t40">
+<button onclick="task40()">Count</button>
+<p id="o40"></p>
+</section>
+
+<!-- 41 -->
+<section>
+<h3>41. Uppercase Words</h3>
+<input id="t41" placeholder="hello,world">
+<button onclick="task41()">Convert</button>
+<p id="o41"></p>
+</section>
+
+<!-- 42 -->
+<section>
+<h3>42. Check if Sorted</h3>
+<input id="t42" placeholder="1,2,3">
+<button onclick="task42()">Check</button>
+<p id="o42"></p>
+</section>
+
+<!-- 43 -->
+<section>
+<h3>43. Split Array into Chunks</h3>
+<input id="t43">
+<input id="k43">
+<button onclick="task43()">Split</button>
+<p id="o43"></p>
+</section>
+
+<!-- 44 -->
+<section>
+<h3>44. Remove Value from Array</h3>
+<input id="t44">
+<input id="v44">
+<button onclick="task44()">Remove</button>
+<p id="o44"></p>
+</section>
+
+<!-- 45 -->
+<section>
+<h3>45. Common Elements from All Arrays</h3>
+<input id="t45a">
+<input id="t45b">
+<input id="t45c">
+<button onclick="task45()">Find</button>
+<p id="o45"></p>
+</section>
+
+<!-- 46 -->
+<section>
+<h3>46. Random Number in Range</h3>
+<input id="min46" placeholder="min">
+<input id="max46" placeholder="max">
+<button onclick="task46()">Generate</button>
+<p id="o46"></p>
+</section>
+
+<!-- 47 -->
+<section>
+<h3>47. Email Validation</h3>
+<input id="t47">
+<button onclick="task47()">Validate</button>
+<p id="o47"></p>
+</section>
+
+<!-- 48 -->
+<section>
+<h3>48. Total & Average Marks</h3>
+<input id="t48" placeholder="50,60,70">
+<button onclick="task48()">Calculate</button>
+<p id="o48"></p>
+</section>
+
+<!-- 49 -->
+<section>
+<h3>49. Sort Objects by Property</h3>
+<input id="t49" placeholder='name:John,age:30 | name:Amy,age:25'>
+<button onclick="task49()">Sort</button>
+<p id="o49"></p>
+</section>
+
+<!-- 50 -->
+<section>
+<h3>50. Copy Array Without Reference</h3>
+<input id="t50">
+<button onclick="task50()">Copy</button>
+<p id="o50"></p>
+</section>
+
+<script>
+function task26(){
+  let a=t26a.value.split('').sort().join('');
+  let b=t26b.value.split('').sort().join('');
+  o26.innerText = a===b ? "Anagrams" : "Not Anagrams";
+}
+
+function task27(){
+  let a=[...new Set(t27.value.split(',').map(Number))].sort((x,y)=>y-x);
+  o27.innerText = a[1];
+}
+
+function task28(){
+  let a=t28a.value.split(','); let b=t28b.value.split(',');
+  o28.innerText=[...new Set([...a,...b])];
+}
+
+function task29(){
+  let obj={};
+  t29.value.split(',').forEach(v=>obj[v]=(obj[v]||0)+1);
+  o29.innerText=JSON.stringify(obj);
+}
+
+function task30(){
+  let s=t30.value;
+  for(let c of s) if(s.indexOf(c)===s.lastIndexOf(c)){ o30.innerText=c; return; }
+  o30.innerText="None";
+}
+
+function task31(){ o31.innerText = JSON.stringify([].concat(...eval("["+t31.value+"]"))); }
+function task32(){ o32.innerText = t32.value.split(',').filter(Boolean); }
+function task33(){ o33.innerText = t33a.value.split(',').filter(v=>t33b.value.includes(v)); }
+
+function task34(){
+  let a=t34.value.split(','); let k=+k34.value%a.length;
+  o34.innerText=[...a.slice(k),...a.slice(0,k)];
+}
+
+function task35(){
+  let w=t35.value.split(' ');
+  o35.innerText=w.reduce((a,b)=>a.length>b.length?a:b);
+}
+
+function task36(){
+  o36.innerText=t36.value.split(' ').map(w=>w[0].toUpperCase()+w.slice(1)).join(' ');
+}
+
+function task37(){
+  let s=t37.value;
+  o37.innerText = new Set(s).size===s.length ? "All Unique" : "Duplicates Found";
+}
+
+function task38(){
+  let obj={};
+  t38.value.split(',').forEach(v=>{
+    let type=isNaN(v)?(v==="true"||v==="false"?"boolean":"string"):"number";
+    obj[type]=(obj[type]||[]).concat(v);
+  });
+  o38.innerText=JSON.stringify(obj);
+}
+
+function task39(){
+  let a=t39.value.split(',').map(Number);
+  let n=a.length+1;
+  o39.innerText = n*(n+1)/2 - a.reduce((x,y)=>x+y);
+}
+
+function task40(){
+  let o={}; for(let c of t40.value) o[c]=(o[c]||0)+1;
+  o40.innerText=JSON.stringify(o);
+}
+
+function task41(){ o41.innerText=t41.value.split(',').map(v=>v.toUpperCase()); }
+
+function task42(){
+  let a=t42.value.split(',').map(Number);
+  o42.innerText = a.every((v,i)=>i===0||v>=a[i-1])?"Sorted":"Not Sorted";
+}
+
+function task43(){
+  let a=t43.value.split(','); let k=+k43.value; let r=[];
+  for(let i=0;i<a.length;i+=k) r.push(a.slice(i,i+k));
+  o43.innerText=JSON.stringify(r);
+}
+
+function task44(){
+  o44.innerText=t44.value.split(',').filter(v=>v!==v44.value);
+}
+
+function task45(){
+  let a=t45a.value.split(','),b=t45b.value.split(','),c=t45c.value.split(',');
+  o45.innerText=a.filter(v=>b.includes(v)&&c.includes(v));
+}
+
+function task46(){
+  let min=+min46.value,max=+max46.value;
+  o46.innerText=Math.floor(Math.random()*(max-min+1))+min;
+}
+
+function task47(){
+  o47.innerText=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t47.value)?"Valid":"Invalid";
+}
+
+function task48(){
+  let a=t48.value.split(',').map(Number);
+  o48.innerText=`Total=${a.reduce((x,y)=>x+y)}, Avg=${(a.reduce((x,y)=>x+y)/a.length).toFixed(2)}`;
+}
+
+function task49(){
+  let arr=t49.value.split('|').map(o=>{
+    let p={}; o.split(',').forEach(x=>{let[k,v]=x.split(':'); p[k]=isNaN(v)?v:Number(v)});
+    return p;
+  });
+  o49.innerText=JSON.stringify(arr.sort((a,b)=>a.age-b.age));
+}
+
+function task50(){
+  let a=t50.value.split(',');
+  let b=[...a];
+  o50.innerText=`Copy: ${b}`;
+}
+</script>
+
+</body>
+</html>

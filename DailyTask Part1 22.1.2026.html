@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JS Logical Tasks 1–25 (Corrected)</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    section { border: 1px solid #999; padding: 12px; margin-bottom: 12px; }
+    input { margin: 4px 0; }
+  </style>
+</head>
+<body>
+
+<h2>JavaScript Logical Tasks (1–25)</h2>
+
+<!-- 1 -->
+<section>
+<h3>1. Check Even or Odd</h3>
+<input id="t1" type="number">
+<button onclick="task1()">Check</button>
+<p id="o1"></p>
+</section>
+
+<!-- 2 -->
+<section>
+<h3>2. Find Greater of Two Numbers</h3>
+<input id="t2a" type="number">
+<input id="t2b" type="number">
+<button onclick="task2()">Compare</button>
+<p id="o2"></p>
+</section>
+
+<!-- 3 -->
+<section>
+<h3>3. Highest of Three Marks</h3>
+<input id="t3a" type="number">
+<input id="t3b" type="number">
+<input id="t3c" type="number">
+<button onclick="task3()">Find</button>
+<p id="o3"></p>
+</section>
+
+<!-- 4 -->
+<section>
+<h3>4. Positive / Negative / Zero</h3>
+<input id="t4" type="number">
+<button onclick="task4()">Check</button>
+<p id="o4"></p>
+</section>
+
+<!-- 5 -->
+<section>
+<h3>5. Sum from 1 to N</h3>
+<input id="t5" type="number">
+<button onclick="task5()">Calculate</button>
+<p id="o5"></p>
+</section>
+
+<!-- 6 -->
+<section>
+<h3>6. Reverse a Number</h3>
+<input id="t6">
+<button onclick="task6()">Reverse</button>
+<p id="o6"></p>
+</section>
+
+<!-- 7 -->
+<section>
+<h3>7. Reverse a Word</h3>
+<input id="t7">
+<button onclick="task7()">Reverse</button>
+<p id="o7"></p>
+</section>
+
+<!-- 8 -->
+<section>
+<h3>8. Palindrome Check</h3>
+<input id="t8">
+<button onclick="task8()">Check</button>
+<p id="o8"></p>
+</section>
+
+<!-- 9 -->
+<section>
+<h3>9. Count Vowels</h3>
+<input id="t9">
+<button onclick="task9()">Count</button>
+<p id="o9"></p>
+</section>
+
+<!-- 10 -->
+<section>
+<h3>10. Factorial</h3>
+<input id="t10" type="number">
+<button onclick="task10()">Find</button>
+<p id="o10"></p>
+</section>
+
+<!-- 11 -->
+<section>
+<h3>11. Fibonacci Series</h3>
+<input id="t11" type="number">
+<button onclick="task11()">Generate</button>
+<p id="o11"></p>
+</section>
+
+<!-- 12 -->
+<section>
+<h3>12. Prime Number</h3>
+<input id="t12" type="number">
+<button onclick="task12()">Check</button>
+<p id="o12"></p>
+</section>
+
+<!-- 13 -->
+<section>
+<h3>13. Digit Count</h3>
+<input id="t13">
+<button onclick="task13()">Count</button>
+<p id="o13"></p>
+</section>
+
+<!-- 14 -->
+<section>
+<h3>14. Sum of Digits</h3>
+<input id="t14">
+<button onclick="task14()">Calculate</button>
+<p id="o14"></p>
+</section>
+
+<!-- 15 -->
+<section>
+<h3>15. Celsius to Fahrenheit</h3>
+<input id="t15" type="number">
+<button onclick="task15()">Convert</button>
+<p id="o15"></p>
+</section>
+
+<!-- 16 -->
+<section>
+<h3>16. Average of Array</h3>
+<input id="t16" placeholder="1,2,3">
+<button onclick="task16()">Average</button>
+<p id="o16"></p>
+</section>
+
+<!-- 17 -->
+<section>
+<h3>17. Highest Value in List</h3>
+<input id="t17">
+<button onclick="task17()">Find</button>
+<p id="o17"></p>
+</section>
+
+<!-- 18 -->
+<section>
+<h3>18. Lowest Value in List</h3>
+<input id="t18">
+<button onclick="task18()">Find</button>
+<p id="o18"></p>
+</section>
+
+<!-- 19 -->
+<section>
+<h3>19. Count Even Numbers in List</h3>
+<input id="t19">
+<button onclick="task19()">Count</button>
+<p id="o19"></p>
+</section>
+
+<!-- 20 -->
+<section>
+<h3>20. Remove Duplicate Values</h3>
+<input id="t20">
+<button onclick="task20()">Remove</button>
+<p id="o20"></p>
+</section>
+
+<!-- 21 -->
+<section>
+<h3>21. Leap Year</h3>
+<input id="t21" type="number">
+<button onclick="task21()">Check</button>
+<p id="o21"></p>
+</section>
+
+<!-- 22 -->
+<section>
+<h3>22. Ascending Order</h3>
+<input id="t22">
+<button onclick="task22()">Sort</button>
+<p id="o22"></p>
+</section>
+
+<!-- 23 -->
+<section>
+<h3>23. Swap Two Numbers</h3>
+<input id="t23a" type="number">
+<input id="t23b" type="number">
+<button onclick="task23()">Swap</button>
+<p id="o23"></p>
+</section>
+
+<!-- 24 -->
+<section>
+<h3>24. String Length (No length)</h3>
+<input id="t24">
+<button onclick="task24()">Find</button>
+<p id="o24"></p>
+</section>
+
+<!-- 25 -->
+<section>
+<h3>25. Word Count</h3>
+<input id="t25">
+<button onclick="task25()">Count</button>
+<p id="o25"></p>
+</section>
+
+<script>
+function task1(){
+  let n = Number(document.getElementById("t1").value);
+  document.getElementById("o1").innerText =
+    n % 2 === 0 ? "Even Number" : "Odd Number";
+}
+
+function task2(){
+  let a = +t2a.value, b = +t2b.value;
+  o2.innerText = a > b ? a + " is greater" : b + " is greater";
+}
+
+function task3(){ o3.innerText = Math.max(+t3a.value,+t3b.value,+t3c.value); }
+function task4(){ let n=+t4.value; o4.innerText = n>0?"Positive":n<0?"Negative":"Zero"; }
+function task5(){ let n=+t5.value,sum=0; for(let i=1;i<=n;i++) sum+=i; o5.innerText=sum; }
+function task6(){ o6.innerText = t6.value.split('').reverse().join(''); }
+function task7(){ o7.innerText = t7.value.split('').reverse().join(''); }
+function task8(){ let s=t8.value; o8.innerText = s===s.split('').reverse().join('')?"Palindrome":"Not Palindrome"; }
+function task9(){ o9.innerText = (t9.value.match(/[aeiou]/gi)||[]).length; }
+function task10(){ let n=+t10.value,f=1; for(let i=1;i<=n;i++) f*=i; o10.innerText=f; }
+function task11(){ let n=+t11.value,a=0,b=1,res=[]; for(let i=0;i<n;i++){res.push(a);[a,b]=[b,a+b]} o11.innerText=res.join(', '); }
+function task12(){ let n=+t12.value,p=n>1; for(let i=2;i<=Math.sqrt(n);i++) if(n%i===0) p=false; o12.innerText=p?"Prime":"Not Prime"; }
+function task13(){ o13.innerText = t13.value.replace('-','').length; }
+function task14(){ o14.innerText = t14.value.split('').reduce((a,b)=>a+Number(b),0); }
+function task15(){ o15.innerText = (t15.value*9/5)+32; }
+function task16(){ let a=t16.value.split(',').map(Number); o16.innerText=a.reduce((x,y)=>x+y)/a.length; }
+function task17(){ o17.innerText=Math.max(...t17.value.split(',').map(Number)); }
+function task18(){ o18.innerText=Math.min(...t18.value.split(',').map(Number)); }
+function task19(){ o19.innerText=t19.value.split(',').filter(n=>n%2===0).length; }
+function task20(){ o20.innerText=[...new Set(t20.value.split(','))].join(', '); }
+function task21(){ let y=+t21.value; o21.innerText=((y%4===0&&y%100!==0)||y%400===0)?"Leap Year":"Not Leap Year"; }
+function task22(){ o22.innerText=t22.value.split(',').map(Number).sort((a,b)=>a-b).join(', '); }
+function task23(){ let a=+t23a.value,b=+t23b.value; a=a+b; b=a-b; a=a-b; o23.innerText=`A=${a}, B=${b}`; }
+function task24(){ let c=0; for(let _ of t24.value) c++; o24.innerText=c; }
+function task25(){ o25.innerText=t25.value.trim().split(/\s+/).length; }
+</script>
+
+</body>
+</html>
