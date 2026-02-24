@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML CSS Tasks 1-25 Output</title>
+
+<style>
+
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.task-section-title {
+    margin-top: 40px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-left: 5px solid #007bff;
+}
+
+/* ================= TASK 1 LOGIN FORM ================= */
+
+.task1-login-wrapper {
+    width: 300px;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.task1-login-input {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+}
+
+.task1-login-btn {
+    width: 100%;
+    padding: 8px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* ================= TASK 2 COLOR BUTTON ================= */
+
+.task2-color-section {
+    margin-top: 15px;
+}
+
+.task2-color-btn {
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* ================= TASK 3 IMAGE GALLERY ================= */
+
+.task3-gallery-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.task3-gallery-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* ================= TASK 4 PASSWORD TOGGLE ================= */
+
+.task4-password-wrapper {
+    margin-top: 15px;
+}
+
+.task4-password-input {
+    padding: 8px;
+}
+
+.task4-toggle-btn {
+    padding: 8px;
+    cursor: pointer;
+}
+
+/* ================= TASK 5 COUNTER APP ================= */
+
+.task5-counter-wrapper {
+    margin-top: 15px;
+}
+
+.task5-counter-value {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.task5-counter-btn {
+    padding: 8px 15px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+
+/* ================= TASK 6 NAVBAR ================= */
+
+.task6-navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    color: white;
+}
+
+.task6-navbar-links {
+    display: flex;
+    gap: 20px;
+}
+
+.task6-navbar-links a {
+    color: white;
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+    .task6-navbar-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* ================= TASK 7 CALCULATOR ================= */
+
+.task7-calculator-wrapper {
+    width: 250px;
+    margin-top: 15px;
+}
+
+.task7-calculator-display {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+    text-align: right;
+    padding: 5px;
+    font-size: 18px;
+}
+
+.task7-calculator-buttons button {
+    width: 50px;
+    height: 40px;
+    margin: 3px;
+    cursor: pointer;
+}
+
+/* ================= TASK 8 THEME TOGGLE ================= */
+
+.task8-theme-toggle-btn {
+    padding: 10px 20px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.task8-dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+/* ================= TASK 9 FORM DISPLAY ================= */
+
+.task9-form-wrapper {
+    margin-top: 15px;
+}
+
+.task9-form-input {
+    display: block;
+    margin: 5px 0;
+    padding: 8px;
+}
+
+.task9-output-display {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* ================= TASK 10 SHOW/HIDE ================= */
+
+.task10-toggle-wrapper {
+    margin-top: 15px;
+}
+
+.task10-toggle-paragraph {
+    margin-top: 10px;
+}
+
+.task10-toggle-btn {
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+
+.task3-section-heading {
+    margin-top: 40px;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-left: 5px solid #ff5722;
+}
+
+/* ================= TASK 11 GRID CARDS ================= */
+
+.task11-grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.task11-grid-card {
+    background: #e3f2fd;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* ================= TASK 12 CHARACTER COUNTER ================= */
+
+.task12-counter-wrapper {
+    margin-top: 15px;
+}
+
+.task12-textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+}
+
+.task12-count-display {
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+/* ================= TASK 13 CSS DROPDOWN ================= */
+
+.task13-dropdown-container {
+    position: relative;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.task13-dropdown-btn {
+    padding: 10px 15px;
+    background-color: #2196f3;
+    color: white;
+    cursor: pointer;
+}
+
+.task13-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 150px;
+}
+
+.task13-dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.task13-dropdown-container:hover .task13-dropdown-content {
+    display: block;
+}
+
+/* ================= TASK 14 MODAL ================= */
+
+.task14-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+.task14-modal-box {
+    background: white;
+    width: 300px;
+    padding: 20px;
+    margin: 100px auto;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.task14-open-btn {
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+/* ================= TASK 15 IMAGE SLIDER ================= */
+
+.task15-slider-wrapper {
+    width: 300px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.task15-slider-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.task15-slider-btn {
+    padding: 8px 15px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+
+
+
+/* ================= TASK 18 STICKY HEADER ================= */
+
+.task18-sticky-header {
+    position: sticky;
+    top: 0;
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    font-size: 18px;
+    z-index: 1000;
+}
+
+.task4-section-heading {
+    margin-top: 40px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-left: 5px solid #673ab7;
+}
+
+/* ================= TASK 16 EMAIL VALIDATION ================= */
+
+.task16-form-wrapper {
+    margin-top: 15px;
+}
+
+.task16-input-field {
+    padding: 8px;
+    width: 250px;
+}
+
+.task16-submit-btn {
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+.task16-message {
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+/* ================= TASK 17 PROGRESS BAR ================= */
+
+.task17-progress-container {
+    width: 300px;
+    height: 25px;
+    background-color: #ddd;
+    margin-top: 15px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.task17-progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: #4caf50;
+    text-align: center;
+    color: white;
+    line-height: 25px;
+}
+
+.task17-progress-btn {
+    margin-top: 10px;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+/* ================= TASK 19 & 20 TODO LIST ================= */
+
+.task19-todo-wrapper {
+    margin-top: 15px;
+}
+
+.task19-input-field {
+    padding: 8px;
+    width: 200px;
+}
+
+.task19-add-btn {
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+.task19-list-container {
+    margin-top: 10px;
+    list-style: none;
+    padding: 0;
+}
+
+.task19-list-item {
+    margin: 5px 0;
+    padding: 8px;
+    background-color: #e0f7fa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task20-delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 8px;
+    cursor: pointer;
+}
+
+
+/* Section Heading */
+.task5-section-heading {
+    margin-top: 40px;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-left: 5px solid #009688;
+}
+
+/* ================= TASK 21 SEARCH FILTER ================= */
+
+.task21-search-input {
+    padding: 8px;
+    width: 250px;
+}
+
+.task21-list-container {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.task21-list-item {
+    padding: 8px;
+    background-color: #e3f2fd;
+    margin-bottom: 5px;
+}
+
+/* ================= TASK 22 DIGITAL CLOCK ================= */
+
+.task22-clock-display {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* ================= TASK 23 TYPING EFFECT ================= */
+
+.task23-typing-container {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #673ab7;
+}
+
+/* ================= TASK 24 ACCORDION ================= */
+
+.task24-accordion-wrapper {
+    margin-top: 15px;
+}
+
+.task24-accordion-btn {
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    margin-top: 5px;
+}
+
+.task24-accordion-content {
+    display: none;
+    padding: 10px;
+    background-color: #f1f1f1;
+}
+
+/* ================= TASK 25 SCROLL TO TOP ================= */
+
+.task25-scroll-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+
+
+</style>
+</head>
+<body>
+
+<!-- ================= TASK 1 ================= -->
+
+<h2 class="task-section-title">Task 1: Login Form with Empty Field Validation</h2>
+
+<div class="task1-login-wrapper">
+    <input type="text" id="task1-username" class="task1-login-input" placeholder="Username">
+    <input type="password" id="task1-password" class="task1-login-input" placeholder="Password">
+    <button class="task1-login-btn" onclick="validateTask1()">Login</button>
+</div>
+
+<!-- ================= TASK 2 ================= -->
+
+<h2 class="task-section-title">Task 2: Background Color Change Button</h2>
+
+<div class="task2-color-section">
+    <button class="task2-color-btn" onclick="changeTask2Color()">Change Background Color</button>
+</div>
+
+<!-- ================= TASK 3 ================= -->
+
+<h2 class="task-section-title">Task 3: Image Gallery Using Flexbox</h2>
+
+<div class="task3-gallery-container">
+    <img src="Toy.jpg" class="task3-gallery-img">
+    <img src="Alphabets.jpg" class="task3-gallery-img">
+    <img src="Numbers.jpg" class="task3-gallery-img">
+    <img src="car.jpg" class="task3-gallery-img">
+</div>
+
+<!-- ================= TASK 4 ================= -->
+
+<h2 class="task-section-title">Task 4: Password Field with Show/Hide Toggle</h2>
+
+<div class="task4-password-wrapper">
+    <input type="password" id="task4-password-field" class="task4-password-input" placeholder="Enter Password">
+    <button class="task4-toggle-btn" onclick="toggleTask4Password()">Show</button>
+</div>
+
+<!-- ================= TASK 5 ================= -->
+
+<h2 class="task-section-title">Task 5: Counter App with Increment & Decrement</h2>
+
+<div class="task5-counter-wrapper">
+    <div id="task5-counter-display" class="task5-counter-value">0</div>
+    <button class="task5-counter-btn" onclick="incrementTask5()">Increment</button>
+    <button class="task5-counter-btn" onclick="decrementTask5()">Decrement</button>
+</div>
+
+<script>
+
+/* TASK 1 */
+function validateTask1() {
+    let username = document.getElementById("task1-username").value;
+    let password = document.getElementById("task1-password").value;
+
+    if (username === "" || password === "") {
+        alert("Please fill all fields");
+    } else {
+        alert("Login Successful");
+    }
+}
+
+/* TASK 2 */
+function changeTask2Color() {
+    document.body.style.backgroundColor =
+        document.body.style.backgroundColor === "lightblue" ? "white" : "lightblue";
+}
+
+/* TASK 4 */
+function toggleTask4Password() {
+    let passwordField = document.getElementById("task4-password-field");
+    let toggleBtn = document.querySelector(".task4-toggle-btn");
+
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        toggleBtn.textContent = "Hide";
+    } else {
+        passwordField.type = "password";
+        toggleBtn.textContent = "Show";
+    }
+}
+
+/* TASK 5 */
+let task5Counter = 0;
+
+function incrementTask5() {
+    task5Counter++;
+    document.getElementById("task5-counter-display").textContent = task5Counter;
+}
+
+function decrementTask5() {
+    task5Counter--;
+    document.getElementById("task5-counter-display").textContent = task5Counter;
+}
+
+</script>
+
+<!-- ================= TASK 6 ================= -->
+<h2 class="task-section-heading">Task 6: Responsive Navbar using Flexbox</h2>
+
+<div class="task6-navbar-container">
+    <div>MyLogo</div>
+    <div class="task6-navbar-links">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </div>
+</div>
+
+<!-- ================= TASK 7 ================= -->
+<h2 class="task-section-heading">Task 7: Simple Calculator using JavaScript</h2>
+
+<div class="task7-calculator-wrapper">
+    <input type="text" id="task7-display" class="task7-calculator-display" readonly>
+    <div class="task7-calculator-buttons">
+        <button onclick="task7Append('7')">7</button>
+        <button onclick="task7Append('8')">8</button>
+        <button onclick="task7Append('9')">9</button>
+        <button onclick="task7Append('/')">/</button><br>
+
+        <button onclick="task7Append('4')">4</button>
+        <button onclick="task7Append('5')">5</button>
+        <button onclick="task7Append('6')">6</button>
+        <button onclick="task7Append('*')">*</button><br>
+
+        <button onclick="task7Append('1')">1</button>
+        <button onclick="task7Append('2')">2</button>
+        <button onclick="task7Append('3')">3</button>
+        <button onclick="task7Append('-')">-</button><br>
+
+        <button onclick="task7Append('0')">0</button>
+        <button onclick="task7Calculate()">=</button>
+        <button onclick="task7Clear()">C</button>
+        <button onclick="task7Append('+')">+</button>
+    </div>
+</div>
+
+<!-- ================= TASK 8 ================= -->
+<h2 class="task-section-heading">Task 8: Dark / Light Theme Toggle</h2>
+
+<button class="task8-theme-toggle-btn" onclick="task8ToggleTheme()">Toggle Theme</button>
+
+<!-- ================= TASK 9 ================= -->
+<h2 class="task-section-heading">Task 9: Form Display Entered Data</h2>
+
+<div class="task9-form-wrapper">
+    <input type="text" id="task9-name" class="task9-form-input" placeholder="Enter Name">
+    <input type="email" id="task9-email" class="task9-form-input" placeholder="Enter Email">
+    <button onclick="task9ShowData()">Submit</button>
+
+    <div id="task9-output" class="task9-output-display"></div>
+</div>
+
+<!-- ================= TASK 10 ================= -->
+<h2 class="task-section-heading">Task 10: Show and Hide Paragraph</h2>
+
+<div class="task10-toggle-wrapper">
+    <button class="task10-toggle-btn" onclick="task10Toggle()">Show/Hide Paragraph</button>
+    <p id="task10-para" class="task10-toggle-paragraph">
+        This is a sample paragraph that can be hidden and shown.
+    </p>
+</div>
+
+<script>
+
+/* TASK 7 CALCULATOR */
+function task7Append(value) {
+    document.getElementById("task7-display").value += value;
+}
+
+function task7Calculate() {
+    let result = eval(document.getElementById("task7-display").value);
+    document.getElementById("task7-display").value = result;
+}
+
+function task7Clear() {
+    document.getElementById("task7-display").value = "";
+}
+
+/* TASK 8 THEME */
+function task8ToggleTheme() {
+    document.body.classList.toggle("task8-dark-mode");
+}
+
+/* TASK 9 FORM */
+function task9ShowData() {
+    let name = document.getElementById("task9-name").value;
+    let email = document.getElementById("task9-email").value;
+
+    document.getElementById("task9-output").innerHTML =
+        "Name: " + name + "<br>Email: " + email;
+}
+
+/* TASK 10 SHOW/HIDE */
+function task10Toggle() {
+    let para = document.getElementById("task10-para");
+
+    if (para.style.display === "none") {
+        para.style.display = "block";
+    } else {
+        para.style.display = "none";
+    }
+}
+
+</script>
+
+<!-- ================= TASK 11 ================= -->
+<h2 class="task3-section-heading">Task 11: Responsive Card Layout using CSS Grid</h2>
+
+<div class="task11-grid-wrapper">
+    <div class="task11-grid-card">Card 1</div>
+    <div class="task11-grid-card">Card 2</div>
+    <div class="task11-grid-card">Card 3</div>
+    <div class="task11-grid-card">Card 4</div>
+</div>
+
+<!-- ================= TASK 12 ================= -->
+<h2 class="task3-section-heading">Task 12: Live Character Counter</h2>
+
+<div class="task12-counter-wrapper">
+    <textarea id="task12-textarea-id" class="task12-textarea" oninput="task12CountChars()"></textarea>
+    <div id="task12-count-id" class="task12-count-display">Characters: 0</div>
+</div>
+
+<!-- ================= TASK 13 ================= -->
+<h2 class="task3-section-heading">Task 13: CSS Only Dropdown Menu</h2>
+
+<div class="task13-dropdown-container">
+    <div class="task13-dropdown-btn">Hover Me</div>
+    <div class="task13-dropdown-content">
+        <a href="#">Option 1</a>
+        <a href="#">Option 2</a>
+        <a href="#">Option 3</a>
+    </div>
+</div>
+
+<!-- ================= TASK 14 ================= -->
+<h2 class="task3-section-heading">Task 14: Modal Popup</h2>
+
+<button class="task14-open-btn" onclick="task14OpenModal()">Open Modal</button>
+
+<div id="task14-modal-id" class="task14-modal-overlay">
+    <div class="task14-modal-box">
+        <p>This is a modal popup</p>
+        <button onclick="task14CloseModal()">Close</button>
+    </div>
+</div>
+
+<!-- ================= TASK 15 ================= -->
+<h2 class="task3-section-heading">Task 15: Image Slider</h2>
+
+<div class="task15-slider-wrapper">
+    <img id="task15-slider-img" class="task15-slider-image" src="https://picsum.photos/300?1">
+    <br>
+    <button class="task15-slider-btn" onclick="task15Prev()">Previous</button>
+    <button class="task15-slider-btn" onclick="task15Next()">Next</button>
+</div>
+
+<script>
+
+/* TASK 12 CHARACTER COUNTER */
+function task12CountChars() {
+    let text = document.getElementById("task12-textarea-id").value;
+    document.getElementById("task12-count-id").textContent = "Characters: " + text.length;
+}
+
+/* TASK 14 MODAL */
+function task14OpenModal() {
+    document.getElementById("task14-modal-id").style.display = "block";
+}
+
+function task14CloseModal() {
+    document.getElementById("task14-modal-id").style.display = "none";
+}
+
+/* TASK 15 SLIDER */
+let task15Images = [
+    "https://picsum.photos/300?1",
+    "https://picsum.photos/300?2",
+    "https://picsum.photos/300?3"
+];
+
+let task15Index = 0;
+
+function task15Next() {
+    task15Index++;
+    if (task15Index >= task15Images.length) {
+        task15Index = 0;
+    }
+    document.getElementById("task15-slider-img").src = task15Images[task15Index];
+}
+
+function task15Prev() {
+    task15Index--;
+    if (task15Index < 0) {
+        task15Index = task15Images.length - 1;
+    }
+    document.getElementById("task15-slider-img").src = task15Images[task15Index];
+}
+
+</script>
+
+
+<!-- ================= TASK 18 ================= -->
+
+<div class="task18-sticky-header">
+    Task 18: Sticky Header (Scroll Down to See Effect)
+</div>
+
+<div style="height: 50px;"></div>
+
+<!-- ================= TASK 16 ================= -->
+
+<h2 class="task4-section-heading">Task 16: Email Format Validation</h2>
+
+<div class="task16-form-wrapper">
+    <input type="text" id="task16-email-id" class="task16-input-field" placeholder="Enter Email">
+    <button class="task16-submit-btn" onclick="task16ValidateEmail()">Validate</button>
+    <div id="task16-message-id" class="task16-message"></div>
+</div>
+
+<!-- ================= TASK 17 ================= -->
+
+<h2 class="task4-section-heading">Task 17: Progress Bar Increase</h2>
+
+<div class="task17-progress-container">
+    <div id="task17-progress-id" class="task17-progress-bar">0%</div>
+</div>
+
+<button class="task17-progress-btn" onclick="task17IncreaseProgress()">Increase</button>
+
+<!-- ================= TASK 19 & 20 ================= -->
+
+<h2 class="task4-section-heading">Task 19 & 20: To-Do List with Add & Delete</h2>
+
+<div class="task19-todo-wrapper">
+    <input type="text" id="task19-input-id" class="task19-input-field" placeholder="Enter Task">
+    <button class="task19-add-btn" onclick="task19AddTask()">Add Task</button>
+
+    <ul id="task19-list-id" class="task19-list-container"></ul>
+</div>
+
+<script>
+
+/* ================= TASK 16 EMAIL VALIDATION ================= */
+
+function task16ValidateEmail() {
+    let email = document.getElementById("task16-email-id").value;
+    let message = document.getElementById("task16-message-id");
+
+    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    if (email.match(emailPattern)) {
+        message.style.color = "green";
+        message.textContent = "Valid Email Address";
+    } else {
+        message.style.color = "red";
+        message.textContent = "Invalid Email Address";
+    }
+}
+
+/* ================= TASK 17 PROGRESS BAR ================= */
+
+let task17ProgressValue = 0;
+
+function task17IncreaseProgress() {
+    if (task17ProgressValue < 100) {
+        task17ProgressValue += 10;
+        document.getElementById("task17-progress-id").style.width = task17ProgressValue + "%";
+        document.getElementById("task17-progress-id").textContent = task17ProgressValue + "%";
+    }
+}
+
+/* ================= TASK 19 ADD TASK ================= */
+
+function task19AddTask() {
+    let input = document.getElementById("task19-input-id");
+    let taskText = input.value;
+
+    if (taskText === "") return;
+
+    let li = document.createElement("li");
+    li.className = "task19-list-item";
+    li.textContent = taskText;
+
+    let deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.className = "task20-delete-btn";
+    deleteBtn.onclick = function() {
+        li.remove();
+    };
+
+    li.appendChild(deleteBtn);
+    document.getElementById("task19-list-id").appendChild(li);
+
+    input.value = "";
+}
+
+</script>
+
+<!-- ================= TASK 21 ================= -->
+
+<h2 class="task5-section-heading">Task 21: Real-Time Search Filter</h2>
+
+<input type="text" id="task21-search-id" class="task21-search-input" placeholder="Search..." onkeyup="task21FilterList()">
+
+<ul id="task21-list-id" class="task21-list-container">
+    <li class="task21-list-item">Apple</li>
+    <li class="task21-list-item">Banana</li>
+    <li class="task21-list-item">Orange</li>
+    <li class="task21-list-item">Mango</li>
+    <li class="task21-list-item">Grapes</li>
+</ul>
+
+<!-- ================= TASK 22 ================= -->
+
+<h2 class="task5-section-heading">Task 22: Digital Clock</h2>
+
+<div id="task22-clock-id" class="task22-clock-display"></div>
+
+<!-- ================= TASK 23 ================= -->
+
+<h2 class="task5-section-heading">Task 23: Typing Effect Animation</h2>
+
+<div id="task23-typing-id" class="task23-typing-container"></div>
+
+<!-- ================= TASK 24 ================= -->
+
+<h2 class="task5-section-heading">Task 24: JavaScript Accordion</h2>
+
+<div class="task24-accordion-wrapper">
+
+<button class="task24-accordion-btn" onclick="task24Toggle(this)">Section 1</button>
+<div class="task24-accordion-content">
+    <p>This is content for Section 1.</p>
+</div>
+
+<button class="task24-accordion-btn" onclick="task24Toggle(this)">Section 2</button>
+<div class="task24-accordion-content">
+    <p>This is content for Section 2.</p>
+</div>
+
+<button class="task24-accordion-btn" onclick="task24Toggle(this)">Section 3</button>
+<div class="task24-accordion-content">
+    <p>This is content for Section 3.</p>
+</div>
+
+</div>
+
+<!-- ================= TASK 25 ================= -->
+
+<h2 class="task5-section-heading">Task 25 : Scroll to top button</h2>
+
+<button id="task25-scroll-btn-id" class="task25-scroll-btn" onclick="task25ScrollTop()">Top</button>
+
+<div style="height: 1000px;"></div>
+
+<script>
+
+/* ================= TASK 21 SEARCH FILTER ================= */
+
+function task21FilterList() {
+    let input = document.getElementById("task21-search-id").value.toLowerCase();
+    let items = document.getElementsByClassName("task21-list-item");
+
+    for (let i = 0; i < items.length; i++) {
+        let text = items[i].textContent.toLowerCase();
+        items[i].style.display = text.includes(input) ? "" : "none";
+    }
+}
+
+/* ================= TASK 22 DIGITAL CLOCK ================= */
+
+function task22UpdateClock() {
+    let now = new Date();
+    let time = now.toLocaleTimeString();
+    document.getElementById("task22-clock-id").textContent = time;
+}
+
+setInterval(task22UpdateClock, 1000);
+task22UpdateClock();
+
+/* ================= TASK 23 TYPING EFFECT ================= */
+
+let task23Text = "Welcome to JavaScript Typing Effect!";
+let task23Index = 0;
+
+function task23TypeEffect() {
+    if (task23Index < task23Text.length) {
+        document.getElementById("task23-typing-id").textContent += task23Text.charAt(task23Index);
+        task23Index++;
+        setTimeout(task23TypeEffect, 100);
+    }
+}
+
+task23TypeEffect();
+
+/* ================= TASK 24 ACCORDION ================= */
+
+function task24Toggle(button) {
+    let content = button.nextElementSibling;
+
+    if (content.style.display === "block") {
+        content.style.display = "none";
+    } else {
+        content.style.display = "block";
+    }
+}
+
+/* ================= TASK 25 SCROLL TO TOP ================= */
+
+let task25Btn = document.getElementById("task25-scroll-btn-id");
+
+window.onscroll = function() {
+    if (document.documentElement.scrollTop > 200) {
+        task25Btn.style.display = "block";
+    } else {
+        task25Btn.style.display = "none";
+    }
+};
+
+function task25ScrollTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+</script>
+</body>
+</html>
