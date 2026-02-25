@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tasks Feb 24th</title>
+<style>
+
+/* ===========================
+   MINI PROJECT 1 – KANBAN BOARD
+=========================== */
+
+.mp1-container{
+  display:flex;
+  gap:20px;
+  padding:20px;
+  font-family:Arial;
+}
+
+.mp1-column{
+  flex:1;
+  background:#f6e3e3;
+  padding:15px;
+  border-radius:8px;
+  min-height:300px;
+}
+
+.mp1-column h3{
+  text-align:center;
+}
+
+.mp1-task{
+  background:white;
+  padding:10px;
+  margin:10px 0;
+  border-radius:5px;
+  cursor:grab;
+  box-shadow:0 2px 5px rgba(0,0,0,0.2);
+}
+
+.mp1-add-section{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.mp1-add-section input{
+  padding:8px;
+  width:250px;
+}
+
+.mp1-add-section button{
+  padding:8px 12px;
+}
+
+.mp1-drag-over{
+  background:#dfefff;
+}
+
+
+
+
+/* ===========================
+   MINI PROJECT 2 – FORM BUILDER
+=========================== */
+
+.mp2-container{
+  border-top:3px solid #333;
+  margin-top:40px;
+  padding:20px;
+  font-family:Arial;
+}
+
+.mp2-field{
+  margin:10px 0;
+  display:flex;
+  gap:10px;
+}
+
+.mp2-field input{
+  padding:8px;
+  flex:1;
+}
+
+.mp2-field button{
+  padding:8px 10px;
+}
+
+.mp2-add-btn{
+  margin-top:10px;
+  padding:8px 12px;
+}
+
+
+/* ===========================
+   MINI PROJECT 3 – SHOPPING CART
+=========================== */
+
+.mp3-container{
+  border-top:3px solid #333;
+  margin-top:40px;
+  padding:20px;
+  font-family:Arial;
+  max-width:600px;
+}
+
+.mp3-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:10px 0;
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:6px;
+}
+
+.mp3-item input{
+  width:60px;
+  padding:5px;
+}
+
+.mp3-total{
+  font-weight:bold;
+  margin-top:15px;
+  font-size:18px;
+}
+
+
+/* ===========================
+   MINI PROJECT 4 – SORTABLE TABLE
+=========================== */
+
+.mp4-container{
+  border-top:3px solid #333;
+  margin-top:40px;
+  padding:20px;
+  font-family:Arial;
+  max-width:600px;
+}
+
+.mp4-table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.mp4-table th,
+.mp4-table td{
+  border:1px solid #ccc;
+  padding:8px;
+  text-align:center;
+}
+
+.mp4-table th{
+  background:#f4f4f4;
+  cursor:pointer;
+}
+
+.mp4-table th:hover{
+  background:#e0e0e0;
+}
+
+/* ===========================
+   MINI PROJECT 5 – THEME DASHBOARD
+=========================== */
+
+.mp5-container{
+  border-top:3px solid #333;
+  margin-top:40px;
+  padding:20px;
+  font-family:Arial;
+}
+
+.mp5-dashboard{
+  padding:20px;
+  border-radius:10px;
+  transition:0.3s;
+}
+
+.mp5-theme-buttons button{
+  margin:5px;
+  padding:8px 12px;
+  cursor:pointer;
+}
+
+/* Default Theme */
+.mp5-light{
+  background:#f4f4f4;
+  color:#333;
+}
+
+/* Dark Theme */
+.mp5-dark{
+  background:#222;
+  color:#fff;
+}
+
+/* Blue Theme */
+.mp5-blue{
+  background:#007BFF;
+  color:#fff;
+}
+
+/* Green Theme */
+.mp5-green{
+  background:#28a745;
+  color:#fff;
+}
+
+
+
+/* ===========================
+   MINI PROJECT 6 – DYNAMIC SIDEBAR
+=========================== */
+
+.mp6-container{
+  border-top:3px solid #333;
+  margin-top:40px;
+  padding:20px;
+  font-family:Arial;
+}
+
+.mp6-layout{
+  display:flex;
+  min-height:200px;
+}
+
+.mp6-sidebar{
+  width:200px;
+  background:#222;
+  color:white;
+  padding:10px;
+}
+
+.mp6-sidebar ul{
+  list-style:none;
+  padding:0;
+}
+
+.mp6-sidebar li{
+  padding:8px;
+  cursor:pointer;
+  border-bottom:1px solid #444;
+}
+
+.mp6-sidebar li:hover{
+  background:#444;
+}
+
+.mp6-content{
+  flex:1;
+  padding:15px;
+  background:#f4f4f4;
+}
+
+/* ===========================
+   MINI PROJECT 7 – COMMENT SYSTEM
+=========================== */
+
+.mp7-container{
+  border-top:3px solid #333;
+  margin-top:40px;
+  padding:20px;
+  font-family:Arial;
+  max-width:600px;
+}
+
+.mp7-comment-box{
+  margin-bottom:15px;
+}
+
+.mp7-comment{
+  border:1px solid #ccc;
+  padding:10px;
+  margin:8px 0;
+  border-radius:6px;
+  background:#f9f9f9;
+}
+
+.mp7-replies{
+  margin-left:20px;
+  margin-top:10px;
+}
+
+.mp7-btn{
+  margin-top:5px;
+  padding:5px 8px;
+  font-size:12px;
+  cursor:pointer;
+}
+
+
+/* ===========================
+   MINI PROJECT 8 – CUSTOM DROPDOWN
+=========================== */
+
+.mp8-container{
+  border-top:3px solid #333;
+  margin-top:40px;
+  padding:20px;
+  font-family:Arial;
+  max-width:300px;
+}
+
+.mp8-dropdown{
+  position:relative;
+  width:100%;
+}
+
+.mp8-selected{
+  padding:10px;
+  border:1px solid #ccc;
+  cursor:pointer;
+  background:#f4f4f4;
+  border-radius:6px;
+}
+
+.mp8-options{
+  position:absolute;
+  width:100%;
+  border:1px solid #ccc;
+  border-top:none;
+  background:white;
+  display:none;
+  max-height:150px;
+  overflow-y:auto;
+  z-index:10;
+}
+
+.mp8-option{
+  padding:10px;
+  cursor:pointer;
+}
+
+.mp8-option:hover{
+  background:#e0e0e0;
+}
+</style>
+</head>
+<body>
+
+<h2>Mini Project 1: Kanban Board</h2>
+
+<div class="mp1-add-section">
+  <input type="text" id="mp1TaskInput" placeholder="Enter new task...">
+  <button onclick="mp1AddTask()">Add Task</button>
+</div>
+
+<div class="mp1-container">
+
+  <div class="mp1-column" ondragover="mp1AllowDrop(event)" ondrop="mp1Drop(event)">
+    <h3>To Do</h3>
+  </div>
+
+  <div class="mp1-column" ondragover="mp1AllowDrop(event)" ondrop="mp1Drop(event)">
+    <h3>In Progress</h3>
+  </div>
+
+  <div class="mp1-column" ondragover="mp1AllowDrop(event)" ondrop="mp1Drop(event)">
+    <h3>Done</h3>
+  </div>
+
+</div>
+
+<script>
+
+/* ===========================
+   KANBAN LOGIC
+=========================== */
+
+let mp1TaskId = 0;
+
+function mp1AddTask(){
+  const input = document.getElementById("mp1TaskInput");
+  if(input.value.trim() === "") return;
+
+  const task = document.createElement("div");
+  task.className = "mp1-task";
+  task.draggable = true;
+  task.id = "mp1-task-" + mp1TaskId++;
+  task.innerText = input.value;
+
+  task.addEventListener("dragstart", mp1Drag);
+
+  document.querySelector(".mp1-column").appendChild(task);
+
+  input.value = "";
+}
+
+function mp1Drag(event){
+  event.dataTransfer.setData("text", event.target.id);
+}
+
+function mp1AllowDrop(event){
+  event.preventDefault();
+}
+
+function mp1Drop(event){
+  event.preventDefault();
+  const taskId = event.dataTransfer.getData("text");
+  const task = document.getElementById(taskId);
+
+  if(event.target.classList.contains("mp1-column")){
+    event.target.appendChild(task);
+  }
+}
+
+</script>
+
+
+<hr>
+
+<h2>Mini Project 2: Dynamic Form Builder</h2>
+
+<div class="mp2-container">
+  <div id="mp2Fields"></div>
+
+  <button class="mp2-add-btn" onclick="mp2AddField()">
+    Add Input Field
+  </button>
+</div>
+
+
+/* ===========================
+   FORM BUILDER LOGIC
+=========================== */
+<script>
+
+let mp2FieldCount = 0;
+
+function mp2AddField(){
+  const container = document.getElementById("mp2Fields");
+
+  const fieldDiv = document.createElement("div");
+  fieldDiv.className = "mp2-field";
+  fieldDiv.id = "mp2-field-" + mp2FieldCount++;
+
+  fieldDiv.innerHTML = `
+    <input type="text" placeholder="Enter value">
+    <button onclick="mp2RemoveField('${fieldDiv.id}')">Remove</button>
+  `;
+
+  container.appendChild(fieldDiv);
+}
+
+function mp2RemoveField(id){
+  const field = document.getElementById(id);
+  field.remove();
+}
+</script>
+
+
+<hr>
+
+<h2>Mini Project 3: Shopping Cart System</h2>
+
+<div class="mp3-container">
+
+  <div class="mp3-item">
+    <span>Product A (₹500)</span>
+    <input type="number" min="0" value="0"
+           onchange="mp3UpdateTotal()"
+           data-price="500">
+  </div>
+
+  <div class="mp3-item">
+    <span>Product B (₹800)</span>
+    <input type="number" min="0" value="0"
+           onchange="mp3UpdateTotal()"
+           data-price="800">
+  </div>
+
+  <div class="mp3-item">
+    <span>Product C (₹1200)</span>
+    <input type="number" min="0" value="0"
+           onchange="mp3UpdateTotal()"
+           data-price="1200">
+  </div>
+
+  <div class="mp3-total">
+    Grand Total: ₹<span id="mp3GrandTotal">0</span>
+  </div>
+
+</div>
+
+
+/* ===========================
+   SHOPPING CART LOGIC
+=========================== */
+<script>function mp3UpdateTotal(){
+  const inputs = document.querySelectorAll(".mp3-item input");
+  let total = 0;
+
+  inputs.forEach(input=>{
+    const price = parseInt(input.dataset.price);
+    const quantity = parseInt(input.value) || 0;
+    total += price * quantity;
+  });
+
+  document.getElementById("mp3GrandTotal").innerText = total;
+}
+</script>
+
+
+
+
+<hr>
+
+<h2>Mini Project 4: Sortable Table</h2>
+
+<div class="mp4-container">
+  <table class="mp4-table" id="mp4Table">
+    <thead>
+      <tr>
+        <th onclick="mp4SortTable(0)">Name</th>
+        <th onclick="mp4SortTable(1)">Age</th>
+        <th onclick="mp4SortTable(2)">City</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Arun</td>
+        <td>25</td>
+        <td>Chennai</td>
+      </tr>
+      <tr>
+        <td>Meena</td>
+        <td>30</td>
+        <td>Coimbatore</td>
+      </tr>
+      <tr>
+        <td>Ravi</td>
+        <td>22</td>
+        <td>Madurai</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+/* ===========================
+   SORTABLE TABLE LOGIC
+=========================== */
+<script>
+
+let mp4SortDirection = {};
+
+function mp4SortTable(columnIndex){
+  const table = document.getElementById("mp4Table");
+  const tbody = table.querySelector("tbody");
+  const rows = Array.from(tbody.querySelectorAll("tr"));
+
+  // Toggle direction
+  mp4SortDirection[columnIndex] =
+    !mp4SortDirection[columnIndex];
+
+  const direction = mp4SortDirection[columnIndex] ? 1 : -1;
+
+  rows.sort((a,b)=>{
+    let cellA = a.children[columnIndex].innerText;
+    let cellB = b.children[columnIndex].innerText;
+
+    // Check if number
+    if(!isNaN(cellA) && !isNaN(cellB)){
+      return direction * (cellA - cellB);
+    }
+
+    return direction * cellA.localeCompare(cellB);
+  });
+
+  rows.forEach(row => tbody.appendChild(row));
+}
+</script>
+
+
+<hr>
+
+<h2>Mini Project 5: Multi-Theme Dashboard</h2>
+
+<div class="mp5-container">
+
+  <div class="mp5-theme-buttons">
+    <button onclick="mp5SetTheme('mp5-light')">Light</button>
+    <button onclick="mp5SetTheme('mp5-dark')">Dark</button>
+    <button onclick="mp5SetTheme('mp5-blue')">Blue</button>
+    <button onclick="mp5SetTheme('mp5-green')">Green</button>
+  </div>
+
+  <div class="mp5-dashboard mp5-light" id="mp5Dashboard">
+    <h3>Dashboard</h3>
+    <p>Welcome to your multi-theme dashboard.</p>
+  </div>
+
+</div>
+
+<script>
+    /* ===========================
+   THEME DASHBOARD LOGIC
+=========================== */
+
+function mp5SetTheme(themeClass){
+  const dashboard = document.getElementById("mp5Dashboard");
+
+  // Remove existing theme classes
+  dashboard.classList.remove(
+    "mp5-light",
+    "mp5-dark",
+    "mp5-blue",
+    "mp5-green"
+  );
+
+  // Add new theme
+  dashboard.classList.add(themeClass);
+
+  // Save to localStorage
+  localStorage.setItem("mp5SelectedTheme", themeClass);
+}
+
+// Load saved theme on page load
+window.addEventListener("load", ()=>{
+  const savedTheme = localStorage.getItem("mp5SelectedTheme");
+  if(savedTheme){
+    mp5SetTheme(savedTheme);
+  }
+});
+</script>
+
+
+
+<hr>
+
+<h2>Mini Project 6: Dynamic Sidebar Menu</h2>
+
+<div class="mp6-container">
+  <div class="mp6-layout">
+
+    <div class="mp6-sidebar">
+      <ul id="mp6Menu"></ul>
+    </div>
+
+    <div class="mp6-content" id="mp6Content">
+      <h3>Welcome</h3>
+      <p>Select a menu item</p>
+    </div>
+
+  </div>
+</div>
+
+
+
+/* ===========================
+   DYNAMIC SIDEBAR LOGIC
+=========================== */
+<script>
+const mp6MenuItems = [
+  { name: "Dashboard", content: "This is Dashboard page." },
+  { name: "Profile", content: "This is Profile page." },
+  { name: "Settings", content: "This is Settings page." },
+  { name: "Reports", content: "This is Reports page." }
+];
+
+function mp6LoadMenu(){
+  const menuContainer = document.getElementById("mp6Menu");
+
+  mp6MenuItems.forEach((item, index)=>{
+    const li = document.createElement("li");
+    li.innerText = item.name;
+
+    li.addEventListener("click", ()=>{
+      document.getElementById("mp6Content").innerHTML =
+        `<h3>${item.name}</h3><p>${item.content}</p>`;
+    });
+
+    menuContainer.appendChild(li);
+  });
+}
+
+window.addEventListener("load", mp6LoadMenu);
+</script>
+
+
+
+
+
+<hr>
+
+<h2>Mini Project 7: Comment System with Nested Replies</h2>
+
+<div class="mp7-container">
+
+  <div class="mp7-comment-box">
+    <input type="text" id="mp7MainInput" placeholder="Write a comment...">
+    <button class="mp7-btn" onclick="mp7AddComment()">Post</button>
+  </div>
+
+  <div id="mp7Comments"></div>
+
+</div>
+
+
+
+<script>
+    /* ===========================
+   COMMENT SYSTEM LOGIC
+=========================== */
+
+function mp7AddComment(){
+  const input = document.getElementById("mp7MainInput");
+  if(input.value.trim() === "") return;
+
+  const commentElement = mp7CreateCommentElement(input.value);
+  document.getElementById("mp7Comments").appendChild(commentElement);
+
+  input.value = "";
+}
+
+function mp7CreateCommentElement(text){
+  const commentDiv = document.createElement("div");
+  commentDiv.className = "mp7-comment";
+
+  const content = document.createElement("div");
+  content.innerText = text;
+
+  const replyBtn = document.createElement("button");
+  replyBtn.innerText = "Reply";
+  replyBtn.className = "mp7-btn";
+
+  const repliesContainer = document.createElement("div");
+  repliesContainer.className = "mp7-replies";
+
+  replyBtn.addEventListener("click", ()=>{
+    const replyInput = document.createElement("input");
+    replyInput.type = "text";
+    replyInput.placeholder = "Write a reply...";
+
+    const postReplyBtn = document.createElement("button");
+    postReplyBtn.innerText = "Post";
+    postReplyBtn.className = "mp7-btn";
+
+    postReplyBtn.addEventListener("click", ()=>{
+      if(replyInput.value.trim() === "") return;
+
+      const replyElement = mp7CreateCommentElement(replyInput.value);
+      repliesContainer.appendChild(replyElement);
+
+      replyInput.remove();
+      postReplyBtn.remove();
+    });
+
+    commentDiv.appendChild(replyInput);
+    commentDiv.appendChild(postReplyBtn);
+  });
+
+  commentDiv.appendChild(content);
+  commentDiv.appendChild(replyBtn);
+  commentDiv.appendChild(repliesContainer);
+
+  return commentDiv;
+}
+</script>
+
+
+
+<hr>
+
+<h2>Mini Project 8: Custom Dropdown</h2>
+
+<div class="mp8-container">
+
+  <div class="mp8-dropdown" id="mp8Dropdown">
+    <div class="mp8-selected" id="mp8Selected">
+      Select an option
+    </div>
+
+    <div class="mp8-options" id="mp8Options">
+      <div class="mp8-option">Option 1</div>
+      <div class="mp8-option">Option 2</div>
+      <div class="mp8-option">Option 3</div>
+      <div class="mp8-option">Option 4</div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<script>
+    /* ===========================
+   CUSTOM DROPDOWN LOGIC
+=========================== */
+
+const mp8Selected = document.getElementById("mp8Selected");
+const mp8Options = document.getElementById("mp8Options");
+
+mp8Selected.addEventListener("click", ()=>{
+  mp8Options.style.display =
+    mp8Options.style.display === "block" ? "none" : "block";
+});
+
+document.querySelectorAll(".mp8-option").forEach(option=>{
+  option.addEventListener("click", ()=>{
+    mp8Selected.innerText = option.innerText;
+    mp8Options.style.display = "none";
+  });
+});
+
+// Close dropdown when clicking outside
+document.addEventListener("click", (e)=>{
+  if(!document.getElementById("mp8Dropdown").contains(e.target)){
+    mp8Options.style.display = "none";
+  }
+});
+</script>
+
+</body>
+</html>
