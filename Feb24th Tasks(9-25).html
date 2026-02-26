@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Projects 9-25</title>
+<style>
+body { font-family: Arial; margin:20px; }
+section { border:2px solid #ddd; padding:15px; margin-bottom:40px; }
+input, select, button, textarea { margin:5px 0; padding:5px; }
+table { border-collapse: collapse; width:100%; margin-top:10px; }
+th, td { border:1px solid #ccc; padding:5px; text-align:left; }
+#progressBar {
+  position:fixed;
+  top:0; left:0;
+  height:5px;
+  background:linear-gradient(to right, #4CAF50, #2196F3);
+  width:0%;
+  z-index:9999;
+}
+
+/* 21 Carousel */
+.carousel {
+  width:100%;
+  height:300px;
+  position:relative;
+  overflow:hidden;
+}
+.slide {
+  width:100%;
+  height:300px;
+  position:absolute;
+  transition:0.5s;
+}
+.carousel button {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,0.5);
+  color:white;
+  border:none;
+  padding:10px;
+  cursor:pointer;
+}
+.prev { left:10px; }
+.next { right:10px; }
+
+/* 23 Parallax */
+.parallax {
+  height:400px;
+  background-image:url('https://picsum.photos/1200/800');
+  background-attachment:fixed;
+  background-position:center;
+  background-size:cover;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-size:30px;
+}
+
+/* 24 Skills */
+.skill {
+  margin:20px;
+}
+.bar {
+  width:100%;
+  background:#ddd;
+}
+.bar-inner {
+  width:0%;
+  height:20px;
+  background:#4CAF50;
+  transition:1.5s;
+}
+
+/* 25 Chat Widget */
+.chat-btn {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#4CAF50;
+  color:white;
+  padding:15px;
+  border-radius:50%;
+  cursor:pointer;
+}
+.chat-box {
+  position:fixed;
+  bottom:80px;
+  right:20px;
+  width:250px;
+  background:white;
+  border:1px solid #ccc;
+  display:none;
+  flex-direction:column;
+}
+.chat-header {
+  background:#4CAF50;
+  color:white;
+  padding:10px;
+}
+.chat-messages {
+  height:150px;
+  overflow:auto;
+  padding:10px;
+}
+.chat-input {
+  display:flex;
+}
+.chat-input input {
+  flex:1;
+  padding:5px;
+}
+
+</style>
+</head>
+<body>
+
+<h1>Mini Projects 9-25</h1>
+
+<!-- 9 Markdown Preview -->
+<section>
+<h2>9. Live Markdown Preview</h2>
+<textarea id="md" rows="4" cols="40" oninput="previewMD()"></textarea>
+<div id="mdOutput"></div>
+</section>
+
+<!-- 10 Breadcrumb -->
+<section>
+<h2>10. Dynamic Breadcrumb</h2>
+<button onclick="navigate('Home')">Home</button>
+<button onclick="navigate('Shop')">Shop</button>
+<button onclick="navigate('Details')">Details</button>
+<p id="breadcrumb"></p>
+</section>
+
+<!-- 11 Notes App -->
+<section>
+<h2>11. Notes App</h2>
+<input id="noteInput" placeholder="Add note">
+<input id="noteSearch" placeholder="Search..." oninput="renderNotes()">
+<select id="noteFilter" onchange="renderNotes()">
+<option value="all">All</option>
+<option value="short">Short</option>
+<option value="long">Long</option>
+</select>
+<button onclick="addNote()">Add</button>
+<div id="notes"></div>
+</section>
+
+<!-- 12 Expense Tracker -->
+<section>
+<h2>12. Expense Tracker</h2>
+<input id="expName" placeholder="Expense name">
+<input id="expAmount" type="number" placeholder="Amount">
+<select id="expCat">
+<option>Food</option><option>Travel</option><option>Other</option>
+</select>
+<button onclick="addExpense()">Add</button>
+<div id="expenses"></div>
+<div id="summary"></div>
+</section>
+
+<!-- 13 Student Result -->
+<section>
+<h2>13. Student Result Calculator</h2>
+<input id="mark1" type="number" placeholder="Mark 1">
+<input id="mark2" type="number" placeholder="Mark 2">
+<input id="mark3" type="number" placeholder="Mark 3">
+<button onclick="calcResult()">Calculate</button>
+<p id="result"></p>
+</section>
+
+<!-- 14 Contact Manager -->
+<section>
+<h2>14. Contact Manager</h2>
+<input id="contactName" placeholder="Name">
+<input id="contactPhone" placeholder="Phone">
+<input id="contactSearch" placeholder="Search..." oninput="renderContacts()">
+<button onclick="addContact()">Add</button>
+<div id="contacts"></div>
+</section>
+
+<!-- 15 Product Filter -->
+<section>
+<h2>15. Product Filter</h2>
+<select id="filterCat" onchange="renderProducts()">
+<option value="all">All</option>
+<option value="Electronics">Electronics</option>
+<option value="Clothing">Clothing</option>
+</select>
+<input type="number" id="minPrice" placeholder="Min Price" oninput="renderProducts()">
+<input type="number" id="maxPrice" placeholder="Max Price" oninput="renderProducts()">
+<div id="products"></div>
+</section>
+
+<!-- 16 Table Pagination + Search -->
+<section>
+<h2>16. Table Pagination + Search</h2>
+<input id="tableSearch" placeholder="Search..." oninput="renderTable()">
+<table>
+<thead><tr><th>Name</th></tr></thead>
+<tbody id="tableData"></tbody>
+</table>
+<button onclick="prevPage()">Prev</button>
+<button onclick="nextPage()">Next</button>
+</section>
+
+<!-- 17 Password Manager -->
+<section>
+<h2>17. Password Manager</h2>
+<input id="pwdSite" placeholder="Website">
+<input id="pwdValue" placeholder="Password">
+<button onclick="savePwd()">Save</button>
+<div id="pwdList"></div>
+</section>
+
+<!-- 18 Bookmark Manager -->
+<section>
+<h2>18. Bookmark Manager</h2>
+<input id="bmName" placeholder="Name">
+<input id="bmUrl" placeholder="URL">
+<button onclick="addBookmark()">Add</button>
+<div id="bookmarks"></div>
+</section>
+
+<!-- 19 Cart with Save -->
+<section>
+<h2>19. Cart Persistent</h2>
+<button onclick="addToCart()">Add Item ₹100</button>
+<p>Cart Total: ₹<span id="cartTotal">0</span></p>
+</section>
+
+<!-- 20 Form Auto Save -->
+<section>
+<h2>20. Form Auto Save</h2>
+<input id="autoName" placeholder="Name">
+<textarea id="autoMsg" placeholder="Message"></textarea>
+</section>
+
+<script>
+
+/* 9 Markdown */
+function previewMD(){
+let t=document.getElementById("md").value;
+t=t.replace(/# (.*)/g,"<h3>$1</h3>");
+t=t.replace(/\*\*(.*)\*\*/g,"<b>$1</b>");
+document.getElementById("mdOutput").innerHTML=t;
+}
+
+/* 10 Breadcrumb */
+let path=[];
+function navigate(p){ path.push(p); document.getElementById("breadcrumb").innerText=path.join(" > "); }
+
+/* 11 Notes */
+let notes=JSON.parse(localStorage.getItem("notes"))||[];
+function addNote(){
+let text=document.getElementById("noteInput").value;
+notes.push(text);
+localStorage.setItem("notes",JSON.stringify(notes));
+renderNotes();
+}
+function renderNotes(){
+let s=document.getElementById("noteSearch").value.toLowerCase();
+let f=document.getElementById("noteFilter").value;
+let html="";
+notes.forEach(n=>{
+if(n.toLowerCase().includes(s)){
+if(f==="short" && n.length>10) return;
+if(f==="long" && n.length<=10) return;
+html+="<p>"+n+"</p>";
+}});
+document.getElementById("notes").innerHTML=html;
+}
+renderNotes();
+
+/* 12 Expense */
+let expenses=[];
+function addExpense(){
+let name=expName.value, amt=+expAmount.value, cat=expCat.value;
+expenses.push({name,amt,cat});
+renderExpenses();
+}
+function renderExpenses(){
+let html="", summary={};
+expenses.forEach(e=>{
+html+=e.name+" - ₹"+e.amt+" ("+e.cat+")<br>";
+summary[e.cat]=(summary[e.cat]||0)+e.amt;
+});
+let sumHTML="";
+for(let c in summary) sumHTML+=c+": ₹"+summary[c]+"<br>";
+expensesDiv.innerHTML=html;
+summaryDiv.innerHTML=sumHTML;
+}
+let expensesDiv=document.getElementById("expenses");
+let summaryDiv=document.getElementById("summary");
+
+/* 13 Result */
+function calcResult(){
+let m1=+mark1.value, m2=+mark2.value, m3=+mark3.value;
+let avg=(m1+m2+m3)/3;
+let grade=avg>=90?"A":avg>=75?"B":avg>=50?"C":"Fail";
+result.innerText="Average: "+avg+" Grade: "+grade+(avg>=50?" (Pass)":" (Fail)");
+}
+
+/* 14 Contacts */
+let contacts=[];
+function addContact(){
+contacts.push({name:contactName.value, phone:contactPhone.value});
+renderContacts();
+}
+function renderContacts(){
+let s=contactSearch.value.toLowerCase();
+let html="";
+contacts.forEach((c,i)=>{
+if(c.name.toLowerCase().includes(s))
+html+=c.name+" - "+c.phone+" <button onclick='contacts.splice("+i+",1);renderContacts()'>Delete</button><br>";
+});
+contactsDiv.innerHTML=html;
+}
+let contactsDiv=document.getElementById("contacts");
+
+/* 15 Product Filter */
+let productList=[
+{name:"Phone",price:500,cat:"Electronics"},
+{name:"Shirt",price:50,cat:"Clothing"}
+];
+function renderProducts(){
+let cat=filterCat.value, min=+minPrice.value||0, max=+maxPrice.value||Infinity;
+let html="";
+productList.forEach(p=>{
+if((cat==="all"||p.cat===cat)&&p.price>=min&&p.price<=max)
+html+=p.name+" - ₹"+p.price+"<br>";
+});
+products.innerHTML=html;
+}
+renderProducts();
+
+/* 16 Table */
+let data=Array.from({length:20},(_,i)=>"User "+(i+1));
+let page=0, size=5;
+function renderTable(){
+let s=tableSearch.value.toLowerCase();
+let filtered=data.filter(d=>d.toLowerCase().includes(s));
+let start=page*size;
+tableData.innerHTML=filtered.slice(start,start+size).map(d=>"<tr><td>"+d+"</td></tr>").join("");
+}
+function nextPage(){ page++; renderTable(); }
+function prevPage(){ page=Math.max(0,page-1); renderTable(); }
+renderTable();
+
+/* 17 Password Manager */
+function encrypt(t){ return btoa(t); }
+function savePwd(){
+let list=JSON.parse(localStorage.getItem("pwds"))||[];
+list.push({site:pwdSite.value, pass:encrypt(pwdValue.value)});
+localStorage.setItem("pwds",JSON.stringify(list));
+renderPwds();
+}
+function renderPwds(){
+let list=JSON.parse(localStorage.getItem("pwds"))||[];
+pwdList.innerHTML=list.map(p=>p.site+" - "+p.pass).join("<br>");
+}
+renderPwds();
+
+/* 18 Bookmark */
+function addBookmark(){
+let list=JSON.parse(localStorage.getItem("bms"))||[];
+list.push({name:bmName.value,url:bmUrl.value});
+localStorage.setItem("bms",JSON.stringify(list));
+renderBM();
+}
+function renderBM(){
+let list=JSON.parse(localStorage.getItem("bms"))||[];
+bookmarks.innerHTML=list.map(b=>"<a href='"+b.url+"' target='_blank'>"+b.name+"</a>").join("<br>");
+}
+renderBM();
+
+/* 19 Cart Save */
+let cartTotal=+localStorage.getItem("cartTotal")||0;
+function addToCart(){
+cartTotal+=100;
+localStorage.setItem("cartTotal",cartTotal);
+document.getElementById("cartTotal").innerText=cartTotal;
+}
+document.getElementById("cartTotal").innerText=cartTotal;
+
+/* 20 Auto Save */
+autoName.value=localStorage.getItem("autoName")||"";
+autoMsg.value=localStorage.getItem("autoMsg")||"";
+autoName.oninput=()=>localStorage.setItem("autoName",autoName.value);
+autoMsg.oninput=()=>localStorage.setItem("autoMsg",autoMsg.value);
+
+</script>
+
+<div id="progressBar"></div>
+
+<h1 style="padding:20px;">Mini Projects 21–25</h1>
+
+<!-- 21 Carousel -->
+<section>
+<h2 style="padding:20px;">21. Image Carousel</h2>
+<div class="carousel">
+  <div class="slide" style="background:#ff6b6b;"></div>
+  <div class="slide" style="background:#4ecdc4;"></div>
+  <div class="slide" style="background:#1a535c;"></div>
+  <button class="prev" onclick="prevSlide()">❮</button>
+  <button class="next" onclick="nextSlide()">❯</button>
+</div>
+</section>
+
+<!-- 23 Parallax -->
+<section class="parallax">
+  Parallax Landing Section
+</section>
+
+<!-- 24 Skills -->
+<section style="padding:20px;">
+<h2>24. Skill Progress Animation</h2>
+<div class="skill">
+  HTML
+  <div class="bar"><div class="bar-inner" data-width="90%"></div></div>
+</div>
+<div class="skill">
+  CSS
+  <div class="bar"><div class="bar-inner" data-width="80%"></div></div>
+</div>
+<div class="skill">
+  JavaScript
+  <div class="bar"><div class="bar-inner" data-width="70%"></div></div>
+</div>
+</section>
+
+<!-- 25 Chat Widget -->
+ <h2>25. Floating Chat</h2>
+<div class="chat-btn" onclick="toggleChat()">💬</div>
+<div class="chat-box" id="chatBox">
+  <div class="chat-header">Chat Support</div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-input">
+    <input id="chatInput" placeholder="Type message">
+    <button onclick="sendMsg()">Send</button>
+  </div>
+</div>
+
+<script>
+
+/* 22 Scroll Progress */
+window.onscroll = function() {
+  let scrollTop = document.documentElement.scrollTop;
+  let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  let percent = (scrollTop / height) * 100;
+  document.getElementById("progressBar").style.width = percent + "%";
+};
+
+/* 21 Carousel */
+let slides = document.querySelectorAll(".slide");
+let index = 0;
+
+function showSlide(i){
+  slides.forEach((s, idx)=>{
+    s.style.left = (idx - i) * 100 + "%";
+  });
+}
+function nextSlide(){
+  index = (index + 1) % slides.length;
+  showSlide(index);
+}
+function prevSlide(){
+  index = (index - 1 + slides.length) % slides.length;
+  showSlide(index);
+}
+setInterval(nextSlide, 3000);
+showSlide(index);
+
+/* 24 Skill Animation */
+window.addEventListener("scroll", ()=>{
+  let skills = document.querySelectorAll(".bar-inner");
+  skills.forEach(skill=>{
+    let rect = skill.getBoundingClientRect();
+    if(rect.top < window.innerHeight){
+      skill.style.width = skill.dataset.width;
+    }
+  });
+});
+
+/* 25 Chat */
+function toggleChat(){
+  let box=document.getElementById("chatBox");
+  box.style.display = box.style.display==="flex"?"none":"flex";
+}
+function sendMsg(){
+  let input=document.getElementById("chatInput");
+  if(input.value.trim()!==""){
+    let msg=document.createElement("div");
+    msg.innerText=input.value;
+    document.getElementById("chatMessages").appendChild(msg);
+    input.value="";
+  }
+}
+
+</script>
+</body>
+</html>

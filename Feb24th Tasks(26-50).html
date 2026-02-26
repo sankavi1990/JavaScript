@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Projects 26-50</title>
+<style>
+body{font-family:Arial;margin:20px}
+section{border:1px solid #ccc;padding:15px;margin-bottom:40px}
+button{margin:5px}
+
+/* 26 Typewriter */
+#typewriter{font-size:24px;font-weight:bold;height:40px}
+
+/* 27 Modal */
+.modal{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.5);
+  display:none;align-items:center;justify-content:center;
+}
+.modal-content{
+  background:white;padding:20px;width:250px
+}
+
+/* 28 Tooltip */
+.tooltip{
+  position:absolute;background:black;color:white;
+  padding:5px;font-size:12px;display:none
+}
+
+/* 29 Accordion */
+.accordion-item{border:1px solid #ccc;margin-bottom:5px}
+.accordion-header{padding:10px;background:#f4f4f4;cursor:pointer}
+.accordion-body{
+  max-height:0;overflow:hidden;
+  transition:max-height 0.5s ease;
+  padding:0 10px
+}
+
+/* 30 Page Transition */
+.page{display:none;opacity:0;transition:opacity 0.5s}
+.page.active{display:block;opacity:1}
+
+/* 31 Weather */
+.weather-box{border:1px solid #ccc;padding:10px;width:200px}
+
+/* 32 Voting */
+.vote-bar{height:20px;background:#4CAF50;width:0%;color:white;text-align:center}
+
+/* 34 Seats */
+.seat{width:25px;height:25px;margin:5px;background:#ccc;display:inline-block;cursor:pointer}
+.seat.selected{background:green}
+
+/* 35 Calendar */
+.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;width:300px}
+.day{padding:10px;border:1px solid #ccc;cursor:pointer;text-align:center}
+.day.selected{background:#4CAF50;color:white}
+
+
+
+
+/* 37 Drag Drop */
+.dropzone{
+  border:2px dashed #aaa;
+  padding:20px;
+  text-align:center;
+}
+
+/* 38 Compare */
+.compare-box{display:flex;gap:20px}
+
+/* 39 Filter */
+.product{border:1px solid #ccc;padding:5px;margin:5px 0}
+
+/* 40 Step Progress */
+.progress{display:flex;margin-bottom:10px}
+.step{flex:1;padding:10px;border-bottom:4px solid #ccc;text-align:center}
+.step.active{border-color:#4CAF50}
+
+/* 41 Mini Trello */
+.board{display:flex;gap:10px}
+.column{flex:1;border:1px solid #ccc;padding:10px}
+.task{background:#f4f4f4;padding:5px;margin:5px 0}
+
+/* 42 Dashboard */
+.dashboard{display:flex}
+.sidebar{width:200px;background:#333;color:white;padding:10px}
+.sidebar.collapsed{width:60px}
+.content{flex:1;padding:10px}
+
+/* 43 Toast */
+.toast{
+  position:fixed;bottom:20px;right:20px;
+  background:black;color:white;padding:10px;
+  opacity:0;transition:0.5s
+}
+.toast.show{opacity:1}
+
+/* 47 Tabs */
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* 50 Portfolio */
+.hero{background:#4CAF50;color:white;padding:50px;text-align:center}
+.portfolio-section{padding:20px}
+</style>
+</head>
+<body>
+
+<h1>Mini Projects 26–50</h1>
+
+<!-- 26 Typewriter -->
+<section>
+<h2>26. Typewriter Animation</h2>
+<div id="typewriter"></div>
+</section>
+
+<!-- 27 Modal -->
+<section>
+<h2>27. Multiple Modal System</h2>
+<button onclick="openModal('m1')">Open Modal 1</button>
+<button onclick="openModal('m2')">Open Modal 2</button>
+
+<div class="modal" id="m1">
+  <div class="modal-content">
+    Modal 1 Content
+    <button onclick="closeModal('m1')">Close</button>
+  </div>
+</div>
+
+<div class="modal" id="m2">
+  <div class="modal-content">
+    Modal 2 Content
+    <button onclick="closeModal('m2')">Close</button>
+  </div>
+</div>
+</section>
+
+<!-- 28 Tooltip -->
+<section>
+<h2>28. Tooltip System</h2>
+<button onmouseover="showTip(event,'Hello Tooltip')" 
+        onmouseout="hideTip()">Hover Me</button>
+<div class="tooltip" id="tooltip"></div>
+</section>
+
+<!-- 29 Accordion -->
+<section>
+<h2>29. Dynamic Accordion</h2>
+<div class="accordion-item">
+  <div class="accordion-header" onclick="toggleAcc(this)">Section 1</div>
+  <div class="accordion-body">Content 1</div>
+</div>
+<div class="accordion-item">
+  <div class="accordion-header" onclick="toggleAcc(this)">Section 2</div>
+  <div class="accordion-body">Content 2</div>
+</div>
+</section>
+
+<!-- 30 Page Transition -->
+<section>
+<h2>30. Page Transition</h2>
+<button onclick="showPage(0)">Page 1</button>
+<button onclick="showPage(1)">Page 2</button>
+<div class="page active">This is Page 1</div>
+<div class="page">This is Page 2</div>
+</section>
+
+<!-- 31 Weather -->
+<section>
+<h2>31. Mini Weather UI</h2>
+<div class="weather-box" id="weather"></div>
+</section>
+
+<!-- 32 Voting -->
+<section>
+<h2>32. Voting System</h2>
+<button onclick="vote('A')">Vote A</button>
+<button onclick="vote('B')">Vote B</button>
+<div>A<div class="vote-bar" id="barA"></div></div>
+<div>B<div class="vote-bar" id="barB"></div></div>
+</section>
+
+<!-- 33 Quiz -->
+<section>
+<h2>33. Quiz with Timer + Negative Mark</h2>
+<div id="quizQ"></div>
+<button onclick="answer(true)">True</button>
+<button onclick="answer(false)">False</button>
+<p id="quizResult"></p>
+<p>Time: <span id="timer">10</span></p>
+</section>
+
+<!-- 34 Seat Booking -->
+<section>
+<h2>34. Seat Booking</h2>
+<div id="seats"></div>
+</section>
+
+<!-- 35 Calendar -->
+<section>
+<h2>35. Calendar UI</h2>
+<div class="calendar" id="calendar"></div>
+</section>
+
+<script>
+
+/* 26 Typewriter */
+let words=["Web Developer","UI Designer","JavaScript Expert"];
+let w=0, l=0;
+function type(){
+  if(l<words[w].length){
+    document.getElementById("typewriter").innerText+=words[w][l++];
+  }else{
+    setTimeout(()=>{document.getElementById("typewriter").innerText="";l=0;w=(w+1)%words.length},1000);
+  }
+}
+setInterval(type,150);
+
+/* 27 Modal */
+function openModal(id){ document.getElementById(id).style.display="flex" }
+function closeModal(id){ document.getElementById(id).style.display="none" }
+
+/* 28 Tooltip */
+function showTip(e,text){
+  let t=document.getElementById("tooltip");
+  t.innerText=text;
+  t.style.display="block";
+  t.style.left=e.pageX+"px";
+  t.style.top=e.pageY+"px";
+}
+function hideTip(){ document.getElementById("tooltip").style.display="none" }
+
+/* 29 Accordion */
+function toggleAcc(el){
+  let body=el.nextElementSibling;
+  body.style.maxHeight=body.style.maxHeight?null:body.scrollHeight+"px";
+}
+
+/* 30 Page Transition */
+function showPage(i){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.querySelectorAll(".page")[i].classList.add("active");
+}
+
+/* 31 Weather Dummy */
+let weatherData={city:"Chennai",temp:32,condition:"Sunny"};
+document.getElementById("weather").innerHTML=
+weatherData.city+"<br>"+weatherData.temp+"°C<br>"+weatherData.condition;
+
+/* 32 Voting */
+let votes={A:0,B:0};
+function vote(option){
+  votes[option]++;
+  let total=votes.A+votes.B;
+  document.getElementById("barA").style.width=(votes.A/total*100)+"%";
+  document.getElementById("barA").innerText=Math.round(votes.A/total*100)+"%";
+  document.getElementById("barB").style.width=(votes.B/total*100)+"%";
+  document.getElementById("barB").innerText=Math.round(votes.B/total*100)+"%";
+}
+
+/* 33 Quiz */
+let correct=true, score=0, time=10;
+document.getElementById("quizQ").innerText="Sun rises in East?";
+let timer=setInterval(()=>{
+  time--;document.getElementById("timer").innerText=time;
+  if(time<=0) clearInterval(timer);
+},1000);
+function answer(ans){
+  if(ans===correct) score++;
+  else score--;
+  document.getElementById("quizResult").innerText="Score: "+score;
+}
+
+/* 34 Seats */
+for(let i=0;i<30;i++){
+  let seat=document.createElement("div");
+  seat.className="seat";
+  seat.onclick=()=>seat.classList.toggle("selected");
+  document.getElementById("seats").appendChild(seat);
+}
+
+/* 35 Calendar */
+for(let d=1;d<=30;d++){
+  let day=document.createElement("div");
+  day.className="day";
+  day.innerText=d;
+  day.onclick=()=>day.classList.toggle("selected");
+  document.getElementById("calendar").appendChild(day);
+}
+
+</script>
+
+
+
+<!-- 36 Invoice -->
+<section>
+<h2>36. Invoice Generator</h2>
+<input id="itemName" placeholder="Item">
+<input id="itemPrice" type="number" placeholder="Price">
+<button onclick="addItem()">Add</button>
+<div id="invoiceList"></div>
+<p>Total: ₹<span id="invTotal">0</span></p>
+<p>Tax (10%): ₹<span id="invTax">0</span></p>
+<p>Grand Total: ₹<span id="invGrand">0</span></p>
+</section>
+
+<!-- 37 Drag Drop File -->
+<section>
+<h2>37. Drag & Drop File Preview</h2>
+<div class="dropzone" id="dropzone">Drop Files Here</div>
+<div id="filePreview"></div>
+</section>
+
+<!-- 38 Product Compare -->
+<section>
+<h2>38. Product Comparison</h2>
+<div class="compare-box" id="compare"></div>
+</section>
+
+<!-- 39 Checkbox Filter -->
+<section>
+<h2>39. Dynamic Filter</h2>
+<input id="search39" placeholder="Search..." oninput="render39()">
+<label><input type="checkbox" value="Electronics" onchange="render39()">Electronics</label>
+<label><input type="checkbox" value="Clothing" onchange="render39()">Clothing</label>
+<div id="filter39"></div>
+</section>
+
+<!-- 40 Step Progress -->
+<section>
+<h2>40. Step Progress Bar</h2>
+<div class="progress">
+  <div class="step active">Step 1</div>
+  <div class="step">Step 2</div>
+  <div class="step">Step 3</div>
+</div>
+<button onclick="nextStep()">Next</button>
+</section>
+
+<!-- 41 Mini Trello -->
+<section>
+<h2>41. Mini Trello</h2>
+<div class="board">
+  <div class="column" id="todo41"></div>
+</div>
+<input id="task41">
+<button onclick="addTask41()">Add</button>
+</section>
+
+<!-- 42 Dashboard -->
+<section>
+<h2>42. Admin Dashboard</h2>
+<div class="dashboard">
+  <div class="sidebar" id="sidebar42">
+    <button onclick="toggleSidebar()">☰</button>
+    <p>Menu</p>
+  </div>
+  <div class="content">Dashboard Content</div>
+</div>
+</section>
+
+<!-- 43 Toast -->
+<section>
+<h2>43. Toast Notification</h2>
+<button onclick="showToast()">Show Toast</button>
+<div class="toast" id="toast">Notification!</div>
+</section>
+
+<!-- 44 Blog -->
+<section>
+<h2>44. Blog UI</h2>
+<select onchange="renderBlog(this.value)">
+<option value="all">All</option>
+<option value="Tech">Tech</option>
+<option value="Life">Life</option>
+</select>
+<div id="blog"></div>
+</section>
+
+<!-- 45 Pricing -->
+<section>
+<h2>45. Pricing Calculator</h2>
+<select id="plan" onchange="calcPrice()">
+<option value="100">Basic ₹100</option>
+<option value="200">Pro ₹200</option>
+</select>
+<label><input type="checkbox" id="extra" onchange="calcPrice()">Add Extra ₹50</label>
+<p>Total: ₹<span id="price45">100</span></p>
+</section>
+
+<!-- 46 Leaderboard -->
+<section>
+<h2>46. Leaderboard</h2>
+<div id="leaderboard"></div>
+</section>
+
+<!-- 47 Tabs -->
+<section>
+<h2>47. Tabs with Hash</h2>
+<button onclick="openTab('tab1')">Tab1</button>
+<button onclick="openTab('tab2')">Tab2</button>
+<div id="tab1" class="tab-content">Content 1</div>
+<div id="tab2" class="tab-content">Content 2</div>
+</section>
+
+<!-- 48 Poll -->
+<section>
+<h2>48. Poll System</h2>
+<button onclick="vote48('Yes')">Yes</button>
+<button onclick="vote48('No')">No</button>
+<div id="poll48"></div>
+</section>
+
+<!-- 49 Chat -->
+<section>
+<h2>49. Mini Chat UI</h2>
+<input id="chat49">
+<button onclick="send49()">Send</button>
+<div id="chatBox49"></div>
+</section>
+
+<!-- 50 Portfolio -->
+<section>
+<h2>50. Portfolio Website</h2>
+<div class="hero">Welcome to My Portfolio</div>
+<div class="portfolio-section">Projects Section</div>
+<div class="portfolio-section">Contact Section</div>
+</section>
+
+<script>
+
+/* 36 Invoice */
+let invTotal=0;
+function addItem(){
+let name=itemName.value, price=+itemPrice.value;
+invTotal+=price;
+invTotalEl.innerText=invTotal;
+invTax.innerText=invTotal*0.1;
+invGrand.innerText=invTotal*1.1;
+invoiceList.innerHTML+=name+" - ₹"+price+"<br>";
+}
+let invTotalEl=document.getElementById("invTotal");
+
+/* 37 Drag Drop */
+dropzone.ondragover=e=>e.preventDefault();
+dropzone.ondrop=e=>{
+e.preventDefault();
+filePreview.innerHTML="";
+[...e.dataTransfer.files].forEach(f=>{
+let p=document.createElement("p");
+p.innerText=f.name;
+filePreview.appendChild(p);
+});
+};
+
+/* 38 Compare */
+let compareProducts=[
+{name:"Phone",price:500},{name:"Laptop",price:1000}
+];
+compare.innerHTML=compareProducts.map(p=>p.name+" ₹"+p.price).join("<br>");
+
+/* 39 Filter */
+let list39=[
+{name:"Phone",cat:"Electronics"},
+{name:"Shirt",cat:"Clothing"}
+];
+function render39(){
+let search=search39.value.toLowerCase();
+let checked=[...document.querySelectorAll("input[type=checkbox]:checked")].map(c=>c.value);
+filter39.innerHTML="";
+list39.forEach(p=>{
+if(p.name.toLowerCase().includes(search)&&
+(checked.length==0||checked.includes(p.cat)))
+filter39.innerHTML+=`<div class="product">${p.name}</div>`;
+});
+}
+render39();
+
+/* 40 Steps */
+let currentStep=0;
+function nextStep(){
+let steps=document.querySelectorAll(".step");
+steps[currentStep].classList.remove("active");
+currentStep=(currentStep+1)%steps.length;
+steps[currentStep].classList.add("active");
+}
+
+/* 41 Trello */
+function addTask41(){
+let div=document.createElement("div");
+div.className="task";
+div.innerHTML=task41.value+
+` <button onclick="this.parentNode.remove()">Delete</button>`;
+todo41.appendChild(div);
+}
+
+/* 42 Sidebar */
+function toggleSidebar(){
+sidebar42.classList.toggle("collapsed");
+}
+
+/* 43 Toast */
+function showToast(){
+toast.classList.add("show");
+setTimeout(()=>toast.classList.remove("show"),2000);
+}
+
+/* 44 Blog */
+let blogPosts=[
+{title:"JS Tips",cat:"Tech"},
+{title:"Life Advice",cat:"Life"}
+];
+function renderBlog(cat){
+blog.innerHTML="";
+blogPosts.forEach(p=>{
+if(cat=="all"||p.cat==cat)
+blog.innerHTML+=p.title+"<br>";
+});
+}
+renderBlog("all");
+
+/* 45 Pricing */
+function calcPrice(){
+let total=+plan.value+(extra.checked?50:0);
+price45.innerText=total;
+}
+
+/* 46 Leaderboard */
+let players=[
+{name:"A",score:80},
+{name:"B",score:95}
+];
+players.sort((a,b)=>b.score-a.score);
+leaderboard.innerHTML=players.map((p,i)=>`${i+1}. ${p.name} - ${p.score}`).join("<br>");
+
+/* 47 Tabs */
+function openTab(id){
+location.hash=id;
+document.querySelectorAll(".tab-content").forEach(t=>t.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+}
+if(location.hash) openTab(location.hash.substring(1));
+
+/* 48 Poll */
+let poll=JSON.parse(localStorage.getItem("poll"))||{Yes:0,No:0};
+function vote48(opt){
+poll[opt]++;
+localStorage.setItem("poll",JSON.stringify(poll));
+renderPoll();
+}
+function renderPoll(){
+poll48.innerText=`Yes: ${poll.Yes} | No: ${poll.No}`;
+}
+renderPoll();
+
+/* 49 Chat */
+function send49(){
+let msg=document.createElement("div");
+msg.innerText=chat49.value;
+chatBox49.appendChild(msg);
+chat49.value="";
+}
+
+</script>
+
+</body>
+</html>
