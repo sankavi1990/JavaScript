@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UI Tasks 1-10</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .navbar {
+            transition: 0.3s;
+        }
+        .navbar.scrolled {
+            background-color: #0d6efd !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        body {
+            padding-top: 90px;
+        }
+        .task-title {
+            background: #f8f9fa;
+            padding: 10px;
+            border-left: 5px solid #0d6efd;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ================= TASK 4 ================= -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">UI Tasks</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ================= TASK 1 ================= -->
+<section class="container my-5">
+<div class="task-title">
+    <h4>Task 1: Responsive Registration Form with Validation</h4>
+</div>
+
+<form id="registrationForm" class="row g-3">
+  <div class="col-md-6">
+    <label class="form-label">Full Name</label>
+    <input type="text" class="form-control" required>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Email</label>
+    <input type="email" class="form-control" required>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Password</label>
+    <input type="password" id="regPassword" class="form-control" required minlength="6">
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Confirm Password</label>
+    <input type="password" id="regConfirmPassword" class="form-control" required>
+  </div>
+  <div class="col-12 text-center">
+    <button type="submit" class="btn btn-success">Register</button>
+  </div>
+</form>
+</section>
+
+<!-- ================= TASK 2 ================= -->
+<section class="container my-5">
+<div class="task-title">
+    <h4>Task 2: Login Page with Show/Hide Password</h4>
+</div>
+
+<form id="loginForm" class="col-md-6 mx-auto">
+  <div class="mb-3">
+    <label>Email</label>
+    <input type="email" class="form-control" required>
+  </div>
+  <div class="mb-3 position-relative">
+    <label>Password</label>
+    <input type="password" id="loginPassword" class="form-control" required>
+    <button type="button" class="btn btn-sm btn-secondary position-absolute end-0 top-50 translate-middle-y me-2" onclick="togglePassword()">Show</button>
+  </div>
+  <button type="submit" class="btn btn-primary w-100">Login</button>
+</form>
+</section>
+
+<!-- ================= TASK 3 ================= -->
+<section class="container my-5">
+<div class="task-title">
+    <h4>Task 3: Responsive Product Listing using Bootstrap Cards</h4>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card">
+      <img src="Toy.jpg" class="card-img-top">
+      <div class="card-body text-center">
+        <h5>Product 1</h5>
+        <p>₹999</p>
+        <button class="btn btn-primary">Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card">
+      <img src="Alphabets.jpg" class="card-img-top">
+      <div class="card-body text-center">
+        <h5>Product 2</h5>
+        <p>₹1499</p>
+        <button class="btn btn-primary">Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card">
+      <img src="car.jpg" class="card-img-top">
+      <div class="card-body text-center">
+        <h5>Product 3</h5>
+        <p>₹1999</p>
+        <button class="btn btn-primary">Buy Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ================= TASK 4 ================= -->
+<section class="container my-5">
+<div class="task-title">
+    <h4>Task 4: Dynamic Navbar Style Change on Scroll</h4>
+</div>
+<p>Scroll the page to see the navbar color change.</p>
+<div style="height:200px;"></div>
+</section>
+
+<!-- ================= TASK 5 ================= -->
+<section class="container my-5">
+<div class="task-title">
+    <h4>Task 5: Modal-Based Contact Form</h4>
+</div>
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal">
+    Open Contact Form
+</button>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="contactModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>Contact Us</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label>Name</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label>Email</label>
+            <input type="email" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label>Message</label>
+            <textarea class="form-control" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+/* Registration Validation */
+document.getElementById("registrationForm").addEventListener("submit", function(e){
+    const pass = document.getElementById("regPassword").value;
+    const confirmPass = document.getElementById("regConfirmPassword").value;
+
+    if(pass !== confirmPass){
+        alert("Passwords do not match!");
+        e.preventDefault();
+    }
+});
+
+/* Show/Hide Password */
+function togglePassword(){
+    const passwordField = document.getElementById("loginPassword");
+    passwordField.type = passwordField.type === "password" ? "text" : "password";
+}
+
+/* Navbar Scroll Effect */
+window.addEventListener("scroll", function(){
+    const navbar = document.querySelector(".navbar");
+    navbar.classList.toggle("scrolled", window.scrollY > 50);
+});
+</script>
+
+
+
+
+<!-- ================= TASK 6 ================= -->
+<section class="container my-5">
+<div class="task-title">
+    <h4>Task 6: Multi-Step Form with Progress Bar</h4>
+</div>
+
+<div class="progress mb-3">
+  <div class="progress-bar" id="progressBar" style="width: 33%">Step 1</div>
+</div>
+
+<form id="multiStepForm">
+  <div class="step" id="step1">
+    <input type="text" class="form-control mb-3" placeholder="First Name" required>
+    <button type="button" class="btn btn-primary" onclick="nextStep(2)">Next</button>
+  </div>
+
+  <div class="step d-none" id="step2">
+    <input type="email" class="form-control mb-3" placeholder="Email" required>
+    <button type="button" class="btn btn-secondary" onclick="nextStep(1)">Back</button>
+    <button type="button" class="btn btn-primary" onclick="nextStep(3)">Next</button>
+  </div>
+
+  <div class="step d-none" id="step3">
+    <input type="password" class="form-control mb-3" placeholder="Password" required>
+    <button type="button" class="btn btn-secondary" onclick="nextStep(2)">Back</button>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </div>
+</form>
+</section>
+
+
+<!-- ================= TASK 7 ================= -->
+<section class="container-fluid my-5">
+<div class="task-title">
+    <h4>Task 7: Dashboard Layout with Sidebar & Top Navbar</h4>
+</div>
+
+<div class="row">
+  <div class="col-md-3 bg-dark text-white p-3">
+    <h5>Sidebar</h5>
+    <ul class="nav flex-column">
+      <li class="nav-item"><a class="nav-link text-white" href="#">Home</a></li>
+      <li class="nav-item"><a class="nav-link text-white" href="#">Reports</a></li>
+      <li class="nav-item"><a class="nav-link text-white" href="#">Settings</a></li>
+    </ul>
+  </div>
+
+  <div class="col-md-9">
+    <nav class="navbar navbar-light bg-light mb-3">
+      <span class="navbar-brand">Dashboard</span>
+    </nav>
+    <div class="p-3 border">Main Content Area</div>
+  </div>
+</div>
+</section>
+
+
+<!-- ================= TASK 8 ================= -->
+<section class="container my-5">
+<div class="task-title">
+    <h4>Task 8: Responsive Table with Sorting</h4>
+</div>
+
+<div class="table-responsive">
+<table class="table table-bordered" id="sortableTable">
+  <thead>
+    <tr>
+      <th onclick="sortTable(0)">Name ⬍</th>
+      <th onclick="sortTable(1)">Age ⬍</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Arun</td><td>25</td></tr>
+    <tr><td>Divya</td><td>22</td></tr>
+    <tr><td>Kiran</td><td>28</td></tr>
+  </tbody>
+</table>
+</div>
+</section>
+
+
+<!-- ================= TASK 9 ================= -->
+<section class="container my-5">
+<div class="task-title">
+    <h4>Task 9: Real-Time Product Search Filter</h4>
+</div>
+
+<input type="text" id="searchInput" class="form-control mb-3" placeholder="Search product..." onkeyup="filterProducts()">
+
+<div class="row" id="productContainer">
+  <div class="col-md-4 product-item"><div class="card p-3">Laptop</div></div>
+  <div class="col-md-4 product-item"><div class="card p-3">Mobile</div></div>
+  <div class="col-md-4 product-item"><div class="card p-3">Headphones</div></div>
+</div>
+</section>
+
+
+<!-- ================= TASK 10 ================= -->
+<section class="container my-5">
+<div class="task-title">
+    <h4>Task 10: Custom Alert / Notification System</h4>
+</div>
+
+<button class="btn btn-warning" onclick="showAlert()">Show Notification</button>
+
+<div id="customAlert" class="alert alert-success mt-3 d-none">
+  This is a custom notification!
+</div>
+</section>
+
+
+<script>
+/* Task 6 Multi-Step */
+function nextStep(step){
+  document.querySelectorAll(".step").forEach(s => s.classList.add("d-none"));
+  document.getElementById("step"+step).classList.remove("d-none");
+
+  let percent = step * 33;
+  document.getElementById("progressBar").style.width = percent + "%";
+  document.getElementById("progressBar").innerText = "Step " + step;
+}
+
+/* Task 8 Sorting */
+function sortTable(n){
+  let table = document.getElementById("sortableTable");
+  let rows = Array.from(table.rows).slice(1);
+  rows.sort((a,b) => a.cells[n].innerText.localeCompare(b.cells[n].innerText, undefined, {numeric:true}));
+  rows.forEach(row => table.appendChild(row));
+}
+
+/* Task 9 Filter */
+function filterProducts(){
+  let input = document.getElementById("searchInput").value.toLowerCase();
+  let items = document.querySelectorAll(".product-item");
+
+  items.forEach(item => {
+    let text = item.innerText.toLowerCase();
+    item.style.display = text.includes(input) ? "" : "none";
+  });
+}
+
+/* Task 10 Custom Alert */
+function showAlert(){
+  let alertBox = document.getElementById("customAlert");
+  alertBox.classList.remove("d-none");
+
+  setTimeout(() => {
+    alertBox.classList.add("d-none");
+  }, 3000);
+}
+</script>
+
+
+
+</body>
+</html>
